@@ -33,7 +33,7 @@ public class Sender extends Thread{
 		while (dos != null) {
 			try {
 //				dos.writeUTF(name + " >>>>" + scan.nextLine());
-				dos.writeUTF("test");
+				dos.writeUTF("보내메시지");
 			} catch (IOException ex) {
 				ex.printStackTrace();
 			}

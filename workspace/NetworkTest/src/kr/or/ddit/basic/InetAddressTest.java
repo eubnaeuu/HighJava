@@ -15,7 +15,6 @@ public class InetAddressTest {
 		InetAddress naverIp = InetAddress.getByName("www.naver.com");
 		System.out.println("Host Name => " + naverIp.getHostName());
 		System.out.println("Host Address => " + naverIp.getHostAddress());
-	
 		System.out.println();
 		
 		// 자기 자신 컴퓨터의 IP정보 가져오기 (.getLocalHost())

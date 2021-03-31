@@ -13,10 +13,10 @@ public class URLTest {
 		System.out.println("전체 URL 주소 : " + url.toString());
 		System.out.println("protocol : " + url.getProtocol());
 		System.out.println("host : " + url.getHost());
-		System.out.println("query : " + url.getQuery());
-		System.out.println("file : " + url.getFile());
-		System.out.println("path : " + url.getPath());
 		System.out.println("port : " + url.getPort());
+		System.out.println("file : " +url.getFile());
+		System.out.println("path : " + url.getPath());
+		System.out.println("query : " + url.getQuery());
 		System.out.println("ref(참조) : " + url.getRef());
 		System.out.println();
 		

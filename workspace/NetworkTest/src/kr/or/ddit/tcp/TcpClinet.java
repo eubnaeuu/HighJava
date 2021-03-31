@@ -11,7 +11,7 @@ public class TcpClinet {
 		
 		String serverIp = "127.0.0.1";
 		// 자기 자신 컴퓨터를 나타내는 방법
-		// IP : 27.0.0.1
+		// IP : 127.0.0.1
 		// 컴이름 : localhost
 		
 		System.out.println(serverIp + "서버에 접속중 입니다");

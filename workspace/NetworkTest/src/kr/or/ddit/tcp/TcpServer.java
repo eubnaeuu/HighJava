@@ -13,18 +13,13 @@ public class TcpServer {
 			Socket 이용
 		 */
 		
-		
-		
-		
-		// 
-		
 		//TCP 소켓 통신을 하기 위해 ServerSocket 객체(param : 포트번호) 생성
 		ServerSocket server = new ServerSocket(7777);
 		System.out.println("서버가 접속을 기다립니다");
 		
 		// accept()메서드는 client에서 연결 요청이 올 때까지 계속 기다린다
 		// 연결 요청이 오면 Socket객체를 생성해서 Client의 Socket과 연결한다
-		Socket socket = server .accept();
+		Socket socket = server .accept(); // block 상태로 전환되고  client의 연결요청을 기다린다.
 		
 		// 이 이후는 클라이언트와 연결된 후의 작업을 진행하면 된다
 		System.out.println("접속한 클라이언트 정보");
@@ -40,7 +35,5 @@ public class TcpServer {
 		System.out.println("메시지를 ㅂ냈습니다");
 		
 		dos.close();
-
-		
 	}
 }
