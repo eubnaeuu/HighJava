@@ -47,7 +47,7 @@ public class UdpFileSender {
 			
 			while(true) {
 				Thread.sleep(10); // 패킷 전송간의 간격을 주기 위하여
-				int readBytes = 
+				int readBytes =  // ☆ 이건뭐지(?)  1000크기 바이트 배열에 담기위해?
 						fis.read(buffer, 0, buffer.length);
 				if(readBytes == -1) {
 					break;

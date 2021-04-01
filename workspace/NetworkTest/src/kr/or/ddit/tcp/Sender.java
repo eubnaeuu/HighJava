@@ -10,7 +10,6 @@ import java.util.Scanner;
  * @author PC-09
  */
 
-
 public class Sender extends Thread{
 	private Scanner scan;
 	private String name;

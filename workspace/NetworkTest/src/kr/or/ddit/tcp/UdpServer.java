@@ -28,7 +28,7 @@ public class UdpServer {
 			System.out.println("패킷 수신 대기중 ...");
 			
 			//패킷을 통해 데이터를 수신(receive)한다
-			socket.receive(inPacket);
+			socket.receive(inPacket); // 패킷 수신
 			
 			System.out.println("패킷 수신 완료");
 			

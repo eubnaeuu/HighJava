@@ -2,6 +2,9 @@ package kr.or.ddit.rmi.vo;
 
 import java.io.Serializable;
 
+/**
+ * 파일 전송용 VO 클래스
+ */
 public class FileInfoVO implements Serializable {
 	private String fileName;
 	private byte[] fileData;
@@ -20,5 +23,4 @@ public class FileInfoVO implements Serializable {
 	}
 	
 	
-
 }

@@ -19,7 +19,7 @@ public class TcpFileClient {
 	
 	
 	public void startClient() {
-		File file = new File("D:\\D_Other\\C_LIb\\download2.jpg");  // 다운받을 위치 및 이름
+		File file = new File("D:\\D_Other\\C_LIb\\download0.jpg");  // 다운받을 위치 및 이름
 		try {
 			socket = new Socket("127.0.0.1", 7777);
 			System.out.println("파일 다운로드 시작!");

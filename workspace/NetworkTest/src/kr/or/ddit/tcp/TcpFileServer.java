@@ -34,9 +34,12 @@ public class TcpFileServer {
 				// 한꺼번에 읽어와 전송할 데이터 저장 변수 선언
 				byte[] tmp = new byte[1024];
 				int c = 0;
-				while((c = fis.read(tmp)) != -1 ) {
-					out.write(tmp, 0, c);
+				while((c = fis.read(tmp)) != -1 ) { // c = 1024 1024 1024  ... 252 -1
+					//서버 준비 완료....	
+					out.write(tmp, 0, c); // param : (byte b[],  int off,  int len) 
+					// tmp를 OutputStream을 이용하여 socket에 write
 				}
+				out.flush();
 			} catch(IOException ex) {
 				ex.printStackTrace();
 			}finally {

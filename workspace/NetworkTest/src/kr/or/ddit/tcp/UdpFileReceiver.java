@@ -30,18 +30,18 @@ public class UdpFileReceiver {
 		
 		if(str.equals("start")) { // sender에서 전송을 시작하는 경우....
 			
-			dp = new DatagramPacket(buffer, buffer.length);
+			dp = new DatagramPacket(buffer, buffer.length); // 새로운 그릇
 			ds.receive(dp);
-			str = new String(dp.getData()).trim(); // 전송받은 사이즈(바이트타입을)를 string타입ㅂ으로
-			
+			str = new String(dp.getData()).trim(); //sender에서 총파일사이즈 전송했음.(바이트타입을 string타입으로)
+			System.out.println(str);
 			fileSize = Long.parseLong(str);
 			
 			double startTime = System.currentTimeMillis();
 			
 			while(true) {
 				ds.receive(dp); // 실제 파일 받기 시작
-				str = new String(dp.getData()).trim();
-				readBytes = dp.getLength(); // 읽어온 패킷 사이즈
+				str = new String(dp.getData()).trim(); // str로 정하는 이유(?)  
+				readBytes = dp.getLength(); // 읽어온 패킷 사이즈 (총파일사이즈와 혼동 X)
 				fos.write(dp.getData(), 0, readBytes);
 				
 				totalReadBytes += readBytes;
