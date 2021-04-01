@@ -13,16 +13,33 @@ public interface RemoteInterface extends Remote{
 	// 이 곳에서 선언된 메서드의 파라미터 변수는 클라이언트에서 보내오는 데이터가 저장되고, 
 	// 반환값은 서버에서 클라이언트 쪽으로 보내는 데이터가 된다
 	
-	
+	/**
+	 * 
+	 * @param str
+	 * @return
+	 * @throws RemoteException
+	 */
 	public int doRemotePrint(String str)
 	throws RemoteException;
-	
+	/**
+	 * 
+	 * @param list
+	 * @throws RemoteException
+	 */
 	public void doPrintList(List<String> list)
 	throws RemoteException;
-	
+	/**
+	 * 
+	 * @param vo
+	 * @throws RemoteException
+	 */
 	public void doPrintVO(TestVO vo)
 	throws RemoteException;
-	
+	/**
+	 * 파일 저장
+	 * @param fInfo
+	 * @throws RemoteException
+	 */
 	public void setFiles(FileInfoVO[] fInfo)
 	throws RemoteException;
 
