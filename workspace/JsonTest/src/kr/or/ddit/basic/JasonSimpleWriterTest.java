@@ -27,7 +27,7 @@ public class JasonSimpleWriterTest {
 		
 		jsonObj.put("name", "홍홍홍");
 		jsonObj.put("job", "학생");
-		jsonObj.put("age", "30");
+		jsonObj.put("age", 30);
 		jsonObj.put("addr", "대전시 중구 대흥동 대덕인재개발원");
 		
 		// JSONArray 데이터 설정
@@ -42,7 +42,7 @@ public class JasonSimpleWriterTest {
 		singer = new JSONObject();
 		singer.put("name", "비욘세");
 		singer.put("gender", "여자");
-		singer.put("age", "32");
+		singer.put("age", 32);
 		singerList.add(singer);
 		
 		singer = new JSONObject();
@@ -58,7 +58,7 @@ public class JasonSimpleWriterTest {
 		fw.flush();
 		fw.close();
 		System.out.println("JSON객체 내용 출력 : " + jsonObj);
-		// {"name":"홍홍홍","job":"학생","addr":"대전시 중구 대흥동 대덕인재개발원","singerList":[{"gender":"남자","name":"싸이","age":22},{"gender":"여자","name":"비욘세","age":"32"},{"gender":false,"name":"BTS","age":25}],"age":"30"}
+	
 
 		// Json Object 형식으로 출력됨.
 		

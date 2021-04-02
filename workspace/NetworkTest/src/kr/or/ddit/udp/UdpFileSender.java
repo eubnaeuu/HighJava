@@ -1,4 +1,4 @@
-package kr.or.ddit.tcp;
+package kr.or.ddit.udp;
 
 import java.io.File;
 import java.io.FileInputStream;

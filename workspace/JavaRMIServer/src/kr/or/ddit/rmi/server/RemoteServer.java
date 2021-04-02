@@ -22,7 +22,7 @@ import kr.or.ddit.rmi.vo.TestVO;
 public class RemoteServer extends UnicastRemoteObject implements RemoteInterface{
 
 	
-	protected RemoteServer() throws RemoteException {    // 왜 throw 라는건지?
+	protected RemoteServer() throws RemoteException {    // ☆ 왜 생성자에 throw 하라는건지?
 		super();
 		// TODO Auto-generated constructor stub
 	}

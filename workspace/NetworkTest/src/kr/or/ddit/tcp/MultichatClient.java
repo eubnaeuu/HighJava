@@ -19,7 +19,7 @@ public class MultichatClient {
 		Socket socket = null;
 
 		try {
-			socket = new Socket("192.168.43.132", 7777);
+			socket = new Socket("localhost", 7777);
 			System.out.println("서버에 연결되었습다");
 
 			// 송신용 스레드 생성
@@ -27,6 +27,9 @@ public class MultichatClient {
 			
 			// 수신용 스레드 생성
 			ClientReceiver receiver  = new ClientReceiver(socket);
+			
+			sender.start();
+			receiver.start();
 			
 		} catch (IOException ex) {
 			ex.printStackTrace();
@@ -40,7 +43,7 @@ public class MultichatClient {
 		String name;
 		Scanner scan = new Scanner(System.in);
 
-		public ClientSender(Socket socket, String name) {
+		public ClientSender(Socket socket, String name) { // 생성자 파라미터 추가 (socket, name)
 			this.socket = socket;
 			this.name = name;
 
@@ -60,7 +63,9 @@ public class MultichatClient {
 				}
 				while (dos != null) {
 					// 키보드를 입력받은 메시지를 서버로 전송
-					dos.writeUTF(scan.nextLine());
+					// dos는 server 1사람에게만 보내기에  전역변수로 두었음
+					//(server에서 모든 client에게 뿌릴때는 회원수만큼 dos 생성해야함)
+					dos.writeUTF(scan.nextLine()); 
 				}
 			} catch (IOException ex) {
 				ex.printStackTrace();
@@ -90,7 +95,6 @@ public class MultichatClient {
 					ex.printStackTrace();
 				}
 			}
-
 		}
 	}
 

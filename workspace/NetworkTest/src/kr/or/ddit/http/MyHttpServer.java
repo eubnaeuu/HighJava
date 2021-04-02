@@ -16,6 +16,8 @@ import java.util.StringTokenizer;
 
 /**
  * 간단한 웹서버 예제
+ * 
+ * ☆과정 : 요청 -> 응답 인가?  
  */
 public class MyHttpServer {
 	private final int port = 80;
@@ -24,10 +26,8 @@ public class MyHttpServer {
 	/**
 	 * 응답 헤더 생성하기
 	 * 
-	 * @param contentLength
-	 *            응답내용 크기
-	 * @param mimeType
-	 *            마임타입
+	 * @param contentLength 응답내용 크기
+	 * @param mimeType 마임타입
 	 * @return 바이트 배열
 	 */
 	private byte[] makeResponseHeader(int contentLength, String mimeType) {
@@ -36,17 +36,15 @@ public class MyHttpServer {
 				+ "Server: MyHTTPServer 1.0\r\n" // 헤더....
 				+ "Content-length : " + contentLength + "\r\n" + "Content-type : " + mimeType + "; charset="
 				+ this.encoding + "\r\n\r\n "; // emptyline
-
 		return header.getBytes();
 	}
 
 	/**
 	 * 
 	 * 응답 내용 생성하기
-	 * - 파일경로를 파라미터로 받아 데이터를 반환
+	 * - [파일경로]를 파라미터로 받아 데이터를 반환
 	 * 
-	 * @param filePath
-	 *            filePath 응답으로 사용할 파일경로
+	 * @param filePath 응답으로 사용할 파일경로
 	 * @return 바이트배열 데이터
 	 * @throws IOException
 	 * 
@@ -56,8 +54,8 @@ public class MyHttpServer {
 		byte[] data = null;
 		try {
 			File file = new File(filePath);
-			data = new byte[(int) file.length()];
-			fis = new FileInputStream(file);
+			data = new byte[(int) file.length()];   // 파일 크기의 byte만듬
+			fis = new FileInputStream(file); // file 바이트기반 읽기위한 기반 스트림                    
 			fis.read(data);
 		} finally {
 			if (fis != null) {
@@ -96,7 +94,7 @@ public class MyHttpServer {
 				Socket socket = server.accept();
 				
 				//Http 요청처리를 위한 스레드 객체 생성
-				HttpHandler handler = new HttpHandler(socket);
+				HttpHandler handler = new HttpHandler(socket);  // ☆ 요 socket은 자웅동체인가?
 				new Thread(handler).start();
 				
 				}catch(IOException ex) {
@@ -128,6 +126,7 @@ public class MyHttpServer {
 			try {
 				out=new BufferedOutputStream (socket.getOutputStream());
 				br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+				// ☆ 버퍼와 리더는 누가감싸든 상관 없는건가(?) 그럼 여기서 자리를 바꿔도 똑같이 나오는 건지(?)
 				
 				// 요청헤더 정보 파싱하기
 				StringBuilder request = new StringBuilder();
@@ -144,8 +143,8 @@ public class MyHttpServer {
 				StringTokenizer st = new StringTokenizer(request.toString());
 				while(st.hasMoreTokens()) {
 					String token = st.nextToken();
-					if(token.startsWith("/")) { //        GET / index.html ....... 
-						reqPath = token; // /index.html
+					if(token.startsWith("/")) { //        GET /index.html ....... 
+						reqPath = token; //    [/index.html]
 					}
 				}
 				// 상대경로(프로젝트 폴더 기준) 설정
@@ -164,7 +163,7 @@ public class MyHttpServer {
 				if(request.toString().indexOf("HttP/") != -1){
 					out.write(header);   //응답헤더 보내기
 				}
-				System.out.println("응답헤더 ; \n" + new String(header));
+				System.out.println("응답헤더 : \n" + new String(header));
 				out.write(body); // 응답내용 보내기
 				out.flush();
 						} catch(IOException ex) {
@@ -182,5 +181,89 @@ public class MyHttpServer {
 	public static void main(String[] args) {
 		new MyHttpServer().startServer();
 	}
-}
 
+
+//	 요청헤더 : 
+//GET /NewFile.html HTTP/1.1
+//Host: localhost
+//Connection: keep-alive
+//sec-ch-ua: "Google Chrome";v="89", "Chromium";v="89", ";Not A Brand";v="99"
+//sec-ch-ua-mobile: ?0
+//DNT: 1
+//Upgrade-Insecure-Requests: 1
+//User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36
+//Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+//Sec-Fetch-Site: none
+//Sec-Fetch-Mode: navigate
+//Sec-Fetch-User: ?1
+//Sec-Fetch-Dest: document
+//Accept-Encoding: gzip, deflate, br
+//Accept-Language: ko,en-US;q=0.9,en;q=0.8
+//
+//contentType => text/html
+//HTTP/1.1 200 OK
+//Server: MyHTTPServer 1.0
+//Content-length : 135
+//Content-type : text/html; charset=UTF-8
+//
+// 
+//응답헤더 ; 
+//HTTP/1.1 200 OK
+//Server: MyHTTPServer 1.0
+//Content-length : 135
+//Content-type : text/html; charset=UTF-8
+//
+// 
+//요청헤더 : 
+//GET /favicon.ico HTTP/1.1
+//Host: localhost
+//Connection: keep-alive
+//sec-ch-ua: "Google Chrome";v="89", "Chromium";v="89", ";Not A Brand";v="99"
+//DNT: 1
+//sec-ch-ua-mobile: ?0
+//User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36
+//Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+//Sec-Fetch-Site: same-origin
+//Sec-Fetch-Mode: no-cors
+//Sec-Fetch-Dest: image
+//Referer: http://localhost/NewFile.html
+//Accept-Encoding: gzip, deflate, br
+//Accept-Language: ko,en-US;q=0.9,en;q=0.8
+//
+//contentType => null
+//요청헤더 : 
+//GET /NewFile.html HTTP/1.1
+//Host: localhost
+//Connection: keep-alive
+//Cache-Control: max-age=0
+//sec-ch-ua: "Google Chrome";v="89", "Chromium";v="89", ";Not A Brand";v="99"
+//sec-ch-ua-mobile: ?0
+//DNT: 1
+//Upgrade-Insecure-Requests: 1
+//User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36
+//Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+//Sec-Fetch-Site: none
+//Sec-Fetch-Mode: navigate
+//Sec-Fetch-User: ?1
+//Sec-Fetch-Dest: document
+//Accept-Encoding: gzip, deflate, br
+//Accept-Language: ko,en-US;q=0.9,en;q=0.8
+//
+//contentType => text/html
+//HTTP/1.1 200 OK
+//Server: MyHTTPServer 1.0
+//Content-length : 135
+//Content-type : text/html; charset=UTF-8
+//
+// 
+//응답헤더 ; 
+//HTTP/1.1 200 OK
+//Server: MyHTTPServer 1.0
+//Content-length : 135
+//Content-type : text/html; charset=UTF-8
+
+ 
+
+	 
+
+}

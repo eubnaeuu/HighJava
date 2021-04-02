@@ -41,13 +41,14 @@ public class MultichatServer {
 				ServerReceiver receiver = new ServerReceiver(socket);
 				receiver.start();
 			}
+			
 		} catch (IOException ex) {
 			ex.printStackTrace();
 		}
 	}
 	
 	/**
-	 * 대화방 즉, Map에 저장된 전체 유저에게 안내메시지를 전송하는 메서드
+	 * 대화방 즉, Map에 저장된 전체 유저에게 안내메시지를 전송하는 메서드 (msg만 출력)
 	 * @param msg
 	 */
 	public void sendMessage(String msg) {
@@ -70,9 +71,9 @@ public class MultichatServer {
 
 	/**
 	 * 
-	 * 대화방 즉, Map에 저장된 전체 유저에게 안내메시지를 전송하는 메서드
+	 * 대화방 즉, Map에 저장된 전체 유저에게 안내메시지를 전송하는 메서드 (name + msg 출력)
 	 * @param msg
-	 * @param from
+	 * @param from 작성자이름
 	 */
 	public void sendMessage(String msg, String from) {
 		// Map에 저장된 유저의 대화명 리스트 추출(key값 구하기)
@@ -82,7 +83,7 @@ public class MultichatServer {
 			try {
 				String name = it.next(); // 대화명
 				
-				// 대화명에 해당하는 Socket의 OuputStream 구하기
+				// 대화명에 해당하는 Socket의 OuputStream 구하기        (client.get(name) : name에 해당하는 value값)
 				DataOutputStream dos = new DataOutputStream(clients.get(name).getOutputStream());
 				dos.writeUTF("["+from+"]"+ msg); // 메시지 보내기
 				
@@ -124,7 +125,6 @@ public class MultichatServer {
 				// 이 이후의 메시지 처리는 반복문으로 처리한다
 				// 한 클라이언트가 보낸 메시지를 다른 모든 클라이언트에게 보내준다
 				while(dis != null ) {
-					
 					sendMessage(dis.readUTF(), name);
 				}
 			}catch(IOException ex){

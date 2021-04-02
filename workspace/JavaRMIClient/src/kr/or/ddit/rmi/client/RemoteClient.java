@@ -21,16 +21,15 @@ public class RemoteClient {
 		try {
 			// 1. 등록된 서버를 찾기 위해 Registry객체를 생성한 후
 			//    사용할 객체를 불러온다.
-			Registry reg = LocateRegistry
-					.getRegistry("192.168.43.132", 8888);
-			RemoteInterface clientInf = 
-					(RemoteInterface) reg.lookup("server");
+			Registry reg = LocateRegistry.getRegistry("192.168.43.132", 8888); 
+			RemoteInterface clientInf = (RemoteInterface) reg.lookup("server"); // ☆ 무슨 의미?(서버를 찾는다는 의미?)
 			
 			// 이제부터는 불러온 객체의 메서드를 호출해서 사용할 수 있다.
 			int a = clientInf.doRemotePrint("안녕하세요");
 			System.out.println("반환값 => " + a);
 			System.out.println("----------------------");
 			
+			// list 호출
 			List<String> list = new ArrayList<String>();
 			list.add("대전");
 			list.add("대구");
@@ -40,6 +39,7 @@ public class RemoteClient {
 			System.out.println("List 호출 끝...");
 			System.out.println("---------------------");
 			
+			// TestVO 호출 
 			TestVO vo = new TestVO();
 			vo.setTestId("kildong");
 			vo.setTestNum(1234);
@@ -47,7 +47,7 @@ public class RemoteClient {
 			System.out.println("VO 출력 메서드 호출 끝...");
 			System.out.println("-----------------------");
 			
-			// 파일 전송하기
+			// 파일 전송
 			File[] files = new File[2];
 			files[0] = new File("d:/D_Other/dolphin1.jpg");
 			files[1] = new File("d:/D_Other/download.jpg");
