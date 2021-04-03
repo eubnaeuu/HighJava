@@ -21,7 +21,7 @@ public class RemoteClient {
 		try {
 			// 1. 등록된 서버를 찾기 위해 Registry객체를 생성한 후
 			//    사용할 객체를 불러온다.
-			Registry reg = LocateRegistry.getRegistry("192.168.43.132", 8888); 
+			Registry reg = LocateRegistry.getRegistry("localhost", 8888); // sempc : 192.168.43.132 
 			RemoteInterface clientInf = (RemoteInterface) reg.lookup("server"); // ☆ 무슨 의미?(서버를 찾는다는 의미?)
 			
 			// 이제부터는 불러온 객체의 메서드를 호출해서 사용할 수 있다.
@@ -52,8 +52,7 @@ public class RemoteClient {
 			files[0] = new File("d:/D_Other/dolphin1.jpg");
 			files[1] = new File("d:/D_Other/download.jpg");
 			
-			FileInfoVO[] fInfo = 
-					new FileInfoVO[files.length];
+			FileInfoVO[] fInfo = new FileInfoVO[files.length];
 			
 			// 2개의 파일을 읽어서 byte[]에 담아서 서버측 메서드에 전달한다.
 			FileInputStream fis = null;
@@ -62,7 +61,7 @@ public class RemoteClient {
 				fis = new FileInputStream(files[i]);
 				byte[] data = new byte[length];
 				
-				fis.read(data); //파일의 내용을 읽어서 byte배열에 저장
+				fis.read(data); //파일의 내용을 읽어서 byte배열에 저장(?)
 				
 				fInfo[i] = new FileInfoVO();
 				// 파일 이름 저장
