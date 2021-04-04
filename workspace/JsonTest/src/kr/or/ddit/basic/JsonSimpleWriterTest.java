@@ -20,7 +20,7 @@ import org.json.simple.JSONObject;
  * 
  * @author PC-09
  */
-public class JasonSimpleWriterTest {
+public class JsonSimpleWriterTest {
 	public static void main(String[] args) throws IOException {
 			// JSON 데이터 설정
 		JSONObject jsonObj = new JSONObject();
