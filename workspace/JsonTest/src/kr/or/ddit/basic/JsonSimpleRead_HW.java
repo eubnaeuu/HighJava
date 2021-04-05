@@ -22,7 +22,7 @@ public class JsonSimpleRead_HW {
 	private JSONObject getJSONObject() throws IOException, ParseException{
 		URL url = new URL("http://apis.data.go.kr/3660000/PublicToiletListService/getPublicToiletList?"
 				+"serviceKey="+ svcKey
-				+""+pageNo + ""
+				+""+pageNo + "\n"
 				+""+numOfRows + ""
 				+""+toilet_nm);
 		

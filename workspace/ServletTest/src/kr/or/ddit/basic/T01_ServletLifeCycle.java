@@ -12,10 +12,6 @@ import javax.servlet.http.HttpServletResponse;
  * 서블릿의 라이프사이클을 확인하기 위한 예제
  *  (서블릿이란? 컨테이너(서블릿엔진)에 의해 관리되는 자바기반 웹컴포넌트로서, 동적인 웹컨텐츠
  * 생성을 가능하게 해준다)
- * 
- * 
- * @author PC-09
- *
  */
 public class T01_ServletLifeCycle extends HttpServlet {
 	
@@ -49,11 +45,13 @@ public class T01_ServletLifeCycle extends HttpServlet {
 //		super.doPost(req, resp);
 	}
 	
-	private void dstroy() {
+	
+	@Override
+	public void destroy() {
 		// 객체 소멸시 (컨테이너로부터 서블릿 객체 제거시)
 		// 필요한 코드 작성...
 		System.out.println("destroy() 호출됨.");
-		
 	}
+	
 
 }
