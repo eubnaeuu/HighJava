@@ -13,7 +13,8 @@ import javax.servlet.http.HttpServletResponse;
  *  (서블릿이란? 컨테이너(서블릿엔진)에 의해 관리되는 자바기반 웹컴포넌트로서, 동적인 웹컨텐츠
  * 생성을 가능하게 해준다)
  */
-public class T01_ServletLifeCycle extends HttpServlet {
+
+public class T01_ServletLifeCycle extends HttpServlet {  //extends 는 기본임
 	
 	@Override
 	public void init(ServletConfig config) throws ServletException {
