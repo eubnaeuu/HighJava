@@ -26,4 +26,17 @@
   </servlet-mapping>
   
   
+    <servlet> 		
+  	<servlet-name>T03_ServletParameterTest</servlet-name>
+  	<servlet-class>kr.or.ddit.basic.T03_ServletParameterTest</servlet-class>
+  	<load-on-startup>1</load-on-startup> <!-- 기존에는 서비스를 호출할 때 객체가 생성하지만 이는 서버 연결과 동시에 생성 -->
+  	<!-- 숫자는 실행 순서 우선순위를 말함 1,2,3,4,5,,,, -->  
+  </servlet>
+  <servlet-mapping> 
+  	<servlet-name>T03_ServletParameterTest</servlet-name>
+  	<url-pattern>/T03_ServletParameterTest.do</url-pattern>  <!-- .do로 하면 formdata의 입력값을 볼 수 있다 -->
+  </servlet-mapping>
+  
+  
+  
 </web-app>

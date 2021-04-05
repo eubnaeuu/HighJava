@@ -42,7 +42,6 @@ public class T02_ServletTest extends HttpServlet{
 		String name = req.getParameter("name");
 		System.out.println("name => " + name);
 		
-		
 		// 응답메시지 인코딩 설정(Content-Type의 charset = UTF-8)
 		resp.setCharacterEncoding("UTF-8");
 		
@@ -50,7 +49,8 @@ public class T02_ServletTest extends HttpServlet{
 		resp.setContentType("text/plain"); // 단순한 text파일
 		
 		// 실제 수행할 로직(기능)이 시작되는 부분...
-		PrintWriter out = resp.getWriter();
+		PrintWriter out = resp.getWriter(); // 문자기반
+		// 이미지를 보내고 싶은 경우 바이트 기반으로 보내면 됨 : resp.getOutputStream();
 		out.println("name =>" + name);
 		out.println("Context Path(Root) =>" +req.getContextPath());
 		out.println("Servlet Path =>" +req.getServletPath());
