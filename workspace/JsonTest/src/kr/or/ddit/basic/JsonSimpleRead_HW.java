@@ -12,15 +12,19 @@ import org.json.simple.parser.ParseException;
 public class JsonSimpleRead_HW {
 
 	private String svcKey ="Ee6PerfZMkzruLEP%2Fe8ZV76lRwME%2BxW00Gwmr8CVUZv7Sv%2F3E6rki3kB5o%2BP%2F6hqStpsdW%2FAKvNraqXsKbfdnw%3D%3D"; 
-	private String apiKey="";
-	private String pageNo = "";
-	private String endIdx = "";
-	private String tmp = "";
+//	private String apiKey="";
+	private String pageNo = "1";
+	private String numOfRows = "10";
+	private String toilet_nm = "";
 	
 	
 	
 	private JSONObject getJSONObject() throws IOException, ParseException{
-		URL url = new URL("http://apis.data.go.kr/3660000/PublicToiletListService");
+		URL url = new URL("http://apis.data.go.kr/3660000/PublicToiletListService/getPublicToiletList?"
+				+"serviceKey="+ svcKey
+				+""+pageNo + ""
+				+""+numOfRows + ""
+				+""+toilet_nm);
 		
 		// http://apis.data.go.kr/3660000/PublicToiletListService/getPublicToiletList?
 		//serviceKey=
