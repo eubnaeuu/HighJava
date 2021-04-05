@@ -14,20 +14,20 @@ public class T02_ServletTest extends HttpServlet{
 	 서블릿 동작 방식에 대하여..
 	 
 	 
-1. 사용자(클라이언트)가 URL을 클릭하면 HTTP Request를 서블릿 컨테이너로 전송(요청)한다
+1. 사용자(클라이언트)가 URL을 클릭하면 HTTP Request를 서블릿 컨테이너로 전송(요청)
 
-2. 컨테이너는 web.xml에 정의된 url패턴을 확인하여 어느 서블릿을 통해 처리해야 할지를 검색한다
+2. 컨테이너는 web.xml에 정의된 url패턴을 확인하여 어느 서블릿을 통해 처리해야 할지를 검색
 
-3. Servlet Container는 요청을 처리할 개별 스레드 객체를 생성하여 
-	해당 서블릿 객체의 service()메서드를 호출한다
-	(HttpServletRequest 및 HttpServlietResponse 객체를 생성하여 파라미터로 넘겨준다
+3. Servlet Container는 요청을 처리할 개별 스레드 객체를 생성 
+	해당 서블릿 객체의 service()메서드를 호출
+	(HttpServletRequest 및 HttpServlietResponse 객체를 생성하여 파라미터로 넘겨줌
 
-4. service()메서드는 메서드 타입을 체크하여 적절한 메서드를 호출한다
+4. service()메서드는 메서드 타입을 체크하여 적절한 메서드를 호출
 	(doGet, doPost, doPut, doDelete 등)
 
-5. 요청 처리가 완료되면, (HttpServletRequest 및 HttpServletResponse 객체는 소멸한다)
+5. 요청 처리가 완료되면, (HttpServletRequest 및 HttpServletResponse 객체는 소멸)
 
-6. 컨테이너로부터 서블릿이 제거되는 경우에 destroy()메서드가 호출된다 
+6. 컨테이너로부터 서블릿이 제거되는 경우에 destroy()메서드가 호출
 	*/
 	@Override 
 	// thread가 객체를 새로 생성하게 되면 그때 tomcat이 자동으로 HttpSevlet Request ,HttpServletResponse  객체를 만들어줌
@@ -62,3 +62,8 @@ public class T02_ServletTest extends HttpServlet{
 		doGet(req, resp);
 	}
 }
+
+//		이번 예제에서 url에서 직접 데이터를 조회해본다(Get방식)
+//		경로?/name=홍길동
+//		url에 한글을 넣게되면 실제로는 깨지므로 web.xml에서 urlencoding을 utf-8로 바꿔줘야함.
+//		URIEncoding="UTF-8" (port번호 수정하는 그곳	)

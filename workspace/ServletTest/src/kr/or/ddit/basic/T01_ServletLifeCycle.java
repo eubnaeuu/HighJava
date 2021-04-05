@@ -29,6 +29,7 @@ public class T01_ServletLifeCycle extends HttpServlet {  //extends 는 기본임
 		// 실제적인 작업 수행이 시작되는 지점
 		// (자바의 main메서드 역할)
 		super.service(arg0, arg1);
+		System.out.println("service() 호출됨.");
 	}
 	
 	@Override
@@ -43,8 +44,8 @@ public class T01_ServletLifeCycle extends HttpServlet {  //extends 는 기본임
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		//메서드 방식이 post 인 경우에 호출됨
 		System.out.println("doPost() 호출됨");
+		
 //		doGest(req, resp);
-//		super.doPost(req, resp);
 	}
 	
 	
