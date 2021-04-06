@@ -2,6 +2,7 @@ package kr.or.ddit.basic;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLDecoder;
 import java.net.URLEncoder;
 
 import javax.servlet.ServletException;
@@ -9,6 +10,8 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.tomcat.util.http.Cookies;
 
 public class T05_ServletCookieTest  extends HttpServlet{
 /**
@@ -39,9 +42,13 @@ public class T05_ServletCookieTest  extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		setCookieExam(req, resp);
+		setCookieExam(req, resp); // cookie 설정
+		readCookieExam(req, resp);// cookie 읽기
+		deleteCookieExam(req, resp);// cookie 삭제
+		
 	}
 	
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
@@ -52,7 +59,7 @@ public class T05_ServletCookieTest  extends HttpServlet{
 	private void setCookieExam(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		/**
 		 	쿠키 정보를 설정하는 방법...
-		 	
+		 		
 		 	1. 쿠키객체를 생성 사용불가 문자(공백, [],()=,"/?@:;)
 		 		Cookie cookie = new Cookie("키값", "value값");
 		 		=> 이외의 값(예를 들면 한글)을 사용시에는 URLEncoder.encode()사용하여 인코딩 처리를 해준다
@@ -102,5 +109,79 @@ public class T05_ServletCookieTest  extends HttpServlet{
 				
 	}
 	
+	private void readCookieExam(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		Cookie cookie = null;
+		// 현재 도메인에서 사용중인 쿠키정보 배열 가져오기
+		Cookie[] cookies = req.getCookies();
+		
+		// 응답헤더에 인코딩 및 Content-type 설정
+		resp.setCharacterEncoding("UTF-8");
+		resp.setContentType("text/html");
+		
+		PrintWriter out = resp.getWriter();
+		
+		String title = "쿠키정보 읽기 예제";
+				
+		out.println("<html><head><title>"
+				+ title + "</title></head>"
+				+"<body>"
+		);
+		if (cookies != null) {
+			out.println("<h2>" + title + "</h2>");
 
+			for (int i = 0; i < cookies.length; i++) {
+				cookie = cookies[i];
+				out.println("name : " + cookie.getName() + "<br>");
+				out.println("value : " + URLDecoder.decode(cookie.getValue(), "utf-8") +  "<br>");
+				out.println("<hr>");
+			}
+		} else {
+			out.println("<h2>쿠키정보가 없습니다</h2>");
+		}
+		out.println("</body>");
+		out.println("</html>");
+	}
+	
+	private void deleteCookieExam(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+	/**
+			사용중인 쿠키를 삭제하는 방법...
+			
+			1. 사용중인 쿠키정보를 이용하여 쿠키객체를 생성
+			2. 쿠키 객체의 최대 지속시간을 0으로 설정 => 브라우저가 알아서 삭제하는 것으로 알아들음
+			3. 설정한 쿠키객체를 응답헤더에 추가하여 전송
+			
+	 */
+		
+//		Cookie cookie = null;
+		Cookie[] cookies = req.getCookies();
+		
+		resp.setCharacterEncoding("UTF-8");
+		resp.setContentType("text/html");
+		
+		PrintWriter out = resp.getWriter();
+		
+		String title = "쿠키정보 삭제 예제";
+				
+				out.println("<html><head><title>"
+						+ title + "</title></head>"
+								+ "<body>");
+				if(cookies != null) {
+					out.println("<h2>" + title + "</h2>");
+					for(Cookie cookie : cookies) {
+						if((cookie.getName()).equals("userId")) {
+							//쿠키 제거하기
+							cookie.setMaxAge(0);
+							resp.addCookie(cookie);
+							out.println("삭제한 쿠키 : "
+									+ cookie.getName() + "<br>");
+						} 
+						out.print("쿠키 이름 :  "+ cookie.getName() + ", ");
+						out.print("쿠키 값 :  "+ URLDecoder.decode(cookie.getValue(),"utf-8") + ", ");
+					}
+				
+				} else {
+					out.println("<h2>쿠키 정보가 없습니다.</h2>");
+				}
+				out.println("</body></html>");
+	}
 }
