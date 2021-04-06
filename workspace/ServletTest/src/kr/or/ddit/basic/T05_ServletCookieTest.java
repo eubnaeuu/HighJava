@@ -20,8 +20,8 @@ public class T05_ServletCookieTest  extends HttpServlet{
   	 (http의 특징이 비연결 지향형이기에 상대방 구분 매우 힘듦)
   	
   	1. 구성 요소
-  	- 이름
-  	- 값
+  	- 이름(name)
+  	- 값(value)
   	유효시간(초)
   	도메인 : ex) www.somehost.com, .somehost.com
   	  => 쿠키의 도메인이 쿠키를 생성한 서버의 도메인을 벗어나면 브라우저는 쿠키를 저장(생성)하지 않는다 (보안문제 때문)
@@ -43,8 +43,8 @@ public class T05_ServletCookieTest  extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		setCookieExam(req, resp); // cookie 설정
-		readCookieExam(req, resp);// cookie 읽기
-		deleteCookieExam(req, resp);// cookie 삭제
+//		readCookieExam(req, resp);// cookie 읽기
+//		deleteCookieExam(req, resp);// cookie 삭제
 		
 	}
 	
@@ -97,6 +97,7 @@ public class T05_ServletCookieTest  extends HttpServlet{
 		out.println("<html><head><title>" + title + "</title></head>");
 		out.println("<body>"
 								+ "<h1 align=\"center\">" + title + "</h1>"
+								+("<h2>쿠키정보 생성 예제</h2>")
 								+"<ul>"
 								+"<li><b>ID</b>: "
 								+req.getParameter("userId")
@@ -165,10 +166,12 @@ public class T05_ServletCookieTest  extends HttpServlet{
 				out.println("<html><head><title>"
 						+ title + "</title></head>"
 								+ "<body>");
+				
 				if(cookies != null) {
 					out.println("<h2>" + title + "</h2>");
 					for(Cookie cookie : cookies) {
 						if((cookie.getName()).equals("userId")) {
+						
 							//쿠키 제거하기
 							cookie.setMaxAge(0);
 							resp.addCookie(cookie);
