@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 /**
- * 	세션(HttpSession) 객체에 대하여...
+ * 	세션(HttpSession) 객체에 대하여... : Servlet 객체에 있는 인터페이스
  * 
  *   	 - 세션을 통해서 사용자(웹브라우저)별로 구분하여 정보를 관리할 수 있다
  *   (세션ID 이용)
@@ -53,7 +53,7 @@ public class T06_ServletSessionTest extends HttpServlet{
 			title = "처음 방문을 환영합니다.";
 			session.setAttribute("userId",userId);
 		}else {
-			visitCount = (Integer)session.getAttribute("visitCount");
+			visitCount = (Integer)session.getAttribute("visitCount"); 	 // object형이기에 캐스팅을 꼭 해줘야함
 			visitCount++;
 			userId = (String) session.getAttribute("userId");
 		}
