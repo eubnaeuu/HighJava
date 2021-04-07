@@ -37,11 +37,11 @@ public class T07_ServletFilter implements Filter { // filter 인터페이스 형
 
 	@Override
 	public void init(FilterConfig fc) throws ServletException {
-		System.out.println("init() 메서드 호출됨");
+		System.out.println("T07_1 : init() 메서드 호출됨");
 		
 		// 초기화 파라미터정보 가져오기
 		String initParam = fc.getInitParameter("init-Param");
-		System.out.println("initParam : "+initParam);
+		System.out.println("T07_1 _ initParam : "+initParam);
 		
 	}
 	@Override

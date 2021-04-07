@@ -95,6 +95,10 @@
   <filter>
   	<filter-name>CustomEncoding</filter-name>
   	<filter-class>kr.or.ddit.filter.CustomEncoding</filter-class>
+  	  	<init-param>
+  		<param-name>encoding</param-name>
+  		<param-value>UTF-8</param-value>
+  	</init-param>
   </filter>
   
   <filter-mapping>
@@ -102,12 +106,12 @@
   	<url-pattern>/*</url-pattern>
   </filter-mapping>
   
-  <!-- 
+  
   <filter>
   	<filter-name>T07_ServletFilter</filter-name>
   	<filter-class>kr.or.ddit.basic.T07_ServletFilter</filter-class>
   	<init-param>
-  		<param-name>init-param</param-name>
+  		<param-name>init-Param</param-name>
   		<param-value>필터 정상 작동됩니다</param-value>
   	</init-param>
   </filter>
@@ -126,7 +130,7 @@
   	<filter-name>T07_ServletFilter2</filter-name>
   	<url-pattern>/*</url-pattern>
   </filter-mapping>
-   -->
+  
    
    <servlet>
    	<servlet-name>T08_ServletContextListenerTest</servlet-name>
@@ -159,22 +163,22 @@
    </servlet-mapping>
    
       <listener>
-   	<display-name>MyServletContextListener</display-name> <!--name  써도되고 안써도 되고 -->
+   	<display-name>MyServletContextListener</display-name> 
    	<listener-class>kr.or.ddit.basic.MyServletContextListener</listener-class>
    </listener>
    
       <listener>
-   	<display-name>MyServletRequestListener</display-name> <!--name  써도되고 안써도 되고 -->
+   	<display-name>MyServletRequestListener</display-name> 
    	<listener-class>kr.or.ddit.basic.MyServletRequestListener</listener-class>
    </listener>
    
       <listener>
-   	<display-name>MySessionAttributeListener</display-name> <!--name  써도되고 안써도 되고 -->
+   	<display-name>MySessionAttributeListener</display-name> 
    	<listener-class>kr.or.ddit.basic.MySessionAttributeListener</listener-class>
    </listener>
    
       <listener>
-   	<display-name>MySessionBindingListener</display-name> <!--name  써도되고 안써도 되고 -->
+   	<display-name>MySessionBindingListener</display-name> 
    	<listener-class>kr.or.ddit.basic.MySessionBindingListener</listener-class>
    </listener>
   

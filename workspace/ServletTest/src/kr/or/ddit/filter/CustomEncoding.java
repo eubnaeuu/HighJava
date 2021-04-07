@@ -15,7 +15,7 @@ import javax.servlet.ServletResponse;
 
 public class CustomEncoding  implements Filter{
 	
-private String encoding; // 이놐딩 정보
+private String encoding; //인코딩 정보
 
 	@Override
 	public void destroy() {

@@ -23,7 +23,7 @@ public class MyServletContextListener implements ServletContextAttributeListener
 		System.out.println("[MyServletContextListener] contextDestroyed() 호출됨"+sce.getServletContext().toString());
 	}
 	/**
-	 * 
+	 * 서블릿 컨텍스트 속성이 초기화 되었을 때 호출딤
 	 * @param sce
 	 */
 	@Override
@@ -32,7 +32,7 @@ public class MyServletContextListener implements ServletContextAttributeListener
 	}
 
 	/**
-	 * t서블릿 컨텍스트에 속성이 추가되었을 때 호출됨.
+	 * 서블릿 컨텍스트에 속성이 추가되었을 때 호출됨.
 	 * @param scae
 	 */
 	@Override

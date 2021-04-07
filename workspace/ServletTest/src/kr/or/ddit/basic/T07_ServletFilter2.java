@@ -24,10 +24,8 @@ public class T07_ServletFilter2 implements Filter{
 		
 		// 서블릿 수행시간 계산
 		long startTime = System.currentTimeMillis();
-		
 		// 필터체인을 실행(req, resp 객체 전달)
 		fc.doFilter(req, resp);
-		
 		System.out.println("T07_2 : 수행시간(ms) : "+ (System.currentTimeMillis() - startTime));
 		System.out.println("T07_servletFilter2 : 완료");
 	}
