@@ -11,7 +11,7 @@ public class T10_SessionAttributeListenerTest extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getSession().setAttribute("AAA", "AAA입니다"); 
+		req.getSession().setAttribute("AAA", "AAA인데"); 
 		req.getSession().setAttribute("AAA", "AAA수정입니다"); 
 		req.getSession().setAttribute("BBB", "BBB입니다");
 		req.getSession().removeAttribute("AAA");
