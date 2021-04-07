@@ -20,7 +20,7 @@ public class MyServletContextListener implements ServletContextAttributeListener
 	
 	@Override
 	public void contextDestroyed(ServletContextEvent sce) {
-		System.out.println("[MyServletContextListener] contextDestroyed() 호출됨");
+		System.out.println("[MyServletContextListener] contextDestroyed() 호출됨"+sce.getServletContext().toString());
 	}
 	/**
 	 * 
@@ -28,7 +28,7 @@ public class MyServletContextListener implements ServletContextAttributeListener
 	 */
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {
-		System.out.println("[MyServletContextListener] contextInitialized() 호출됨");
+		System.out.println("[MyServletContextListener] contextInitialized() 호출됨"+sce.getServletContext().toString());
 	}
 
 	/**

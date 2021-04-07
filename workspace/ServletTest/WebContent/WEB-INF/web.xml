@@ -101,6 +101,7 @@
   	<filter-name>CustomEncoding</filter-name>
   	<url-pattern>/*</url-pattern>
   </filter-mapping>
+  
   <!-- 
   <filter>
   	<filter-name>T07_ServletFilter</filter-name>
@@ -129,17 +130,52 @@
    
    <servlet>
    	<servlet-name>T08_ServletContextListenerTest</servlet-name>
-   	<servlet-class>kr.or.ddit.baisc.T08_ServletContextListenerTest</servlet-class>
+   	<servlet-class>kr.or.ddit.basic.T08_ServletContextListenerTest</servlet-class>
    </servlet>
    
    <servlet-mapping>
    	<servlet-name>T08_ServletContextListenerTest</servlet-name>
   	<url-pattern>/T08_ServletContextListenerTest</url-pattern>
    </servlet-mapping>
+
+   <servlet>
+   	<servlet-name>T09_ServletRequestListenerTest</servlet-name>
+   	<servlet-class>kr.or.ddit.basic.T09_ServletRequestListenerTest</servlet-class>
+   </servlet>
    
-   <listener>
+   <servlet-mapping>
+   	<servlet-name>T09_ServletRequestListenerTest</servlet-name>
+  	<url-pattern>/T09_ServletRequestListenerTest</url-pattern>
+   </servlet-mapping>
+   
+      <servlet>
+   	<servlet-name>T10_SessionAttributeListenerTest</servlet-name>
+   	<servlet-class>kr.or.ddit.basic.T10_SessionAttributeListenerTest</servlet-class>
+   </servlet>
+   
+   <servlet-mapping>
+   	<servlet-name>T10_SessionAttributeListenerTest</servlet-name>
+  	<url-pattern>/T10_SessionAttributeListenerTest</url-pattern>
+   </servlet-mapping>
+   
+      <listener>
    	<display-name>MyServletContextListener</display-name> <!--name  써도되고 안써도 되고 -->
    	<listener-class>kr.or.ddit.basic.MyServletContextListener</listener-class>
+   </listener>
+   
+      <listener>
+   	<display-name>MyServletRequestListener</display-name> <!--name  써도되고 안써도 되고 -->
+   	<listener-class>kr.or.ddit.basic.MyServletRequestListener</listener-class>
+   </listener>
+   
+      <listener>
+   	<display-name>MySessionAttributeListener</display-name> <!--name  써도되고 안써도 되고 -->
+   	<listener-class>kr.or.ddit.basic.MySessionAttributeListener</listener-class>
+   </listener>
+   
+      <listener>
+   	<display-name>MySessionBindingListener</display-name> <!--name  써도되고 안써도 되고 -->
+   	<listener-class>kr.or.ddit.basic.MySessionBindingListener</listener-class>
    </listener>
   
 </web-app>
