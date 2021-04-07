@@ -45,17 +45,17 @@ public class T07_ServletFilter implements Filter { // filter 인터페이스 형
 	@Override
 	public void doFilter(ServletRequest req, ServletResponse resp, FilterChain fc) // HttpServletResponse, HttpServletRequest 둘의 상위객체인 ServletResponse, ServletRquest 
 			throws IOException, ServletException {
-		System.out.println("T07_ServiletFilter 시작");
+		System.out.println("T07_ServiletFilter1 시작");
 		
 		// 클라이언트 IP주소 가져오기
 		String ipAddress = req.getRemoteAddr();
-		System.out.println("IP주소 : "+  ipAddress
-												+ "\n포트번호" + req.getRemotePort()
-												+ "\n현재 시간" + new Date().toString());
-		// 필터체인을 실행(req, resp객체전달)  -- 2번째 필터링 부분
+		System.out.println("T07_1_IP주소 : "+  ipAddress
+												+ "\nT07_1_포트번호" + req.getRemotePort()
+												+ "\nT07_1_현재 시간" + new Date().toString());
+		// 필터체인을 실행(req, resp객체전달)  -- 2번째 필터링 부분으로 넘어감
 		fc.doFilter(req, resp);
 		
-		System.out.println("T07_servletFilter 완료");
+		System.out.println("T07_servletFilter1 완료");
 		
 	}
 
