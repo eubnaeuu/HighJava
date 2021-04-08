@@ -182,24 +182,34 @@
   	<url-pattern>/T12_DownloadServletTest</url-pattern>
    </servlet-mapping>
    
-      <listener>
-   	<display-name>MyServletContextListener</display-name> 
-   	<listener-class>kr.or.ddit.basic.MyServletContextListener</listener-class>
-   </listener>
+   <servlet>
+   	<servlet-name>UploadServlet1</servlet-name>
+   	<servlet-class>kr.or.ddit.basic.UploadServlet1</servlet-class>
+   </servlet>
    
-      <listener>
-   	<display-name>MyServletRequestListener</display-name> 
-   	<listener-class>kr.or.ddit.basic.MyServletRequestListener</listener-class>
-   </listener>
+   <servlet-mapping>
+   	<servlet-name>UploadServlet1</servlet-name>
+  	<url-pattern>/upload1</url-pattern>
+   </servlet-mapping>
    
-      <listener>
-   	<display-name>MySessionAttributeListener</display-name> 
-   	<listener-class>kr.or.ddit.basic.MySessionAttributeListener</listener-class>
-   </listener>
+<!--       <listener> -->
+<!--    	<display-name>MyServletContextListener</display-name>  -->
+<!--    	<listener-class>kr.or.ddit.basic.MyServletContextListener</listener-class> -->
+<!--    </listener> -->
    
-      <listener>
-   	<display-name>MySessionBindingListener</display-name> 
-   	<listener-class>kr.or.ddit.basic.MySessionBindingListener</listener-class>
-   </listener>
+<!--       <listener> -->
+<!--    	<display-name>MyServletRequestListener</display-name>  -->
+<!--    	<listener-class>kr.or.ddit.basic.MyServletRequestListener</listener-class> -->
+<!--    </listener> -->
+   
+<!--       <listener> -->
+<!--    	<display-name>MySessionAttributeListener</display-name>  -->
+<!--    	<listener-class>kr.or.ddit.basic.MySessionAttributeListener</listener-class> -->
+<!--    </listener> -->
+   
+<!--       <listener> -->
+<!--    	<display-name>MySessionBindingListener</display-name>  -->
+<!--    	<listener-class>kr.or.ddit.basic.MySessionBindingListener</listener-class> -->
+<!--    </listener> -->
   
 </web-app>
