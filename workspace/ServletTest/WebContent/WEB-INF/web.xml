@@ -151,7 +151,6 @@
    	<servlet-name>T09_ServletRequestListenerTest</servlet-name>
   	<url-pattern>/T09_ServletRequestListenerTest</url-pattern>
    </servlet-mapping>
-   
       <servlet>
    	<servlet-name>T10_SessionAttributeListenerTest</servlet-name>
    	<servlet-class>kr.or.ddit.basic.T10_SessionAttributeListenerTest</servlet-class>
@@ -160,6 +159,27 @@
    <servlet-mapping>
    	<servlet-name>T10_SessionAttributeListenerTest</servlet-name>
   	<url-pattern>/T10_SessionAttributeListenerTest</url-pattern>
+   </servlet-mapping>
+   
+
+   <servlet>
+   	<servlet-name>T11_ImageServletTest</servlet-name>
+   	<servlet-class>kr.or.ddit.basic.T11_ImageServletTest</servlet-class>
+   </servlet>
+   
+   <servlet-mapping>
+   	<servlet-name>T11_ImageServletTest</servlet-name>
+  	<url-pattern>/T11_ImageServletTest</url-pattern>
+   </servlet-mapping>
+   
+   <servlet>
+   	<servlet-name>T12_DownloadServletTest</servlet-name>
+   	<servlet-class>kr.or.ddit.basic.T12_DownloadServletTest</servlet-class>
+   </servlet>
+   
+   <servlet-mapping>
+   	<servlet-name>T12_DownloadServletTest</servlet-name>
+  	<url-pattern>/T12_DownloadServletTest</url-pattern>
    </servlet-mapping>
    
       <listener>
