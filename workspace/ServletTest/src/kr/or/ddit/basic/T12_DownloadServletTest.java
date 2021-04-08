@@ -21,8 +21,7 @@ public class T12_DownloadServletTest  extends HttpServlet{
 		// 파일 다운로드 처리를 위한 응답헤더 정보 설정하기
 		resp.setContentType("application/octet-stream"); // 자동 다운로드 기능
 		
-		resp.setHeader("Content-Disposition", "attachment; filename=\"" + filename + "\""); // header정보를 알려주는 것
-
+//		resp.setHeader("Content-Disposition", "attachment; filename=\"" + filename + "\""); // header정보를 알려주는 것
 		
 		
 		
@@ -48,7 +47,7 @@ public class T12_DownloadServletTest  extends HttpServlet{
 	
 	
 	/**
-	 *  Content-Disposiont 헤더에 대하여...
+	 *  Content-Disposition 헤더에 대하여...
 	 *  
 	 *  1. response header 에서 사용되는 경우.... ex) 파일다운로드
 	 *  

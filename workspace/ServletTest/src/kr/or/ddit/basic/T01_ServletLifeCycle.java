@@ -36,7 +36,7 @@ public class T01_ServletLifeCycle extends HttpServlet {  //extends 는 기본임
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// 메서드 방식이 get인 경우 호출됨
 		System.out.println("doGet() 호출됨");
-		throw new ServletException("서블릿 예외 발생 됨"); // web.xml 55행 error 실행하기 위한 에러 고의 발생(T04내용)
+//		throw new ServletException("서블릿 예외 발생 됨"); // web.xml 55행 error 실행하기 위한 에러 고의 발생(T04내용)
 //		super.doGet(req, resp);
 	}
 	
