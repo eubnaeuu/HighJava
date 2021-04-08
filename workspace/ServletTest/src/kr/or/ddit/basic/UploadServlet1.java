@@ -19,8 +19,8 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 public class UploadServlet1 extends HttpServlet{
 @Override
 protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	resp.setContentType("test/html");
-															// test/html 자동다운로드됨
+	resp.setContentType("text/html"); // 슬래시(/) 포함되면 일단 자동다운로드.  
+														
 	PrintWriter out = resp.getWriter();
 	
 	String encType = "UTF-8";
@@ -28,9 +28,10 @@ protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws S
 	// MultipartRequest(request, 저장경로
 	// [, 최대허용크기, 인코딩캐릭터셋, 동일한 파일명 보호여부])
 	// DefaultFileRenamePolicy => name.zip, name1.zip, name2.zip
+	// => 업로드 된 파일이 덮어씌워지지 않도록
 	
 	MultipartRequest mr = new MultipartRequest(req, "d:/D_Other/", maxFileSize, encType, new DefaultFileRenamePolicy());
-	File file = mr.getFile("name"); 							// fname 자동다운로드됨
+	File file = mr.getFile("fname"); //   // name 이용하는듯?		
 			System.out.println(file); // 첨부된 파일의 전체경로 출력
 			
 			System.out.println(mr.getParameter("title")); // 파라미터값 가져오기
