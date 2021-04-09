@@ -24,7 +24,7 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 
 @Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// 1. 요청파라미터 저보 가져오기
+		// 1. 요청파라미터 정보 가져오기
 		String memId = req.getParameter("memId");
 		String memName = req.getParameter("memName");
 		String memTel = req.getParameter("memTel");
@@ -52,8 +52,8 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 		}
 		// 4. 목록 조회하면으로 이동
 		//4-1 redirect => 목록조회list.do를 조회함
-		String rediretUrl = req.getContextPath() + "/member/list.do?msg="+ URLEncoder.encode(msg, "UTF-8");
-		resp.sendRedirect(rediretUrl);
+		String redirectUrl = req.getContextPath() + "/member/list.do?msg="+ URLEncoder.encode(msg, "UTF-8");
+		resp.sendRedirect(redirectUrl);
 		
 		//4-2 회원가입하고 나면 insert.do로 리스트가 불러진다(view이용)
 //		req.getRequestDispatcher("/member/list.do?msg="+ URLEncoder.encode(msg, "UTF-8")).forward(req, resp);
