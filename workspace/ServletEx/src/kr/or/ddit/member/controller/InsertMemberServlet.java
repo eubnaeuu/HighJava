@@ -16,6 +16,7 @@ import kr.or.ddit.member.vo.MemberVO;
 public class InsertMemberServlet extends HttpServlet{
 @Override
 protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	
 	RequestDispatcher dispatcher = req.getRequestDispatcher("/member/insertForm.jsp");
 	dispatcher.forward(req, resp);
 	

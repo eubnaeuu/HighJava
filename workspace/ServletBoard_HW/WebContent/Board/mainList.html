@@ -24,16 +24,20 @@
 	$(document).ready(function(){
 		
 		$("#boardSelect").click(function(){
-			$(ajax).({
-				url : ""
-				,type : ""
+			$.ajax({
+				url : "/ServletBoard_HW/SelectBoardServlet"
+				,type : "post"
 				,data : ""
-				,datatype : ""
-				,success : function(){
-					
+				,datatype : "json"
+				,success : function(data){
+					alert("연결성공!!!");
+					console.log(data);
 				}
-				,error : function(){
-					
+				,error : function(xhr){
+					alert("연결에러...");
+					console.error(xhr.status);
+					console.error(xhr.statusText);
+					console.error(xhr.reponseText);
 				}
 			});
 		});
@@ -53,6 +57,35 @@
 		$("#boardExit").click(function(){
 			window.close();
 		});
+		
+		function clickselect(obj){
+			var str ="<table>";
+			// th(attribute name)
+			str += ""
+				+"<tr>"
+				+"<th>글번호<th>"
+				+"<th>제목<th>"
+				+"<th>작성자<th>"
+				+"<th>날짜<th>"
+				+"<th>내용<th>"
+				+"</tr>";
+				
+				
+			// td(value)
+			for(var i in obj){
+				str += ""
+					+ "<tr>"
+					+ "<td>"+obj[i].memId+"<td>"
+					+ "<td>"+obj[i].memPass+"<td>"
+					+ "<td>"+obj[i].memName+"<td>"
+					+ "<td>"+obj[i].memBir+"<td>"
+					+ "<td>"+obj[i].memZip+"<td>"
+					+ "</tr>";
+			}
+			str += "</table>"
+			$("#divtmp").html(str);
+				
+		};
 	});
 </script>
 </head>

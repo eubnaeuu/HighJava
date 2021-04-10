@@ -42,8 +42,9 @@
 	for(BoardVO bv : boardList){
 		System.out.println(bv.getBoardNo()+"\t"+bv.getBoardTitle()+"\t"+bv.getBoardWriter()+"\t"+bv.getBoardDate()+"\t"+bv.getBoardContent());
 	}
-	
 	%>
+	
+	
 	</div>
 	<div>
 			<button type="button" id="boardSelect">조회</button>

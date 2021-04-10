@@ -3,6 +3,16 @@
   <display-name>ServletEx</display-name>
   
   
+  <servlet>
+  	<servlet-name>SelectBoardServlet</servlet-name>
+  	<servlet-class>kr.or.ddit.board.controller.SelectBoardServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>SelectBoardServlet</servlet-name>
+  	<url-pattern>/SelectBoardServlet</url-pattern>
+  </servlet-mapping>
+  
     
   <filter>
   	<filter-name>CustomEncoding</filter-name>
