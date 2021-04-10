@@ -21,6 +21,7 @@
 			<th>전화번호</th>
 			<th>주소</th>
 		</tr>
+		
 		<%
 			int memSize = memList.size();
 

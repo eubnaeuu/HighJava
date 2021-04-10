@@ -44,7 +44,21 @@
 		});
 		
 		$("#boardRegister").click(function(){
-			
+// 			$.ajax({
+// 				url : "/ServletBoard/InsertBoardServlet"
+// 				,type : "post"
+// 				,data : ""
+// 				,success : function(data){
+// 					alert("연결성공!!!");
+// 					console.log(data);
+// 				}
+// 				,error : function(xhr){
+// 					alert("연결에러...");
+// 					console.error(xhr.status);
+// 					console.error(xhr.statusText);
+// 					console.error(xhr.reponseText);
+// 				}
+// 			});
 		});
 		$("#boardModify").click(function(){
 			
@@ -94,7 +108,7 @@
 	</div>
 	<div>
 			<button type="button" id="boardSelect">조회</button>
-			<a href="./register.html" target="_blank" onclick="window.open(this.href, '', 'width=500, height=500'); return false;"><button type="button" id="boardRegister">작성</button></a>
+			<a href="./register.jsp" target="_blank" onclick="window.open(this.href, '', 'width=500, height=500'); return false;"><button type="button" id="boardRegister">작성</button></a>
 			<button type="button" id="boardModify">수정</button>
 			<button type="button" id="boardDelete">삭제</button>
 			<button type="button" id="boardSearch">검색</button>

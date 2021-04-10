@@ -11,6 +11,16 @@
     <url-pattern>/SelectBoardServlet</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+    <servlet-name>InsertBoardServlet</servlet-name>
+    <servlet-class>kr.or.ddit.board.controller.InsertBoardServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>InsertBoardServlet</servlet-name>
+    <url-pattern>/board/register.do</url-pattern>
+  </servlet-mapping>
+  
   <filter>
     <filter-name>CustomEncoding</filter-name>
     <filter-class>kr.or.ddit.comm.filter.CustomEncoding</filter-class>
