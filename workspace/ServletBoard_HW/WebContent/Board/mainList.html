@@ -14,7 +14,7 @@
 		table {
 		background-color: white;
 		}
-		
+		 
 		table, table tr {
 		border: 1px solid #B9C1CB;
 		}
@@ -31,7 +31,8 @@
 				,datatype : "json"
 				,success : function(data){
 					alert("연결성공!!!");
-					console.log(data);
+					clickselect(data);
+					
 				}
 				,error : function(xhr){
 					alert("연결에러...");
@@ -69,17 +70,15 @@
 				+"<th>날짜<th>"
 				+"<th>내용<th>"
 				+"</tr>";
-				
-				
 			// td(value)
 			for(var i in obj){
 				str += ""
 					+ "<tr>"
-					+ "<td>"+obj[i].memId+"<td>"
-					+ "<td>"+obj[i].memPass+"<td>"
-					+ "<td>"+obj[i].memName+"<td>"
-					+ "<td>"+obj[i].memBir+"<td>"
-					+ "<td>"+obj[i].memZip+"<td>"
+					+ "<td>"+obj[i].boardNo+"<td>"
+					+ "<td>"+obj[i].boardTitle+"<td>"
+					+ "<td>"+obj[i].boardWriter+"<td>"
+					+ "<td>"+obj[i].boardDate+"<td>"
+					+ "<td>"+obj[i].boardContent+"<td>"
 					+ "</tr>";
 			}
 			str += "</table>"
