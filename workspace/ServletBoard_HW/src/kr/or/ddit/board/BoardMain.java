@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
 
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
 
 import kr.or.ddit.board.service.BoardService;
 import kr.or.ddit.board.service.BoardServiceImpl;
@@ -49,9 +49,9 @@ public class BoardMain {
 	private Scanner scan = new Scanner(System.in);
 
 	// 로그 생성
-	private static final Logger SQL_LOGGER = Logger.getLogger("log4jexam.sql.Query");
-	private static final Logger PARAM_LOGGER = Logger.getLogger("log4jexam.sql.Parameter");
-	private static final Logger RESULT_LOGGER = Logger.getLogger(BoardMain.class);
+//	private static final Logger SQL_LOGGER = Logger.getLogger("log4jexam.sql.Query");
+//	private static final Logger PARAM_LOGGER = Logger.getLogger("log4jexam.sql.Parameter");
+//	private static final Logger RESULT_LOGGER = Logger.getLogger(BoardMain.class);
 	/**
 	 * 메뉴를 출력하는 메서드
 	 */
