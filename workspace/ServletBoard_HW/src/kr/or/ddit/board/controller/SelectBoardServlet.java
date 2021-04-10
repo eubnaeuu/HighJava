@@ -41,15 +41,16 @@ public class SelectBoardServlet extends HttpServlet{
 		// 2. req.파라미터 값을 list에 담기
 		List<BoardVO> boardList = boardService.getAllBoardlist();
 		
+		System.out.println(boardList);
+		
 		req.setAttribute("boardList", boardList);
 		
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/Board/list.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/board/listResult.jsp");
 		
 		// 뷰페이지로 전달
 		dispatcher.forward(req, resp); // ☆  req,resp를 파라미터로 가지는 이유?
 		
 		
-//		
 //		// 3. 끌어온 값으로 정보 등록
 //		BoardVO bv = new BoardVO();
 //		bv.setBoardNo(boardNo);
