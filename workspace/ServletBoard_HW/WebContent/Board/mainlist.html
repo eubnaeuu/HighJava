@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script type="text/javascript" src="../../js/jquery-3.6.0.js"></script>
+<script type="text/javascript" src="../js/jquery-3.6.0.js"></script>
 <meta charset="UTF-8">
 <title>게시판 목록</title>
 <style type="text/css">
@@ -22,24 +22,36 @@
 </style>
 <script type="text/javascript">
 	$(document).ready(function(){
+		
 		$("#boardSelect").click(function(){
-			
+			$(ajax).({
+				url : ""
+				,type : ""
+				,data : ""
+				,datatype : ""
+				,success : function(){
+					
+				}
+				,error : function(){
+					
+				}
+			});
 		});
+		
 		$("#boardRegister").click(function(){
 			
 		});
 		$("#boardModify").click(function(){
-	
+			
 		});
 		$("#boardDelete").click(function(){
-		
+			
 		});
 		$("#boardSearch").click(function(){
-		
+			
 		});
 		$("#boardExit").click(function(){
-			alert("t");
-			$(window).close();
+			window.close();
 		});
 	});
 </script>
