@@ -25,12 +25,13 @@
 		
 		$("#boardSelect").click(function(){
 			$.ajax({
-				url : "/ServletBoard_HW/SelectBoardServlet"
+				url : "/ServletBoard/SelectBoardServlet"
 				,type : "post"
 				,data : ""
 				,datatype : "json"
 				,success : function(data){
 					alert("연결성공!!!");
+					console.log(data);
 					clickselect(data);
 					
 				}

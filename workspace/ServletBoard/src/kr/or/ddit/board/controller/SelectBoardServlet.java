@@ -1,6 +1,7 @@
 package kr.or.ddit.board.controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -35,6 +36,7 @@ public class SelectBoardServlet extends HttpServlet{
 		System.out.println("post 진행중인지");
 		
 		// 1. 서비스 객체 생성
+
 		BoardService boardService = BoardServiceImpl.getInstance(); 
 		
 		
@@ -43,13 +45,13 @@ public class SelectBoardServlet extends HttpServlet{
 		
 		System.out.println(boardList);
 		
-		req.setAttribute("boardList", boardList);
+		req.setAttribute("list", boardList);
 		
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/board/listResult.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/board/tmp.jsp");
 		
 		// 뷰페이지로 전달
 		dispatcher.forward(req, resp); // ☆  req,resp를 파라미터로 가지는 이유?
-		
+
 		
 //		// 3. 끌어온 값으로 정보 등록
 //		BoardVO bv = new BoardVO();

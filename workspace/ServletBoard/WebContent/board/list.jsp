@@ -3,7 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%
-	List<BoardVO> boardList = (List<BoardVO>)request.getAttribute("boardList");
+	List<BoardVO> boardList = (List<BoardVO>)request.getAttribute("list");
     
     // ★  msg 무슨 의미인지
     String msg = request.getParameter("msg") == null ? "" : request.getParameter("msg");
@@ -35,23 +35,9 @@
 </head>
 <body>
 	<!-- 검색결과 영역 -->
-		<div id="divtmp">
-		
-	<%
-	System.out.println(" 글번호\t제목\t작성자\t일자\t내용");
-	for(BoardVO bv : boardList){
-		System.out.println(bv.getBoardNo()+"\t"+bv.getBoardTitle()+"\t"+bv.getBoardWriter()+"\t"+bv.getBoardDate()+"\t"+bv.getBoardContent());
-	}
-	%>
-	
-	
+		<div id="divtmp">test....	
 	</div>
 	<div>
-			<button type="button" id="boardSelect">조회</button>
-			<button type="button" id="boardRegister">작성</button>
-			<button type="button" id="boardModify">수정</button>
-			<button type="button" id="boardDelete">삭제</button>
-			<button type="button" id="boardSearch">검색</button>
 			<button type="button" id="boardExit">종료</button>
 	</div>
 </body>

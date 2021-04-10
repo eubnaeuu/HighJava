@@ -1,14 +1,15 @@
 <%@page import="kr.or.ddit.board.vo.BoardVO"%>
 <%@page import="java.util.List"%>
-<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 [
 <%
 //json형태로 만들어주는 곳인가?
 // 서블릿에서 조회한 결과를 "list"라는 key를 request에 담아줬음
-List<BoardVO> list = (List<BoardVO>)request.getAttribute("boardList"); // 조회결과를 list로 담아줬음
+List<BoardVO> list = (List<BoardVO>)request.getAttribute("list"); // 조회결과를 list로 담아줬음
 
 for(int i=0; i<list.size(); i++){
 	BoardVO vo = list.get(i);
+	
 	String boardNo = vo.getBoardNo();
 	String boardTitle = vo.getBoardTitle();
 	String boardWriter =vo.getBoardWriter();
@@ -37,8 +38,3 @@ for(int i=0; i<list.size(); i++){
 %>
 ]
 <%
-
-// ★ json 파일로 출력하기
-// 기본 형태 : [{"key","value"},{"key","value"},{"key","value"}]
-
-%>
