@@ -1,6 +1,7 @@
 package kr.or.ddit.board.controller;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -31,7 +32,11 @@ public class InsertBoardServlet extends HttpServlet{
 		String boardWriter = req.getParameter("board_writer");
 		String boardContent = req.getParameter("board_content");
 		String boardDate = req.getParameter("board_data");
-		
+		System.out.println(boardNo);
+		System.out.println(boardTitle);
+		System.out.println(boardWriter);
+		System.out.println(boardContent);
+		System.out.println(boardDate);
 		
 		// 2. 서비스 객체 생성
 		BoardService boardService = BoardServiceImpl.getInstance(); 
@@ -44,14 +49,17 @@ public class InsertBoardServlet extends HttpServlet{
 		bv.setBoardContent(boardContent);
 		bv.setBoardDate(boardDate);
 		
+		int cnt = boardService.insertBoard(bv);
 		
+		String msg = "";
+		if(cnt > 0) {
+			msg = "성공";
+		}else {
+			msg = "실패";
+		}
 		
-		
-		
-		
-		
-		
-		
+		String redirectUrl = req.getContextPath() + "/board/list.do?msg="+ URLEncoder.encode(msg, "UTF-8");
+		resp.sendRedirect(redirectUrl);
 		
 		
 	}

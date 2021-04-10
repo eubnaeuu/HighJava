@@ -28,12 +28,11 @@
 				url : "/ServletBoard/SelectBoardServlet"
 				,type : "post"
 				,data : ""
-				,datatype : "json"
+				,dataType : "json"
 				,success : function(data){
 					alert("연결성공!!!");
 					console.log(data);
 					clickselect(data);
-					
 				}
 				,error : function(xhr){
 					alert("연결에러...");
@@ -95,7 +94,7 @@
 	</div>
 	<div>
 			<button type="button" id="boardSelect">조회</button>
-			<button type="button" id="boardRegister">작성</button>
+			<a href="./register.html" target="_blank" onclick="window.open(this.href, '', 'width=500, height=500'); return false;"><button type="button" id="boardRegister">작성</button></a>
 			<button type="button" id="boardModify">수정</button>
 			<button type="button" id="boardDelete">삭제</button>
 			<button type="button" id="boardSearch">검색</button>

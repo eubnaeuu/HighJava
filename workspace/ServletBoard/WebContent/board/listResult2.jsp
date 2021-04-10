@@ -7,14 +7,17 @@
 // 서블릿에서 조회한 결과를 "list"라는 key를 request에 담아줬음
 List<BoardVO> list = (List<BoardVO>)request.getAttribute("list"); // 조회결과를 list로 담아줬음
 
+System.out.println(list);//tmp
+
+
 for(int i=0; i<list.size(); i++){
-	BoardVO vo = list.get(i);
+	BoardVO bv = list.get(i);
 	
-	String boardNo = vo.getBoardNo();
-	String boardTitle = vo.getBoardTitle();
-	String boardWriter =vo.getBoardWriter();
-	String boardContent = vo.getBoardContent(); 
-	String boardDate = vo.getBoardDate(); 
+	String boardNo = bv.getBoardNo();
+	String boardTitle = bv.getBoardTitle();
+	String boardWriter =bv.getBoardWriter();
+	String boardContent = bv.getBoardContent(); 
+	String boardDate = bv.getBoardDate(); 
 	if(i>0){
 		%>,<%
 	}

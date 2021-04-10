@@ -47,7 +47,30 @@ public class SelectBoardServlet extends HttpServlet{
 		
 		req.setAttribute("list", boardList);
 		
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/board/tmp.jsp");
+		
+		for(int i=0; i<boardList.size(); i++){
+			BoardVO vo = boardList.get(i);
+			
+//			String boardNo = vo.getBoardNo();
+//			String boardTitle = vo.getBoardTitle();
+//			String boardWriter =vo.getBoardWriter();
+//			String boardContent = vo.getBoardContent(); 
+//			String boardDate = vo.getBoardDate();
+//			
+//			System.out.println("boardNo : "+ boardNo);
+//			System.out.println("boardTitle : "+ boardTitle);
+//			System.out.println("boardWriter : "+ boardWriter);
+//			System.out.println("boardContent : "+ boardContent);
+//			System.out.println("boardDate : "+ boardDate);
+		}
+		
+		
+		
+		
+		
+		
+		
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/board/listResult.jsp");
 		
 		// 뷰페이지로 전달
 		dispatcher.forward(req, resp); // ☆  req,resp를 파라미터로 가지는 이유?
