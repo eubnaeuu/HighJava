@@ -14,7 +14,7 @@
 				<td><input type="text" name="memId" value=""></td>
 			</tr>
 			<tr>
-				<td>이 름:</td>
+				<td>이름:</td>
 				<td><input type="text" name="memName" value=""></td>
 			</tr>
 			<tr>
@@ -23,7 +23,7 @@
 			</tr>
 			<tr>
 				<td>주 소:</td>
-				<td><textarea rows="5" cols="10" name="memAddr"></textarea></td>
+				<td><textarea rows="5" cols="20" name="memAddr"></textarea> </td>
 			</tr>
 		</table>
 		<input type="submit" value="회원 등록">

@@ -13,7 +13,7 @@ import kr.or.ddit.member.vo.MemberVO;
 
 public class InsertMemberHandler implements CommandHandler{
 
-   private static final String VIEW_PAGE = "/member/insertForm.jsp";
+   private static final String VIEW_PAGE = "/WEB-INF/view/member/insertForm.jsp";
    
    @Override
    public boolean isRedirect(HttpServletRequest req) {
