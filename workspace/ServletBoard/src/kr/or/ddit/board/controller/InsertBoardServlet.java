@@ -3,6 +3,7 @@ package kr.or.ddit.board.controller;
 import java.io.IOException;
 import java.net.URLEncoder;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +17,11 @@ public class InsertBoardServlet extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("doGet 실행중..");
+		
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/board/register.html");
+		dispatcher.forward(req, resp);
+		
+		
 	}
 	
 	@Override
@@ -59,7 +64,7 @@ public class InsertBoardServlet extends HttpServlet{
 			msg = "실패";
 		}
 		
-		String redirectUrl = req.getContextPath() + "/SelectBoardServlet?msg="+ URLEncoder.encode(msg, "UTF-8");
+		String redirectUrl = req.getContextPath() + "/list.do?msg="+ URLEncoder.encode(msg, "UTF-8");
 		resp.sendRedirect(redirectUrl);
 		
 		

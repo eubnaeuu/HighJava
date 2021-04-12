@@ -64,12 +64,6 @@ public class SelectBoardServlet extends HttpServlet{
 //			System.out.println("boardDate : "+ boardDate);
 		}
 		
-		
-		
-		
-		
-		
-		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/board/listResult.jsp");
 		
 		// 뷰페이지로 전달

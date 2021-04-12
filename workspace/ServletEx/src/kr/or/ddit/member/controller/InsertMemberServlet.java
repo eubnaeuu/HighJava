@@ -31,6 +31,10 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 		String memTel = req.getParameter("memTel");
 		String memAddr = req.getParameter("memAddr");
 		
+		System.out.println(memId);
+		System.out.println(memName);
+		System.out.println(memTel);
+		System.out.println(memAddr);
 		
 		//2. 서비스 객체 생성하기
 		IMemberService memberService = MemberServiceImpl.getInstance();
