@@ -14,7 +14,7 @@ import kr.or.ddit.board.service.BoardService;
 import kr.or.ddit.board.service.BoardServiceImpl;
 import kr.or.ddit.board.vo.BoardVO;
 
-public class SelectBoardServlet extends HttpServlet{
+public class SearchBoardServlet extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -37,15 +37,8 @@ public class SelectBoardServlet extends HttpServlet{
 
 		BoardService boardService = BoardServiceImpl.getInstance(); 
 		
+		
 		// 2. req.파라미터 값을 list에 담기
-		
-		BoardVO bv = new BoardVO();
-		
-		
-		
-		
-		
-		
 		List<BoardVO> boardList = boardService.getAllBoardlist();
 		
 		System.out.println(boardList);
@@ -73,6 +66,7 @@ public class SelectBoardServlet extends HttpServlet{
 		
 		// 뷰페이지로 전달
 		dispatcher.forward(req, resp); // ☆  req,resp를 파라미터로 가지는 이유?
+
 		
 //		// 3. 끌어온 값으로 정보 등록
 //		BoardVO bv = new BoardVO();

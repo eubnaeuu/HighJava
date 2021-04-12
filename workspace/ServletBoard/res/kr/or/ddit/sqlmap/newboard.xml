@@ -5,7 +5,15 @@
 
 <!-- namespace true였음 -->
 <sqlMap namespace="board">
-
+	<select id="retrieveBoard" parameterClass="kr.or.ddit.board.vo.BoardVO">
+		SELECT *
+		FROM jdbc_board
+		WHERE BOARD_ID = #str#
+		<dynamic></dynamic>
+		<isNotEmpty></isNotEmpty>
+		
+		
+	</select>
 
 	
  <!-- resultMap의 class는 근야 내가 대충 써도 되는건가? 여기서 연결된 부분은 업슨건가? -->

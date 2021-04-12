@@ -67,7 +67,30 @@
 			
 		});
 		$("#boardSearch").click(function(){
+			// 서버로 전달할 데이터 만들기
+			var searchTitle = $("#boardTitle").val();
+			var param = {boardTitle : searchTitle}
 			
+			// e.g.
+			// {boardTitle : "안녕", boardWriter : "미밈"}
+			
+			$.ajax({
+				url : "search.do"
+				,type : "post"
+				,data : param
+				,dataType : "json"
+				,success : function(data){
+					alert("연결성공!!!");
+					console.log(data);
+					
+				}
+				,error : function(xhr){
+					alert("연결에러...");
+					console.error(xhr.status);
+					console.error(xhr.statusText);
+					console.error(xhr.reponseText);
+				}
+			});
 		});
 		$("#boardExit").click(function(){
 			window.close();
@@ -107,6 +130,7 @@
 	<div id="divtmp">
 	</div>
 	<div>
+		searching : <input type="text" value="" id="boardTitle">
 			<button type="button" id="boardSelect">조회</button>
 			<a href="./register.jsp" target="_blank" onclick="window.open(this.href, '', 'width=500, height=500'); return false;"><button type="button" id="boardRegister">작성</button></a>
 			<button type="button" id="boardModify">수정</button>

@@ -64,9 +64,9 @@ public class InsertBoardServlet extends HttpServlet{
 			msg = "실패";
 		}
 		
-		String redirectUrl = req.getContextPath() + "/list.do?msg="+ URLEncoder.encode(msg, "UTF-8");
+//		String redirectUrl = req.getContextPath() + "/board.list.do?msg="+ URLEncoder.encode(msg, "UTF-8");
+		String redirectUrl = req.getContextPath() + "/list.do";
 		resp.sendRedirect(redirectUrl);
-		
 		
 	}
 	
