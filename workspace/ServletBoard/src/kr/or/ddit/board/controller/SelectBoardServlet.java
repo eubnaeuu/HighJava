@@ -69,7 +69,7 @@ public class SelectBoardServlet extends HttpServlet{
 //			System.out.println("boardDate : "+ boardDate);
 		}
 		
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/board/listResult.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/board/list.jsp");
 		
 		// 뷰페이지로 전달
 		dispatcher.forward(req, resp); // ☆  req,resp를 파라미터로 가지는 이유?

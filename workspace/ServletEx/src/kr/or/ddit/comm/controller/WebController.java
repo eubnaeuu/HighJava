@@ -1,18 +1,20 @@
 package kr.or.ddit.comm.controller;
 
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
+import java.util.Set;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
-
-import com.sun.xml.internal.ws.client.dispatch.DispatchImpl;
 
 import kr.or.ddit.comm.handler.CommandHandler;
 import kr.or.ddit.comm.handler.NullHandler;
@@ -35,7 +37,41 @@ public class WebController extends HttpServlet{
 		process(req, resp);
 	}
 
+	@Override
+	public void init(ServletConfig config) throws ServletException{
+		String configFilePath = config.getInitParameter("handler-config"); // 경로값 얻으려고?
+		
+		Properties handlerProp = new Properties();
+		
+		// 설정파일을 읽어서 대응되는 핸들러객체를 생성하여 맵에 등록하기
+		String configFileRealPath = config.getServletContext().getRealPath(configFilePath);
+		FileReader fr;
+		
+		try {
+			fr = new FileReader(configFileRealPath);
+			handlerProp.load(fr);
+			
+		}catch(IOException ex) {
+			ex.printStackTrace();
+		}
+			for(Object key : handlerProp.keySet()) {
+				String command = (String)key;			
+				try {
+					Class<?> klass = Class.forName(handlerProp.getProperty(command));
+					CommandHandler handler = (CommandHandler) klass.newInstance();
+					// 핸들러 객체 등록
+					cmmHandlerMap.put(command, handler);
+				}catch(Exception ex) {
+					ex.printStackTrace();
+					throw new ServletException();
+				}
+		}
 	
+	Set<Map.Entry<String,CommandHandler>> entrySet = cmmHandlerMap.entrySet();
+	for(Map.Entry<String, CommandHandler> entry : entrySet) {
+		LOGGER.info(entry.getKey() + "=> "+ entry.getValue());
+	}
+	}
 	/**
 	 * 요청 처리 메서드
 	 * @param req
