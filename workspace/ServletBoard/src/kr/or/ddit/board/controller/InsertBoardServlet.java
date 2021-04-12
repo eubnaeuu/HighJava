@@ -18,7 +18,7 @@ public class InsertBoardServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/board/register.html");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/board/register.jsp");
 		dispatcher.forward(req, resp);
 		
 		
@@ -26,9 +26,6 @@ public class InsertBoardServlet extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		
-		
 		// 1. 요청 파라미터 끌어옴
 		
 		// ☆ 헤더 에서 불러오는 파라미터 값의 이름은 어떤게 맞는지? 왼쪽은 board.xml에서 속성이름을 변경한값. 오른쪽은 그 전의 column값
@@ -65,7 +62,7 @@ public class InsertBoardServlet extends HttpServlet{
 		}
 		
 //		String redirectUrl = req.getContextPath() + "/board.list.do?msg="+ URLEncoder.encode(msg, "UTF-8");
-		String redirectUrl = req.getContextPath() + "/list.do";
+		String redirectUrl = req.getContextPath() + "/board/mainList.html";
 		resp.sendRedirect(redirectUrl);
 		
 	}

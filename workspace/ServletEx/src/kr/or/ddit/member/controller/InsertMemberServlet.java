@@ -20,7 +20,6 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 	RequestDispatcher dispatcher = req.getRequestDispatcher("/member/insertForm.jsp");
 	dispatcher.forward(req, resp);
 	
-	
 }
 
 @Override

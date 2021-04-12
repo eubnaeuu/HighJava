@@ -8,7 +8,7 @@
 <title>게시글 작성</title>
 </head>
 <body id="registerbody">
-		<form action="register.do" method="post">
+		<form action="register.do">
 		<fieldset>
 			<legend>게시글 등록</legend>
 			<div class="row">
