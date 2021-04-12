@@ -21,63 +21,58 @@ import kr.or.ddit.comm.handler.NullHandler;
 
 /**
  *  사용자 요청을 받아서 처리하는 컨트롤러 구현하기
- *
  */
+
+
 public class WebController extends HttpServlet {
 	
-	private static Logger LOGGER = 
-			Logger.getLogger(WebController.class); 
+	private static Logger LOGGER = Logger.getLogger(WebController.class); 
 	
 	// 매핑정보 저장 (핸들러 객체 저장용 맵)
-	private Map<String, CommandHandler> cmmHandlerMap
-		= new HashMap<>(); 
+	private Map<String, CommandHandler> cmmHandlerMap = new HashMap<>();  // 매핑정보저장하기위한 [String],[CommandHandler]
 	
 	@Override
-	public void init(ServletConfig config) throws ServletException {
+	public void init(ServletConfig config) throws ServletException { //☆   init 관련 메서드
 		
-		String configFilePath = 
-				config.getInitParameter("handler-config");
+		String configFilePath = config.getInitParameter("handler-config");
 		
 		Properties handlerProp = new Properties();
 		
 		// 설정파일을 읽어서 대응되는 핸들러객체를 생성하여 맵에 등록하기
-		String configFileRealPath = 
-				config.getServletContext()
-						.getRealPath(configFilePath);
-		
+		String configFileRealPath = config.getServletContext().getRealPath(configFilePath); // config 파일 경로 추출
+		// configFileRealPath : /WEB-INF/handler.properties
 		FileReader fr;
 		
 		try {
 			fr = new FileReader(configFileRealPath);
-			handlerProp.load(fr);
-			
+			handlerProp.load(fr); // config 경로를 fr로 읽어 불러온다(Properties객체가)
+			// ☆  설정을 load하는 건가?
 		}catch(IOException ex) {
 			ex.printStackTrace();
 		}
 		
-		for(Object key : handlerProp.keySet()) {
+		for(Object key : handlerProp.keySet()) { // handlerProp에서 1개씩 나오는 value는 또다른 command 값을 의미
 			String command = (String) key;
-			
+			System.out.println("command : "+command);
+			/*
+				command : /member/update.do
+				command : /member/insert.do
+				command : /member/list.do
+			*/
 			try {
-				Class<?> klass = Class
-						.forName(handlerProp
-								.getProperty(command));
-				CommandHandler handler = 
-						(CommandHandler) klass.newInstance();
+				Class<?> klass = Class.forName(handlerProp.getProperty(command)); // ☆☆☆   
+				CommandHandler handler = (CommandHandler) klass.newInstance(); // ☆☆☆
+				
 				// 핸들러 객체 등록
-				cmmHandlerMap.put(command, handler);
+				cmmHandlerMap.put(command, handler); //☆   commmand : String, handler : CommandHandler
 			}catch(Exception ex) {
 				ex.printStackTrace();
 				throw new ServletException();
 			}
 		}
-		
-		Set<Map.Entry<String, CommandHandler>> entrySet
-			= cmmHandlerMap.entrySet();
-		for(Map.Entry<String, CommandHandler> entry 
-				: entrySet) {
-			LOGGER.info(entry.getKey() 
-					+ " => " + entry.getValue());
+		Set<Map.Entry<String, CommandHandler>> entrySet = cmmHandlerMap.entrySet();
+		for(Map.Entry<String, CommandHandler> entry : entrySet) {
+			LOGGER.info(entry.getKey() + " => " + entry.getValue()); // (LOGGER) cmmHamdlerMap에 들어있는 set의 key, value값 반환
 		}
 	}
 	
@@ -99,18 +94,16 @@ public class WebController extends HttpServlet {
 	 * @throws IOException 
 	 * @throws ServletException 
 	 */
-	private void process(HttpServletRequest req, 
-				HttpServletResponse resp) throws IOException, ServletException {
-		
-		String reqURI = req.getRequestURI();
+	private void process(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+		String reqURI = req.getRequestURI(); // URI 가져오기
 		
 		if(reqURI.indexOf(req.getContextPath()) == 0) {
-			// ContenxtPath 부분을 제외한 URL 정보 가져오기
-			reqURI = reqURI.substring(
-					req.getContextPath().length());
+			reqURI = reqURI.substring(req.getContextPath().length());			// ContenxtPath 부분을 제외한 URL 정보 가져오기
 		}
 		
 		/*
+		 * 아래와 같은 상황을 좀더 간단한게 줄이는 방법 : [handler이용]
+		 * 
 		if(reqURI.equals("/member/list.do")) { // 회원목록 조회
 			// 회원목록 조회기능 호출...
 		}else if(reqURI.equals("/member/insert.do")) {// 회원등록
@@ -128,8 +121,7 @@ public class WebController extends HttpServlet {
 			LOGGER.info("cmmHandlerMap : " + cmmHandlerMap); 
 		}
 		
-		CommandHandler handler = 
-				cmmHandlerMap.get(reqURI);
+		CommandHandler handler = cmmHandlerMap.get(reqURI);
 		
 		if(handler == null) {
 			handler = new NullHandler();
@@ -137,8 +129,9 @@ public class WebController extends HttpServlet {
 		
 		String viewPage = "";
 		try {
+
 			// 핸들러 처리부분
-			viewPage = handler.process(req, resp);
+			viewPage = handler.process(req, resp); // 반환값 String
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -151,8 +144,7 @@ public class WebController extends HttpServlet {
 			if(handler.isRedirect(req)) { 
 				resp.sendRedirect(viewPage);
 			}else {
-				RequestDispatcher dispatcher 
-				= req.getRequestDispatcher(viewPage);
+				RequestDispatcher dispatcher = req.getRequestDispatcher(viewPage);
 				dispatcher.forward(req, resp);
 			}
 		}

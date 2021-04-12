@@ -62,8 +62,7 @@ public class InsertMemberHandler implements CommandHandler {
 			}
 			
 			// 4. 목록 조회화면으로 이동
-			String redirectUrl = req.getContextPath() +
-					"/member/list.do?msg=" 
+			String redirectUrl = req.getContextPath() + "/member/list.do?msg=" 
 					+ URLEncoder.encode(msg, "UTF-8");
 			
 			return redirectUrl;

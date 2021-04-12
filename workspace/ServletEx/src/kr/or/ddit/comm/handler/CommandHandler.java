@@ -10,8 +10,7 @@ public interface CommandHandler {
 	 * @param req
 	 * @return
 	 */
-	public boolean isRedirect(HttpServletRequest req);
-	
+	public boolean isRedirect(HttpServletRequest req); // ☆  어떻게 여부를 결정하는지?
 	
 	/**
 	 * 요청한 내용을 실제 처리하는 메서드

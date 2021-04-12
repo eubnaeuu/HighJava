@@ -24,15 +24,14 @@ public class ListMemberHandler implements CommandHandler {
 	public String process(HttpServletRequest req, HttpServletResponse resp) {
 		
 		// 1. 서비스 객체 생성하기
-		IMemberService memberService = 
-				MemberServiceImpl.getInstance();
+		IMemberService memberService = MemberServiceImpl.getInstance();
 		
 		// 2. 회원정보 조회
 		List<MemberVO> memList = memberService.getAllMemberList();
 		
 		req.setAttribute("memList", memList);
 		
-		return VIEW_PAGE;
+		return VIEW_PAGE; // VIEW_PAGE반환?
 	}
 
 }

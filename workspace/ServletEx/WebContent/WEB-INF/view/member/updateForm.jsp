@@ -13,7 +13,7 @@
 </head>
 <body>
 	<form action="update.do" method="post">
-		<input type="hidden" name="memId" value="<%=memVO.getMemId()%>"></td>
+		<input type="hidden" name="memId" value="<%=memVO.getMemId()%>">
 		<table>
 			<tr>
 				<td>이름:</td>
