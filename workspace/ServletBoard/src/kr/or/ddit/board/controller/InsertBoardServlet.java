@@ -28,9 +28,9 @@ public class InsertBoardServlet extends HttpServlet{
 		
 		// ☆ 헤더 에서 불러오는 파라미터 값의 이름은 어떤게 맞는지? 왼쪽은 board.xml에서 속성이름을 변경한값. 오른쪽은 그 전의 column값
 //		String boardNo = req.getParameter("bord_no");
-		String boardTitle = req.getParameter("board_title");
-		String boardWriter = req.getParameter("board_writer");
-		String boardContent = req.getParameter("board_content");
+		String boardTitle = req.getParameter("boardTitle");
+		String boardWriter = req.getParameter("boardWriter");
+		String boardContent = req.getParameter("boardContent");
 //		String boardDate = req.getParameter("board_data");
 		
 //		System.out.println(boardNo);

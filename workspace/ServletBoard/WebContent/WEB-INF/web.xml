@@ -8,7 +8,7 @@
   
   <servlet-mapping>
     <servlet-name>SelectBoardServlet</servlet-name>
-    <url-pattern>/SelectBoardServlet</url-pattern>
+    <url-pattern>/board/list.do</url-pattern>
   </servlet-mapping>
   
   <servlet>
