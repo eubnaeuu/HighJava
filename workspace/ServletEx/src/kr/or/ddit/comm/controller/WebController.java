@@ -1,13 +1,30 @@
 package kr.or.ddit.comm.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
+import com.sun.xml.internal.ws.client.dispatch.DispatchImpl;
+
+import kr.or.ddit.comm.handler.CommandHandler;
+import kr.or.ddit.comm.handler.NullHandler;
+
 public class WebController extends HttpServlet{
+	
+	private static Logger LOGGER = Logger.getLogger(WebController.class);
+	
+	// 매핑정보 저장( 핸들러 객체 저장용 맵)
+	private Map<String, CommandHandler> cmmHandlerMap = new HashMap<>();  	
+	
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
@@ -28,7 +45,9 @@ public class WebController extends HttpServlet{
 		
 		String reqURI = req.getRequestURI();
 		
-		
+		/*
+		 * 
+		 * [일반적인 방법]
 		// ContextPath 부분을 제외한 URL 정보 가져오기(ContextPath부분 제거)
 		if(reqURI.indexOf(req.getContextPath()) == 0) {
 			reqURI = reqURI.substring(req.getContextPath().length());
@@ -44,6 +63,46 @@ public class WebController extends HttpServlet{
 
 		}
 		//등등...
+		*/
+		
+		// [커맨드패턴 이용]
+		if(LOGGER.isInfoEnabled()) {
+			LOGGER.info("command : "+ reqURI);
+			LOGGER.info("cmmHandlerMap : "+ cmmHandlerMap);
+		}
+		CommandHandler handler = cmmHandlerMap.get(reqURI);
+		if(handler == null) {
+			handler = new NullHandler();
+		}
+		
+			String viewPage = "";
+			try {
+				viewPage = handler.process(req, resp);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			LOGGER.info("viewPage : " + viewPage);
+			
+			
+			
+			// VIEW 화면 처리
+			if(viewPage != null) { // 뷰페이지가 존재한다면
+				try {
+					if(handler.isRedirect(req)) { // 리다이렉트 처리가 필요한 경우
+						resp.sendRedirect(viewPage);
+					}else {
+						RequestDispatcher dispatcher = req.getRequestDispatcher(viewPage);
+						dispatcher.forward(req,resp);
+					}
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		
+		
+		
 		/*
 		  	코멘드(Command)패턴이란?
 		  	

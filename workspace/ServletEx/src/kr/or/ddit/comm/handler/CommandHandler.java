@@ -1,5 +1,7 @@
 package kr.or.ddit.comm.handler;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -9,7 +11,7 @@ public interface CommandHandler {
 	 * @param req
 	 * @return
 	 */
-	public boolean isRedirect(HttpServletRequest req);
+	public boolean isRedirect(HttpServletRequest req) throws IOException, Exception;
 	
 	
 	/**
@@ -19,6 +21,6 @@ public interface CommandHandler {
 	 * @return 뷰페이지 정보
 	 */
 	
-	public String process(HttpServletRequest req, HttpServletResponse resp);
+	public String process(HttpServletRequest req, HttpServletResponse resp) throws IOException, Exception;
 	
 }
