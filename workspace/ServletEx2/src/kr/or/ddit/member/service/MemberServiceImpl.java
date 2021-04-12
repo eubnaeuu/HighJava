@@ -118,6 +118,7 @@ public class MemberServiceImpl implements IMemberService {
 
 	@Override
 	public MemberVO getMember(String memId) {
+		
 		MemberVO mv = null;
 		
 		try {
@@ -125,6 +126,7 @@ public class MemberServiceImpl implements IMemberService {
 		}catch(SQLException ex) {
 			ex.printStackTrace();
 		}
-		return null;
+		return mv;
 	}
+
 }

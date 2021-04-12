@@ -1,8 +1,8 @@
 package kr.or.ddit.member.handler;
 
-import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -16,18 +16,23 @@ public class ListMemberHandler implements CommandHandler {
 	private static final String VIEW_PAGE = "/WEB-INF/view/member/list.jsp";
 	
 	@Override
-	// redirect 방식이냐?
 	public boolean isRedirect(HttpServletRequest req) {
-
 		return false;
 	}
-	
+
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse resp) {
-// 1. 서비스 객체 생성하기
-		IMemberService memberService = MemberServiceImpl.getInstance();
+		
+		// 1. 서비스 객체 생성하기
+		IMemberService memberService = 
+				MemberServiceImpl.getInstance();
+		
+		// 2. 회원정보 조회
 		List<MemberVO> memList = memberService.getAllMemberList();
-		return null;
+		
+		req.setAttribute("memList", memList);
+		
+		return VIEW_PAGE;
 	}
 
 }
