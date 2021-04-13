@@ -97,7 +97,7 @@ public class WebController extends HttpServlet {
 		String reqURI = req.getRequestURI(); // URI 가져오기
 		
 		if(reqURI.indexOf(req.getContextPath()) == 0) {
-			reqURI = reqURI.substring(req.getContextPath().length());			// ContenxtPath 부분을 제외한 URL 정보 가져오기
+			reqURI = reqURI.substring(req.getContextPath().length());// ContenxtPath 부분을 제외한 URL 정보 가져오기
 		}
 		
 		/*

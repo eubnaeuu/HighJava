@@ -12,6 +12,8 @@ import kr.or.ddit.comm.handler.CommandHandler;
 
 public class ListBoardHandler implements CommandHandler{
 
+	private static final String VIEW_PAGE = "/WEB-INF/view/board/list.jsp";
+	
 	@Override
 	public boolean isRedirect(HttpServletRequest req) {
 		if(req.getMethod().equals("GET")) {
@@ -24,7 +26,6 @@ public class ListBoardHandler implements CommandHandler{
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		
-		
 		// 2. 서비스 객체 생성
 		BoardService boardService = BoardServiceImpl.getInstance(); 
 		
@@ -33,12 +34,9 @@ public class ListBoardHandler implements CommandHandler{
 		
 		List boardList = boardService.getAllBoardlist();
 		
+//		String redirectUrl = req.getContextPath() + "/board/list.do"; => VIEW_PAGE로 커버
 		
-//		String redirectUrl = req.getContextPath() + "/board.list.do?msg="+ URLEncoder.encode(msg, "UTF-8");
-		String redirectUrl = req.getContextPath() + "/board/list.do";
-		resp.sendRedirect(redirectUrl);
-		
-		return null;
+		return VIEW_PAGE;
 	}
 		
 		
