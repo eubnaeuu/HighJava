@@ -33,7 +33,7 @@ public class UploadServlet2 extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		if(ServletFileUpload.isMultipartContent(req)) { // 인코딩 타입이 multipart/form-data 인지 확인(맞다면..) 
+		if(ServletFileUpload.isMultipartContent(req)) { // 인코딩 타입이 multipart/form-data 인지 확인(맞다면..)
 			
 			// 폼필드 데이터 저장용...
 			Map<String, String> formMap = new HashMap<String, String>();

@@ -103,10 +103,10 @@ public class FileUploadRequestWrapper extends HttpServletRequestWrapper {
 					} catch (UnsupportedEncodingException e) {
 						e.printStackTrace();
 					}
-                    String[] values = (String[]) parameterMap.get(name);
+                    String[] values = (String[]) parameterMap.get(name); // 동일한 이름으로 여러개 날라오는 경우   String []로 받음
                     if (values == null) { // 처음 만드는 경우...
-                        values = new String[] { value };
-                    } else { // 기존에 이미 존재하는 경우...
+                        values = new String[] { value }; // value값을 values에 넣음
+                    } else { // 기존에 이미 존재하는 경우...     // 기존 values ={"a","b","c"} 에 value(d값)을 넣고싶은 경우
                         String[] tempValues = new String[values.length + 1];
                         System.arraycopy(values, 0, tempValues, 0, values.length);
                         tempValues[tempValues.length - 1] = value;
