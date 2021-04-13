@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
+import java.util.Set;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -41,11 +42,16 @@ public class WebController extends HttpServlet{
 			try {
 				Class<?> klass = Class.forName(handlerProp.getProperty(command));
 				CommandHandler handler = (CommandHandler) klass.newInstance();
+				cmmHandlerMap.put(command, handler);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				throw new ServletException(); //☆ 
 			}
 		}
+		Set<Map.Entry<String, CommandHandler>> entrySet = cmmHandlerMap.entrySet();
+		
+		
 		
 		
 		

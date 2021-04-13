@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class AtchFileVO {
 	private long atchFileId = -1;
-	private Date createDt;
+	private Date creatDt;
 	private long fileSn = -1;
 	private String fileStreCours;
 	private String streFileNm;
@@ -21,10 +21,10 @@ public class AtchFileVO {
 		this.atchFileId = atchFileId;
 	}
 	public Date getCreateDt() {
-		return createDt;
+		return creatDt;
 	}
 	public void setCreateDt(Date createDt) {
-		this.createDt = createDt;
+		this.creatDt = createDt;
 	}
 	public long getFileSn() {
 		return fileSn;
