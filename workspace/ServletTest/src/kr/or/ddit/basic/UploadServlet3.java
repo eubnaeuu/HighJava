@@ -38,12 +38,11 @@ public class UploadServlet3 extends HttpServlet {
 	 */
 		
 		for(String content : part.getHeader("Content-Disposition").split(";")) {
-			return content.substring(content.indexOf("=")+1).trim().replace("\"","");
+			if(content.trim().startsWith("filename")) {
+				String str = content.substring(content.indexOf("=")+1).trim().replace("\"","");
+				return str;
+			}
 		}
-		
-		
-		
-		
 		return null;
 	}
 	@Override

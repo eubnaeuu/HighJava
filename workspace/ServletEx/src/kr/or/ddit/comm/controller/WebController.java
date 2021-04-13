@@ -32,14 +32,14 @@ public class WebController extends HttpServlet {
 	
 	@Override
 	public void init(ServletConfig config) throws ServletException { //☆   init 관련 메서드
-		
 		String configFilePath = config.getInitParameter("handler-config");
-		
+		// configFilePath : /WEB-INF/handler.properties
 		Properties handlerProp = new Properties();
 		
 		// 설정파일을 읽어서 대응되는 핸들러객체를 생성하여 맵에 등록하기
 		String configFileRealPath = config.getServletContext().getRealPath(configFilePath); // config 파일 경로 추출
-		// configFileRealPath : /WEB-INF/handler.properties
+		// configFileRealPath : D:\program\A_TeachingMaterial\3.HighJava\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ServletEx\WEB-INF\handler.properties
+		
 		FileReader fr;
 		
 		try {
@@ -52,7 +52,6 @@ public class WebController extends HttpServlet {
 		
 		for(Object key : handlerProp.keySet()) { // handlerProp에서 1개씩 나오는 value는 또다른 command 값을 의미
 			String command = (String) key;
-			System.out.println("command : "+command);
 			/*
 				command : /member/update.do
 				command : /member/insert.do
@@ -61,7 +60,8 @@ public class WebController extends HttpServlet {
 			try {
 				Class<?> klass = Class.forName(handlerProp.getProperty(command)); // ☆☆☆   
 				CommandHandler handler = (CommandHandler) klass.newInstance(); // ☆☆☆
-				
+				//handlerProp.getProperty(command) : kr.or.ddit.member.handler.DeleteMemberHandler
+
 				// 핸들러 객체 등록
 				cmmHandlerMap.put(command, handler); //☆   commmand : String, handler : CommandHandler
 			}catch(Exception ex) {
