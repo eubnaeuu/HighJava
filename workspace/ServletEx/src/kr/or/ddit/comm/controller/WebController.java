@@ -23,7 +23,6 @@ import kr.or.ddit.comm.handler.NullHandler;
  *  사용자 요청을 받아서 처리하는 컨트롤러 구현하기
  */
 
-
 public class WebController extends HttpServlet {
 	
 	private static Logger LOGGER = Logger.getLogger(WebController.class); 
