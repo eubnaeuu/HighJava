@@ -8,12 +8,14 @@ package kr.or.ddit.member.vo;
  * DB테이블의 컬럼과 클래스의 멤버변수를 매핑하는 역할을 수행한다.<br>
  * </p>
  */
+
+
 public class MemberVO {
-	
 	private String memId;
 	private String memName;
 	private String memTel;
 	private String memAddr;
+	private long atchFileId = -1;
 	
 	public String getMemId() {
 		return memId;
@@ -40,11 +42,17 @@ public class MemberVO {
 		this.memAddr = memAddr;
 	}
 	
+	public long getAtchFileId() {
+		return atchFileId;
+	}
+	public void setAtchFileId(long atchFileId) {
+		this.atchFileId = atchFileId;
+	}
+	
 	@Override
 	public String toString() {
 		return "MemberVO [memId=" + memId + ", memName=" + memName + ", memTel=" + memTel + ", memAddr=" + memAddr
 				+ "]";
 	}
-	
 	
 }

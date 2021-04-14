@@ -26,9 +26,8 @@ public class MultipartParser implements Filter{
 	@Override
 	public void destroy() {
 		// TODO Auto-generated method stub
-		
 	}
-
+	
 	@Override
 	public void doFilter(ServletRequest req, ServletResponse resp, FilterChain fc)
 			throws IOException, ServletException {
