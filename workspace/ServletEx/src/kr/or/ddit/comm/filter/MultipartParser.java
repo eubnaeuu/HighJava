@@ -34,7 +34,7 @@ public class MultipartParser implements Filter{
 		// 리퀘스트래퍼 객체 생성
 		FileUploadRequestWrapper requestWrapper;
 		try {
-			
+			//★  
 			requestWrapper = new FileUploadRequestWrapper((HttpServletRequest)req, MEMORY_THRESHOLD, MAX_FILE_SIZE, MAX_REQUEST_SIZE, "");
 
 			// 래퍼 클래스 적용

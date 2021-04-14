@@ -1,7 +1,10 @@
+<%@page import="kr.or.ddit.member.vo.AtchFileVO"%>
+<%@page import="java.util.List"%>
 <%@page import="kr.or.ddit.member.vo.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
+		List <AtchFileVO> atchFileList = (List<AtchFileVO>)request.getAttribute("atchFileList");
     	MemberVO memVO = (MemberVO) request.getAttribute("memVO");
     	String memAddr = memVO.getMemAddr().replace(System.lineSeparator(), "<br>");
 %>
@@ -30,11 +33,29 @@
 			<td><%=memVO.getMemAddr() %></td>
 		</tr>
 		<tr>
-			<td colspan="2">
-				<a href="list.do">[목록]</a>
-				<a href="update.do?memId=<%=memVO.getMemId()%>">[회원정보 수정]</a>
-				<a href="delete.do?memId=<%=memVO.getMemId()%>">[회원정보 삭제]</a>
+			<td>첨부파일:</td>
+			<td>
+			<%if(atchFileList != null){
+				for(AtchFileVO atchFileVO : atchFileList){
+				%>
+				<div><a href="<%=request.getContextPath() %>/filedownLoad.do?fileId=<%=atchFileVO.getAtchFileId()%>&fileSn=<%=atchFileVO.getOrignlFileNm()%>">
+													<%=atchFileVO.getOrignlFileNm() %>
+					</a>
+				</div>
+				 <%
+				 	}
+				 	}
+				 %>
+
 			</td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<a href="list.do">[목록]</a>
+				<a href="update.do?memId=<%=memVO.getMemId() %>">[회원정보 수정]</a>
+				<a href="delete.do?memId=<%=memVO.getMemId() %>">[회원정보 삭제]</a>
+			</td>
+		</tr>
 	</table>
 </body>
 </html>
