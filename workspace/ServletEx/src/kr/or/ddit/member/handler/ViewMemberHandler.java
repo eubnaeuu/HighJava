@@ -21,10 +21,8 @@ public class ViewMemberHandler implements CommandHandler{
 	public boolean isRedirect(HttpServletRequest req) {
 		return false;
 	}
-	
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse resp) throws Exception {
-		
 		
 		String memId = req.getParameter("memId");
 		// 회원정보 조회
@@ -38,9 +36,10 @@ public class ViewMemberHandler implements CommandHandler{
 			fileVO.setAtchFileId(mv.getAtchFileId());
 			
 			IAtchFileService atchFileService = AtchFileServiceImpl.getInstance();
-			List <AtchFileVO> atchFIleList = atchFileService.getAtchFileList(fileVO);
+			List <AtchFileVO> atchFileList = atchFileService.getAtchFileList(fileVO);
 			
-			req.setAttribute("memVO",mv);
+			req.setAttribute("atchFileList",atchFileList);
+			
 		}
 		
 		req.setAttribute("memVO", mv);

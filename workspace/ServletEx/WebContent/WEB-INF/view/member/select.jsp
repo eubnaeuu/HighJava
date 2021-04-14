@@ -35,18 +35,20 @@
 		<tr>
 			<td>첨부파일:</td>
 			<td>
+			아마도?
 			<%if(atchFileList != null){
 				for(AtchFileVO atchFileVO : atchFileList){
 				%>
-				<div><a href="<%=request.getContextPath() %>/filedownLoad.do?fileId=<%=atchFileVO.getAtchFileId()%>&fileSn=<%=atchFileVO.getOrignlFileNm()%>">
-													<%=atchFileVO.getOrignlFileNm() %>
+				<div>
+					<a href="<%=request.getContextPath() %>/filedownLoad.do?fileId=<%=atchFileVO.getAtchFileId()%>
+																			&fileSn=<%=atchFileVO.getFileSn()%>">
+																					<%=atchFileVO.getOrignlFileNm() %>
 					</a>
 				</div>
 				 <%
 				 	}
 				 	}
 				 %>
-
 			</td>
 		</tr>
 		<tr>
