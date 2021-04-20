@@ -40,8 +40,6 @@ public class InsertMemberServlet extends HttpServlet {
 		MemberVO mv = new MemberVO();
 		mv.setMemId(memId);
 		mv.setMemName(memName);
-		mv.setMemAddr(memAddr);
-		mv.setMemTel(memTel);
 		
 		int cnt = memberService.insertMember(mv);
 		

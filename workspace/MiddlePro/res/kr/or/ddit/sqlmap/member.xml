@@ -28,47 +28,80 @@
  -->
 
 	<insert id="insertMember" parameterClass="kr.or.ddit.member.vo.MemberVO">
-	
-		insert into mymember 
-		(mem_id,mem_name,mem_tel,mem_addr,atch_file_id)
-         values(#memId#,#memName#,#memTel#,#memAddr#,#atchFileId#)
+
+	INSERT INTO MEMBER
+	(
+	MEM_ID
+	,MEM_PASS
+	,MEM_NAME
+	,MEM_NICKNAME
+	,MEM_GENDER
+	,MEM_BIR
+	,MEM_ZIP
+	,MEM_ADD1
+	,MEM_ADD2
+	,MEM_HP
+	,MEM_MAIL
+	,MEM_CYBERMONEY
+	)
+	VALUES
+	(
+	#memId#
+	,#memPass#
+	,#memName#
+	,#memNickname#
+	,#memGender#
+	,#memBir#
+	,#memZip#
+	,#memAdd1#
+	,#memAdd2#
+	,#memHp#
+	,#memMail#
+	,#memCyberMoney#
+	)
 	
 	</insert>
 	
 	<update id="updateMember" parameterClass="kr.or.ddit.member.vo.MemberVO">
 		
-		update mymember
-         set mem_name = #memName#
-             ,mem_tel = #memTel#
-             ,mem_addr = #memAddr#
-             ,atch_file_id = #atchFileId#
-         where mem_id = #memId#
-	
+		UPDATE MEMBER
+         SET 
+         MEM_GENDER = #memGender#
+          <isNotEmpty property="memName">
+          ,MEM_NAME = #memName#
+          </isNotEmpty>
+          <isNotEmpty property="memNickname">
+          ,MEM_NICKNAME = #memNickname#
+          </isNotEmpty>
+          <isNotEmpty property="atchFileId">
+          ,ATCH_FILE_ID = #atchFileId#
+          </isNotEmpty>
+	 	WHERE MEM_ID = #memId#
 	</update>
 	
 	<delete id="deleteMember" parameterClass="String">
-		delete from mymember where mem_id = #aaa#
+		DELETE 
+		FROM MEMBER
+		WHERE MEM_ID = #memId#
 	</delete>
 	
-	<resultMap class="kr.or.ddit.member.vo.MemberVO" id="memMap">
-		<result property="memId" column="MEM_ID"/>
-		<result property="memName" column="MEM_NAME"/>
-		<result property="memPass" column="MEM_PASS"/>
-		<result property="memNickname" column="MEM_NICKNAME"/>
-		<result property="memGender" column="MEM_GENDER"/>
-		<result property="memBir" column="MEM_BIR"/>
-		<result property="memZip" column="MEM_ZIP"/>
-		<result property="memAdd1" column="MEM_ADD1"/>
-		<result property="memAdd2" column="MEM_ADD2"/>
-		<result property="memHp" column="MEM_HP"/>
-		<result property="memMail" column="MEM_MAIL"/>
-		<result property="memCyberMoney" column="MEM_CYBERMONEY"/>
-		<result property="atchFileId" column="atch_file_id"/>
+<!-- 	<resultMap class="kr.or.ddit.member.vo.MemberVO" id="memMap"> -->
+<!-- 		<result property="memId" column="MEM_ID"/> -->
+<!-- 		<result property="memName" column="MEM_NAME"/> -->
+<!-- 		<result property="memPass" column="MEM_PASS"/> -->
+<!-- 		<result property="memNickname" column="MEM_NICKNAME"/> -->
+<!-- 		<result property="memGender" column="MEM_GENDER"/> -->
+<!-- 		<result property="memBir" column="MEM_BIR"/> -->
+<!-- 		<result property="memZip" column="MEM_ZIP"/> -->
+<!-- 		<result property="memAdd1" column="MEM_ADD1"/> -->
+<!-- 		<result property="memAdd2" column="MEM_ADD2"/> -->
+<!-- 		<result property="memHp" column="MEM_HP"/> -->
+<!-- 		<result property="memMail" column="MEM_MAIL"/> -->
+<!-- 		<result property="memCyberMoney" column="MEM_CYBERMONEY"/> -->
+<!-- 		<result property="atchFileId" column="ATCH_FILE_ID"/> -->
+<!-- 	</resultMap> -->
 	
-	</resultMap>
-	
-	<select id="getMemberAll" resultMap="memMap">
-		
+	<select id="getMemberAll" resultClass="kr.or.ddit.member.vo.MemberVO">
 		SELECT
 		MEM_ID				 memId
 		,MEM_PASS 			 memPass
@@ -85,17 +118,12 @@
 		 FROM MEMBER
 	</select>
 	
-	<select id="getMember" parameterClass="String"
-				resultClass="int">
-	
+	<select id="getMember" parameterClass="String" resultClass="int">
 		SELECT COUNT(*) AS CNT 
 		FROM MYMEMBER WHERE MEM_ID = #memId#
-		
 	</select>
 	
-	<select id="getSearchMember" parameterClass="memVO" 
-					resultMap="memMap">
-	
+	<select id="getSearchMember" parameterClass="memVO" resultMap="memMap">
 	 select
 		MEM_ID				 memId
 		,MEM_PASS 			 memPass
@@ -120,11 +148,6 @@
 	 <isNotEmpty property="memTel">
            and MEM_NICKNAME = #memTel#
 	 </isNotEmpty>
-	</select>
-	
-	
-	<select id="getMemberInfo" resultMap="memMap">
-		SELECT * FROM MYMEMBER WHERE MEM_ID = #memId#
 	</select>
 
 </sqlMap>			

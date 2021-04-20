@@ -26,7 +26,6 @@ public class MemberVO {
 	private long atchFileId = -1;
 	
 	
-	
 	public String getMemId() {
 		return memId;
 	}
@@ -105,6 +104,5 @@ public class MemberVO {
 	public void setAtchFileId(long atchFileId) {
 		this.atchFileId = atchFileId;
 	}
-
 	
 }

@@ -93,8 +93,6 @@ public class UpdateMemberHandler implements CommandHandler {
 			MemberVO mv = new MemberVO();
 			mv.setMemId(memId);
 			mv.setMemName(memName);
-			mv.setMemTel(memTel);
-			mv.setMemAddr(memAddr);
 			mv.setAtchFileId(atchFileVO.getAtchFileId());
 			
 			int cnt = memberService.updateMember(mv);

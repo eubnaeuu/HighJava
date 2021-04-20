@@ -59,8 +59,6 @@ public class InsertMemberHandler implements CommandHandler {
 			MemberVO mv = new MemberVO();
 			mv.setMemId(memId);
 			mv.setMemName(memName);
-			mv.setMemAddr(memAddr);
-			mv.setMemTel(memTel);
 			mv.setAtchFileId(atchFileVO.getAtchFileId());
 			
 			int cnt = memberService.insertMember(mv);
