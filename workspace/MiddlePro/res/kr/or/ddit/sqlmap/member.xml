@@ -51,9 +51,9 @@
           <isNotEmpty property="memNickname">
           ,MEM_NICKNAME = #memNickname#
           </isNotEmpty>
-<!--           <isNotEmpty property="atchFileId"> -->
-<!--           ,ATCH_FILE_ID = #atchFileId# -->
-<!--           </isNotEmpty> -->
+          <isNotEmpty property="atchFileId">
+          ,ATCH_FILE_ID = #atchFileId#
+          </isNotEmpty>
 	 	WHERE MEM_ID = #memId#
 	</update>
 	
