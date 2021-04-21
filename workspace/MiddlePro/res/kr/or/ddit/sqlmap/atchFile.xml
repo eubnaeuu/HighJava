@@ -25,12 +25,17 @@
 	</select>
 	
 	<delete id="deleteAtchFile" parameterClass="String">
-		delete 
-		from atch_file
-		where 1=1
-         <isNotEmpty property="postNo">
-        and postNo = #postNo#
-          </isNotEmpty>
+		DELETE 
+		FROM ATCH_FILE
+		WHERE 1=1
+        AND POST_NO = #postNo#
+	</delete>
+	
+	<delete id="deleteAtchFileDetail" parameterClass="String">
+		DELETE 
+		FROM ATCH_FILE_DETAIL
+		WHERE 1=1
+        AND ATCH_FILE_ID = #atchFileId#
 	</delete>
 	
 	<insert id="insertAtchFile">
