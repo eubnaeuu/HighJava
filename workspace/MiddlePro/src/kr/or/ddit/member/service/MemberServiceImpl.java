@@ -90,7 +90,6 @@ public class MemberServiceImpl implements IMemberService {
 	@Override
 	public int deleteMember(String memId) {
 		int cnt = 0;
-		
 		try {
 			cnt = memDao.deleteMember(smc, memId);
 		} catch (SQLException e) {

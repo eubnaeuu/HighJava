@@ -44,16 +44,16 @@
 		
 		UPDATE MEMBER
          SET 
-         MEM_GENDER = #memGender#
+         MEM_CYBERMONEY = 0
           <isNotEmpty property="memName">
           ,MEM_NAME = #memName#
           </isNotEmpty>
           <isNotEmpty property="memNickname">
           ,MEM_NICKNAME = #memNickname#
           </isNotEmpty>
-          <isNotEmpty property="atchFileId">
-          ,ATCH_FILE_ID = #atchFileId#
-          </isNotEmpty>
+<!--           <isNotEmpty property="atchFileId"> -->
+<!--           ,ATCH_FILE_ID = #atchFileId# -->
+<!--           </isNotEmpty> -->
 	 	WHERE MEM_ID = #memId#
 	</update>
 	
