@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+<title>메인 화면</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+function test(){
+	var param = {
+			'flag' : 'f'
+			,'memId' : 'a002'        
+			,'memPass' : '12356'      
+			,'memName' : '홍길동'    
+			,'memNickname' : '홍홍홍홍'  
+			,'memGender' : '남자'    
+			,'memBir' : '41/01/01'       
+			,'memZip' :  '345-795'      
+			,'memAdd1' : '대전 서구 읍내동 수정아파트'      
+			,'memAdd2' : '926동 302호'       
+			,'memHp' : '01026349926'        
+			,'memMail' : 'cdwcdw34@gmail.com'      
+			,'memCyberMoney' : 0
+			};
+	$.ajax({
+		url : "/MiddlePro/member/main.do"
+		,type : "post"
+		,data : param
+		,dataType : "json"
+		,success : function(data){
+			console.log(data)
+			alert("성공");
+		}
+		,error : function(xhr){
+			console.error(xhr);
+			alert("실패");
+		}
+		
+	});
+}
+function test1(){
+	var param = {
+			"flag" : "t"
+			,"memId" : "a001"
+			};
+	
+	$.ajax({
+		url : "/MiddlePro/member/main.do"
+		,type : "post"
+		,data : param
+		,dataType : "json"
+		,success : function(data){
+			console.log(data)
+			alert("성공");
+		}
+		,error : function(xhr){
+			console.error(xhr);
+			alert("실패");
+		}
+		
+	});
+}
+</script>
+<!-- <script type="text/javascript" src="/JqueryPro/js/member/zippopup.html"></script> -->
+<!-- ☆   ?v=1 의미 -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<style>
+ table, td, th {
+ 	border: 1px solid;
+ 	text-align: center;
+ }
+ table thead, button {
+ 	background-color: #C8D8E5;
+ }
+</style>
+<body>
+	<div class="container">
+		<h1>메인페이지</h1>
+		<button type="button" onclick="test()">회원등록</button>
+		<button type="button" onclick="test1()">회원서치</button>
+		
+	</div>
+</body>
+</html>
