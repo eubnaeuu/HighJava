@@ -13,8 +13,8 @@ import kr.or.ddit.comm.service.AtchFileServiceImpl;
 import kr.or.ddit.comm.service.IAtchFileService;
 import kr.or.ddit.member.service.IMemberService;
 import kr.or.ddit.member.service.MemberServiceImpl;
-import kr.or.ddit.member.vo.AtchFileVO;
 import kr.or.ddit.member.vo.MemberVO;
+import kr.or.ddit.post.vo.AtchFileVO;
 import util.FileUploadRequestWrapper;
 
 public class UpdateMemberHandler implements CommandHandler {

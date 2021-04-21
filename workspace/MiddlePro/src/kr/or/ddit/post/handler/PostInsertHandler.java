@@ -28,7 +28,7 @@ public class PostInsertHandler implements CommandHandler {
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse resp) throws Exception, Exception {
 		
-		System.out.println("입장 PostinHaldler 입장");
+		System.out.println("입장 Post insert Haldler 입장");
 		
 		if(req.getMethod().equals("GET")) { //GET방식인 경우 isRedirect을 하지 않는다
 			return VIEW_PAGE;
@@ -41,10 +41,10 @@ public class PostInsertHandler implements CommandHandler {
 			
 			PostService postService = PostServiceImpl.getInstance();
 			PostVO pv = new PostVO();
-			
+			System.out.println("★★ ★ : "+req.getParameter("memId"));
 			pv.setMemId(req.getParameter("memId"));
 			pv.setPostNo(req.getParameter("postNo"));
-			pv.setMemId(req.getParameter("postTitle"));
+			pv.setPostTitle(req.getParameter("postTitle"));
 			pv.setAtchFileId(atchFileVO.getAtchFileId());
 			
 			int cnt = postService.insertPost(pv);
@@ -60,7 +60,7 @@ public class PostInsertHandler implements CommandHandler {
 			String redirectUrl = req.getContextPath() + "/post/post.do?msg=" 
 					+ URLEncoder.encode(msg, "UTF-8");
 
-			System.out.println("퇴장 PostHaldler 퇴장");
+			System.out.println("퇴장 Post insert Haldler 퇴장");
 
 			return redirectUrl;
 		}

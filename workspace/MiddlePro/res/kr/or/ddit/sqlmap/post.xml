@@ -7,17 +7,16 @@
 
 	<insert id="insertPost" parameterClass="kr.or.ddit.post.vo.PostVO">
 
-	INSERT INTO post
+	INSERT INTO POST
 	(
-	POST_NO 		   postNo
-	,HOMPI_ID         	hompiId
-	,LPOST_GU         	lpostGu
-	,MEM_ID           	memId
-	,POST_TITLE       	postTitle
-	,POST_CONTENT     	postContent
-	,POST_DATE        	postDate
-	,POST_VIEW        	postView
-	,ATCH_FILE_ID 		atchFileId
+	POST_NO 		   
+	,HOMPI_ID         
+	,LPOST_GU         
+	,MEM_ID           
+	,POST_TITLE       
+	,POST_CONTENT     
+<!-- 	,POST_DATE         -->
+<!-- 	,POST_VIEW         -->
 	)
 	VALUES
 	(
@@ -27,10 +26,8 @@
 	,#memId#
 	,#postTitle#
 	,#postContent#
-	,#postAttachments#
-	,#postDate#
-	,#postView#
-	,#atchFileId#
+<!-- 	,#postDate# -->
+<!-- 	,#postView# -->
 	)                   
 	</insert>
 	
@@ -70,7 +67,7 @@
 		,ATCH_FILE_ID 		atchFileId
 	</select>
 	
-	<select id="getSearchPost" parameterClass="kr.or.ddit.post.vo.postVO" resultClass="kr.or.ddit.post.vo.postVO">
+	<select id="getSearchPost" parameterClass="kr.or.ddit.post.vo.PostVO" resultClass="kr.or.ddit.post.vo.PostVO">
 	 SELECT
 		POST_NO 		   postNo
 		,HOMPI_ID         	hompiId

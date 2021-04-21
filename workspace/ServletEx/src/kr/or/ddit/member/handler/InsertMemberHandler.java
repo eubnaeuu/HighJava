@@ -29,7 +29,8 @@ public class InsertMemberHandler implements CommandHandler {
 			return true;
 		}
 	}
-//신규회원 등록
+	
+	
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse resp) 
 			throws Exception {

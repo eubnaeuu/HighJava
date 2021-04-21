@@ -3,12 +3,9 @@ package kr.or.ddit;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.beanutils.BeanUtils;
-
 import kr.or.ddit.comm.handler.CommandHandler;
 import kr.or.ddit.member.service.IMemberService;
 import kr.or.ddit.member.service.MemberServiceImpl;
-import kr.or.ddit.member.vo.MemberVO;
 
 public class MainHandler implements CommandHandler {
 	
