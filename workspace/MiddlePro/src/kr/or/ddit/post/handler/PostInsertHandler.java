@@ -18,7 +18,7 @@ import util.FileUploadRequestWrapper;
 
 public class PostInsertHandler implements CommandHandler {
 	
-	private static final String VIEW_PAGE = "/WEB-INF/view/post/insert_post.jsp";
+	private static final String VIEW_PAGE = "/WEB-INF/view/post/main_post.html";
 	
 	@Override
 	public boolean isRedirect(HttpServletRequest req) {
@@ -57,7 +57,7 @@ public class PostInsertHandler implements CommandHandler {
 				msg = "실패";
 			}
 			
-			String redirectUrl = req.getContextPath() + "/post/post.do?msg=" 
+			String redirectUrl = req.getContextPath() + "/post/mainpost.do?msg=" 
 					+ URLEncoder.encode(msg, "UTF-8");
 
 			System.out.println("퇴장 Post insert Haldler 퇴장");

@@ -89,4 +89,9 @@ public class AtchFileServiceImpl implements IAtchFileService{
 		return fileDao.getAtchFileDetail(fileVO);
 	}
 
+	@Override
+	public int deleteAtchFile(String postNo) throws SQLException {
+		return fileDao.deleteAtchFile(postNo);
+	}
+
 }

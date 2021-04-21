@@ -27,7 +27,6 @@ public class PostServiceImpl implements PostService {
 		if(service == null) {
 			service = new PostServiceImpl();
 		}
-		
 		return service;
 	}
 

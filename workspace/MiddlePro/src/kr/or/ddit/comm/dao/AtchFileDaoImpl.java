@@ -67,4 +67,18 @@ public class AtchFileDaoImpl implements IAtchFileDao {
 		return cnt;
 	}
 
+	@Override
+	public int deleteAtchFile(String postNo) throws SQLException {
+
+		int cnt = 0;
+
+		Object obj = smc.delete("atchFile.deleteAtchFile", postNo);
+		
+		if(obj == null) {
+			cnt = 1;
+		}
+
+		return cnt;
+	}
+
 }

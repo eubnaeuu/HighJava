@@ -3,6 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
+	
 	List<PostVO> list = (List<PostVO>)request.getAttribute("postList");
 	
 	String msg = request.getParameter("msg") == null ? ""

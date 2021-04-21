@@ -28,10 +28,10 @@
 		<div id="div1">
 		POSTNO 입력값 : <input type="text" id="inputstr"><br>
 		POSTTILE 입력값 : <input type="text" id="inputstr2">
+		POSTTITLE 변경값 : <input type="text" id="updatestr">
 		파일첨부 : <input type="file" name="atchFile">
 		
 		<br><br><br><br>
-		POSTTITLE 변경값 : <input type="text" id="updatestr">
 		<button type="button" onclick="create()">등록</button>
 		<button type="button" onclick="search()">서치</button>
 		<button type="button" onclick="update()">수정</button>
@@ -51,7 +51,7 @@
 				</tr>
 				<tr>
 					<td>MEMID:</td>
-					<td><input type="text" name="memId" value="a001"></td>
+					<td><input type="text" name="memId" value=""></td>
 				</tr>
 				<tr>
 					<td>첨부파일</td>
@@ -68,6 +68,7 @@
 <script type="text/javascript">
 
 var inputparam="";
+var inputparam2="";
 var updateparam="";
 
 function update(){
@@ -79,7 +80,7 @@ function update(){
 			,'postTitle' : updateparam    
 			};
 	$.ajax({
-		url : "/MiddlePro/post/post.do"
+		url : "/MiddlePro/post/mainpost.do"
 		,type : "post"
 		,data : param
 // 		,dataType : "json"
@@ -102,7 +103,7 @@ function remove(){
 			,'postNo' : inputparam
 			};
 	$.ajax({
-		url : "/MiddlePro/post/post.do"
+		url : "/MiddlePro/post/mainpost.do"
 		,type : "post"
 		,data : param
 // 		,dataType : "json"
@@ -126,7 +127,7 @@ function create(){
 			,'postTitle' : inputparam2         
 			};
 	$.ajax({
-		url : "/MiddlePro/post/post.do"
+		url : "/MiddlePro/post/mainpost.do"
 		,type : "post"
 		,data : param
 // 		,dataType : "json"
@@ -150,7 +151,7 @@ function search(){
 			};
 	
 	$.ajax({
-		url : "/MiddlePro/post/post.do"
+		url : "/MiddlePro/post/mainpost.do"
 		,type : "post"
 		,data : param
 // 		,dataType : "json"

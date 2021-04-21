@@ -11,10 +11,9 @@ import kr.or.ddit.post.vo.AtchFileVO;
 /**
  * 실제 DB와 연결해서 SQL문을 수행하여 결과를 작성하여
  * service에 전달하는 DAO의 interface
- *
- * @author sam
- *
  */
+
+
 public interface IAtchFileDao {
 
 
@@ -50,6 +49,13 @@ public interface IAtchFileDao {
 	 * @throws SQLException
 	 */
 	public AtchFileVO getAtchFileDetail (AtchFileVO atchFileVO) throws SQLException;
+	/**
+	 * 첨부파일 지우기
+	 * @param postId
+	 * @return
+	 * @throws SQLException
+	 */
+	public int deleteAtchFile (String postNo) throws SQLException;
 }
 
 

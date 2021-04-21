@@ -35,15 +35,15 @@
 		UPDATE POST
          SET 
          POST_VIEW = 0
-          <isNotEmpty property="postNo">
-          ,POST_NO = #postNo#
-          </isNotEmpty>
           <isNotEmpty property="postTitle">
           ,POST_TITLE = #postTitle#
           </isNotEmpty>
-          <isNotEmpty property="atchFileId">
-          ,ATCH_FILE_ID = #atchFileId#
+          <isNotEmpty property="postContent">
+          ,POST_Content = #postContent#
           </isNotEmpty>
+<!--           <isNotEmpty property="atchFileId"> -->
+<!--           ,ATCH_FILE_ID = #atchFileId# -->
+<!--           </isNotEmpty> -->
 	 	WHERE post_NO = #postNo#
 	</update>
 	

@@ -9,7 +9,6 @@ import org.apache.commons.fileupload.FileItem;
 import kr.or.ddit.post.vo.AtchFileVO;
 
 
-
 /**
  * 첨부파일 저장을 위한 공통 서비스용 인터페이스
  */
@@ -49,6 +48,15 @@ public interface IAtchFileService {
 	 * @throws SQLException
 	 */
 	public AtchFileVO getAtchFileDetail(AtchFileVO fileVO) throws SQLException;
+	
+	/**
+	 * 
+	 * @param fileVO
+	 * @return
+	 * @throws SQLException
+	 */
+	public int deleteAtchFile(String postNo) throws SQLException;
+	
 
 }
 
