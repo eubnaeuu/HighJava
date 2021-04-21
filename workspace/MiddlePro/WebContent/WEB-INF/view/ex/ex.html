@@ -25,21 +25,70 @@
 <body>
 	<div class="container">
 		<h1>메인페이지</h1>
-		아이디 입력값 : <input type="text" id="inputstr">
-		<button type="button" onclick="create()">회원등록</button>
-		<button type="button" onclick="search()">회원서치</button>
+		아이디 입력값 : <input type="text" id="inputstr"><br>
+		닉네임 변경값 : <input type="text" id="updatestr">
+		<button type="button" onclick="create()">등록</button>
+		<button type="button" onclick="search()">서치</button>
+		<button type="button" onclick="update()">수정</button>
+		<button type="button" onclick="delete()">삭제</button>
 		
 	</div>
 </body>
 <script type="text/javascript">
 
-	
 var inputid="";
+var updatestr="";
 
-
+function update(){
+	inputid = $("#inputstr").val();
+	updatename = $("#updatestr").val();
+	var param = {
+			'flag' : 'u'
+			,'memId' : inputid         
+			,'memPass' : '12356'      
+			,'memName' : updatestr    
+			};
+	$.ajax({
+		url : "/MiddlePro/ex/ex.do"
+		,type : "post"
+		,data : param
+		,dataType : "json"
+		,success : function(data){
+			console.log(data)
+			alert("성공");
+		}
+		,error : function(xhr){
+			console.error(xhr);
+			alert("실패");
+		}
+		
+	});
+}
+function delete(){
+	inputid = $("#inputstr").val();
+	var param = {
+			'flag' : 'd'
+			,'memId' : inputid         
+			};
+	$.ajax({
+		url : "/MiddlePro/ex/ex.do"
+		,type : "post"
+		,data : param
+		,dataType : "json"
+		,success : function(data){
+			console.log(data)
+			alert("성공");
+		}
+		,error : function(xhr){
+			console.error(xhr);
+			alert("실패");
+		}
+		
+	});
+}
+ 
 function create(){
 	inputid = $("#inputstr").val();
-	alert(inputid);
 	var param = {
 			'flag' : 'c'
 			,'memId' : inputid         

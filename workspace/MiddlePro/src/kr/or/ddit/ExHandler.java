@@ -42,6 +42,16 @@ public class ExHandler implements CommandHandler {
 			MemberVO mv = new MemberVO();
 			mv.setMemId(req.getParameter("memId"));
 			memberService.getSearchMember(mv);
+		} else if("s".equals(req.getParameter("flag")) ){
+			System.out.println("search중search중search중search중search중search중search중");
+			MemberVO mv = new MemberVO();
+			mv.setMemId(req.getParameter("memId"));
+			memberService.getSearchMember(mv);
+		} else if("s".equals(req.getParameter("flag")) ){
+			System.out.println("search중search중search중search중search중search중search중");
+			MemberVO mv = new MemberVO();
+			mv.setMemId(req.getParameter("memId"));
+			memberService.getSearchMember(mv);
 		}
 		// 2. 할것들.
 		System.out.println("퇴장 ExHaldler 퇴장");
