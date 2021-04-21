@@ -63,7 +63,7 @@
             <div class="container">
                <div class="row">
                   <div class="col-sm-12">
-                     <div class="logo"><a href="index.html"><img src="images/logo.jpg"></a></div>
+                     <div class="logo"><a href="index.html"><img src="images/logo.png"></a></div>
                   </div>
                </div>
             </div>
@@ -121,7 +121,7 @@
                            </li>
                            <li><a href="#">
                               <i class="fa fa-user" aria-hidden="true"></i>
-                              <span class="padding_10">내정보</span></a>
+                              <span class="padding_10">내정보?</span></a>
                            </li>
                         </ul>
                      </div>
@@ -139,7 +139,7 @@
                         <div class="row">
                            <div class="col-sm-12">
                               <h1 class="banner_taital">화제의 <br>미니홈피</h1>
-                              <div class="buynow_bt"><a href="#">이름 : </a></div>
+                              <div class="buynow_bt"><a href="#">Buy Now</a></div>
                            </div>
                         </div>
                      </div>
@@ -147,7 +147,7 @@
                         <div class="row">
                            <div class="col-sm-12">
                               <h1 class="banner_taital">오늘의 <br>날씨는?</h1>
-                              <div class="buynow_bt"><a href="#">B이름 : </a></div>
+                              <div class="buynow_bt"><a href="#">Buy Now</a></div>
                            </div>
                         </div>
                      </div>
@@ -155,7 +155,7 @@
                         <div class="row">
                            <div class="col-sm-12">
                               <h1 class="banner_taital">3번째<br>배너</h1>
-                              <div class="buynow_bt"><a href="#">이름 : </a></div>
+                              <div class="buynow_bt"><a href="#">Buy Now</a></div>
                            </div>
                         </div>
                      </div>
@@ -178,39 +178,39 @@
             <div class="carousel-inner">
                <div class="carousel-item active">
                   <div class="container">
-                     <h1 class="fashion_taital">화제의</h1>
+                     <h1 class="fashion_taital">투멤남 투멤녀</h1>
                      <div class="fashion_section_2">
                         <div class="row">
                            <div class="col-lg-4 col-sm-4">
                               <div class="box_main">
-                                 <h4 class="shirt_text">컨텐츠1</h4>
-                                 <p class="price_text">네임 :   <span style="color: #262626;">HongGD</span></p>
-                                 <!-- <div class="mainpg_img"><img src="images/laptop-img.png"></div> -->
+                                 <h4 class="shirt_text">Laptop</h4>
+                                 <p class="price_text">Start Price  <span style="color: #262626;">$ 100</span></p>
+                                 <div class="mainpg_img"><img src="images/laptop-img.png"></div>
                                  <div class="btn_main">
-                                    <div class="buy_bt"><a href="#">이름 : </a></div>
-                                    <div class="seemore_bt"><a href="#">더보기</a></div>
+                                    <div class="buy_bt"><a href="#">Buy Now</a></div>
+                                    <div class="seemore_bt"><a href="#">See More</a></div>
                                  </div>
                               </div>
                            </div>
                            <div class="col-lg-4 col-sm-4">
                               <div class="box_main">
-                                 <h4 class="shirt_text">컨텐츠2</h4>
-                                 <p class="price_text">네임 :   <span style="color: #262626;">HongGD</span></p>
-                                 <!-- <div class="mainpg_img"><img src="images/mobile-img.png"></div> -->
+                                 <h4 class="shirt_text">Mobile</h4>
+                                 <p class="price_text">Start Price  <span style="color: #262626;">$ 100</span></p>
+                                 <div class="mainpg_img"><img src="images/mobile-img.png"></div>
                                  <div class="btn_main">
-                                    <div class="buy_bt"><a href="#">이름 : </a></div>
-                                    <div class="seemore_bt"><a href="#">더보기</a></div>
+                                    <div class="buy_bt"><a href="#">Buy Now</a></div>
+                                    <div class="seemore_bt"><a href="#">See More</a></div>
                                  </div>
                               </div>
                            </div>
                            <div class="col-lg-4 col-sm-4">
                               <div class="box_main">
-                                 <h4 class="shirt_text">컨텐츠3</h4>
-                                 <p class="price_text">네임 :   <span style="color: #262626;">HongGD</span></p>
-                                 <!-- <div class="mainpg_img"><img src="images/computer-img.png"></div> -->
+                                 <h4 class="shirt_text">Computers</h4>
+                                 <p class="price_text">Start Price  <span style="color: #262626;">$ 100</span></p>
+                                 <div class="mainpg_img"><img src="images/computer-img.png"></div>
                                  <div class="btn_main">
-                                    <div class="buy_bt"><a href="#">이름 : </a></div>
-                                    <div class="seemore_bt"><a href="#">더보기</a></div>
+                                    <div class="buy_bt"><a href="#">Buy Now</a></div>
+                                    <div class="seemore_bt"><a href="#">See More</a></div>
                                  </div>
                               </div>
                            </div>
@@ -220,39 +220,81 @@
                </div>
                <div class="carousel-item">
                   <div class="container">
-                     <h1 class="fashion_taital">미니홈피</h1>
+                     <h1 class="fashion_taital">mainpg</h1>
                      <div class="fashion_section_2">
                         <div class="row">
                            <div class="col-lg-4 col-sm-4">
                               <div class="box_main">
-                                 <h4 class="shirt_text">컨텐츠1</h4>
-                                 <p class="price_text">네임 :   <span style="color: #262626;">HongGD</span></p>
-                                 <!-- <div class="mainpg_img"><img src="images/laptop-img.png"></div> -->
+                                 <h4 class="shirt_text">Laptop</h4>
+                                 <p class="price_text">Start Price  <span style="color: #262626;">$ 100</span></p>
+                                 <div class="mainpg_img"><img src="images/laptop-img.png"></div>
                                  <div class="btn_main">
-                                    <div class="buy_bt"><a href="#">이름 : </a></div>
-                                    <div class="seemore_bt"><a href="#">더보기</a></div>
+                                    <div class="buy_bt"><a href="#">Buy Now</a></div>
+                                    <div class="seemore_bt"><a href="#">See More</a></div>
                                  </div>
                               </div>
                            </div>
                            <div class="col-lg-4 col-sm-4">
                               <div class="box_main">
-                                 <h4 class="shirt_text">컨텐츠2</h4>
-                                 <p class="price_text">네임 :   <span style="color: #262626;">HongGD</span></p>
-                                 <!-- <div class="mainpg_img"><img src="images/mobile-img.png"></div> -->
+                                 <h4 class="shirt_text">Mobile</h4>
+                                 <p class="price_text">Start Price  <span style="color: #262626;">$ 100</span></p>
+                                 <div class="mainpg_img"><img src="images/mobile-img.png"></div>
                                  <div class="btn_main">
-                                    <div class="buy_bt"><a href="#">이름 : </a></div>
-                                    <div class="seemore_bt"><a href="#">더보기</a></div>
+                                    <div class="buy_bt"><a href="#">Buy Now</a></div>
+                                    <div class="seemore_bt"><a href="#">See More</a></div>
                                  </div>
                               </div>
                            </div>
                            <div class="col-lg-4 col-sm-4">
                               <div class="box_main">
-                                 <h4 class="shirt_text">컨텐츠3</h4>
-                                 <p class="price_text">네임 :   <span style="color: #262626;">HongGD</span></p>
-                                 <!-- <div class="mainpg_img"><img src="images/computer-img.png"></div> -->
+                                 <h4 class="shirt_text">Computers</h4>
+                                 <p class="price_text">Start Price  <span style="color: #262626;">$ 100</span></p>
+                                 <div class="mainpg_img"><img src="images/computer-img.png"></div>
                                  <div class="btn_main">
-                                    <div class="buy_bt"><a href="#">이름 : </a></div>
-                                    <div class="seemore_bt"><a href="#">더보기</a></div>
+                                    <div class="buy_bt"><a href="#">Buy Now</a></div>
+                                    <div class="seemore_bt"><a href="#">See More</a></div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="carousel-item">
+                  <div class="container">
+                     <h1 class="fashion_taital">mainpg</h1>
+                     <div class="fashion_section_2">
+                        <div class="row">
+                           <div class="col-lg-4 col-sm-4">
+                              <div class="box_main">
+                                 <h4 class="shirt_text">Laptop</h4>
+                                 <p class="price_text">Start Price  <span style="color: #262626;">$ 100</span></p>
+                                 <div class="mainpg_img"><img src="images/laptop-img.png"></div>
+                                 <div class="btn_main">
+                                    <div class="buy_bt"><a href="#">Buy Now</a></div>
+                                    <div class="seemore_bt"><a href="#">See More</a></div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="col-lg-4 col-sm-4">
+                              <div class="box_main">
+                                 <h4 class="shirt_text">Mobile</h4>
+                                 <p class="price_text">Start Price  <span style="color: #262626;">$ 100</span></p>
+                                 <div class="mainpg_img"><img src="images/mobile-img.png"></div>
+                                 <div class="btn_main">
+                                    <div class="buy_bt"><a href="#">Buy Now</a></div>
+                                    <div class="seemore_bt"><a href="#">See More</a></div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="col-lg-4 col-sm-4">
+                              <div class="box_main">
+                                 <h4 class="shirt_text">Computers</h4>
+                                 <p class="price_text">Start Price  <span style="color: #262626;">$ 100</span></p>
+                                 <div class="mainpg_img"><img src="images/computer-img.png"></div>
+                                 <div class="btn_main">
+                                    <div class="buy_bt"><a href="#">Buy Now</a></div>
+                                    <div class="seemore_bt"><a href="#">See More</a></div>
                                  </div>
                               </div>
                            </div>

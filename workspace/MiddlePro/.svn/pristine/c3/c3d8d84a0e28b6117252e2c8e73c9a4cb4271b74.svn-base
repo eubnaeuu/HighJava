@@ -9,7 +9,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>오늘의 토픽</title>
+      <title>Fashion</title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -46,11 +46,11 @@
                   <div class="col-sm-12">
                      <div class="custom_menu">
                         <ul>
-                           <li><a href="#">TOPIC</a></li>
-                           <li><a href="#">SHOP</a></li>
-                           <li><a href="#">MYPAGE</a></li>
-<!--                            <li><a href="#">Today's Deals</a></li> -->
-<!--                            <li><a href="#">Customer Service</a></li> -->
+                           <li><a href="#">Best Sellers</a></li>
+                           <li><a href="#">Gift Ideas</a></li>
+                           <li><a href="#">New Releases</a></li>
+                           <li><a href="#">Today's Deals</a></li>
+                           <li><a href="#">Customer Service</a></li>
                         </ul>
                      </div>
                   </div>
@@ -63,7 +63,7 @@
             <div class="container">
                <div class="row">
                   <div class="col-sm-12">
-                     <div class="logo"><a href="index.html"><img src="images/logo.jpg"></a></div>
+                     <div class="logo"><a href="index.html"><img src="images/logo.png"></a></div>
                   </div>
                </div>
             </div>
@@ -82,7 +82,7 @@
                   </div>
                   <span class="toggle_icon" onclick="openNav()"><img src="images/toggle-icon.png"></span>
                   <div class="dropdown">
-                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">카테고리임 
+                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">All Category 
                      </button>
                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="#">Action</a>
@@ -93,7 +93,7 @@
                   <div class="main">
                      <!-- Another variation with a button -->
                      <div class="input-group">
-                        <input type="text" class="form-control" placeholder="검색어를 입력해주세요">
+                        <input type="text" class="form-control" placeholder="Search this blog">
                         <div class="input-group-append">
                            <button class="btn btn-secondary" type="button" style="background-color: #f26522; border-color:#f26522 ">
                            <i class="fa fa-search"></i>
@@ -102,26 +102,26 @@
                      </div>
                   </div>
                   <div class="header_box">
-<!--                      <div class="lang_box "> -->
-<!--                         <a href="#" title="Language" class="nav-link" data-toggle="dropdown" aria-expanded="true"> -->
-<!--                         <img src="images/flag-uk.png" alt="flag" class="mr-2 " title="United Kingdom"> English <i class="fa fa-angle-down ml-2" aria-hidden="true"></i> -->
-<!--                         </a> -->
-<!--                         <div class="dropdown-menu "> -->
-<!--                            <a href="#" class="dropdown-item"> -->
-<!--                            <img src="images/flag-france.png" class="mr-2" alt="flag"> -->
-<!--                            French -->
-<!--                            </a> -->
-<!--                         </div> -->
-<!--                      </div> -->
+                     <div class="lang_box ">
+                        <a href="#" title="Language" class="nav-link" data-toggle="dropdown" aria-expanded="true">
+                        <img src="images/flag-uk.png" alt="flag" class="mr-2 " title="United Kingdom"> English <i class="fa fa-angle-down ml-2" aria-hidden="true"></i>
+                        </a>
+                        <div class="dropdown-menu ">
+                           <a href="#" class="dropdown-item">
+                           <img src="images/flag-france.png" class="mr-2" alt="flag">
+                           French
+                           </a>
+                        </div>
+                     </div>
                      <div class="login_menu">
                         <ul>
                            <li><a href="#">
                               <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                              <span class="padding_10">카트</span></a>
+                              <span class="padding_10">Cart</span></a>
                            </li>
                            <li><a href="#">
                               <i class="fa fa-user" aria-hidden="true"></i>
-                              <span class="padding_10">내정보</span></a>
+                              <span class="padding_10">Cart</span></a>
                            </li>
                         </ul>
                      </div>
@@ -138,24 +138,24 @@
                      <div class="carousel-item active">
                         <div class="row">
                            <div class="col-sm-12">
-                              <h1 class="banner_taital">화제의 <br>미니홈피</h1>
-                              <div class="buynow_bt"><a href="#">이름 : </a></div>
+                              <h1 class="banner_taital">Get Start <br>Your favriot shoping</h1>
+                              <div class="buynow_bt"><a href="#">Buy Now</a></div>
                            </div>
                         </div>
                      </div>
                      <div class="carousel-item">
                         <div class="row">
                            <div class="col-sm-12">
-                              <h1 class="banner_taital">오늘의 <br>날씨는?</h1>
-                              <div class="buynow_bt"><a href="#">B이름 : </a></div>
+                              <h1 class="banner_taital">Get Start <br>Your favriot shoping</h1>
+                              <div class="buynow_bt"><a href="#">Buy Now</a></div>
                            </div>
                         </div>
                      </div>
                      <div class="carousel-item">
                         <div class="row">
                            <div class="col-sm-12">
-                              <h1 class="banner_taital">3번째<br>배너</h1>
-                              <div class="buynow_bt"><a href="#">이름 : </a></div>
+                              <h1 class="banner_taital">Get Start <br>Your favriot shoping</h1>
+                              <div class="buynow_bt"><a href="#">Buy Now</a></div>
                            </div>
                         </div>
                      </div>
@@ -172,45 +172,45 @@
          <!-- banner section end -->
       </div>
       <!-- banner bg main end -->
-      <!-- mainpg section start -->
+      <!-- fashion section start -->
       <div class="fashion_section">
-         <div id="mainpg_main_slider" class="carousel slide" data-ride="carousel">
+         <div id="main_slider" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                <div class="carousel-item active">
                   <div class="container">
-                     <h1 class="fashion_taital">화제의</h1>
+                     <h1 class="fashion_taital">Man & Woman Fashion</h1>
                      <div class="fashion_section_2">
                         <div class="row">
                            <div class="col-lg-4 col-sm-4">
                               <div class="box_main">
-                                 <h4 class="shirt_text">컨텐츠1</h4>
-                                 <p class="price_text">네임 :   <span style="color: #262626;">HongGD</span></p>
-                                 <!-- <div class="mainpg_img"><img src="images/laptop-img.png"></div> -->
+                                 <h4 class="shirt_text">Man T -shirt</h4>
+                                 <p class="price_text">Price  <span style="color: #262626;">$ 30</span></p>
+                                 <div class="tshirt_img"><img src="images/tshirt-img.png"></div>
                                  <div class="btn_main">
-                                    <div class="buy_bt"><a href="#">이름 : </a></div>
-                                    <div class="seemore_bt"><a href="#">더보기</a></div>
+                                    <div class="buy_bt"><a href="#">Buy Now</a></div>
+                                    <div class="seemore_bt"><a href="#">See More</a></div>
                                  </div>
                               </div>
                            </div>
                            <div class="col-lg-4 col-sm-4">
                               <div class="box_main">
-                                 <h4 class="shirt_text">컨텐츠2</h4>
-                                 <p class="price_text">네임 :   <span style="color: #262626;">HongGD</span></p>
-                                 <!-- <div class="mainpg_img"><img src="images/mobile-img.png"></div> -->
+                                 <h4 class="shirt_text">Man -shirt</h4>
+                                 <p class="price_text">Price  <span style="color: #262626;">$ 30</span></p>
+                                 <div class="tshirt_img"><img src="images/dress-shirt-img.png"></div>
                                  <div class="btn_main">
-                                    <div class="buy_bt"><a href="#">이름 : </a></div>
-                                    <div class="seemore_bt"><a href="#">더보기</a></div>
+                                    <div class="buy_bt"><a href="#">Buy Now</a></div>
+                                    <div class="seemore_bt"><a href="#">See More</a></div>
                                  </div>
                               </div>
                            </div>
                            <div class="col-lg-4 col-sm-4">
                               <div class="box_main">
-                                 <h4 class="shirt_text">컨텐츠3</h4>
-                                 <p class="price_text">네임 :   <span style="color: #262626;">HongGD</span></p>
-                                 <!-- <div class="mainpg_img"><img src="images/computer-img.png"></div> -->
+                                 <h4 class="shirt_text">Woman Scart</h4>
+                                 <p class="price_text">Price  <span style="color: #262626;">$ 30</span></p>
+                                 <div class="tshirt_img"><img src="images/women-clothes-img.png"></div>
                                  <div class="btn_main">
-                                    <div class="buy_bt"><a href="#">이름 : </a></div>
-                                    <div class="seemore_bt"><a href="#">더보기</a></div>
+                                    <div class="buy_bt"><a href="#">Buy Now</a></div>
+                                    <div class="seemore_bt"><a href="#">See More</a></div>
                                  </div>
                               </div>
                            </div>
@@ -220,39 +220,81 @@
                </div>
                <div class="carousel-item">
                   <div class="container">
-                     <h1 class="fashion_taital">미니홈피</h1>
+                     <h1 class="fashion_taital">Man & Woman Fashion</h1>
                      <div class="fashion_section_2">
                         <div class="row">
                            <div class="col-lg-4 col-sm-4">
                               <div class="box_main">
-                                 <h4 class="shirt_text">컨텐츠1</h4>
-                                 <p class="price_text">네임 :   <span style="color: #262626;">HongGD</span></p>
-                                 <!-- <div class="mainpg_img"><img src="images/laptop-img.png"></div> -->
+                                 <h4 class="shirt_text">Man T -shirt</h4>
+                                 <p class="price_text">Price  <span style="color: #262626;">$ 30</span></p>
+                                 <div class="tshirt_img"><img src="images/tshirt-img.png"></div>
                                  <div class="btn_main">
-                                    <div class="buy_bt"><a href="#">이름 : </a></div>
-                                    <div class="seemore_bt"><a href="#">더보기</a></div>
+                                    <div class="buy_bt"><a href="#">Buy Now</a></div>
+                                    <div class="seemore_bt"><a href="#">See More</a></div>
                                  </div>
                               </div>
                            </div>
                            <div class="col-lg-4 col-sm-4">
                               <div class="box_main">
-                                 <h4 class="shirt_text">컨텐츠2</h4>
-                                 <p class="price_text">네임 :   <span style="color: #262626;">HongGD</span></p>
-                                 <!-- <div class="mainpg_img"><img src="images/mobile-img.png"></div> -->
+                                 <h4 class="shirt_text">Man -shirt</h4>
+                                 <p class="price_text">Price  <span style="color: #262626;">$ 30</span></p>
+                                 <div class="tshirt_img"><img src="images/dress-shirt-img.png"></div>
                                  <div class="btn_main">
-                                    <div class="buy_bt"><a href="#">이름 : </a></div>
-                                    <div class="seemore_bt"><a href="#">더보기</a></div>
+                                    <div class="buy_bt"><a href="#">Buy Now</a></div>
+                                    <div class="seemore_bt"><a href="#">See More</a></div>
                                  </div>
                               </div>
                            </div>
                            <div class="col-lg-4 col-sm-4">
                               <div class="box_main">
-                                 <h4 class="shirt_text">컨텐츠3</h4>
-                                 <p class="price_text">네임 :   <span style="color: #262626;">HongGD</span></p>
-                                 <!-- <div class="mainpg_img"><img src="images/computer-img.png"></div> -->
+                                 <h4 class="shirt_text">Woman Scart</h4>
+                                 <p class="price_text">Price  <span style="color: #262626;">$ 30</span></p>
+                                 <div class="tshirt_img"><img src="images/women-clothes-img.png"></div>
                                  <div class="btn_main">
-                                    <div class="buy_bt"><a href="#">이름 : </a></div>
-                                    <div class="seemore_bt"><a href="#">더보기</a></div>
+                                    <div class="buy_bt"><a href="#">Buy Now</a></div>
+                                    <div class="seemore_bt"><a href="#">See More</a></div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="carousel-item">
+                  <div class="container">
+                     <h1 class="fashion_taital">Man & Woman Fashion</h1>
+                     <div class="fashion_section_2">
+                        <div class="row">
+                           <div class="col-lg-4 col-sm-4">
+                              <div class="box_main">
+                                 <h4 class="shirt_text">Man T -shirt</h4>
+                                 <p class="price_text">Price  <span style="color: #262626;">$ 30</span></p>
+                                 <div class="tshirt_img"><img src="images/tshirt-img.png"></div>
+                                 <div class="btn_main">
+                                    <div class="buy_bt"><a href="#">Buy Now</a></div>
+                                    <div class="seemore_bt"><a href="#">See More</a></div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="col-lg-4 col-sm-4">
+                              <div class="box_main">
+                                 <h4 class="shirt_text">Man -shirt</h4>
+                                 <p class="price_text">Price  <span style="color: #262626;">$ 30</span></p>
+                                 <div class="tshirt_img"><img src="images/dress-shirt-img.png"></div>
+                                 <div class="btn_main">
+                                    <div class="buy_bt"><a href="#">Buy Now</a></div>
+                                    <div class="seemore_bt"><a href="#">See More</a></div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="col-lg-4 col-sm-4">
+                              <div class="box_main">
+                                 <h4 class="shirt_text">Woman Scart</h4>
+                                 <p class="price_text">Price  <span style="color: #262626;">$ 30</span></p>
+                                 <div class="tshirt_img"><img src="images/women-clothes-img.png"></div>
+                                 <div class="btn_main">
+                                    <div class="buy_bt"><a href="#">Buy Now</a></div>
+                                    <div class="seemore_bt"><a href="#">See More</a></div>
                                  </div>
                               </div>
                            </div>
@@ -261,15 +303,15 @@
                   </div>
                </div>
             </div>
-            <a class="carousel-control-prev" href="#mainpg_main_slider" role="button" data-slide="prev">
+            <a class="carousel-control-prev" href="#main_slider" role="button" data-slide="prev">
             <i class="fa fa-angle-left"></i>
             </a>
-            <a class="carousel-control-next" href="#mainpg_main_slider" role="button" data-slide="next">
+            <a class="carousel-control-next" href="#main_slider" role="button" data-slide="next">
             <i class="fa fa-angle-right"></i>
             </a>
          </div>
       </div>
-      <!-- mainpg section end -->
+      <!-- fashion section end -->
       <!-- footer section start -->
       <div class="footer_section layout_padding">
          <div class="container">
