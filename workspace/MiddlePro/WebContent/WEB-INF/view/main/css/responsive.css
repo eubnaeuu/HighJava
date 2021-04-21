@@ -143,15 +143,15 @@
         left: 40px;
         top: 110%;
     }
-    .electronic_img {
+    .mainpg_img {
         margin: 20px 0px;
         min-height: 280px;
     }
-    #electronic_main_slider a.carousel-control-next {
+    #mainpg_main_slider a.carousel-control-next {
         right: 40px;
         top: 110%;
     }
-    #electronic_main_slider a.carousel-control-prev {
+    #mainpg_main_slider a.carousel-control-prev {
         left: 40px;
         top: 110%;
     }
@@ -194,15 +194,15 @@
         left: 40px;
         top: 110%;
     }
-    .electronic_img {
+    .mainpg_img {
         margin: 20px 0px;
         min-height: 190px;
     }
-    #electronic_main_slider a.carousel-control-next {
+    #mainpg_main_slider a.carousel-control-next {
         right: 40px;
         top: 110%;
     }
-    #electronic_main_slider a.carousel-control-prev {
+    #mainpg_main_slider a.carousel-control-prev {
         left: 40px;
         top: 110%;
     }
@@ -286,7 +286,7 @@
     .fashion_section {
         padding-bottom: 100px;
     }
-    .electronic_img {
+    .mainpg_img {
         margin: 20px 0px;
         min-height: 145px;
     }
@@ -329,11 +329,11 @@
         right: 33px;
         top: 101%;
     }
-    #electronic_main_slider a.carousel-control-prev {
+    #mainpg_main_slider a.carousel-control-prev {
         left: 33px;
         top: 101%;
     }
-    #electronic_main_slider a.carousel-control-next {
+    #mainpg_main_slider a.carousel-control-next {
         right: 33px;
         top: 101%;
     }
@@ -415,7 +415,7 @@
     .fashion_section {
         padding-bottom: 100px;
     }
-    .electronic_img {
+    .mainpg_img {
         margin: 20px 0px;
         min-height: 0;
     }
@@ -443,11 +443,11 @@
         right: 15px;
         top: 101%;
     }
-    #electronic_main_slider a.carousel-control-prev {
+    #mainpg_main_slider a.carousel-control-prev {
         left: 15px;
         top: 101%;
     }
-    #electronic_main_slider a.carousel-control-next {
+    #mainpg_main_slider a.carousel-control-next {
         right: 15px;
         top: 101%;
     }
