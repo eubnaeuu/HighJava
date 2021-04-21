@@ -29,7 +29,7 @@ public class AtchFileServiceImpl implements IAtchFileService{
 	}
 
 	@Override
-	public AtchFileVO saveAtchFile(FileItem item) throws Exception {
+	public AtchFileVO saveAtchFile(FileItem item, String postNo) throws Exception {
 		File uploadDir = new File(FileUploadRequestWrapper.UPLOAD_DIRECTORY);
 		if(!uploadDir.exists()) {
 			uploadDir.mkdir();
@@ -57,9 +57,10 @@ public class AtchFileServiceImpl implements IAtchFileService{
 		
 		// 파일 저장 서비스 호출
 		AtchFileVO atchFileVO = new AtchFileVO();
-		
+		atchFileVO.setPostNo(postNo);
 		fileDao.insertAtchFile(atchFileVO); // 파일정보 저장
 		
+		atchFileVO.setStreFileNm(storeFileName);
 		atchFileVO.setStreFileNm(storeFileName);
 		atchFileVO.setFileSize(fileSize);
 		atchFileVO.setOrignlFileNm(orignFileName);
@@ -92,6 +93,16 @@ public class AtchFileServiceImpl implements IAtchFileService{
 	@Override
 	public int deleteAtchFile(String postNo) throws SQLException {
 		return fileDao.deleteAtchFile(postNo);
+	}
+
+	@Override
+	public AtchFileVO searchAtchFileDetail(String postNo) throws SQLException {
+		return fileDao.searchAtchFileDetail(postNo);
+	}
+
+	@Override
+	public int deleteAtchFileDetail(String atchFileId) throws SQLException {
+		return fileDao.deleteAtchFile(atchFileId);
 	}
 
 }

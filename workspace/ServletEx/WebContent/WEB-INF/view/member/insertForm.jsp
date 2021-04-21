@@ -10,7 +10,7 @@
 	<form action="insert.do" method="post" enctype="multipart/form-data"> <!-- 파일첨부한다면 enctype을 multpart로 바꿔줘야함 -->
 		<table>
 			<tr>
-			k	<td>I D:</td>
+				<td>I D:</td>
 				<td><input type="text" name="memId" value=""></td>
 			</tr>
 			<tr>

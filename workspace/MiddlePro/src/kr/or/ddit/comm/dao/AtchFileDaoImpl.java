@@ -40,6 +40,12 @@ public class AtchFileDaoImpl implements IAtchFileDao {
 		AtchFileVO atchFileVO = (AtchFileVO) smc.queryForObject("atchFile.getAtchFileDetail", fileVO); // AtchFileVO에 여러 파일이 첨부될 수 있음.key값2개 .(atch파일 key값ㄱ과 파일의 순번)
 		return atchFileVO;
 	}
+	
+	@Override
+	public AtchFileVO searchAtchFileDetail(String postNo) throws SQLException {
+		AtchFileVO atchFileVO = (AtchFileVO) smc.queryForObject("atchFile.searchAtchFileDetail", postNo); 
+		return atchFileVO;
+	}
 
 	@Override
 	public int insertAtchFile(AtchFileVO atchFileVO) throws SQLException {
@@ -73,6 +79,19 @@ public class AtchFileDaoImpl implements IAtchFileDao {
 		int cnt = 0;
 		System.out.println("Dao :"+ postNo);
 		Object obj = smc.delete("atchFile.deleteAtchFile", postNo);
+		
+		if(obj == null) {
+			cnt = 1;
+		}
+
+		return cnt;
+	}
+
+	@Override
+	public int deleteAtchFileDetail(String atchFileId) throws SQLException {
+		int cnt = 0;
+		System.out.println("Dao :"+ atchFileId);
+		Object obj = smc.delete("atchFile.deleteAtchFileDetail", atchFileId);
 		
 		if(obj == null) {
 			cnt = 1;

@@ -18,7 +18,6 @@ public class PostVO extends BaseVO {
 	private String memId;
 	private String postTitle;
 	private String postContent;
-	private String postAttachments;
 	private String postDate;
 	private int postView;
 	
@@ -70,14 +69,6 @@ public class PostVO extends BaseVO {
 
 	public void setPostContent(String postContent) {
 		this.postContent = postContent;
-	}
-
-	public String getPostAttachments() {
-		return postAttachments;
-	}
-
-	public void setPostAttachments(String postAttachments) {
-		this.postAttachments = postAttachments;
 	}
 
 	public String getPostDate() {

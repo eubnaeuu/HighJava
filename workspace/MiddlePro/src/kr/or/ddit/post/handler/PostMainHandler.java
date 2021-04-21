@@ -1,5 +1,7 @@
 package kr.or.ddit.post.handler;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -13,7 +15,6 @@ import kr.or.ddit.post.service.PostServiceImpl;
 import kr.or.ddit.post.vo.AtchFileVO;
 import kr.or.ddit.post.vo.PostVO;
 import util.FileUploadRequestWrapper;
-import kr.or.ddit.post.vo.PostVO;
 
 public class PostMainHandler implements CommandHandler {
 		
@@ -39,11 +40,13 @@ public class PostMainHandler implements CommandHandler {
 			System.out.println("delete중delete중delete중delete중delete중delete중delete중delete중");
 
 			AtchFileVO av = new AtchFileVO();
-			System.out.println(req.getParameter("postNo"));
+			String postNo = req.getParameter("postNo");
+			System.out.println(postNo);
+			long atchFileId = fileService.searchAtchFileDetail(postNo).getAtchFileId();
 			
-			fileService.deleteAtchFile(req.getParameter("postNo"));
-			postService.deletePost(req.getParameter("postNo"));
-			
+			fileService.deleteAtchFile(postNo); // atchFile 삭제
+			fileService.deleteAtchFileDetail(String.valueOf(atchFileId)); // atchFileDetail 삭제
+			postService.deletePost(req.getParameter("postNo")); // post 삭제
 			
 		} else if("u".equals(req.getParameter("flag")) ){
 			System.out.println("update중update중update중update중update중update중update중");
@@ -52,6 +55,12 @@ public class PostMainHandler implements CommandHandler {
 			pv.setPostNo(req.getParameter("postNo"));
 			pv.setPostTitle(req.getParameter("postTitle"));
 			postService.updatePost(pv);
+		}else if("s".equals(req.getParameter("flag")) ){
+			System.out.println("search중search중search중search중search중search중");
+			PostVO pv = new PostVO();
+			pv.setPostNo(req.getParameter("postNo"));
+			List<PostVO> list = postService.getSearchPost(pv);
+			System.out.println(list.get(0).getAtchFileId());
 		}
 		System.out.println("퇴장 Post Main Haldler 퇴장");
 

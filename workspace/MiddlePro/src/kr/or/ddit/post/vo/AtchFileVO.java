@@ -11,6 +11,7 @@ public class AtchFileVO {
 	private String orignlFileNm;
 	private String fileExtsn;
 	private String fileCn;
+	private String PostNo;
 	private long fileSize = 0;
 	
 	public long getAtchFileId() {
@@ -66,6 +67,12 @@ public class AtchFileVO {
 	}
 	public void setFileSize(long fileSize) {
 		this.fileSize = fileSize;
+	}
+	public String getPostNo() {
+		return PostNo;
+	}
+	public void setPostNo(String postNo) {
+		PostNo = postNo;
 	}
 
 	
