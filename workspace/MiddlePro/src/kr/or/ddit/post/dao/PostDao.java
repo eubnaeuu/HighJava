@@ -51,7 +51,6 @@ public interface PostDao {
 	 */
 	public int updatePost(SqlMapClient smc, PostVO pv)
 						throws SQLException;
-	
 	/**
 	 * 회원 ID를 매개변수로 받아서 그 회원정보를 삭제하는 메서드
 	 * @param smc SqlMapClient 객체
@@ -69,7 +68,7 @@ public interface PostDao {
 	 * @return 검색된 결과를 담은 List
 	 * @throws SQLException JDBC관련 예외 객체
 	 */
-	public List<PostVO> getSearchPOST(SqlMapClient smc, PostVO pv) 
+	public List<PostVO> getSearchPost(SqlMapClient smc, PostVO pv) 
 						throws SQLException;
 	
 	/**
@@ -78,5 +77,5 @@ public interface PostDao {
 	 * @param postNo 검색할 회원 ID
 	 * @return 해당 회원 ID 에 해당하는 회원 정보
 	 */
-	public PostVO getPOST(SqlMapClient smc, String postNo) throws SQLException;;
+	public PostVO getPost(SqlMapClient smc, String postNo) throws SQLException;;
 }

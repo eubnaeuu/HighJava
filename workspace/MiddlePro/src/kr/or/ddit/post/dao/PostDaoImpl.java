@@ -1,18 +1,11 @@
 package kr.or.ddit.post.dao;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 
-import kr.or.ddit.member.vo.MemberVO;
-import kr.or.ddit.util.SqlMapClientUtil;
+import kr.or.ddit.post.vo.PostVO;
 
 
 public class PostDaoImpl implements PostDao {
@@ -31,79 +24,72 @@ public class PostDaoImpl implements PostDao {
 	   return postDao;
    }
    
-   
-   
-   
    @Override
-   public int insertMember(SqlMapClient smc, MemberVO mv) throws SQLException {
+   public int insertPost(SqlMapClient smc, PostVO pv) throws SQLException {
 	   	int cnt = 0;
 	   
-        Object obj = smc.insert("member.insertMember", mv);
+        Object obj = smc.insert("post.insertPost", pv);
         
         if(obj == null) {
         	cnt = 1;
         }
-         
       return cnt;
    }
 
    @Override
-   public boolean checkMember(SqlMapClient smc, String memId) throws SQLException {
+   public boolean checkPost(SqlMapClient smc, String postNo) throws SQLException {
       boolean chk = false;
       
-      int cnt = (int) smc.queryForObject("member.getMember", memId);
+      int cnt = (int) smc.queryForObject("post.getPost", postNo);
       
       if(cnt > 0) {
     	  chk = true;
       }
-      
       return chk;
    }
 
    @Override
-   public List<MemberVO> getAllMemberList(SqlMapClient smc) throws SQLException {
+   public List<PostVO> getAllPostList(SqlMapClient smc) throws SQLException {
       
-      List<MemberVO> memList = smc.queryForList("member.getMemberAll");
-     System.out.println("★ ★ ★  : "+memList.get(0).getMemId());
-      return memList;
+      List<PostVO> postList = smc.queryForList("post.getPostAll");
+      return postList;
    }
 
    @Override
-   public int updateMember(SqlMapClient smc, MemberVO mv) throws SQLException {
+   public int updatePost(SqlMapClient smc, PostVO pv) throws SQLException {
       
       int cnt = 0;
+      cnt = smc.update("post.updatePost", pv);
+      return cnt;
+   }
+
+   @Override
+   public int deletePost(SqlMapClient smc, String postNo) throws SQLException {
       
-      cnt = smc.update("member.updateMember", mv);
+      int cnt = smc.delete("post.deletePost", postNo);
       
       return cnt;
    }
 
    @Override
-   public int deleteMember(SqlMapClient smc, String memId) throws SQLException {
+   public List<PostVO> getSearchPost(SqlMapClient smc,PostVO pv) throws SQLException {
       
-      int cnt = smc.delete("member.deleteMember", memId);
+      List<PostVO> postList = 
+    		  smc.queryForList("post.getSearchPost", pv);
       
-      return cnt;
+      return postList;
    }
 
    @Override
-   public List<MemberVO> getSearchMember(SqlMapClient smc,MemberVO mv) throws SQLException {
-      
-      List<MemberVO> memList = 
-    		  smc.queryForList("member.getSearchMember", mv);
-      
-      return memList;
-   }
-
-   @Override
-   public MemberVO getMember(SqlMapClient smc, String memId) throws SQLException {
-	   MemberVO mv = 
-			(MemberVO)smc
-			.queryForObject("member.getMemberInfo", memId);
+   public PostVO getPost(SqlMapClient smc, String postNo) throws SQLException {
+	   PostVO pv = 
+			(PostVO)smc
+			.queryForObject("post.getPostInfo", postNo);
 	
-			return mv;
+			return pv;
 	}
 }
+
 
 
 

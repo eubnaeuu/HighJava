@@ -39,9 +39,7 @@ public class InsertMemberHandler implements CommandHandler {
 		}else { //POST 방식인 경우 isRedirect를 한다 
 			
 			FileItem item = ((FileUploadRequestWrapper)req).getFileItem("atchFile");
-			
 			AtchFileVO atchFileVO = new AtchFileVO();
-			
 			IAtchFileService fileService = AtchFileServiceImpl.getInstance();
 			atchFileVO = fileService.saveAtchFile(item);
 			

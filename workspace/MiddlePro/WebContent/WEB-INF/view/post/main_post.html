@@ -24,32 +24,62 @@
 </style>
 <body>
 	<div class="container">
-		<h1>메인페이지</h1>
-		아이디 입력값 : <input type="text" id="inputstr"><br>
-		닉네임 변경값 : <input type="text" id="updatestr">
+		<h1>POST</h1>
+		<div id="div1">
+		POSTNO 입력값 : <input type="text" id="inputstr"><br>
+		POSTTILE 입력값 : <input type="text" id="inputstr2">
+		파일첨부 : <input type="file" name="atchFile">
+		
+		<br><br><br><br>
+		POSTTITLE 변경값 : <input type="text" id="updatestr">
 		<button type="button" onclick="create()">등록</button>
 		<button type="button" onclick="search()">서치</button>
 		<button type="button" onclick="update()">수정</button>
 		<button type="button" onclick="remove()">삭제</button>
+		</div>
 		
+		<div>
+			<form action="insertpost.do" method="post" enctype="multipart/form-data">
+			<table>
+				<tr>
+					<td>POSTNO:</td>
+					<td><input type="text" name="postNo" value=""></td>
+				</tr>
+				<tr>
+					<td>POSTTITLE:</td>
+					<td><input type="text" name="postTitle" value=""></td>
+				</tr>
+				<tr>
+					<td>MEMID:</td>
+					<td><input type="text" name="memId" value=""></td>
+				</tr>
+				<tr>
+					<td>첨부파일</td>
+					<td><input type="file" name="atchFile"></td>
+				</tr>
+			</table>
+			<input type="submit" value="post등록">
+			</form>
+		</div>
+
+	
 	</div>
 </body>
 <script type="text/javascript">
 
-var inputid="";
+var inputparam="";
 var updateparam="";
 
 function update(){
-	inputid = $("#inputstr").val();
+	inputparam = $("#inputstr").val();
 	updateparam = $("#updatestr").val();
 	var param = {
 			'flag' : 'u'
-			,'memId' : inputid         
-			,'memPass' : '12356'      
-			,'memNicname' : updateparam    
+			,'postNo' : inputparam         
+			,'postTitle' : updateparam    
 			};
 	$.ajax({
-		url : "/MiddlePro/ex/ex.do"
+		url : "/MiddlePro/post/post.do"
 		,type : "post"
 		,data : param
 // 		,dataType : "json"
@@ -64,14 +94,15 @@ function update(){
 		
 	});
 }
+
 function remove(){
-	inputid = $("#inputstr").val();
+	inputparam = $("#inputstr").val();
 	var param = {
 			'flag' : 'd'
-			,'memId' : inputid
+			,'postNo' : inputparam
 			};
 	$.ajax({
-		url : "/MiddlePro/ex/ex.do"
+		url : "/MiddlePro/post/post.do"
 		,type : "post"
 		,data : param
 // 		,dataType : "json"
@@ -83,29 +114,19 @@ function remove(){
 			console.error(xhr);
 			alert("실패");
 		}
-		
 	});
 }
+
  
 function create(){
-	inputid = $("#inputstr").val();
+	inputparam = $("#inputstr").val();
 	var param = {
 			'flag' : 'c'
-			,'memId' : inputid         
-			,'memPass' : '12356'      
-			,'memName' : '홍길동'    
-// 			,'memNickname' : '홍홍홍홍'  
-// 			,'memGender' : '남자'    
-// 			,'memBir' : '41/01/01'       
-// 			,'memZip' :  '345-795'      
-// 			,'memAdd1' : '대전 서구 읍내동 수정아파트'      
-// 			,'memAdd2' : '926동 302호'       
-// 			,'memHp' : '01026349926'        
-// 			,'memMail' : 'cdwcdw34@gmail.com'      
-// 			,'memCyberMoney' : 0
+			,'postNo' : inputparam         
+			,'postTitle' : inputparam2         
 			};
 	$.ajax({
-		url : "/MiddlePro/ex/ex.do"
+		url : "/MiddlePro/post/post.do"
 		,type : "post"
 		,data : param
 // 		,dataType : "json"
@@ -121,14 +142,15 @@ function create(){
 	});
 }
 function search(){
-	inputid = $("#inputstr").val();
+	inputparam = $("#inputstr").val();
 	var param = {
 			"flag" : "s"
-			,"memId" : inputid
+			,"postNo" : inputparam
+			,"postTitle" : inputparam2
 			};
 	
 	$.ajax({
-		url : "/MiddlePro/ex/ex.do"
+		url : "/MiddlePro/post/post.do"
 		,type : "post"
 		,data : param
 // 		,dataType : "json"
