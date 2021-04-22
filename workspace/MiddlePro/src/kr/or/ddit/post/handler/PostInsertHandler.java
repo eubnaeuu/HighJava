@@ -44,28 +44,31 @@ public class PostInsertHandler implements CommandHandler {
 //			atchFileVO = fileService.saveAtchFile(item);
 			
 			fileItemMap = ((FileUploadRequestWrapper)req).getFileItemMap();
-			int num = 0;
+			
+			int filecnt = fileItemMap.size();
+			AtchFileVO atchFileVO = new AtchFileVO();
+			
+			if(filecnt > 0) {
 				
-				AtchFileVO atchFileVO = new AtchFileVO();
+				atchFileVO = new AtchFileVO();
 				IAtchFileService fileService = AtchFileServiceImpl.getInstance();
 				String postNo = req.getParameter("postNo");
-				fileService.saveAtchFileList(fileItemMap);
-		
-			
+				atchFileVO = fileService.saveAtchFileList(fileItemMap);
 
-			
+			}
 			
 			PostService postService = PostServiceImpl.getInstance();
+			
 			PostVO pv = new PostVO();
 			pv.setMemId(req.getParameter("memId"));
 			pv.setPostNo(req.getParameter("postNo"));
 			pv.setPostTitle(req.getParameter("postTitle"));
-//			pv.setAtchFileId(atchFileVO.getAtchFileId());
+			if(filecnt > 0) {
+			pv.setAtchFileId(atchFileVO.getAtchFileId());
+			}
 			int cnt = postService.insertPost(pv);
+			
 			System.out.println("post해결 완료");
-			
-			
-			
 			
 			String msg = "";
 			

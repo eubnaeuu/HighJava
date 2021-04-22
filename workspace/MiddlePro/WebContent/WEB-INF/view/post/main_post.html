@@ -27,7 +27,7 @@
 		<h1>POST</h1>
 		<div id="div1">
 		POSTNO 입력값 : <input type="text" id="inputstr"><br>
-		POSTTILE 입력값 : <input type="text" id="inputstr2"><br>
+		POSTTITLE 입력값 : <input type="text" id="inputstr2"><br>
 		POSTTITLE 변경값 : <input type="text" id="updatestr"><br>
 		<input type="file" name="atchFile" multiple="multiple">
 		
@@ -37,9 +37,10 @@
 		<button type="button" onclick="select()">조회</button>
 		<button type="button" onclick="update()">수정</button>
 		<button type="button" onclick="remove()">삭제</button>
-		
 		</div>
+		
 		<br><br><br><br>
+		
 		<div>
 			<form action="insertpost.do" method="post" enctype="multipart/form-data">
 			<table>
@@ -57,11 +58,11 @@
 				</tr>
 				<tr>
 					<td>첨부파일1</td>
-					<td><input type="file" name="atchFile1"></td>
+					<td><input type="file" name="atchFile1" id="atch1"></td>
 				</tr>
 				<tr>
 					<td>첨부파일2</td>
-					<td><input type="file" name="atchFile2"></td>
+					<td><input type="file" name="atchFile2" id="atch2"></td>
 				</tr>
 			</table>
 			<input type="submit" value="post등록">

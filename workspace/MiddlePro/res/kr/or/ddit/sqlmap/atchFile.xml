@@ -21,6 +21,7 @@
 	</select>
 	
 	<select id="getAtchFileDetail" resultMap="atchFileDetailMap">
+	
 		select * from atch_file_detail
 		where 1=1
 		<isNotEmpty property="atchFileId">
@@ -30,14 +31,6 @@
 		and file_sn = #fileSn#
 		</isNotEmpty>
 	</select>
-<!-- 	<select id="searchAtchFileDetail" parameterClass="String" resultMap="atchFileDetailMap"> -->
-<!-- 		SELECT * -->
-<!-- 		FROM ATCH_FILE_DETAIL -->
-<!-- 		WHERE (SELECT ATCH_FILE_ID FROM ATCH_FILE WHERE POST_NO = #postNo#) = ATCH_FILE_ID	 -->
-<!-- 	</select> -->
-	
-	
-	
 	
 	<delete id="deleteAtchFile" parameterClass="String">
 		DELETE 

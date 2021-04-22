@@ -61,7 +61,6 @@ public class AtchFileServiceImpl implements IAtchFileService{
 		fileDao.insertAtchFile(atchFileVO); // 파일정보 저장
 		
 		atchFileVO.setStreFileNm(storeFileName);
-		atchFileVO.setStreFileNm(storeFileName);
 		atchFileVO.setFileSize(fileSize);
 		atchFileVO.setOrignlFileNm(orignFileName);
 		atchFileVO.setFileStreCours(filePath);
@@ -77,23 +76,33 @@ public class AtchFileServiceImpl implements IAtchFileService{
 
 	@Override
 	public AtchFileVO saveAtchFileList(Map<String, Object> fileItemMap) throws Exception {
-		File uploadDir = new File(FileUploadRequestWrapper.UPLOAD_DIRECTORY);
-		if(!uploadDir.exists()) {
-			uploadDir.mkdir();
-		}
 		
-		int num = fileItemMap.size();
+		// 파일 기본정보 저장
+				AtchFileVO atchFileVO = new AtchFileVO();
+				fileDao.insertAtchFile(atchFileVO); // 파일정보 저장
 		
+//		int num = fileItemMap.size();
 		
 		// 파일명만 추출하기
-		for(String key : fileItemMap.keySet()) {
-			
+//		for(String key : fileItemMap.keySet()) {
+		for(Object obj : fileItemMap.values()) {
+		
+		FileItem item = (FileItem) obj;	
 //		String orignFileName = new File(item.getName()).getName(); // FileItem에 파일경로정보라든지 그런게 들어있음
-		String orignFileName = new File(fileItemMap.get(key).getName()).getName();
+//		FileItem fileitem = (FileItem)(fileItemMap.get(key));
+		
+		 File uploadDir = new File(FileUploadRequestWrapper.UPLOAD_DIRECTORY );
+			if(!uploadDir.exists()) {
+				uploadDir.mkdir();
+			}
+		
+		String orignFileName = new File(item.getName()).getName();
 		
 		
 //		long fileSize = item.getSize(); // 파일 사이즈 가져오기
-		long fileSize = fileItemMap.get(key).getSize(); // 파일 사이즈 가져오기
+		
+//		long fileSize = (FileItem)fileItemMap.get(key).getSize(); // 파일 사이즈 가져오기
+		long fileSize = item.getSize(); // 파일 사이즈 가져오기
 		String storeFileName = "";
 		String filePath = "";
 		File storeFile = null;
@@ -109,14 +118,8 @@ public class AtchFileServiceImpl implements IAtchFileService{
 		// 확장자명 추출
 		String fileExtension = orignFileName.lastIndexOf(".") < 0 ? "" : orignFileName.substring(orignFileName.lastIndexOf(".")+ 1);
 		
-//		item.write(storeFile); // 업로드 파일 저장 (랜덤한 이름으로?)
-		fileItemMap.get(key).write(storeFile); // 업로드 파일 저장 (랜덤한 이름으로?)
+		item.write(storeFile); // 업로드 파일 저장 (랜덤한 이름으로?)
 		
-		// 파일 저장 서비스 호출
-		AtchFileVO atchFileVO = new AtchFileVO();
-		fileDao.insertAtchFile(atchFileVO); // 파일정보 저장
-		
-		atchFileVO.setStreFileNm(storeFileName);
 		atchFileVO.setStreFileNm(storeFileName);
 		atchFileVO.setFileSize(fileSize);
 		atchFileVO.setOrignlFileNm(orignFileName);
@@ -127,12 +130,12 @@ public class AtchFileServiceImpl implements IAtchFileService{
 		fileDao.insertAtchFileDetail(atchFileVO);
 		
 		
-		item[i].delete(); // 임시 업로드 파일 삭제하기
+		item.delete(); // 임시 업로드 파일 삭제하기
 		
 //		return atchFileVO;
 		
 		}
-		return null;
+		return atchFileVO;
 	}
 
 	@Override
