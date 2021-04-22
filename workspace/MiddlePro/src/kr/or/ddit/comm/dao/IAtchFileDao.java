@@ -3,7 +3,7 @@ package kr.or.ddit.comm.dao;
 import java.sql.SQLException;
 import java.util.List;
 
-import kr.or.ddit.post.vo.AtchFileVO;
+import kr.or.ddit.comments.vo.AtchFileVO;
 
 
 

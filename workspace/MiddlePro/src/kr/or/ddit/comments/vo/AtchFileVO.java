@@ -1,4 +1,4 @@
-package kr.or.ddit.post.vo;
+package kr.or.ddit.comments.vo;
 
 import java.util.Date;
 

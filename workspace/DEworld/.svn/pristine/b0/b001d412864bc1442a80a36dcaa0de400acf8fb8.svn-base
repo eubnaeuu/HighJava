@@ -11,7 +11,7 @@ import kr.or.ddit.member.service.IMemberService;
 import kr.or.ddit.member.service.MemberServiceImpl;
 import kr.or.ddit.member.vo.MemberVO;
 
-public class ListMemberHandler implements CommandHandler {
+public class SearchMemberHandler implements CommandHandler {
 	
 	private static final String VIEW_PAGE = "/WEB-INF/view/member/listmember.html";
 	
@@ -26,10 +26,11 @@ public class ListMemberHandler implements CommandHandler {
 		IMemberService memberService = MemberServiceImpl.getInstance();
 		
 		// 2. 회원정보 조회
-		List<MemberVO> memList = memberService.getAllMemberList();
+		MemberVO mv = new MemberVO();
+		mv.setMemId(req.getParameter("memId"));
+		List<MemberVO> memList = memberService.getSearchMember(mv);
 		
 		req.setAttribute("memList", memList);
-		
 		return VIEW_PAGE;
 	}
 

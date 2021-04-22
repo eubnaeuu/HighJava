@@ -39,7 +39,6 @@
 		
 		update member
          set mem_name = #memName#
-             ,atch_file_id = #atchFileId#
          where mem_id = #memId#
 	
 	</update>
@@ -54,7 +53,6 @@
 		
 		<result property="memId" column="mem_id"/>
 		<result property="memName" column="mem_name"/>
-		<result property="atchFileId" column="atch_file_id"/>
 	
 	</resultMap>
 	

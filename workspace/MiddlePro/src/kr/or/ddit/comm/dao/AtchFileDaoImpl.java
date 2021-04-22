@@ -6,7 +6,7 @@ import java.util.List;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 
-import kr.or.ddit.post.vo.AtchFileVO;
+import kr.or.ddit.comments.vo.AtchFileVO;
 import kr.or.ddit.util.SqlMapClientUtil;
 
 

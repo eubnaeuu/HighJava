@@ -2,5 +2,4 @@
 /member/insert.do=kr.or.ddit.member.handler.InsertMemberHandler
 /member/update.do=kr.or.ddit.member.handler.UpdateMemberHandler
 /member/delete.do=kr.or.ddit.member.handler.DeleteMemberHandler
-/member/search.do=kr.or.ddit.member.handler.SearchMemberHandler
 /filedownLoad.do=kr.or.ddit.comm.handler.FileDownloadHandler
