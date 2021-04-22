@@ -19,8 +19,8 @@ public class PostVO extends BaseVO {
 	private String postTitle;
 	private String postContent;
 	private String postDate;
-	private int postView;
 	
+	private long postView =0;
 	private long atchFileId = -1;
 
 	public String getPostNo() {
@@ -79,7 +79,7 @@ public class PostVO extends BaseVO {
 		this.postDate = postDate;
 	}
 
-	public int getPostView() {
+	public long getPostView() {
 		return postView;
 	}
 

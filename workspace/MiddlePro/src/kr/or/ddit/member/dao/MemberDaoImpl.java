@@ -64,7 +64,6 @@ public class MemberDaoImpl implements IMemberDao {
    public List<MemberVO> getAllMemberList(SqlMapClient smc) throws SQLException {
       
       List<MemberVO> memList = smc.queryForList("member.getMemberAll");
-     System.out.println("★ ★ ★  : "+memList.get(0).getMemId());
       return memList;
    }
 

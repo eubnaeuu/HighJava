@@ -61,15 +61,15 @@ public class PostServiceImpl implements PostService {
 	@Override
 	public List<PostVO> getAllPostList() {
 		
-		List<PostVO> memList = new ArrayList<>();
+		List<PostVO> list = new ArrayList<>();
 		
 		try {
-			memList = postDao.getAllPostList(smc);
+			list = postDao.getAllPostList(smc);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
-		return memList;
+		return list;
 	}
 
 	@Override

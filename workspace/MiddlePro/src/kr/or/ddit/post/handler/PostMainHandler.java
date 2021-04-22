@@ -1,5 +1,6 @@
 package kr.or.ddit.post.handler;
 
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -51,7 +52,6 @@ public class PostMainHandler implements CommandHandler {
 		} else if("u".equals(req.getParameter("flag")) ){
 			System.out.println("update중update중update중update중update중update중update중");
 			PostVO pv = new PostVO();
-			
 			pv.setPostNo(req.getParameter("postNo"));
 			pv.setPostTitle(req.getParameter("postTitle"));
 			postService.updatePost(pv);
@@ -61,6 +61,18 @@ public class PostMainHandler implements CommandHandler {
 			pv.setPostNo(req.getParameter("postNo"));
 			List<PostVO> list = postService.getSearchPost(pv);
 			System.out.println(list.get(0).getAtchFileId());
+		}else if("se".equals(req.getParameter("flag")) ){
+			System.out.println("조회중 조회중 조회중 조회중 조회중 조회중 조회중 조회중 조회중 조회중 ");
+			List<PostVO> list = postService.getAllPostList();
+
+			//printwriter사용
+			
+//			resp.setContentType("application/json");
+//			resp.setCharacterEncoding("UTF-8");
+//			PrintWriter out = resp.getWriter();
+//			out.print(strJson);
+////			out.flush();
+
 		}
 		System.out.println("퇴장 Post Main Haldler 퇴장");
 

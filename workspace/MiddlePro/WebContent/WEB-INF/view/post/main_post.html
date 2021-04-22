@@ -27,17 +27,19 @@
 		<h1>POST</h1>
 		<div id="div1">
 		POSTNO 입력값 : <input type="text" id="inputstr"><br>
-		POSTTILE 입력값 : <input type="text" id="inputstr2">
-		POSTTITLE 변경값 : <input type="text" id="updatestr">
-		파일첨부 : <input type="file" name="atchFile">
+		POSTTILE 입력값 : <input type="text" id="inputstr2"><br>
+		POSTTITLE 변경값 : <input type="text" id="updatestr"><br>
+		<input type="file" name="atchFile" multiple="multiple">
 		
 		<br><br><br><br>
 		<button type="button" onclick="create()">등록</button>
 		<button type="button" onclick="search()">서치</button>
+		<button type="button" onclick="select()">조회</button>
 		<button type="button" onclick="update()">수정</button>
 		<button type="button" onclick="remove()">삭제</button>
-		</div>
 		
+		</div>
+		<br><br><br><br>
 		<div>
 			<form action="insertpost.do" method="post" enctype="multipart/form-data">
 			<table>
@@ -55,7 +57,7 @@
 				</tr>
 				<tr>
 					<td>첨부파일</td>
-					<td><input type="file" name="atchFile"></td>
+					<td><input type="file" name="atchFile" multiple="multiple"></td>
 				</tr>
 			</table>
 			<input type="submit" value="post등록">
@@ -157,6 +159,26 @@ function search(){
 // 		,dataType : "json"
 		,success : function(data){
 			console.log(data)
+			alert("성공");
+		}
+		,error : function(xhr){
+			console.error(xhr);
+			alert("실패");
+		}
+	});
+}
+function select(){
+	var param = {
+			'flag' : 'se'
+	}
+	$.ajax({
+		url : "/MiddlePro/post/mainpost.do"
+		,type : "post"
+// 		,dataType : "json"
+		,data : param
+		,success : function(data){
+			console.log(data)
+			alert(data);
 			alert("성공");
 		}
 		,error : function(xhr){
