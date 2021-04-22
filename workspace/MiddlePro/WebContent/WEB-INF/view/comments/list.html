@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+<title>댓글</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- <script type="text/javascript" src="/JqueryPro/js/member/zippopup.html"></script> -->
+<!-- ☆   ?v=1 의미 -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<style>
+ table, td, th {
+ 	border: 1px solid;
+ 	text-align: center;
+ }
+ table thead, button {
+ 	background-color: #C8D8E5;
+ }
+</style>
+<body>
+	<div class="container">
+		<h1>comments</h1>
+		<div id="div1">
+		
+		댓글ID 입력값 : <input type="text" id="inputstr"><br>
+		댓글CONTENT 입력값 : <input type="text" id="inputstr2"><br>
+		
+		<input type="file" name="atchFile" multiple="multiple">
+		
+		<br><br><br><br>
+		<button type="button" onclick="create()">등록</button>
+		<button type="button" onclick="search()">서치</button>
+		<button type="button" onclick="select()">조회</button>
+		<button type="button" onclick="update()">수정</button>
+		<button type="button" onclick="remove()">삭제</button>
+		</div>
+		<br><br><br><br>
+		
+		<div>
+			<form action="insertcomments.do" method="comments" enctype="multipart/form-data">
+			<table>
+				<tr>
+					<td>commentsId:</td>
+					<td><input type="text" name="commentsId" value=""></td>
+				</tr>
+				<tr>
+					<td>commentsContent:</td>
+					<td><input type="text" name="commentsContent" value=""></td>
+				</tr>
+				<tr>
+					<td>MEMID:</td>
+					<td><input type="text" name="memId" value=""></td>
+				</tr>
+			</table>
+			<input type="submit" value="comments등록">
+			</form>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+
+var inputparam="";
+var inputparam2="";
+var updateparam="";
+
+function update(){
+	inputparam = $("#inputstr").val();
+	updateparam = $("#updatestr").val();
+	var param = {
+			'flag' : 'u'
+			,'commentsNo' : inputparam         
+			,'commentsTitle' : updateparam    
+			};
+	$.ajax({
+		url : "/MiddlePro/comments/maincomments.do"
+		,type : "post"
+		,data : param
+// 		,dataType : "json"
+		,success : function(data){
+			console.log(data)
+			alert("성공");
+		}
+		,error : function(xhr){
+			console.error(xhr);
+			alert("실패");
+		}
+		
+	});
+}
+
+function remove(){
+	inputparam = $("#inputstr").val();
+	var param = {
+			'flag' : 'd'
+			,'commentsNo' : inputparam
+			};
+	$.ajax({
+		url : "/MiddlePro/comments/maincomments.do"
+		,type : "post"
+		,data : param
+// 		,dataType : "json"
+		,success : function(data){
+			console.log(data)
+			alert("성공");
+		}
+		,error : function(xhr){
+			console.error(xhr);
+			alert("실패");
+		}
+	});
+}
+
+ 
+function create(){
+	inputparam = $("#inputstr").val();
+	var param = {
+			'flag' : 'c'
+			,'commentsNo' : inputparam         
+			,'commentsTitle' : inputparam2         
+			};
+	$.ajax({
+		url : "/MiddlePro/comments/maincomments.do"
+		,type : "post"
+		,data : param
+// 		,dataType : "json"
+		,success : function(data){
+			console.log(data)
+			alert("성공");
+		}
+		,error : function(xhr){
+			console.error(xhr);
+			alert("실패");
+		}
+		
+	});
+}
+function search(){
+	inputparam = $("#inputstr").val();
+	var param = {
+			"flag" : "s"
+			,"commentsNo" : inputparam
+			,"commentsTitle" : inputparam2
+			};
+	
+	$.ajax({
+		url : "/MiddlePro/comments/maincomments.do"
+		,type : "post"
+		,data : param
+// 		,dataType : "json"
+		,success : function(data){
+			console.log(data)
+			alert("성공");
+		}
+		,error : function(xhr){
+			console.error(xhr);
+			alert("실패");
+		}
+	});
+}
+function select(){
+	var param = {
+			'flag' : 'se'
+	}
+	$.ajax({
+		url : "/MiddlePro/comments/maincomments.do"
+		,type : "post"
+// 		,dataType : "json"
+		,data : param
+		,success : function(data){
+			console.log(data)
+			alert("성공");
+		}
+		,error : function(xhr){
+			console.error(xhr);
+			alert("실패");
+		}
+	});
+}
+
+</script>
+</html>
