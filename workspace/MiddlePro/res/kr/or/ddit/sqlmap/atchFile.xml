@@ -30,11 +30,11 @@
 		and file_sn = #fileSn#
 		</isNotEmpty>
 	</select>
-	<select id="searchAtchFileDetail" parameterClass="String" resultMap="atchFileDetailMap">
-		SELECT *
-		FROM ATCH_FILE_DETAIL
-		WHERE (SELECT ATCH_FILE_ID FROM ATCH_FILE WHERE POST_NO = #postNo#) = ATCH_FILE_ID	
-	</select>
+<!-- 	<select id="searchAtchFileDetail" parameterClass="String" resultMap="atchFileDetailMap"> -->
+<!-- 		SELECT * -->
+<!-- 		FROM ATCH_FILE_DETAIL -->
+<!-- 		WHERE (SELECT ATCH_FILE_ID FROM ATCH_FILE WHERE POST_NO = #postNo#) = ATCH_FILE_ID	 -->
+<!-- 	</select> -->
 	
 	
 	
@@ -58,9 +58,9 @@
 			select ATCH_FILE_SEQ.nextval from dual
 		</selectKey>
 		insert into atch_file
-		(atch_file_id, creat_dt, use_at, post_no)
+		(atch_file_id, creat_dt, use_at)
 		values
-		(#atchFileId#, sysdate,'Y', #postNo#)
+		(#atchFileId#, sysdate,'Y')
 	</insert>
 	
 	<insert id="insertAtchFileDetail">

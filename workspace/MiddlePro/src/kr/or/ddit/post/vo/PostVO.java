@@ -22,77 +22,60 @@ public class PostVO extends BaseVO {
 	
 	private long postView =0;
 	private long atchFileId = -1;
-
+	
+	
 	public String getPostNo() {
 		return postNo;
 	}
-
 	public void setPostNo(String postNo) {
 		this.postNo = postNo;
 	}
-
 	public String getHompiId() {
 		return hompiId;
 	}
-
 	public void setHompiId(String hompiId) {
 		this.hompiId = hompiId;
 	}
-
 	public String getLpostGu() {
 		return lpostGu;
 	}
-
 	public void setLpostGu(String lpostGu) {
 		this.lpostGu = lpostGu;
 	}
-
 	public String getMemId() {
 		return memId;
 	}
-
 	public void setMemId(String memId) {
 		this.memId = memId;
 	}
-
 	public String getPostTitle() {
 		return postTitle;
 	}
-
 	public void setPostTitle(String postTitle) {
 		this.postTitle = postTitle;
 	}
-
 	public String getPostContent() {
 		return postContent;
 	}
-
 	public void setPostContent(String postContent) {
 		this.postContent = postContent;
 	}
-
 	public String getPostDate() {
 		return postDate;
 	}
-
 	public void setPostDate(String postDate) {
 		this.postDate = postDate;
 	}
-
 	public long getPostView() {
 		return postView;
 	}
-
-	public void setPostView(int postView) {
+	public void setPostView(long postView) {
 		this.postView = postView;
 	}
-
 	public long getAtchFileId() {
 		return atchFileId;
 	}
-
 	public void setAtchFileId(long atchFileId) {
 		this.atchFileId = atchFileId;
 	}
-
 }

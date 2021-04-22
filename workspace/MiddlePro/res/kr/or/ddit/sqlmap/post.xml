@@ -15,8 +15,9 @@
 	,MEM_ID           
 	,POST_TITLE       
 	,POST_CONTENT     
-<!-- 	,POST_DATE         -->
-<!-- 	,POST_VIEW         -->
+	,POST_DATE        
+	,POST_VIEW 
+	,ATCH_FILE_ID       
 	)
 	VALUES
 	(
@@ -26,8 +27,9 @@
 	,#memId#
 	,#postTitle#
 	,#postContent#
-<!-- 	,#postDate# -->
-<!-- 	,#postView# -->
+	,SYSDATE
+	,0
+	,#atchFileId#
 	)                   
 	</insert>
 	
@@ -49,7 +51,7 @@
 	
 	<delete id="deletePost" parameterClass="String">
 		DELETE 
-		FROM post
+		FROM POST
 		WHERE post_NO = #postNo#
 	</delete>
 	
@@ -63,24 +65,30 @@
 		,POST_CONTENT     	postContent
 		,POST_DATE        	postDate
 		,POST_VIEW        	postView
+		,ATCH_FILE_ID 		atchFileId
 		FROM POST
-<!-- 		,ATCH_FILE_ID 		atchFileId -->
 	</select>
 	
 	<select id="getSearchPost" parameterClass="kr.or.ddit.post.vo.PostVO" resultClass="kr.or.ddit.post.vo.PostVO">
 	
-	SELECT P.*,
-	 F.ATCH_FILE_ID
-	FROM POST P, ATCH_FILE_DETAIL F
+	 SELECT
+		POST_NO 		   postNo
+		,HOMPI_ID         	hompiId
+		,LPOST_GU         	lpostGu
+		,MEM_ID           	memId
+		,POST_TITLE       	postTitle
+		,POST_CONTENT     	postContent
+		,POST_DATE        	postDate
+		,POST_VIEW        	postView
+		,ATCH_FILE_ID 		atchFileId
+	FROM POST
 	WHERE 1 = 1
-	AND F.ATCH_FILE_ID = (SELECT ATCH_FILE_ID FROM ATCH_FILE WHERE POST_NO = #postNo#)
 	<isNotEmpty property="postNo">
            AND POST_NO = #postNo#
 	 </isNotEmpty>
-	 
-<!-- 	 <isNotEmpty property="postTitle"> -->
-<!--            AND post_TITLE = #postTitle# -->
-<!-- 	 </isNotEmpty> -->
+	 <isNotEmpty property="postTitle">
+           AND post_TITLE = #postTitle#
+	 </isNotEmpty>
 
 <!-- 	 SELECT -->
 <!-- 		POST_NO 		   postNo -->

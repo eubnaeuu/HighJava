@@ -60,11 +60,12 @@ public class PostMainHandler implements CommandHandler {
 			PostVO pv = new PostVO();
 			pv.setPostNo(req.getParameter("postNo"));
 			List<PostVO> list = postService.getSearchPost(pv);
-			System.out.println(list.get(0).getAtchFileId());
+			System.out.println("파일첨부명 : "+list.get(0).getAtchFileId());
 		}else if("se".equals(req.getParameter("flag")) ){
 			System.out.println("조회중 조회중 조회중 조회중 조회중 조회중 조회중 조회중 조회중 조회중 ");
 			List<PostVO> list = postService.getAllPostList();
 
+			
 			//printwriter사용
 			
 //			resp.setContentType("application/json");

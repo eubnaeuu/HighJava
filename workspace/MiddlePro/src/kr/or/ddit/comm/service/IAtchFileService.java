@@ -21,7 +21,7 @@ public interface IAtchFileService {
 	 * @return AtchFileVO 저장한 첨부파일정보
 	 * @throws SQLException
 	 */
-	public AtchFileVO saveAtchFile (FileItem item, String postNo) throws Exception;
+	public AtchFileVO saveAtchFile (FileItem item) throws Exception;
 
 	/**
 	 * 첨부파일목록을 저장하기 위한 메서드

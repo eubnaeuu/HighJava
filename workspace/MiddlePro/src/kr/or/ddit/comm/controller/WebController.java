@@ -69,6 +69,7 @@ public class WebController extends HttpServlet {
 				throw new ServletException();
 			}
 		}
+		
 		Set<Map.Entry<String, CommandHandler>> entrySet = cmmHandlerMap.entrySet();
 		for(Map.Entry<String, CommandHandler> entry : entrySet) {
 			LOGGER.info(entry.getKey() + " => " + entry.getValue()); // (LOGGER) cmmHamdlerMap에 들어있는 set의 key, value값 반환

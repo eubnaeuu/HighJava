@@ -34,21 +34,22 @@ public class PostInsertHandler implements CommandHandler {
 			return VIEW_PAGE;
 		}else { //POST 방식인 경우 isRedirect를 한다 
 			
-			PostService postService = PostServiceImpl.getInstance();
-			PostVO pv = new PostVO();
-			System.out.println("★★ ★ : "+req.getParameter("memId"));
-			pv.setMemId(req.getParameter("memId"));
-			pv.setPostNo(req.getParameter("postNo"));
-			pv.setPostTitle(req.getParameter("postTitle"));
-			int cnt = postService.insertPost(pv);
-			System.out.println("post해결 완료");
-			
-			
 			FileItem item = ((FileUploadRequestWrapper)req).getFileItem("atchFile");
 			AtchFileVO atchFileVO = new AtchFileVO();
 			IAtchFileService fileService = AtchFileServiceImpl.getInstance();
 			String postNo = req.getParameter("postNo");
-			atchFileVO = fileService.saveAtchFile(item, postNo);
+			atchFileVO = fileService.saveAtchFile(item);
+			
+			PostService postService = PostServiceImpl.getInstance();
+			PostVO pv = new PostVO();
+			pv.setMemId(req.getParameter("memId"));
+			pv.setPostNo(req.getParameter("postNo"));
+			pv.setPostTitle(req.getParameter("postTitle"));
+			pv.setAtchFileId(atchFileVO.getAtchFileId());
+			int cnt = postService.insertPost(pv);
+			System.out.println("post해결 완료");
+			
+			
 			
 			
 			String msg = "";
