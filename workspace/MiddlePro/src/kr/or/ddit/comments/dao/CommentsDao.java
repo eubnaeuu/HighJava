@@ -29,7 +29,7 @@ public interface CommentsDao {
 	 * @return 해당 회원ID가 존재하면 true, 존재하지 않으면 false
 	 * @throws SQLException JDBC관련 예외객체 발생
 	 */
-	public boolean checkComments(SqlMapClient smc, String CommentsNo)
+	public boolean checkComments(SqlMapClient smc, String CommentsId)
 						throws SQLException;
 	
 	/**

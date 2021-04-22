@@ -44,11 +44,11 @@ public class DeleteCommentsHandler implements CommandHandler {
 			msg = "실패";
 		}
 		
-		String redirectUrl = req.getContextPath() + "/comments/maincomments.do?msg=" 
-				+ URLEncoder.encode(msg, "UTF-8");
-		
+//		String redirectUrl = req.getContextPath() + "/comments/maincomments.do?msg=" 
+//				+ URLEncoder.encode(msg, "UTF-8");
+//		
 		System.out.println("퇴장 comments insert Haldler 퇴장");
 
-		return redirectUrl;
+		return VIEW_PAGE;
 		}
 	}

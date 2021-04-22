@@ -7,7 +7,7 @@
 
 	<insert id="insertComments" parameterClass="kr.or.ddit.comments.vo.CommentsVO">
 
-	INSERT INTO Comments
+	INSERT INTO COMMENTS
 	(
 	COMMENTS_ID
 	,POST_NO
@@ -18,10 +18,10 @@
 	VALUES
 	(
 	#commentsId#
-	#postNo#
-	#memId#
-	#commentsContent#
-	SYSDATE
+	,#postNo#
+	,#memId#
+	,#commentsContent#
+	,SYSDATE
 	)                   
 	</insert>
 	
@@ -29,13 +29,13 @@
 		UPDATE COMMENTS
          SET 
          COMMENTS_CONTENT = #commentsContent#
-	 	WHERE Comments_NO = #CommentsNo#
+	 	WHERE Comments_Id = #commentsId#
 	</update>
 	
 	<delete id="deleteComments" parameterClass="String">
 		DELETE 
 		FROM Comments
-		WHERE Comments_NO = #CommentsNo#
+		WHERE Comments_Id = #commentsId#
 	</delete>
 	
 	<select id="getCommentsAll" resultClass="kr.or.ddit.comments.vo.CommentsVO">
@@ -58,8 +58,11 @@
 		,COMMENTS_DATE    	commentsDate
 	FROM COMMENTS
 	WHERE 1 = 1
-	<isNotEmpty property="CommentsId">
-           AND Comments_ID = #CommentsId#
+	<isNotEmpty property="commentsId">
+           AND Comments_ID = #commentsId#
+	 </isNotEmpty>
+	<isNotEmpty property="postNo">
+           AND POST_NO = #postNo#
 	 </isNotEmpty>
 
 	</select>

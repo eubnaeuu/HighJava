@@ -24,7 +24,6 @@ public class ListCommentsHandler implements CommandHandler {
 		
 //		System.out.println("입장 comments Main Haldler 입장");
 
-		
 		CommentsService commentsService = CommentsServiceImpl.getInstance();
 	
 			System.out.println("조회중 조회중 조회중 조회중 조회중 조회중 조회중 조회중 조회중 조회중 ");

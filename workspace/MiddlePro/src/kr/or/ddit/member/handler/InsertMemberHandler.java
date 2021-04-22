@@ -43,7 +43,7 @@ public class InsertMemberHandler implements CommandHandler {
 			
 			IAtchFileService fileService = AtchFileServiceImpl.getInstance();
 			String tmp="";
-			atchFileVO = fileService.saveAtchFile(item, tmp);
+			atchFileVO = fileService.saveAtchFile(item);
 			
 			// 1. 요청파라티터 정보 가져오기
 			String memId = req.getParameter("memId");

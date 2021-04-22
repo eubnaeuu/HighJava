@@ -28,7 +28,7 @@ public class CommentsDaoImpl implements CommentsDao {
 public int insertComments(SqlMapClient smc, CommentsVO cv) throws SQLException {
  	int cnt = 0;
 	   
-    Object obj = smc.insert("Comments.insertComments", cv);
+    Object obj = smc.insert("comments.insertComments", cv);
     
     if(obj == null) {
     	cnt = 1;
@@ -40,7 +40,7 @@ public int insertComments(SqlMapClient smc, CommentsVO cv) throws SQLException {
 public boolean checkComments(SqlMapClient smc, String CommentsNo) throws SQLException {
 	 boolean chk = false;
      
-     int cnt = (int) smc.queryForObject("Comments.getComments", CommentsNo);
+     int cnt = (int) smc.queryForObject("comments.getComments", CommentsNo);
      
      if(cnt > 0) {
    	  chk = true;
@@ -50,35 +50,35 @@ public boolean checkComments(SqlMapClient smc, String CommentsNo) throws SQLExce
 
 @Override
 public List<CommentsVO> getAllCommentsList(SqlMapClient smc) throws SQLException {
-	 List<CommentsVO> CommentsList = smc.queryForList("Comments.getCommentsAll");
+	 List<CommentsVO> CommentsList = smc.queryForList("comments.getCommentsAll");
      return CommentsList;
 }
 
 @Override
 public int updateComments(SqlMapClient smc, CommentsVO cv) throws SQLException {
     int cnt = 0;
-    cnt = smc.update("Comments.updateComments", cv);
+    cnt = smc.update("comments.updateComments", cv);
     return cnt;
 }
 
 @Override
 public int deleteComments(SqlMapClient smc, String CommentsNo) throws SQLException {
-	 int cnt = smc.delete("Comments.deleteComments", CommentsNo);
+	 int cnt = smc.delete("comments.deleteComments", CommentsNo);
      
      return cnt;
 }
 
 @Override
 public List<CommentsVO> getSearchComments(SqlMapClient smc, CommentsVO cv) throws SQLException {
-	// TODO Auto-generated method stub
-	return null;
+	List<CommentsVO> CommentsList = smc.queryForList("comments.getSearchComments", cv);
+    return CommentsList;
 }
 
 @Override
 public CommentsVO getComments(SqlMapClient smc, String CommentsId) throws SQLException {
 	  CommentsVO cv = 
 				(CommentsVO)smc
-				.queryForObject("Comments.getCommentsInfo", CommentsId);
+				.queryForObject("comments.getCommentsInfo", CommentsId);
 		
 				return cv;
 }

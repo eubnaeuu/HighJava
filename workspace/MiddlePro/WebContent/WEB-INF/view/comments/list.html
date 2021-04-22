@@ -27,10 +27,10 @@
 		<h1>comments</h1>
 		<div id="div1">
 		
-		댓글ID 입력값 : <input type="text" id="inputstr"><br>
-		댓글CONTENT 입력값 : <input type="text" id="inputstr2"><br>
-		
-		<input type="file" name="atchFile" multiple="multiple">
+		PostNo 입력값 : <input type="text" id="inputPostNo"><br>
+		멤버ID 입력값 : <input type="text" id="inputId"><br>
+		댓글ID 입력값 : <input type="text" id="inputCommentsId"><br>
+		댓글 CONTENT 입력값 : <input type="text" id="inputCommentsContent"><br>
 		
 		<br><br><br><br>
 		<button type="button" onclick="create()">등록</button>
@@ -42,8 +42,12 @@
 		<br><br><br><br>
 		
 		<div>
-			<form action="insertcomments.do" method="comments" enctype="multipart/form-data">
+			<form action="insertcomments.do" method="post" enctype="multipart/form-data">
 			<table>
+				<tr>
+					<td>postNo:</td>
+					<td><input type="text" name="postNo" value=""></td>
+				</tr>
 				<tr>
 					<td>commentsId:</td>
 					<td><input type="text" name="commentsId" value=""></td>
@@ -64,20 +68,19 @@
 </body>
 <script type="text/javascript">
 
-var inputparam="";
-var inputparam2="";
-var updateparam="";
+var inputCommentsId="";
+var inputCommentsContent="";
 
 function update(){
-	inputparam = $("#inputstr").val();
-	updateparam = $("#updatestr").val();
+	inputCommentsId = $("#inputCommentsId").val();
+	inputCommentsContent = $("#inputCommentsContent").val();
+	
 	var param = {
-			'flag' : 'u'
-			,'commentsNo' : inputparam         
-			,'commentsTitle' : updateparam    
+			'commentsId' : inputCommentsId         
+			,'commentsContent' : inputCommentsContent    
 			};
 	$.ajax({
-		url : "/MiddlePro/comments/maincomments.do"
+		url : "/MiddlePro/comments/update.do"
 		,type : "post"
 		,data : param
 // 		,dataType : "json"
@@ -94,13 +97,15 @@ function update(){
 }
 
 function remove(){
-	inputparam = $("#inputstr").val();
+	if(!chkmsg()){
+		return;
+	}
+	inputCommentsId = $("#inputCommentsId").val();
 	var param = {
-			'flag' : 'd'
-			,'commentsNo' : inputparam
+			'commentsId' : inputCommentsId
 			};
 	$.ajax({
-		url : "/MiddlePro/comments/maincomments.do"
+		url : "/MiddlePro/comments/delete.do"
 		,type : "post"
 		,data : param
 // 		,dataType : "json"
@@ -115,16 +120,18 @@ function remove(){
 	});
 }
 
- 
 function create(){
-	inputparam = $("#inputstr").val();
+	inputId = $("#inputId").val();
+	inputCommentsId = $("#inputCommentsId").val();
+	inputCommentsContent = $("#inputCommentsContent").val();
+	
 	var param = {
-			'flag' : 'c'
-			,'commentsNo' : inputparam         
-			,'commentsTitle' : inputparam2         
+			'memId' : inputId         
+			,'commentsId' : inputCommentsId         
+			,'commentsContent' : inputCommentsContent         
 			};
 	$.ajax({
-		url : "/MiddlePro/comments/maincomments.do"
+		url : "/MiddlePro/comments/insertcomments.do"
 		,type : "post"
 		,data : param
 // 		,dataType : "json"
@@ -140,15 +147,16 @@ function create(){
 	});
 }
 function search(){
-	inputparam = $("#inputstr").val();
+	inputCommentsId = $("#inputCommentsId").val();
+	inputPostNo = $("#inputPostNo").val();
+	
 	var param = {
-			"flag" : "s"
-			,"commentsNo" : inputparam
-			,"commentsTitle" : inputparam2
+			"commentsId" : inputCommentsId
+			,"postNo" : inputPostNo
 			};
 	
 	$.ajax({
-		url : "/MiddlePro/comments/maincomments.do"
+		url : "/MiddlePro/comments/search.do"
 		,type : "post"
 		,data : param
 // 		,dataType : "json"
@@ -162,15 +170,13 @@ function search(){
 		}
 	});
 }
+
 function select(){
-	var param = {
-			'flag' : 'se'
-	}
 	$.ajax({
-		url : "/MiddlePro/comments/maincomments.do"
+		url : "/MiddlePro/comments/list.do"
 		,type : "post"
 // 		,dataType : "json"
-		,data : param
+// 		,data : param
 		,success : function(data){
 			console.log(data)
 			alert("성공");
@@ -181,6 +187,10 @@ function select(){
 		}
 	});
 }
+function chkmsg(){
+		confirm("정말 삭제하시겠습니까?");
+	}
+
 
 </script>
 </html>

@@ -1,6 +1,6 @@
 package kr.or.ddit.comments.handler;
 
-import java.net.URLEncoder;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,7 +10,7 @@ import kr.or.ddit.comments.service.CommentsService;
 import kr.or.ddit.comments.service.CommentsServiceImpl;
 import kr.or.ddit.comments.vo.CommentsVO;
 
-public class UpdateCommentsHandler implements CommandHandler {
+public class SearchCommentsHandler implements CommandHandler {
 		
 	private static final String VIEW_PAGE = "/WEB-INF/view/comments/list.html";
 	
@@ -24,27 +24,25 @@ public class UpdateCommentsHandler implements CommandHandler {
 		
 //		System.out.println("입장 comments Main Haldler 입장");
 
-		CommentsService commentsService = CommentsServiceImpl.getInstance();
 		
-			System.out.println("update중update중update중update중update중update중update중");
+		CommentsService commentsService = CommentsServiceImpl.getInstance();
+	
+			System.out.println("서치중 서치중 서치중 서치중 서치중 서치중 서치중 서치중 서치중 서치중 ");
 			CommentsVO cv = new CommentsVO();
 			cv.setCommentsId(req.getParameter("commentsId"));
-			cv.setCommentsContent(req.getParameter("commentsContent"));
+			cv.setPostNo(req.getParameter("postNo"));
+			List<CommentsVO> list = commentsService.getSearchComments(cv);
+			System.out.println(list.get(0).getCommentsContent());
 			
-			int cnt = commentsService.updateComments(cv);
+			//printwriter사용
 			
-			String msg = "";
-			
-			if(cnt > 0) {
-				msg = "성공";
-			}else {
-				msg = "실패";
-			}
-			
-//			String redirectUrl = req.getContextPath() + "/comments/list.do?msg=" 
-//					+ URLEncoder.encode(msg, "UTF-8");
+//			resp.setContentType("application/json");
+//			resp.setCharacterEncoding("UTF-8");
+//			PrintWriter out = resp.getWriter();
+//			out.print(strJson);
+////			out.flush();
 
-//			System.out.println("퇴장 comments insert Haldler 퇴장");
+//		System.out.println("퇴장 comments Main Haldler 퇴장");
 
 			return VIEW_PAGE;
 		}
