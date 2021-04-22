@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import kr.or.ddit.comm.handler.CommandHandler;
 import kr.or.ddit.comm.service.AtchFileServiceImpl;
 import kr.or.ddit.comm.service.IAtchFileService;
-import kr.or.ddit.comments.vo.AtchFileVO;
+import kr.or.ddit.comm.vo.AtchFileVO;
 import kr.or.ddit.member.service.IMemberService;
 import kr.or.ddit.member.service.MemberServiceImpl;
 import kr.or.ddit.member.vo.MemberVO;

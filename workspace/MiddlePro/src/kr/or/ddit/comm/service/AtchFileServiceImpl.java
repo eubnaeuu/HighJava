@@ -10,7 +10,7 @@ import org.apache.commons.fileupload.FileItem;
 
 import kr.or.ddit.comm.dao.AtchFileDaoImpl;
 import kr.or.ddit.comm.dao.IAtchFileDao;
-import kr.or.ddit.comments.vo.AtchFileVO;
+import kr.or.ddit.comm.vo.AtchFileVO;
 import util.FileUploadRequestWrapper;
 
 public class AtchFileServiceImpl implements IAtchFileService{
@@ -34,6 +34,7 @@ public class AtchFileServiceImpl implements IAtchFileService{
 		if(!uploadDir.exists()) {
 			uploadDir.mkdir();
 		}
+		
 		// 파일명만 추출하기
 		String orignFileName = new File(item.getName()).getName(); // FileItem에 파일경로정보라든지 그런게 들어있음
 		
@@ -76,6 +77,51 @@ public class AtchFileServiceImpl implements IAtchFileService{
 
 	@Override
 	public AtchFileVO saveAtchFileList(Map<String, Object> fileItemMap) throws Exception {
+		File uploadDir = new File(FileUploadRequestWrapper.UPLOAD_DIRECTORY);
+		if(!uploadDir.exists()) {
+			uploadDir.mkdir();
+		}
+		
+		// 파일명만 추출하기
+		String orignFileName = new File(item.getName()).getName(); // FileItem에 파일경로정보라든지 그런게 들어있음
+		
+		long fileSize = item.getSize(); // 파일 사이즈 가져오기
+		String storeFileName = "";
+		String filePath = "";
+		File storeFile = null;
+		
+		
+		do {
+			// 저장 파일명 생성
+			storeFileName = UUID.randomUUID().toString().replace("-","");
+			filePath = FileUploadRequestWrapper.UPLOAD_DIRECTORY + File.separator + storeFileName;
+			storeFile = new File(filePath);
+		}while(storeFile.exists()); // 파일명이 중복되지 않을때까지,..
+		
+		// 확장자명 추출
+		String fileExtension = orignFileName.lastIndexOf(".") < 0 ? "" : orignFileName.substring(orignFileName.lastIndexOf(".")+ 1);
+		
+		item.write(storeFile); // 업로드 파일 저장 (랜덤한 이름으로?)
+		
+		// 파일 저장 서비스 호출
+		AtchFileVO atchFileVO = new AtchFileVO();
+		fileDao.insertAtchFile(atchFileVO); // 파일정보 저장
+		
+		atchFileVO.setStreFileNm(storeFileName);
+		atchFileVO.setStreFileNm(storeFileName);
+		atchFileVO.setFileSize(fileSize);
+		atchFileVO.setOrignlFileNm(orignFileName);
+		atchFileVO.setFileStreCours(filePath);
+		atchFileVO.setFileExtsn(fileExtension);
+		
+		// 파일 세부정보 저장
+		fileDao.insertAtchFileDetail(atchFileVO);
+		
+		
+		item.delete(); // 임시 업로드 파일 삭제하기
+//		return atchFileVO;
+		
+		
 		return null;
 	}
 

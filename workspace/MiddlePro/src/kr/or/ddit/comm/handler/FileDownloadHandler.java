@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.or.ddit.comm.dao.AtchFileDaoImpl;
 import kr.or.ddit.comm.dao.IAtchFileDao;
-import kr.or.ddit.comments.vo.AtchFileVO;
+import kr.or.ddit.comm.vo.AtchFileVO;
 
 
 /**

@@ -11,7 +11,7 @@ import org.apache.commons.fileupload.FileItem;
 import kr.or.ddit.comm.handler.CommandHandler;
 import kr.or.ddit.comm.service.AtchFileServiceImpl;
 import kr.or.ddit.comm.service.IAtchFileService;
-import kr.or.ddit.comments.vo.AtchFileVO;
+import kr.or.ddit.comm.vo.AtchFileVO;
 import kr.or.ddit.post.service.PostService;
 import kr.or.ddit.post.service.PostServiceImpl;
 import kr.or.ddit.post.vo.PostVO;

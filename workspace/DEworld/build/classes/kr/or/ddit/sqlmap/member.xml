@@ -37,15 +37,27 @@
 	
 	<update id="updateMember" parameterClass="kr.or.ddit.member.vo.MemberVO">
 		
-		update member
-         set mem_name = #memName#
-         where mem_id = #memId#
+		UPDATE MEMBER
+         SET 
+         MEM_CYBERMONEY = 0
+          <isNotEmpty property="memName">
+          ,MEM_NAME = #memName#
+          </isNotEmpty>
+          <isNotEmpty property="memNickname">
+          ,MEM_NICKNAME = #memNickname#
+          </isNotEmpty>
+          <isNotEmpty property="atchFileId">
+          ,ATCH_FILE_ID = #atchFileId#
+          </isNotEmpty>
+	 	WHERE MEM_ID = #memId#
 	
 	</update>
 	
 	<delete id="deleteMember" parameterClass="String">
 	
-		delete from mymember where mem_id = #aaa#
+		DELETE 
+		FROM MEMBER
+		WHERE MEM_ID = #memId#
 		
 	</delete>
 	
@@ -56,20 +68,30 @@
 	
 	</resultMap>
 	
-	<select id="getMemberAll" resultMap="memMap">
+	<select id="getMemberAll" resultClass="kr.or.ddit.member.vo.MemberVO">
 		
-		select *
-		 from member
+		SELECT
+		MEM_ID				 memId
+		,MEM_PASS 			 memPass
+		,MEM_NAME 			memName
+		,MEM_NICKNAME 		memNickname
+		,MEM_GENDER 		memGender
+		,MEM_BIR 			memBir
+		,MEM_ZIP 			memZip
+		,MEM_ADD1 			memAdd1
+		,MEM_ADD2 			memAdd2
+		,MEM_HP 			memHp
+		,MEM_MAIL 			memMail
+		,MEM_CYBERMONEY 	memCyberMoney
+		 FROM MEMBER
 		
 	</select>
 	
-	<select id="getMember" parameterClass="String"
-				resultClass="int">
-	
-		select count(*) as cnt 
-		from member where mem_id = #memId#
-		
+	<select id="getMember" parameterClass="String" resultClass="kr.or.ddit.member.vo.MemberVO">
+		SELECT COUNT(*) AS CNT 
+		FROM MYMEMBER WHERE MEM_ID = #memId#
 	</select>
+	
 	<select id="getMemberNickname" parameterClass="String"
 				resultClass="int">
 	

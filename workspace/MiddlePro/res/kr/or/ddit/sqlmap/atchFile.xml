@@ -4,7 +4,7 @@
 			"http://ibatis.apache.org/dtd/sql-map-2.dtd">
 
 <sqlMap namespace="atchFile">
-	<resultMap class="kr.or.ddit.post.vo.AtchFileVO" id="atchFileDetailMap">
+	<resultMap class="kr.or.ddit.comm.vo.AtchFileVO" id="atchFileDetailMap">
 	<result property="atchFileId" column="ATCH_FILE_ID" />
 	<result property="fileSn" column="FILE_SN" />
 	<result property="fileStreCours" column="FILE_STRE_COURS" />
