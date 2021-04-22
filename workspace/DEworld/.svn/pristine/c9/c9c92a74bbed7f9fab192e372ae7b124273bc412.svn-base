@@ -85,7 +85,7 @@ function update(){
 			,'postTitle' : updateparam    
 			};
 	$.ajax({
-		url : "/MiddlePro/post/update.do"
+		url : "/DEworld/post/update.do"
 		,type : "post"
 		,data : param
 // 		,dataType : "json"
@@ -107,7 +107,7 @@ function remove(){
 			'postNo' : inputparam
 			};
 	$.ajax({
-		url : "/MiddlePro/post/delete.do"
+		url : "/DEworld/post/delete.do"
 		,type : "post"
 		,data : param
 // 		,dataType : "json"
@@ -130,7 +130,7 @@ function create(){
 			,'postTitle' : inputparam2         
 			};
 	$.ajax({
-		url : "/MiddlePro/post/insert.do"
+		url : "/DEworld/post/insert.do"
 		,type : "post"
 		,data : param
 // 		,dataType : "json"
@@ -153,7 +153,7 @@ function search(){
 			};
 	
 	$.ajax({
-		url : "/MiddlePro/post/search.do"
+		url : "/DEworld/post/search.do"
 		,type : "post"
 		,data : param
 // 		,dataType : "json"
@@ -169,9 +169,9 @@ function search(){
 }
 function select(){
 	$.ajax({
-		url : "/MiddlePro/post/list.do"
+		url : "/DEworld/post/list.do"
 		,type : "post"
-		,dataType : "json"
+// 		,dataType : "json"
 // 		,data : param
 		,success : function(data){
 			console.log(data)
