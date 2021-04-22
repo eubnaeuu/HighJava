@@ -2,7 +2,6 @@ package kr.or.ddit.post.handler;
 
 import java.net.URLEncoder;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,14 +10,18 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.fileupload.FileItem;
 
 import kr.or.ddit.comm.handler.CommandHandler;
+import kr.or.ddit.comm.service.AtchFileServiceImpl;
+import kr.or.ddit.comm.service.IAtchFileService;
+import kr.or.ddit.comm.vo.AtchFileVO;
 import kr.or.ddit.post.service.PostService;
 import kr.or.ddit.post.service.PostServiceImpl;
 import kr.or.ddit.post.vo.PostVO;
+import util.FileUploadRequestWrapper;
 
 public class PostInsertHandler implements CommandHandler {
 	
 	private static final String VIEW_PAGE = "/WEB-INF/view/post/main_post.html";
-	private Map<String, FileItem[]> fileItemMap;
+	private Map<String, Object> fileItemMap;
 
 	@Override
 	public boolean isRedirect(HttpServletRequest req) {
@@ -40,27 +43,16 @@ public class PostInsertHandler implements CommandHandler {
 //			String postNo = req.getParameter("postNo");
 //			atchFileVO = fileService.saveAtchFile(item);
 			
+			fileItemMap = ((FileUploadRequestWrapper)req).getFileItemMap();
+			int num = 0;
 				
-				fileItemMap = new HashMap<String, FileItem[]>();
-				
-				if(req.getParameter("atchFile"+cnt))
-				
-				int cnt = 1;
-					
-				
-				fileItemMap.put(key, value);
-				
-//				for(String key : fileItemMap.keySet()) {
-//					
-//					fileItemMap.put(key, value)
-//					
-//				}
-				
-				
-				
-				
-				
-			}
+				AtchFileVO atchFileVO = new AtchFileVO();
+				IAtchFileService fileService = AtchFileServiceImpl.getInstance();
+				String postNo = req.getParameter("postNo");
+				fileService.saveAtchFileList(fileItemMap);
+		
+			
+
 			
 			
 			PostService postService = PostServiceImpl.getInstance();
@@ -68,7 +60,7 @@ public class PostInsertHandler implements CommandHandler {
 			pv.setMemId(req.getParameter("memId"));
 			pv.setPostNo(req.getParameter("postNo"));
 			pv.setPostTitle(req.getParameter("postTitle"));
-			pv.setAtchFileId(atchFileVO.getAtchFileId());
+//			pv.setAtchFileId(atchFileVO.getAtchFileId());
 			int cnt = postService.insertPost(pv);
 			System.out.println("post해결 완료");
 			
@@ -92,3 +84,4 @@ public class PostInsertHandler implements CommandHandler {
 		}
 	}
 }
+

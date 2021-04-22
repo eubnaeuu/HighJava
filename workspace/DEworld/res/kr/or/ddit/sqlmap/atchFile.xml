@@ -36,6 +36,9 @@
 		WHERE (SELECT ATCH_FILE_ID FROM ATCH_FILE WHERE POST_NO = #postNo#) = ATCH_FILE_ID	
 	</select>
 	
+	
+	
+	
 	<delete id="deleteAtchFile" parameterClass="String">
 		DELETE 
 		FROM ATCH_FILE

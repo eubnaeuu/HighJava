@@ -82,10 +82,18 @@ public class AtchFileServiceImpl implements IAtchFileService{
 			uploadDir.mkdir();
 		}
 		
-		// 파일명만 추출하기
-		String orignFileName = new File(item.getName()).getName(); // FileItem에 파일경로정보라든지 그런게 들어있음
+		int num = fileItemMap.size();
 		
-		long fileSize = item.getSize(); // 파일 사이즈 가져오기
+		
+		// 파일명만 추출하기
+		for(String key : fileItemMap.keySet()) {
+			
+//		String orignFileName = new File(item.getName()).getName(); // FileItem에 파일경로정보라든지 그런게 들어있음
+		String orignFileName = new File(fileItemMap.get(key).getName()).getName();
+		
+		
+//		long fileSize = item.getSize(); // 파일 사이즈 가져오기
+		long fileSize = fileItemMap.get(key).getSize(); // 파일 사이즈 가져오기
 		String storeFileName = "";
 		String filePath = "";
 		File storeFile = null;
@@ -101,7 +109,8 @@ public class AtchFileServiceImpl implements IAtchFileService{
 		// 확장자명 추출
 		String fileExtension = orignFileName.lastIndexOf(".") < 0 ? "" : orignFileName.substring(orignFileName.lastIndexOf(".")+ 1);
 		
-		item.write(storeFile); // 업로드 파일 저장 (랜덤한 이름으로?)
+//		item.write(storeFile); // 업로드 파일 저장 (랜덤한 이름으로?)
+		fileItemMap.get(key).write(storeFile); // 업로드 파일 저장 (랜덤한 이름으로?)
 		
 		// 파일 저장 서비스 호출
 		AtchFileVO atchFileVO = new AtchFileVO();
@@ -118,10 +127,11 @@ public class AtchFileServiceImpl implements IAtchFileService{
 		fileDao.insertAtchFileDetail(atchFileVO);
 		
 		
-		item.delete(); // 임시 업로드 파일 삭제하기
+		item[i].delete(); // 임시 업로드 파일 삭제하기
+		
 //		return atchFileVO;
 		
-		
+		}
 		return null;
 	}
 
