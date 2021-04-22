@@ -42,8 +42,8 @@ public class AtchFileDaoImpl implements IAtchFileDao {
 	}
 	
 	@Override
-	public AtchFileVO searchAtchFileDetail(String postNo) throws SQLException {
-		AtchFileVO atchFileVO = (AtchFileVO) smc.queryForObject("atchFile.searchAtchFileDetail", postNo); 
+	public AtchFileVO searchAtchFileDetail(AtchFileVO fileVO) throws SQLException {
+		AtchFileVO atchFileVO = (AtchFileVO) smc.queryForObject("atchFile.searchAtchFileDetail", fileVO); 
 		return atchFileVO;
 	}
 

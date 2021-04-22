@@ -49,7 +49,7 @@ public interface IAtchFileDao {
 	 * @throws SQLException
 	 */
 	public AtchFileVO getAtchFileDetail (AtchFileVO atchFileVO) throws SQLException;
-	public AtchFileVO searchAtchFileDetail (String postNo) throws SQLException;
+	public AtchFileVO searchAtchFileDetail (AtchFileVO atchFileVO) throws SQLException;
 	/**
 	 * 첨부파일 지우기
 	 * @param postId

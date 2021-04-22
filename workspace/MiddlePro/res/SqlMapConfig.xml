@@ -66,6 +66,7 @@
 	<sqlMap resource="kr/or/ddit/sqlmap/atchFile.xml" />
 	<sqlMap resource="kr/or/ddit/sqlmap/post.xml" />
 	<sqlMap resource="kr/or/ddit/sqlmap/comments.xml" />
+	<sqlMap resource="kr/or/ddit/sqlmap/friendreq.xml" />
 </sqlMapConfig>
 
 

@@ -23,7 +23,7 @@ public class FileDownloadHandler implements CommandHandler {
 	
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		System.out.println("★ ★ ★ fileDownloader 시작.....제발...");
+		
 		long fileId =  req.getParameter("fileId") != null ? Long.parseLong(req.getParameter("fileId")) : -1;
 		int fileSn = req.getParameter("fileSn") != null ? Integer.parseInt(req.getParameter("fileSn")) : 1;
 

@@ -21,6 +21,7 @@
 	</select>
 	
 	<select id="getAtchFileDetail" resultMap="atchFileDetailMap">
+	
 		select * from atch_file_detail
 		where 1=1
 		<isNotEmpty property="atchFileId">
@@ -30,27 +31,46 @@
 		and file_sn = #fileSn#
 		</isNotEmpty>
 	</select>
-	<select id="searchAtchFileDetail" parameterClass="String" resultMap="atchFileDetailMap">
-		SELECT *
-		FROM ATCH_FILE_DETAIL
-		WHERE (SELECT ATCH_FILE_ID FROM ATCH_FILE WHERE POST_NO = #postNo#) = ATCH_FILE_ID	
+	
+	<select id="searchAtchFileDetail" parameterClass="kr.or.ddit.comm.vo.AtchFileVO" resultMap="atchFileDetailMap">
+	
+		SELECT
+			ATCH_FILE_ID
+			,FILE_SN
+			,FILE_STRE_COURS
+			,STRE_FILE_NM
+			,ORIGNL_FILE_NM
+			,FILE_EXTSN
+			,FILE_CN
+			,FILE_SIZE 
+	 	FROM ATCH_FILE_DETAIL
+		where 1=1
+		<isNotEmpty property="atchFileId">
+		and atch_file_id = #atchFileId#
+		</isNotEmpty>
+		<isNotEmpty property="fileSn">
+		and file_sn = #fileSn#
+		</isNotEmpty>
 	</select>
 	
 	
-	
-	
 	<delete id="deleteAtchFile" parameterClass="String">
-		DELETE 
+		DELETE
 		FROM ATCH_FILE
 		WHERE 1=1
-        AND POST_NO = #postNo#
+		AND ATCH_FILE_ID = (SELECT ATCH_FILE_ID FROM POST WHERE POST_NO = #postNo#)
 	</delete>
 	
 	<delete id="deleteAtchFileDetail" parameterClass="String">
 		DELETE 
 		FROM ATCH_FILE_DETAIL
 		WHERE 1=1
-        AND ATCH_FILE_ID = #atchFileId#
+   		<isNotEmpty property="atchFileId">
+		AND ATCH_FILE_ID = #atchFileId#
+		</isNotEmpty>
+   		<isNotEmpty property="fileSn">
+		AND FILE_SN = #fileSn#
+		</isNotEmpty>
 	</delete>
 	
 	<insert id="insertAtchFile">
@@ -58,9 +78,9 @@
 			select ATCH_FILE_SEQ.nextval from dual
 		</selectKey>
 		insert into atch_file
-		(atch_file_id, creat_dt, use_at, post_no)
+		(atch_file_id, creat_dt, use_at)
 		values
-		(#atchFileId#, sysdate,'Y', #postNo#)
+		(#atchFileId#, sysdate,'Y')
 	</insert>
 	
 	<insert id="insertAtchFileDetail">

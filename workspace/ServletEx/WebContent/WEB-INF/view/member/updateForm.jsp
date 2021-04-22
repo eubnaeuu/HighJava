@@ -33,7 +33,6 @@ List <AtchFileVO> atchFileList = (List<AtchFileVO>)request.getAttribute("atchFil
 			<tr>
 			<td>첨부파일:</td>
 			<td>
-			아마도?
 			<%if(atchFileList != null){
 				for(AtchFileVO atchFileVO : atchFileList){
 				%>

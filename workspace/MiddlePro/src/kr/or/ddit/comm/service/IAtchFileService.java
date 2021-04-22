@@ -48,7 +48,7 @@ public interface IAtchFileService {
 	 * @throws SQLException
 	 */
 	public AtchFileVO getAtchFileDetail(AtchFileVO fileVO) throws SQLException;
-	public AtchFileVO searchAtchFileDetail(String postNo) throws SQLException;
+	public AtchFileVO searchAtchFileDetail(AtchFileVO fileVO) throws SQLException;
 	
 	/**
 	 * 

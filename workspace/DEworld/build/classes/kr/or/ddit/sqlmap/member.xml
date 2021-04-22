@@ -129,6 +129,7 @@
 	<select id="matchinIdEmail" parameterClass="kr.or.ddit.member.vo.MemberVO" resultClass="kr.or.ddit.member.vo.MemberVO">
 	SELECT
 	    MEM_MAIL memMail
+	    ,MEM_ID memId
 	FROM  MEMBER
 	WHERE MEM_MAIL = #memMail#
 	</select>
@@ -140,6 +141,16 @@
 	FROM  MEMBER
 	WHERE MEM_ID = #memId#   
 	AND MEM_MAIL = #memMail#
+	</select>
+	
+	<select id="findPw" parameterClass="kr.or.ddit.member.vo.MemberVO" resultClass="kr.or.ddit.member.vo.MemberVO">
+	SELECT  
+		MEM_PASS memPass
+		,MEM_MAIL memMail
+		,MEM_ID memId
+	FROM   	MEMBER
+	WHERE   MEM_MAIL = #memMail#
+	AND     MEM_ID = #memId#
 	</select>
 	
 </sqlMap>			

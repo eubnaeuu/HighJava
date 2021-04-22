@@ -18,9 +18,9 @@ import kr.or.ddit.post.service.PostServiceImpl;
 import kr.or.ddit.post.vo.PostVO;
 import util.FileUploadRequestWrapper;
 
-public class PostInsertHandler implements CommandHandler {
+public class InsertPostHandler implements CommandHandler {
 	
-	private static final String VIEW_PAGE = "/WEB-INF/view/post/main_post.html";
+	private static final String VIEW_PAGE = "/WEB-INF/view/post/mainpost.html";
 	private Map<String, Object> fileItemMap;
 
 	@Override

@@ -14,11 +14,11 @@
 		,NOTICE_CONTENT
 		,NOTICE_DATE
 		)VALUES(
-		#noticeNo#
-		#adminId#
-		#noticeTitle#
-		#noticeContent#
-		#noticeDate#
+		NOTICE_NO_SEQ.NEXTVAL
+		,#adminId#
+		,#noticeTitle#
+		,#noticeContent#
+		,sysdate
 		)
 	</insert>
 	

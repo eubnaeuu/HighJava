@@ -43,16 +43,18 @@ public class AtchFileServiceImpl implements IAtchFileService{
 		String filePath = "";
 		File storeFile = null;
 		
-		
+		String fileExtension="";
 		do {
+			// 확장자명 추출
+			fileExtension = orignFileName.lastIndexOf(".") < 0 ? "" : orignFileName.substring(orignFileName.lastIndexOf(".")+ 1);
+			
 			// 저장 파일명 생성
 			storeFileName = UUID.randomUUID().toString().replace("-","");
-			filePath = FileUploadRequestWrapper.UPLOAD_DIRECTORY + File.separator + storeFileName;
+			filePath = FileUploadRequestWrapper.UPLOAD_DIRECTORY + File.separator + storeFileName+"."+fileExtension;
+			System.out.println("★★★ filePath:"+filePath);
 			storeFile = new File(filePath);
 		}while(storeFile.exists()); // 파일명이 중복되지 않을때까지,..
 		
-		// 확장자명 추출
-		String fileExtension = orignFileName.lastIndexOf(".") < 0 ? "" : orignFileName.substring(orignFileName.lastIndexOf(".")+ 1);
 		
 		item.write(storeFile); // 업로드 파일 저장 (랜덤한 이름으로?)
 		
@@ -107,16 +109,19 @@ public class AtchFileServiceImpl implements IAtchFileService{
 		String filePath = "";
 		File storeFile = null;
 		
+		String fileExtension="";
 		
 		do {
+			// 확장자명 추출
+			fileExtension = orignFileName.lastIndexOf(".") < 0 ? "" : orignFileName.substring(orignFileName.lastIndexOf(".")+ 1);
+			
 			// 저장 파일명 생성
 			storeFileName = UUID.randomUUID().toString().replace("-","");
-			filePath = FileUploadRequestWrapper.UPLOAD_DIRECTORY + File.separator + storeFileName;
+			filePath = FileUploadRequestWrapper.UPLOAD_DIRECTORY + File.separator + storeFileName+"."+fileExtension;
+			System.out.println("★★★ filePath:"+filePath);
 			storeFile = new File(filePath);
 		}while(storeFile.exists()); // 파일명이 중복되지 않을때까지,..
 		
-		// 확장자명 추출
-		String fileExtension = orignFileName.lastIndexOf(".") < 0 ? "" : orignFileName.substring(orignFileName.lastIndexOf(".")+ 1);
 		
 		item.write(storeFile); // 업로드 파일 저장 (랜덤한 이름으로?)
 		
@@ -154,8 +159,8 @@ public class AtchFileServiceImpl implements IAtchFileService{
 	}
 
 	@Override
-	public AtchFileVO searchAtchFileDetail(String postNo) throws SQLException {
-		return fileDao.searchAtchFileDetail(postNo);
+	public AtchFileVO searchAtchFileDetail(AtchFileVO fileVO) throws SQLException {
+		return fileDao.searchAtchFileDetail(fileVO);
 	}
 
 	@Override
