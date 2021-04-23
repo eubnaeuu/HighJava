@@ -28,12 +28,11 @@ public class ListPostHandler implements CommandHandler {
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse resp) throws Exception, Exception {
 		
-//		System.out.println("입장 Post Main Haldler 입장");
+		System.out.println("입장 Post List Haldler 입장");
 
 		PostService postService = PostServiceImpl.getInstance();
 		IAtchFileService fileService = AtchFileServiceImpl.getInstance();
 			
-			System.out.println("조회중 조회중 조회중 조회중 조회중 조회중 조회중 조회중 조회중 조회중 ");
 			
 			List<PostVO> list = postService.getAllPostList();
 			
@@ -47,13 +46,10 @@ public class ListPostHandler implements CommandHandler {
 			out.print(strJson);
 			
 			req.setAttribute("strJson", strJson);
+//			req.setAttribute("list", list);
 
-//		System.out.println("퇴장 Post Main Haldler 퇴장");
-			
-			String redirectUrl = req.getContextPath() + "/post/list.do"; 
+			System.out.println("퇴장 Post List Haldler 퇴장");
 
-			System.out.println("퇴장 Post insert Haldler 퇴장");
-
-			return redirectUrl;
+			return VIEW_PAGE;
 		}
 	}

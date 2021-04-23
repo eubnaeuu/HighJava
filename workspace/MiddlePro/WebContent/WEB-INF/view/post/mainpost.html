@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="./list.jsp"></script>
+<!-- <script src="./list.jsp"></script> -->
 <!-- <script type="text/javascript" src="/JqueryPro/js/member/zippopup.html"></script> -->
 <!-- ☆   ?v=1 의미 -->
 <link rel="stylesheet"
@@ -68,6 +68,8 @@
 			</table>
 			<input type="submit" value="post등록">
 			</form>
+			
+			<div id="divtmp"></div>
 		</div>
 	</div>
 </body>
@@ -175,7 +177,8 @@ function select(){
 // 		,data : param
 		,success : function(data){
 			console.log(data)
-			postlist(data);
+			makeTableHead();
+			makeTableBody(data);
 			alert("성공");
 		}
 		,error : function(xhr){
@@ -184,6 +187,47 @@ function select(){
 		}
 	});
 }
+
+
+function makeTableHead(){
+	// table , tr ,td
+
+	var thead = "<table border='2px solid'>";
+	thead += "<thead>"
+			+ "<tr>"
+			+ "<th>글번호</th>"
+			+ "<th>제  목</th>"
+			+ "<th>내 용</th>"
+			+ "<th>일 자</th>"
+			+ "<th>조회수</th>"
+			+ "</tr>"
+			+ "</thead>";
+			alert(thead);
+			$("#divtmp").html(thead);
+}
+
+function makeTableBody(data){
+	
+	var size = Object.keys(data).length;
+	alert(size);
+	var tbody = "<tbody>";
+	for (var i=0; i < size;  i++){
+	tbody +=  "<tr>"
+			+ "<td>"+1+"</td>"
+			+ "<td>"+data[i].postTitle+"</td>"
+			+ "<td>"+data[i].postContent+"</td>"
+			+ "<td>"+data[i].postDate+"</td>"
+			+ "<td>"+data[i].postView+"</td>"
+			+ "</tr>"
+	}
+			+ "</tbody>"
+			+ "</table>"
+			alert(tbody);
+	var strHtml = $("#divtmp").html();
+	$("#divtmp").html(strHtml+tbody);
+}
+
+
 
 </script>
 </html>
