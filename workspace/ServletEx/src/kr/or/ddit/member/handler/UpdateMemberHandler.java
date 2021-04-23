@@ -75,8 +75,8 @@ public class UpdateMemberHandler implements CommandHandler {
 				
 				IAtchFileService fileService = AtchFileServiceImpl.getInstance();
 				
+				atchFileVO = fileService.saveAtchFile(item); // 첨부파일 저장
 				
-				atchFileVO = fileService.saveAtchFile(item); // 첨부파일 저장 
 			}
 			
 			
