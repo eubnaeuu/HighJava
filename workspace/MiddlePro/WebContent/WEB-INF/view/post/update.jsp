@@ -50,19 +50,22 @@ String sysdate = (String)request.getAttribute("sysdate");
 			<%if(atchFileList != null){
 				int cnt = 0;
 				String str = "atchFile";
+				String oldfile = "oldf";
 				String ans = str+cnt;
+				String ans2 = oldfile + cnt;
 				for(AtchFileVO atchFileVO : atchFileList){
 				%>
 				<div>
-					<a href="<%=request.getContextPath() %>/filedownLoad.do?fileId=<%=atchFileVO.getAtchFileId()%>
+					<a id="<%= ans2%>" href="<%=request.getContextPath() %>/filedownLoad.do?fileId=<%=atchFileVO.getAtchFileId()%>
 																			&fileSn=<%=atchFileVO.getFileSn()%>">
 																					<%=atchFileVO.getOrignlFileNm() %>
 					</a>
 					<input type="file" name=<%=ans %> id="atch1">							
 				</div>
 <!-- 				<button onclick="hello()">삭제1</button> -->
-				<a href="<%=request.getContextPath() %>/atchfiledetail/delete.do?fileId=<%=atchFileVO.getAtchFileId()%>
-																			&fileSn=<%=atchFileVO.getFileSn()%>&postNo=<%=list.get(0).getPostNo()%>">삭제</a>
+				<span onclick="hidee(<%= ans2%>)">삭제</span>
+<%-- 				<a href="<%=request.getContextPath() %>/atchfiledetail/delete.do?fileId=<%=atchFileVO.getAtchFileId()%> --%>
+<%-- 																			&fileSn=<%=atchFileVO.getFileSn()%>&postNo=<%=list.get(0).getPostNo()%>">삭제</a> --%>
 				 <%
 				 cnt++;
 				 	}
@@ -83,4 +86,9 @@ String sysdate = (String)request.getAttribute("sysdate");
 		
 	</form>
 </body>
+<script type="text/javascript">
+	function hidee(ans2){
+		$("'#"+ans2+"'")
+	}
+</script>
 </html> 
