@@ -9,17 +9,21 @@
 
 	INSERT INTO FRIEND_REQ_LIST
 	(
-			MEM_ID        
-			,FRIEND_ID     
-			,REQ_DATE       
-			,REQ_YN         
+			MESSAGE_NO
+			,MEM_ID
+			,RECEIVE_MEM
+			,MESSAGE_CONTENT
+			,MESSAGE_DATE
+			,MESSAGE_STATUS        
 	)
 	VALUES
 	(
-			#memId#
-			,#friendId#
-			,SYSDATE
-			,#reqYn#
+			#messageNo#
+			,#memId#
+			,#receiveMem#
+			,#messageContent#
+			,#messageDate#
+			,#messageStatus#
 	)                   
 	</insert>
 	
