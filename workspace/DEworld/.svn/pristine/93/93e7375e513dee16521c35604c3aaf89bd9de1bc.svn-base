@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+			PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+			"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="item">
+	<resultMap class="kr.or.ddit.item.vo.itemVO" id="itemMap">
+		
+		<result property="itemId" column="item_id"/>
+		<result property="itemName" column="item_name"/>
+	
+	</resultMap>
+	
+	<select id="getItemAll" resultClass="kr.or.ddit.item.vo.ItemVO">
+		SELECT * FROM item
+	</select>
+
+	
+	<select id="getSearchItem" parameterClass="itemVO" resultMap="itemMap">
+	 select * from item 
+	 where 1=1
+	 <isNotEmpty property="itemName">
+           and item_name = #itemName#
+	 </isNotEmpty>
+	</select>
+	
+</sqlMap>			
+
+
+
+
