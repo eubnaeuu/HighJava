@@ -19,7 +19,7 @@ import util.FileUploadRequestWrapper;
 
 public class UpdatePostHandler implements CommandHandler {
 		
-	private static final String VIEW_PAGE = "/WEB-INF/view/post/mainpost.html";
+	private static final String VIEW_PAGE = "/WEB-INF/view/post/update.jsp";
 	
 	@Override
 	public boolean isRedirect(HttpServletRequest req) {
@@ -29,21 +29,20 @@ public class UpdatePostHandler implements CommandHandler {
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse resp) throws Exception, Exception {
 		
-		System.out.println("입장 Post Main Haldler 입장");
+		System.out.println("입장 Post update Haldler 입장");
 
 		
 		PostService postService = PostServiceImpl.getInstance();
 		IAtchFileService fileService = AtchFileServiceImpl.getInstance();
 		FileItem item = ((FileUploadRequestWrapper)req).getFileItem("atchFile");
 		
-			System.out.println("update중update중update중update중update중update중update중");
 			PostVO pv = new PostVO();
 			pv.setPostNo(req.getParameter("postNo"));
 			pv.setPostTitle(req.getParameter("postTitle"));
 			
 			postService.updatePost(pv);
 
-		System.out.println("퇴장 Post Main Haldler 퇴장");
+		System.out.println("퇴장 Post update Haldler 퇴장");
 
 			return VIEW_PAGE;
 		}

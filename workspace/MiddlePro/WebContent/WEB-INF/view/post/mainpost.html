@@ -177,9 +177,7 @@ function select(){
 // 		,data : param
 		,success : function(data){
 			console.log(data)
-			makeTableHead();
-			makeTableBody(data);
-			alert("성공");
+			makeTable(data);
 		}
 		,error : function(xhr){
 			console.error(xhr);
@@ -189,7 +187,7 @@ function select(){
 }
 
 
-function makeTableHead(){
+function makeTable(data){
 	// table , tr ,td
 
 	var thead = "<table border='2px solid'>";
@@ -202,19 +200,13 @@ function makeTableHead(){
 			+ "<th>조회수</th>"
 			+ "</tr>"
 			+ "</thead>";
-			alert(thead);
-			$("#divtmp").html(thead);
-}
-
-function makeTableBody(data){
 	
 	var size = Object.keys(data).length;
-	alert(size);
 	var tbody = "<tbody>";
 	for (var i=0; i < size;  i++){
 	tbody +=  "<tr>"
 			+ "<td>"+1+"</td>"
-			+ "<td>"+data[i].postTitle+"</td>"
+			+ "<td><a href='select.do?postNo="+data[i].postNo+"'>"+data[i].postTitle+"</a></td>"
 			+ "<td>"+data[i].postContent+"</td>"
 			+ "<td>"+data[i].postDate+"</td>"
 			+ "<td>"+data[i].postView+"</td>"
@@ -222,12 +214,9 @@ function makeTableBody(data){
 	}
 			+ "</tbody>"
 			+ "</table>"
-			alert(tbody);
-	var strHtml = $("#divtmp").html();
-	$("#divtmp").html(strHtml+tbody);
+			
+	$("#divtmp").html(thead+tbody);
 }
-
-
 
 </script>
 </html>
