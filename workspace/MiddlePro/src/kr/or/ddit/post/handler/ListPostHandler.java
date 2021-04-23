@@ -1,6 +1,7 @@
 package kr.or.ddit.post.handler;
 
 import java.io.PrintWriter;
+import java.net.URLEncoder;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -42,15 +43,17 @@ public class ListPostHandler implements CommandHandler {
 			resp.setContentType("application/json");
 			resp.setCharacterEncoding("UTF-8");
 			
-			System.out.println(strJson);
-			
 			PrintWriter out = resp.getWriter();
 			out.print(strJson);
 			
 			req.setAttribute("strJson", strJson);
 
 //		System.out.println("퇴장 Post Main Haldler 퇴장");
+			
+			String redirectUrl = req.getContextPath() + "/post/list.do"; 
 
-			return VIEW_PAGE;
+			System.out.println("퇴장 Post insert Haldler 퇴장");
+
+			return redirectUrl;
 		}
 	}
