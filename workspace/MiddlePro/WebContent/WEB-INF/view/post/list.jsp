@@ -1,10 +1,8 @@
-<%@page import="kr.or.ddit.member.vo.MemberVO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	List<MemberVO> memList = 
-			(List<MemberVO>)request.getAttribute("memList");
+	Obj strJson = strJson;
 
 	String msg = request.getParameter("msg") == null ? ""
 			: request.getParameter("msg");
@@ -19,15 +17,28 @@
 <body>
 	<table border="1">
 		<tr>
-			<td>ID</td>
-			<td>이름</td>
-			<td>전화번호</td>
-			<td>주소</td>
+			<td>글번호</td>
+			<td>제목</td>
+			<td>내용</td>
+			<td>작성자</td>
 			<td>첨부파일ID</td>
 		</tr>
 		
 	<%
-		int memSize = memList.size();
+	
+	
+	for ( var i in data) {
+		console.log(i);
+		var obj = data[i];
+
+		str += i + "번째 회원<br>" 
+				+ "이름 : "+ obj.name + "<br>"
+				+ "나이 : " + obj.age + "<br>" 
+				+ "성별 : "+ obj.gender + "<br>" 
+				+ "직업 : " + obj.job
+				+ "<br><br><br>";
+	}
+// 		int memSize = memList.size();
 		
 		if(memSize > 0){
 			for(int i = 0; i < memSize; i++){

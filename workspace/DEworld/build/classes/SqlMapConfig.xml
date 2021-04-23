@@ -71,6 +71,7 @@
 	<sqlMap resource="kr/or/ddit/sqlmap/post.xml" />
 	<sqlMap resource="kr/or/ddit/sqlmap/friendreq.xml" />
 	<sqlMap resource="kr/or/ddit/sqlmap/comments.xml"/>
+	<sqlMap resource="kr/or/ddit/sqlmap/message.xml"/>
 </sqlMapConfig>
 
 
