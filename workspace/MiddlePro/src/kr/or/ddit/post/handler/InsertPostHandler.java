@@ -20,7 +20,7 @@ import util.FileUploadRequestWrapper;
 
 public class InsertPostHandler implements CommandHandler {
 	
-	private static final String VIEW_PAGE = "/WEB-INF/view/post/mainpost.html";
+	private static final String VIEW_PAGE = "/WEB-INF/view/message/messageview.jsp";
 	private Map<String, Object> fileItemMap;
 
 	@Override
@@ -83,7 +83,7 @@ public class InsertPostHandler implements CommandHandler {
 
 			System.out.println("퇴장 Post insert Haldler 퇴장");
 
-			return redirectUrl;
+			return VIEW_PAGE;
 		}
 	}
 }
