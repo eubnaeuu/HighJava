@@ -57,7 +57,7 @@ public interface IAtchFileDao {
 	 * @throws SQLException
 	 */
 	public int deleteAtchFile (String postNo) throws SQLException;
-	public int deleteAtchFileDetail (String atchFileId) throws SQLException;
+	public int deleteAtchFileDetail (AtchFileVO atchFileVO) throws SQLException;
 }
 
 

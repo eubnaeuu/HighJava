@@ -88,10 +88,9 @@ public class AtchFileDaoImpl implements IAtchFileDao {
 	}
 
 	@Override
-	public int deleteAtchFileDetail(String atchFileId) throws SQLException {
+	public int deleteAtchFileDetail(AtchFileVO atchFileVO) throws SQLException {
 		int cnt = 0;
-		System.out.println("Dao :"+ atchFileId);
-		Object obj = smc.delete("atchFile.deleteAtchFileDetail", atchFileId);
+		Object obj = smc.delete("atchFile.deleteAtchFileDetail", atchFileVO);
 		
 		if(obj == null) {
 			cnt = 1;

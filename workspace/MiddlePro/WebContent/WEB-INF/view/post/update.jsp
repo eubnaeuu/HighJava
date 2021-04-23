@@ -42,9 +42,15 @@ String sysdate = (String)request.getAttribute("sysdate");
 			<td><input type="text" name="postView" value="<%=list.get(0).getPostView()%>" readonly="readonly"></td>
 		</tr>
 		<tr>
-			<td>첨부파일:</td>
+			<td>첨부파일</td>
+			<td>첨부파일</td>
+		</tr>
+		<tr>
 			<td>
 			<%if(atchFileList != null){
+				int cnt = 0;
+				String str = "atchFile";
+				String ans = str+cnt;
 				for(AtchFileVO atchFileVO : atchFileList){
 				%>
 				<div>
@@ -52,21 +58,29 @@ String sysdate = (String)request.getAttribute("sysdate");
 																			&fileSn=<%=atchFileVO.getFileSn()%>">
 																					<%=atchFileVO.getOrignlFileNm() %>
 					</a>
+					<input type="file" name=<%=ans %> id="atch1">							
 				</div>
+<!-- 				<button onclick="hello()">삭제1</button> -->
+				<a href="<%=request.getContextPath() %>/atchfiledetail/delete.do?fileId=<%=atchFileVO.getAtchFileId()%>
+																			&fileSn=<%=atchFileVO.getFileSn()%>&postNo=<%=list.get(0).getPostNo()%>">삭제</a>
 				 <%
+				 cnt++;
 				 	}
 				 	} else {
 				 		%>X<%
 				 	}
 				 %>
 			</td>
+			<td>
+			</td>
 		</tr>
 			<tr>
-			<td>새로운 첨부파일</td>
-			<td><input type="file" name="atchFile"></td>
+			<td></td>
+			
 		</tr>
 	</table>
 		<input type="submit" value="게시글 수정">
+		
 	</form>
 </body>
-</html>
+</html> 

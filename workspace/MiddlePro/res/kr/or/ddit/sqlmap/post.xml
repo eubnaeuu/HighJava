@@ -36,7 +36,7 @@
 	<update id="updatePost" parameterClass="kr.or.ddit.post.vo.PostVO">
 		UPDATE POST
          SET 
-         POST_VIEW = 0
+         POST_DATE = SYSDATE
           <isNotEmpty property="postTitle">
           ,POST_TITLE = #postTitle#
           </isNotEmpty>

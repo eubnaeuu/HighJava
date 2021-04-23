@@ -1,6 +1,5 @@
 package kr.or.ddit.post.handler;
 
-import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -62,35 +61,34 @@ public class UpdatePostHandler implements CommandHandler {
 		}
 			req.setAttribute("list", list);
 			req.setAttribute("sysdate", String.valueOf(sysdate));
-			
-			
-			System.out.println(sysdate);
 			System.out.println(req.getParameter("sysdate"));
-			
-			
 			System.out.println("퇴장 Post update Haldler 퇴장");
 			return VIEW_PAGE;
 		}else {
 
-		
-		PostService postService = PostServiceImpl.getInstance();
-		IAtchFileService fileService = AtchFileServiceImpl.getInstance();
-		FileItem item = ((FileUploadRequestWrapper)req).getFileItem("atchFile");
-		AtchFileVO atchFileVO = new AtchFileVO();
-		
-		atchFileVO.setAtchFileId(req.getParameter("atchFile")==null ?
-				-1 : Long.parseLong(req.getParameter("atchFile")));
-				
-				if(item != null && !item.getName().equals("")) { // 기존 파일과 겹치지만 않는다면
-					atchFileVO = fileService.saveAtchFile(item); // 첨부파일 저장 
-				}
-		
+			PostService postService = PostServiceImpl.getInstance();
+			// FileItem 추출
+			FileItem item = ((FileUploadRequestWrapper)req).getFileItem("atchFile");
+			
+			AtchFileVO atchFileVO = new AtchFileVO();
+			
+			// 기존의 첨부파일아이디 정보 가져오기
+			
+			atchFileVO.setAtchFileId(req.getParameter("atchFile")==null ?
+			-1 : Long.parseLong(req.getParameter("atchFile")));
+			
 			PostVO pv = new PostVO();
-			System.out.println("postNo : "+req.getParameter("postNo"));
+			if(item != null && !item.getName().equals("")) { // 기존 파일과 겹치지만 않는다면
+				System.out.println("if문 들어옴");
+				IAtchFileService fileService = AtchFileServiceImpl.getInstance();
+				atchFileVO = fileService.saveAtchFile(item); // 첨부파일 저장
+				
+				pv.setAtchFileId(atchFileVO.getAtchFileId());
+				} 
+		
 			pv.setPostNo(req.getParameter("postNo"));
 			pv.setPostTitle(req.getParameter("postTitle"));
 			pv.setPostContent(req.getParameter("postContent"));
-			pv.setAtchFileId(atchFileVO.getAtchFileId());
 			
 			postService.updatePost(pv);
 
