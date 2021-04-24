@@ -8,8 +8,8 @@
 List<PostVO> list = (List<PostVO>)request.getAttribute("list");
 PagingVO pagingVO = (PagingVO)request.getAttribute("pagingVO");
 
-String msg = request.getParameter("msg") == null ? ""
-		: request.getParameter("msg");
+// String msg = request.getParameter("msg") == null ? ""
+// 		: request.getParameter("msg");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -88,13 +88,11 @@ String msg = request.getParameter("msg") == null ? ""
 				<option value="3">작성자검색</option>
 			</select>
 		입력값<input type="text" id="inputstr"><br>
-		<a href="search.do"><button type="button" onclick="search()">서치</button></a>
+		<button type="button" onclick="search()">서치</button>
 		<a href="list.do"><button type="button" onclick="select()">조회</button></a>
 		<button type="button" onclick="toggleChk()">선택</button>
 <!-- 		<a href="list.do"><button type="button" onclick="update()">수정</button></a> -->
 		<button type="button" onclick="remove()">삭제</button>
-			<%
-			%>
 </body>
 
 <script type="text/javascript">
@@ -142,9 +140,6 @@ function chkdel(){
 	var length = $(".PostChkArr").length;
 	var flag = "f";
 	$.each(chkboxes,function(idx, item){
-		
-		console.log($(item).prop("checked"));
-		
 		if($(item).prop("checked")==true){
 			flag ="t";			
 		}
@@ -163,14 +158,20 @@ function remove(){
 		return;
 	}
 	
-	if(!chkmsg()){
+	if(chkmsg()==true){
+		alert("취소?");
 		return;
 	}
-		$.each(chkboxes,function(index, item){
-		console.log($(item).prop("checked"));
+	alert("확인");
+	
+	
+	var chkboxes = $(".PostChkArr");
+		$.each(chkboxes, function(index, item){
 		if($(item).prop("checked")==true){
 			var idx  = $(item).attr("id").indexOf("chkbox");
-			console.log($(item).attr("id").substring(0,idx));
+			var id = ($(item).attr("id").substring(0,idx));
+			console.log(id);
+			remove2(id);
 		}
 	});
 }
@@ -231,7 +232,7 @@ function search(){
 			};
 	$.ajax({
 		url : "/MiddlePro/post/search.do"
-		,type : "post"
+		,type : "POST"
 		,data : param
 //  		,dataType : "json"
 		,success : function(data){
@@ -252,7 +253,7 @@ function chkmsg(){
 function select(){
 	$.ajax({
 		url : "/MiddlePro/post/list.do"
-		,type : "post"
+		,type : "POST"
 // 		,dataType : "json"
 // 		,data : param
 		,success : function(data){

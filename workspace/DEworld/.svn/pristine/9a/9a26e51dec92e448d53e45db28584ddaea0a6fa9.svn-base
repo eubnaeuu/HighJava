@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>DEWorld</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/business-frontpage.css" rel="stylesheet">
+  
+      <!-- favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/DEworld/image/DEWorld-favicion.png" />
+      <script src="/DEworld/js/jquery-3.6.0.js"></script>
+  <script src="/DEworld/js/mainPage/mainPage.js"></script>
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+	  <img src="/DEworld/image/DEWorld-350x350.png" style="width : 32px">
+      <a class="navbar-brand" href="topic.html">&nbsp;DEWorld</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" onclick="logOut()">		  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-door-closed" viewBox="0 0 16 16">
+			  <path d="M3 2a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v13h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V2zm1 13h8V2H4v13z"/>
+			  <path d="M9 9a1 1 0 1 0 2 0 1 1 0 0 0-2 0z"/>
+		  </svg> LogOut</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="bg-primary py-3 mb-5">
+    <div class="container h-100">
+      <div class="row h-100 align-items-center">
+        <div class="col-lg-12">
+<h1 class="display-4 text-white mt-5 mb-2">"<span id="idArea"></span>" 님 어서오세요</h1>
+          <p class="lead mb-5 text-white-50">DEWorld explain</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Content -->
+  <div class="container">
+		<nav class="nav nav-pills nav-justified">
+		  <a class="nav-link" href="topic.html">TOPIC</a>
+		  <a class="nav-link" href="shop.html">SHOP</a>
+		  <a class="nav-link active" href="mypage.html">MY PAGE</a>
+		</nav>
+		<hr>
+   </div>
+	
+	
+    <div class="container">
+	<h1>MY PAGE</h1>
+	<br>
+	<div class="nav nav-pills">
+      <div class="col-md-12 mb-5">
+        <div class="card h-100">
+			<div style="border : 1px solid gray">
+			  <img class="card-img-top" src="https://ac.namu.la/88/88593eda02e32c3d11ce7e10e708f3b5cc548f87973de298d314e11fc3483886.jpg" alt="" style="width : 150px; border : 10px solid black; border-radius : 50%; margin : 10px; float : left;">
+			  <div>
+				  <br>
+				  <h1 id="memName"></h1>
+				  <h5 id="memMail"><h5>
+				  <a href="http://localhost/DEworld/html/mainPage/changeInfo.html" class="btn btn-primary col-md-10 ">내 정보 수정</a>
+			  </div>
+			</div>
+			<div class="card-body" style="">
+			  <div>
+					<a href="#" class="btn btn-primary col-md-5" style="">쪽지</a>
+					<a href="#" class="btn btn-primary col-md-5" style="float : right">충전하기</a>
+			  </div>
+			  <br>
+			  <div>
+					<a href="#" class="btn btn-primary col-md-5">내 일촌</a>
+					<a href="#" class="btn btn-primary col-md-5" style="float : right">구매내역 조회</a>
+			  </div>
+			</div>
+        </div>
+      </div>
+	</div>
+    </div>
+    <!-- /.row --
+  <!-- /.container -->
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

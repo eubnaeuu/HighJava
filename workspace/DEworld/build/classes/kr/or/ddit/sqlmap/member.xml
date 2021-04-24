@@ -153,6 +153,39 @@
 	AND     MEM_ID = #memId#
 	</select>
 	
+	<select id="setMyPage" parameterClass="kr.or.ddit.member.vo.MemberVO" resultClass="kr.or.ddit.member.vo.MemberVO">
+	SELECT
+		MEM_ID          memId
+		,MEM_PASS       memPass
+		,MEM_NAME       memName
+		,MEM_NICKNAME   memNickname
+		,MEM_GENDER     memGender
+		,MEM_BIR        memBir
+		,MEM_ZIP        memZip
+		,MEM_ADD1       memAdd1
+		,MEM_ADD2       memAdd2
+		,MEM_HP         memHp
+		,MEM_MAIL       memMail
+		,MEM_CYBERMONEY memCybermoney
+	FROM
+	    MEMBER
+	WHERE
+    MEM_ID = #memId#
+	</select>
+	
+	<update id="updateInfo" parameterClass="kr.or.ddit.member.vo.MemberVO">
+	update member
+	set 
+	    mem_name = #memName#
+	    , mem_bir = #memBir#
+	    , mem_pass = #memPass#
+	    , mem_hp = #memHp#
+	    , mem_zip = #memZip#
+	    , mem_add1 = #memAdd1#
+	    , mem_add2 = #memAdd2#
+	where mem_id = #memId#
+	</update>
+	
 </sqlMap>			
 
 

@@ -25,7 +25,11 @@ public class InsertPostHandler implements CommandHandler {
 
 	@Override
 	public boolean isRedirect(HttpServletRequest req) {
-		return false;
+		if(req.getMethod().equals("GET")) { // Get방식인 경우.
+			return false;
+		}else { // POST 방식인 경우... 
+			return true;
+		}
 	}
 
 	@Override

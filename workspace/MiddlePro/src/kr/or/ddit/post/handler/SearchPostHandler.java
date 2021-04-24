@@ -24,12 +24,18 @@ public class SearchPostHandler implements CommandHandler {
 	
 	@Override
 	public boolean isRedirect(HttpServletRequest req) {
-		return false;
+		if(req.getMethod().equals("GET")) { // Get방식인 경우.
+			return false;
+		}else { // POST 방식인 경우... 
+			return true;
+		}
 	}
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse resp) throws Exception, Exception {
-		
+		if(req.getMethod().equals("GET")) { //GET방식인 경우 isRedirect을 하지 않는다
+			return VIEW_PAGE;
+		}else { 
 //		System.out.println("입장 Post Main Haldler 입장");
 
 		System.out.println("search중search중search중search중search중search중");
@@ -63,10 +69,13 @@ public class SearchPostHandler implements CommandHandler {
 				String memId = req.getParameter("inputstr");
 				pv.setMemId(memId);
 			}
-		   List<PostVO> list = postService.getSearchPost(pv);
-		   System.out.println("퇴장 Post List Haldler 퇴장");
 		   
+		   List<PostVO> list = postService.getSearchPost(pv);
+		   
+		   req.setAttribute("list", list);
+		   System.out.println("퇴장 Post SEARCH Haldler 퇴장");
 		   
 		   return VIEW_PAGE;
 		}
 	}
+}
