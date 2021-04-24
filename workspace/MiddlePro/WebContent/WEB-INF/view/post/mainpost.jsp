@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="kr">
+<!DOCTYPE html>
+ <html lang="kr">
 <head>
 <title>메인 화면</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="./list.jsp"></script>
+<!-- <script src="./list.jsp"></script> -->
 <!-- <script type="text/javascript" src="/JqueryPro/js/member/zippopup.html"></script> -->
 <!-- ☆   ?v=1 의미 -->
 <link rel="stylesheet"
@@ -70,6 +70,8 @@
 			</table>
 			<input type="submit" value="post등록">
 			</form>
+			
+			<div id="divtmp"></div>
 		</div>
 	</div>
 </body>
@@ -161,6 +163,7 @@ function search(){
  		,dataType : "json"
 		,success : function(data){
 			console.log(data)
+			
 		}
 		,error : function(xhr){
 			console.error(xhr);
@@ -176,14 +179,45 @@ function select(){
 // 		,data : param
 		,success : function(data){
 			console.log(data)
-			postlist(data);
-			alert("성공");
+// 			makeTable(data);
 		}
 		,error : function(xhr){
 			console.error(xhr);
 			alert("실패");
 		}
 	});
+}
+
+
+function makeTable(data){
+	// table , tr ,td
+
+	var thead = "<table border='2px solid'>";
+	thead += "<thead>"
+			+ "<tr>"
+			+ "<th>글번호</th>"
+			+ "<th>제  목</th>"
+			+ "<th>내 용</th>"
+			+ "<th>일 자</th>"
+			+ "<th>조회수</th>"
+			+ "</tr>"
+			+ "</thead>";
+	
+	var size = Object.keys(data).length;
+	var tbody = "<tbody>";
+	for (var i=0; i < size;  i++){
+	tbody +=  "<tr>"
+			+ "<td>"+1+"</td>"
+			+ "<td><a href='select.do?postNo="+data[i].postNo+"'>"+data[i].postTitle+"</a></td>"
+			+ "<td>"+data[i].postContent+"</td>"
+			+ "<td>"+data[i].postDate+"</td>"
+			+ "<td>"+data[i].postView+"</td>"
+			+ "</tr>"
+	}
+			+ "</tbody>"
+			+ "</table>"
+			
+	$("#divtmp").html(thead+tbody);
 }
 
 </script>

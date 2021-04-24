@@ -17,7 +17,7 @@ import kr.or.ddit.post.vo.PostVO;
 
 public class MainPostHandler implements CommandHandler {
 		
-	private static final String VIEW_PAGE = "/WEB-INF/view/post/mainpost.html";
+	private static final String VIEW_PAGE = "/WEB-INF/view/post/mainpost.jsp";
 	
 	@Override
 	public boolean isRedirect(HttpServletRequest req) {
