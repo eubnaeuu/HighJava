@@ -39,7 +39,7 @@ PagingVO pagingVO = (PagingVO)request.getAttribute("pagingVO");
 						for (int i=0; i < size;  i++){
 							%>
 							<tr>
-							<th><input class="PostChk PostChkArr" id="<%=PostChkId %>" style="display: none;" type="checkbox" name="PostCheckbox"></th>
+							<th><input class="PostChk PostChkArr" id="<%=list.get(i).getPostNo() %>chkbox" style="display: none;" type="checkbox" name="PostCheckbox"></th>
 							<td><%= cnt%></td>
 							<td><%= list.get(i).getPostTitle()%></td>
 							<td><%= list.get(i).getPostContent()%></td>
@@ -100,12 +100,7 @@ function checkAll(){
 }
 
 function toggleChk(){
-// 	$("#PostCheckboxAll").attr("style").("display","inline");
-// 	$("#PostCheckbox").attr("display","inline");
-// 	if( a == 1 ) $('PostCheckboxAll').attr('style', "display:inline;");
-// 	else  $('PostCheckboxAll').attr('style', "display:none;");
 $(".PostChk").toggle();
-// $("#PostCheckbox").toggle();
 }
 
 function update(){
@@ -134,26 +129,27 @@ function update(){
 
 function chkdel(){
 	var cnt=0;
-	var PostChkId="";
-	for(var i=0; i<5; i++){
-		cnt++;
-		PostChkId = "PostCheckbox"+cnt;
-		if($("#"+postChkId).prop("checked")){
-			return true;
+	var postChkId="";
+	var chkboxes = $(".PostChkArr");
+	var length = $(".PostChkArr").length;
+	var flag = "f";
+	$.each(chkboxes,function(idx, item){
+		
+		console.log($(item).prop("checked"));
+		
+		if($(item).prop("checked")==true){
+			flag ="t";			
 		}
+	});
+	if(flag!="t"){
 		return false;
-	}
-
-// 	for(var i=0; i<5; i++){
-// 		if($(this).prop("checked",true)){
-			
-// 		}
-// 	}
-	
+	}else
+		return true;
 	
 }
 
 function remove(){
+	
 	if(!chkdel()){
 		alert("삭제하실 글을 선택해주세요")
 		return;
@@ -162,11 +158,21 @@ function remove(){
 	if(!chkmsg()){
 		return;
 	}
+		$.each(chkboxes,function(index, item){
+		console.log($(item).prop("checked"));
+		if($(item).prop("checked")==true){
+			var idx  = $(item).attr("id").indexOf("chkbox");
+			console.log($(item).attr("id").substring(0,idx));
+		}
+	});
+}
 	
+		
+function remove2(str){
 	
 	inputparam = $("#inputstr").val();
 	var param = {
-			'postNo' : inputparam
+			'postNo' : str
 			};
 	$.ajax({
 		url : "/MiddlePro/post/delete.do"
