@@ -35,11 +35,13 @@
 		
 		<br><br><br><br>
 		
-		<button type="button" onclick="create()">등록</button>
-		<button type="button" onclick="search()">서치</button>
-		<button type="button" onclick="select()">조회</button>
-		<button type="button" onclick="update()">수정</button>
-		<button type="button" onclick="remove()">삭제</button>
+		<a href="insert.do"><button type="button" onclick="create()">등록</button></a>
+		입력값<input type="text" id="inputstr"><br>
+		<a href="search.do"><button type="button" onclick="search()">서치</button></a>
+		<a href="list.do"><button type="button" onclick="select()">조회</button></a>
+		<a href="list.do"><button type="button" onclick="select()">선택</button></a>
+<!-- 		<a href="list.do"><button type="button" onclick="update()">수정</button></a> -->
+		<a href="delete.do"><button type="button" onclick="remove()">삭제</button></a>
 		</div>
 		
 		<br><br><br><br>
@@ -175,7 +177,7 @@ function select(){
 	$.ajax({
 		url : "/MiddlePro/post/list.do"
 		,type : "post"
-		,dataType : "json"
+// 		,dataType : "json"
 // 		,data : param
 		,success : function(data){
 			console.log(data)
@@ -189,36 +191,36 @@ function select(){
 }
 
 
-function makeTable(data){
-	// table , tr ,td
+// function makeTable(data){
+// 	// table , tr ,td
 
-	var thead = "<table border='2px solid'>";
-	thead += "<thead>"
-			+ "<tr>"
-			+ "<th>글번호</th>"
-			+ "<th>제  목</th>"
-			+ "<th>내 용</th>"
-			+ "<th>일 자</th>"
-			+ "<th>조회수</th>"
-			+ "</tr>"
-			+ "</thead>";
+// 	var thead = "<table border='2px solid'>";
+// 	thead += "<thead>"
+// 			+ "<tr>"
+// 			+ "<th>글번호</th>"
+// 			+ "<th>제  목</th>"
+// 			+ "<th>내 용</th>"
+// 			+ "<th>일 자</th>"
+// 			+ "<th>조회수</th>"
+// 			+ "</tr>"
+// 			+ "</thead>";
 	
-	var size = Object.keys(data).length;
-	var tbody = "<tbody>";
-	for (var i=0; i < size;  i++){
-	tbody +=  "<tr>"
-			+ "<td>"+1+"</td>"
-			+ "<td><a href='select.do?postNo="+data[i].postNo+"'>"+data[i].postTitle+"</a></td>"
-			+ "<td>"+data[i].postContent+"</td>"
-			+ "<td>"+data[i].postDate+"</td>"
-			+ "<td>"+data[i].postView+"</td>"
-			+ "</tr>"
-	}
-			+ "</tbody>"
-			+ "</table>"
+// 	var size = Object.keys(data).length;
+// 	var tbody = "<tbody>";
+// 	for (var i=0; i < size;  i++){
+// 	tbody +=  "<tr>"
+// 			+ "<td>"+1+"</td>"
+// 			+ "<td><a href='select.do?postNo="+data[i].postNo+"'>"+data[i].postTitle+"</a></td>"
+// 			+ "<td>"+data[i].postContent+"</td>"
+// 			+ "<td>"+data[i].postDate+"</td>"
+// 			+ "<td>"+data[i].postView+"</td>"
+// 			+ "</tr>"
+// 	}
+// 			+ "</tbody>"
+// 			+ "</table>"
 			
-	$("#divtmp").html(thead+tbody);
-}
+// 	$("#divtmp").html(thead+tbody);
+// }
 
 </script>
 </html>

@@ -33,6 +33,7 @@ public class UpdatePostHandler implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse resp) throws Exception, Exception {
+		
 		System.out.println("입장 Post update Haldler 입장");
 		if(req.getMethod().equals("GET")) {
 			String postNo = req.getParameter("postNo");

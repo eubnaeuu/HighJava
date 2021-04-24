@@ -27,12 +27,10 @@ public class ListPostHandler implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse resp) throws Exception, Exception {
-		
 		System.out.println("입장 Post List Haldler 입장");
 
 		PostService postService = PostServiceImpl.getInstance();
 		IAtchFileService fileService = AtchFileServiceImpl.getInstance();
-			
 			
 			List<PostVO> list = postService.getAllPostList();
 			
@@ -49,7 +47,7 @@ public class ListPostHandler implements CommandHandler {
 			req.setAttribute("list", list);
 
 			System.out.println("퇴장 Post List Haldler 퇴장");
-
+			
 			return VIEW_PAGE;
-		}
 	}
+}

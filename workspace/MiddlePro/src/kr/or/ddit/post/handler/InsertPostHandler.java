@@ -20,7 +20,7 @@ import util.FileUploadRequestWrapper;
 
 public class InsertPostHandler implements CommandHandler {
 	
-	private static final String VIEW_PAGE = "/WEB-INF/view/message/messageview.jsp";
+	private static final String VIEW_PAGE = "/WEB-INF/view/post/insert.jsp";
 	private Map<String, Object> fileItemMap;
 
 	@Override
