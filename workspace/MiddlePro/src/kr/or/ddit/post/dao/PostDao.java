@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 
+import kr.or.ddit.paging.PagingVO;
 import kr.or.ddit.post.vo.PostVO;
 
 /**
@@ -39,7 +40,7 @@ public interface PostDao {
 	 * @throws SQLException JDBC관련 예외객체
 	 */
 	
-	public List<PostVO> getAllPostList(SqlMapClient smc)
+	public List<PostVO> getAllPostList(SqlMapClient smc, PagingVO pv)
 	 					throws SQLException;
 	
 	/**
@@ -77,5 +78,7 @@ public interface PostDao {
 	 * @param postNo 검색할 회원 ID
 	 * @return 해당 회원 ID 에 해당하는 회원 정보
 	 */
-	public PostVO getPost(SqlMapClient smc, String postNo) throws SQLException;;
+	public PostVO getPost(SqlMapClient smc, String postNo) throws SQLException;
+	
+	public int getAllPostListCount(SqlMapClient smc) throws SQLException;
 }

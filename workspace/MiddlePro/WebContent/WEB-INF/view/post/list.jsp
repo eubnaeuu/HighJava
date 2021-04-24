@@ -1,3 +1,4 @@
+<%@page import="kr.or.ddit.paging.PagingVO"%>
 <%@page import="kr.or.ddit.post.vo.PostVO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -5,6 +6,7 @@
 <%
 // String strJson = (String)request.getAttribute("strJson");
 List<PostVO> list = (List<PostVO>)request.getAttribute("list");
+PagingVO pagingVO = (PagingVO)request.getAttribute("pagingVO");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -20,6 +22,7 @@ List<PostVO> list = (List<PostVO>)request.getAttribute("list");
 <table border='2px solid' id="postlisttable">
 			<thead>
 				<tr>
+					<th><input class="PostChk" id="PostCheckboxAll" style="display: none;" type="checkbox" name="PostCheckboxAll" onclick="checkAll();"></th>
 					<th>글번호</th>
 					<th>제  목</th>
 					<th>내 용</th>
@@ -31,10 +34,12 @@ List<PostVO> list = (List<PostVO>)request.getAttribute("list");
 					<%
 					int size = list.size();
 					if(size > 0){
-						int cnt = 0;
+						int cnt = 1;
+						String PostChkId = "PostCheckbox"+cnt;
 						for (int i=0; i < size;  i++){
 							%>
 							<tr>
+							<th><input class="PostChk PostChkArr" id="<%=PostChkId %>" style="display: none;" type="checkbox" name="PostCheckbox"></th>
 							<td><%= cnt%></td>
 							<td><%= list.get(i).getPostTitle()%></td>
 							<td><%= list.get(i).getPostContent()%></td>
@@ -43,8 +48,27 @@ List<PostVO> list = (List<PostVO>)request.getAttribute("list");
 							</tr>
 							<%
 							cnt++;
-						}
-					}else{
+							}
+							%>
+<!-- 페이징 처리 시작 -->
+	      <%if(pagingVO.getTotalCount() > 0) {%>
+	         <tr>
+	            <td colspan="4" align="center">
+	               <%if(pagingVO.getFirstPageNo() > pagingVO.getPageSize()) { %>
+	               <a href="list.do?pageNo=<%=pagingVO.getFirstPageNo() - pagingVO.getPageSize() %>">[이전]</a>
+	               <%} %>
+	               <%for(int pNo = pagingVO.getFirstPageNo(); pNo <= pagingVO.getLastPageNo(); pNo++) { %>
+	                  <a <%if(pNo == pagingVO.getCurrentPageNo()){ %> style="color:orange;"<%} %> href="list.do?pageNo=<%=pNo %>">[<%=pNo %>]</a>
+	               <%} %>
+	               <%if(pagingVO.getLastPageNo() < pagingVO.getTotalPageCount()) {%>
+	               <a href="list.do?pageNo=<%=pagingVO.getFirstPageNo() + pagingVO.getPageSize() %>">[다음]</a>
+	               <%} %>
+	            </td>
+	         </tr>
+	      <%} %>
+<!-- 페이징 처리 끝 --> 
+						
+					<%}else{
 					%>
 					<tr>
 						<td colspan="5">게시글이  존재하지 않습니다.</td>
@@ -58,14 +82,31 @@ List<PostVO> list = (List<PostVO>)request.getAttribute("list");
 		입력값<input type="text" id="inputstr"><br>
 		<a href="search.do"><button type="button" onclick="search()">서치</button></a>
 		<a href="list.do"><button type="button" onclick="select()">조회</button></a>
-		<a href="list.do"><button type="button" onclick="select()">선택</button></a>
+		<button type="button" onclick="toggleChk()">선택</button>
 <!-- 		<a href="list.do"><button type="button" onclick="update()">수정</button></a> -->
-		<a href="delete.do"><button type="button" onclick="remove()">삭제</button></a>
+		<button type="button" onclick="remove()">삭제</button>
 			<%
 			%>
 </body>
 
 <script type="text/javascript">
+
+function checkAll(){
+	if($("[name=PostCheckboxAll]").prop("checked")){
+		$("[name=PostCheckbox]").prop("checked",true);
+	}else{
+		$("[name=PostCheckbox]").prop("checked",false);
+	}
+}
+
+function toggleChk(){
+// 	$("#PostCheckboxAll").attr("style").("display","inline");
+// 	$("#PostCheckbox").attr("display","inline");
+// 	if( a == 1 ) $('PostCheckboxAll').attr('style', "display:inline;");
+// 	else  $('PostCheckboxAll').attr('style', "display:none;");
+$(".PostChk").toggle();
+// $("#PostCheckbox").toggle();
+}
 
 function update(){
 	inputparam = $("#inputstr").val();
@@ -91,7 +132,38 @@ function update(){
 	});
 }
 
+function chkdel(){
+	var cnt=0;
+	var PostChkId="";
+	for(var i=0; i<5; i++){
+		cnt++;
+		PostChkId = "PostCheckbox"+cnt;
+		if($("#"+postChkId).prop("checked")){
+			return true;
+		}
+		return false;
+	}
+
+// 	for(var i=0; i<5; i++){
+// 		if($(this).prop("checked",true)){
+			
+// 		}
+// 	}
+	
+	
+}
+
 function remove(){
+	if(!chkdel()){
+		alert("삭제하실 글을 선택해주세요")
+		return;
+	}
+	
+	if(!chkmsg()){
+		return;
+	}
+	
+	
 	inputparam = $("#inputstr").val();
 	var param = {
 			'postNo' : inputparam
@@ -157,6 +229,11 @@ function search(){
 		}
 	});
 }
+
+function chkmsg(){
+	confirm("정말 삭제하시겠습니까?");
+}
+
 function select(){
 	$.ajax({
 		url : "/MiddlePro/post/list.do"

@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 
+import kr.or.ddit.paging.PagingVO;
 import kr.or.ddit.post.dao.PostDao;
 import kr.or.ddit.post.dao.PostDaoImpl;
 import kr.or.ddit.post.vo.PostVO;
@@ -59,12 +60,12 @@ public class PostServiceImpl implements PostService {
 	}
 
 	@Override
-	public List<PostVO> getAllPostList() {
+	public List<PostVO> getAllPostList(PagingVO pv) {
 		
 		List<PostVO> list = new ArrayList<>();
 		
 		try {
-			list = postDao.getAllPostList(smc);
+			list = postDao.getAllPostList(smc, pv);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -123,6 +124,18 @@ public class PostServiceImpl implements PostService {
 			ex.printStackTrace();
 		}
 		return pv;
+	}
+
+	@Override
+	public int getAllPostListCount() {
+		int cnt=-1;
+		try {
+			cnt = postDao.getAllPostListCount(smc);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return cnt;
 	}
 
 }
