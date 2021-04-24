@@ -58,10 +58,10 @@ public class InsertMessageHandler implements CommandHandler {
 			
 //			String redirectUrl = req.getContextPath() + "/Message/list.do?msg=" 
 //					+ URLEncoder.encode(msg, "UTF-8");
-
+			String redirectUrl = req.getContextPath() + "/message/list.do";
 			System.out.println("퇴장 Message insert Haldler 퇴장");
 
-			return null;
+			return redirectUrl;
 		}
 	}
 }

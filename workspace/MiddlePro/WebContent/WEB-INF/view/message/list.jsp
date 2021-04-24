@@ -22,7 +22,7 @@ PagingVO pagingVO = (PagingVO)request.getAttribute("pagingVO");
 </script>
 </head>
 <body>
-<table border='2px solid' id="postlisttable">
+<table border='2px solid' id="messagelisttable">
 			<thead>
 				<tr>
 					<th><input class="MessageChk" id="MessageCheckboxAll" style="display: none;" type="checkbox" name="MessageCheckboxAll" onclick="checkAll();"></th>
@@ -44,7 +44,7 @@ PagingVO pagingVO = (PagingVO)request.getAttribute("pagingVO");
 							<tr>
 							<td><input class="MessageChk MessageChkArr" id="<%=list.get(i).getMessageNo() %>chkbox" style="display: none;" type="checkbox" name="MessageCheckbox"></td>
 							<td><%= cnt%></td>
-							<td><a href="select.do?postNo=<%=list.get(i).getMemId()%>"><%= list.get(i).getMessageTitle() %></a></td>
+							<td><a href="select.do?messageNo=<%=list.get(i).getMessageNo()%>"><%= list.get(i).getMessageContent() %></a></td>
 							<td><%= list.get(i).getReceiveMem()%></td>
 							<td><%= list.get(i).getMessageDate()%></td>
 							<td><%= list.get(i).getMessageStatus()%></td>
@@ -111,7 +111,7 @@ $(".MessageChk").toggle();
 
 function chkdel(){
 	var cnt=0;
-	var postChkId="";
+	var messageChkId="";
 	var chkboxes = $(".MessageChkArr");
 	var length = $(".MessageChkArr").length;
 	var flag = "f";
@@ -215,7 +215,7 @@ function search(){
 			,"flag" : flag
 			};
 	$.ajax({
-		url : "/MiddlePro/post/search.do"
+		url : "/MiddlePro/message/search.do"
 		,type : "POST"
 		,data : param
 //  		,dataType : "json"

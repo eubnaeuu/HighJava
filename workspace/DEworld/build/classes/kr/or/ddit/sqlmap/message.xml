@@ -42,10 +42,12 @@
 		FROM MESSAGE
 		WHERE MESSAGE_NO = #messageNo#
 	</delete>
+	
 	<select id="getMessageAllCount" resultClass="int">
 	 		SELECT COUNT(*)
 	 		FROM MESSAGE
 	 </select>
+	 
 	<select id="getMessageAll" resultClass="kr.or.ddit.message.vo.MessageVO">
 		SELECT
 			MESSAGE_NO        messageNo      

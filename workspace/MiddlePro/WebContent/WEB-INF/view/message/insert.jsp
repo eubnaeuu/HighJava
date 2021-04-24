@@ -12,7 +12,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>회원등록</title>
+<title>댓글등록</title>
 </head>
 <script type="text/javascript">
 // $(document).ready(function(){
@@ -25,15 +25,15 @@
 			<table>
 				<tr>
 					<td>MESSAGENO:</td>
-					<td><input type="text" name="messageNo" value="m001"></td>
+					<td><input type="text" name="messageNo" readonly="readonly"></td>
 				</tr>
 				<tr>
 					<td>FROM:</td>
-					<td><input type="text" name="memId" value="게시글제목"></td>
+					<td><input type="text" name="memId" value="a001" readonly="readonly"></td>
 				</tr>
 				<tr>
 					<td>TO:</td>
-					<td><input type="text" name="receiveMem" value="a001" readonly="readonly"></td>
+					<td><input type="text" name="receiveMem"></td>
 				</tr>
 				<tr>
 					<td>내용</td>

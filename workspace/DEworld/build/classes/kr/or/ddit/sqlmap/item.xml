@@ -8,14 +8,6 @@
 		insert into wishlist 
 		(mem_id, item_id) values(#memId#,#itemId#)
 	</insert>
-
-	<resultMap class="kr.or.ddit.item.vo.ItemVO" id="itemMap">
-		<result property="itemId" column="itemId"/>
-		<result property="itemName" column="itemName"/>
-		<result property="itemDesc" column="itemDesc"/>
-		<result property="itemPrice" column="itemPrice"/>
-		<result property="itemImg" column="itemImg"/>
-	</resultMap>
 	
 	<select id="getItemAll" resultClass="kr.or.ddit.item.vo.ItemVO">
 		SELECT 
@@ -31,7 +23,7 @@
 	</select>
 
 	
-	<select id="getSearchItem" parameterClass="kr.or.ddit.item.vo.ItemVO" resultMap="itemMap">
+	<select id="getSearchItem" parameterClass="kr.or.ddit.item.vo.ItemVO">
 	 select 
 	 	ITEM_ID 			itemId,
 		LITEM_GU            itemGu,
@@ -49,7 +41,7 @@
 	 </isNotEmpty>
 	</select>
 	
-	<select id="getItem" parameterClass="String" resultMap="itemMap">
+	<select id="getItem" parameterClass="String" resultClass="kr.or.ddit.item.vo.ItemVO">
 	 select 
 	 	ITEM_ID 			itemId,
 		LITEM_GU            itemGu,
@@ -65,6 +57,20 @@
            and item_id = #itemId#
 	 </isNotEmpty>
 	</select>
+	
+	<select id="getFriendList" parameterClass="String" resultClass="kr.or.ddit.item.vo.ItemVO" >
+		SELECT 
+			f.FRIEND_ID friendId, 
+			m.MEM_NICKNAME friendNickname
+		FROM 
+			MEMBER m
+			, FRIEND f
+		WHERE 1=1
+			and f.friend_id = m.mem_id
+		<isNotEmpty>
+           and f.mem_id = #memId#
+	 	</isNotEmpty>
+	 </select>
 	
 </sqlMap>			
 

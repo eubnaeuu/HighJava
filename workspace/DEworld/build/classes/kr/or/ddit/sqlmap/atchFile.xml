@@ -61,7 +61,7 @@
 		AND ATCH_FILE_ID = (SELECT ATCH_FILE_ID FROM POST WHERE POST_NO = #postNo#)
 	</delete>
 	
-	<delete id="deleteAtchFileDetail" parameterClass="String">
+	<delete id="deleteAtchFileDetail" parameterClass="kr.or.ddit.comm.vo.AtchFileVO">
 		DELETE 
 		FROM ATCH_FILE_DETAIL
 		WHERE 1=1

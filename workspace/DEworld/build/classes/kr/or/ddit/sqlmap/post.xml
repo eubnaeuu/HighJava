@@ -6,7 +6,9 @@
 <sqlMap namespace="post">
 
 	<insert id="insertPost" parameterClass="kr.or.ddit.post.vo.PostVO">
-
+		<selectKey keyProperty="postNo" resultClass="String">
+			SELECT LPAD(POST_SEQ.NEXTVAL,3,0) FROM DUAL
+		</selectKey>
 	INSERT INTO POST
 	(
 	POST_NO 		   
@@ -21,7 +23,7 @@
 	)
 	VALUES
 	(
-	#postNo#
+	'P'||#postNo#
 	,#hompiId#
 	,#lpostGu#
 	,#memId#
@@ -36,7 +38,7 @@
 	<update id="updatePost" parameterClass="kr.or.ddit.post.vo.PostVO">
 		UPDATE POST
          SET 
-         POST_VIEW = 0
+         POST_DATE = SYSDATE
           <isNotEmpty property="postTitle">
           ,POST_TITLE = #postTitle#
           </isNotEmpty>
@@ -54,20 +56,41 @@
 		FROM POST
 		WHERE post_NO = #postNo#
 	</delete>
-	
 	<select id="getPostAll" resultClass="kr.or.ddit.post.vo.PostVO">
-		SELECT
-		POST_NO 		   postNo
-		,HOMPI_ID         	hompiId
-		,LPOST_GU         	lpostGu
-		,MEM_ID           	memId
-		,POST_TITLE       	postTitle
-		,POST_CONTENT     	postContent
-		,POST_DATE        	postDate
-		,POST_VIEW        	postView
-		,ATCH_FILE_ID 		atchFileId
-		FROM POST
+<!-- 		SELECT -->
+<!-- 		POST_NO 		   postNo -->
+<!-- 		,HOMPI_ID         	hompiId -->
+<!-- 		,LPOST_GU         	lpostGu -->
+<!-- 		,MEM_ID           	memId -->
+<!-- 		,POST_TITLE       	postTitle -->
+<!-- 		,POST_CONTENT     	postContent -->
+<!-- 		,POST_DATE        	postDate -->
+<!-- 		,POST_VIEW        	postView -->
+<!-- 		,ATCH_FILE_ID 		atchFileId -->
+<!-- 		FROM POST -->
+		
+		SELECT 
+			AA.POST_NO 		   postNo
+			,AA.HOMPI_ID         	hompiId
+			,AA.LPOST_GU         	lpostGu
+			,AA.MEM_ID           	memId
+			,AA.POST_TITLE       	postTitle
+			,AA.POST_CONTENT     	postContent
+			,AA.POST_DATE        	postDate
+			,AA.POST_VIEW        	postView
+			,AA.ATCH_FILE_ID 		atchFileId
+ 		FROM
+ 		(SELECT A.*, ROWNUM AS RNUM
+ 		 FROM POST A
+ 		) AA
+ 		WHERE AA.RNUM BETWEEN #firstRecNo# AND #lastRecNo#
+ 		ORDER BY 1 DESC
 	</select>
+	
+	<select id="getPostAllCount" resultClass="int">
+	 		SELECT COUNT(*)
+	 		FROM POST
+	 </select>
 	
 	<select id="getSearchPost" parameterClass="kr.or.ddit.post.vo.PostVO" resultClass="kr.or.ddit.post.vo.PostVO">
 	
@@ -89,9 +112,13 @@
 	 <isNotEmpty property="postTitle">
            AND POST_TITLE LIKE '%'||#postTitle#||'%'
 	 </isNotEmpty>
+	 <isNotEmpty property="postContent">
+           AND POST_CONTENT LIKE '%'||#postContent#||'%'
+	 </isNotEmpty>
 	 <isNotEmpty property="memId">
            AND MEM_ID LIKE '%'||#memId#||'%'
 	 </isNotEmpty>
+	 ORDER BY 1 DESC
 
 <!-- 	 SELECT -->
 <!-- 		POST_NO 		   postNo -->
