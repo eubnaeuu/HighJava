@@ -71,4 +71,6 @@ public interface MessageDao {
 	 */
 	public List<MessageVO> getSearchMessage(SqlMapClient smc, MessageVO mv) 
 						throws SQLException;
+	public int getAllMessageListCount(SqlMapClient smc) throws SQLException;
+	
 }

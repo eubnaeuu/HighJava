@@ -1,11 +1,11 @@
 <%@page import="kr.or.ddit.paging.PagingVO"%>
-<%@page import="kr.or.ddit.post.vo.PostVO"%>
+<%@page import="kr.or.ddit.message.vo.MessageVO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
 // String strJson = (String)request.getAttribute("strJson");
-List<PostVO> list = (List<PostVO>)request.getAttribute("list");
+List<MessageVO> list = (List<MessageVO>)request.getAttribute("list");
 PagingVO pagingVO = (PagingVO)request.getAttribute("pagingVO");
 
 // String msg = request.getParameter("msg") == null ? ""
@@ -16,7 +16,7 @@ PagingVO pagingVO = (PagingVO)request.getAttribute("pagingVO");
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<title>게시글 목록</title>
+<title>댓글 목록</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
 </script>
@@ -25,12 +25,12 @@ PagingVO pagingVO = (PagingVO)request.getAttribute("pagingVO");
 <table border='2px solid' id="postlisttable">
 			<thead>
 				<tr>
-					<th><input class="PostChk" id="PostCheckboxAll" style="display: none;" type="checkbox" name="PostCheckboxAll" onclick="checkAll();"></th>
+					<th><input class="MessageChk" id="MessageCheckboxAll" style="display: none;" type="checkbox" name="MessageCheckboxAll" onclick="checkAll();"></th>
 					<th>글번호</th>
-					<th>제  목</th>
-					<th>내 용</th>
-					<th>일 자</th>
-					<th>조회수</th>
+					<th>FROM</th>
+					<th>TO</th>
+					<th>일자</th>
+					<th>상태</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -38,16 +38,16 @@ PagingVO pagingVO = (PagingVO)request.getAttribute("pagingVO");
 					int size = list.size();
 					if(size > 0){
 						int cnt = 1;
-						String PostChkId = "PostCheckbox"+cnt;
+						String MessageChkId = "MessageCheckbox"+cnt;
 						for (int i=0; i < size;  i++){
 							%>
 							<tr>
-							<th><input class="PostChk PostChkArr" id="<%=list.get(i).getPostNo() %>chkbox" style="display: none;" type="checkbox" name="PostCheckbox"></th>
+							<td><input class="MessageChk MessageChkArr" id="<%=list.get(i).getMessageNo() %>chkbox" style="display: none;" type="checkbox" name="MessageCheckbox"></td>
 							<td><%= cnt%></td>
-							<td><a href="select.do?postNo=<%=list.get(i).getPostNo()%>"><%= list.get(i).getPostTitle() %></a></td>
-							<td><%= list.get(i).getPostContent()%></td>
-							<td><%= list.get(i).getPostDate()%></td>
-							<td><%= list.get(i).getPostView()%></td>
+							<td><a href="select.do?postNo=<%=list.get(i).getMemId()%>"><%= list.get(i).getMessageTitle() %></a></td>
+							<td><%= list.get(i).getReceiveMem()%></td>
+							<td><%= list.get(i).getMessageDate()%></td>
+							<td><%= list.get(i).getMessageStatus()%></td>
 							</tr>
 							<%
 							cnt++;
@@ -74,7 +74,7 @@ PagingVO pagingVO = (PagingVO)request.getAttribute("pagingVO");
 					<%}else{
 					%>
 					<tr>
-						<td colspan="5">게시글이  존재하지 않습니다.</td>
+						<td colspan="5">쪽지가  존재하지 않습니다.</td>
 					</tr>
 					<%
 						}
@@ -91,53 +91,29 @@ PagingVO pagingVO = (PagingVO)request.getAttribute("pagingVO");
 		<button type="button" onclick="search()">서치</button>
 		<a href="list.do"><button type="button" onclick="select()">조회</button></a>
 		<button type="button" onclick="toggleChk()">선택</button>
-<!-- 		<a href="list.do"><button type="button" onclick="update()">수정</button></a> -->
 		<a href="list.do"><button type="button" onclick="remove()">삭제</button></a>
 </body>
 
 <script type="text/javascript">
 
 function checkAll(){
-	if($("[name=PostCheckboxAll]").prop("checked")){
-		$("[name=PostCheckbox]").prop("checked",true);
+	if($("[name=MessageCheckboxAll]").prop("checked")){
+		$("[name=MessageCheckbox]").prop("checked",true);
 	}else{
-		$("[name=PostCheckbox]").prop("checked",false);
+		$("[name=MessageCheckbox]").prop("checked",false);
 	}
 }
 
 function toggleChk(){
-$(".PostChk").toggle();
+$(".MessageChk").toggle();
 }
 
-function update(){
-	inputparam = $("#inputstr").val();
-	updateparam = $("#updatestr").val();
-	var param = {
-			'postNo' : inputparam         
-			,'postTitle' : updateparam    
-			};
-	$.ajax({
-		url : "/MiddlePro/post/update.do"
-		,type : "post"
-		,data : param
-// 		,dataType : "json"
-		,success : function(data){
-			console.log(data)
-			alert("성공");
-		}
-		,error : function(xhr){
-			console.error(xhr);
-			alert("실패");
-		}
-		
-	});
-}
 
 function chkdel(){
 	var cnt=0;
 	var postChkId="";
-	var chkboxes = $(".PostChkArr");
-	var length = $(".PostChkArr").length;
+	var chkboxes = $(".MessageChkArr");
+	var length = $(".MessageChkArr").length;
 	var flag = "f";
 	$.each(chkboxes,function(idx, item){
 		if($(item).prop("checked")==true){
@@ -153,7 +129,7 @@ function chkdel(){
 
 function reload(){
 	$.ajax({
-		url : "/MiddlePro/post/list.do"
+		url : "/MiddlePro/message/list.do"
 // 		,dataType : "json"
 		,success : function(data){
 			console.log(data)
@@ -178,7 +154,7 @@ function remove(){
 	alert("확인");
 	
 	
-	var chkboxes = $(".PostChkArr");
+	var chkboxes = $(".MessageChkArr");
 		$.each(chkboxes, function(index, item){
 		if($(item).prop("checked")==true){
 			var idx  = $(item).attr("id").indexOf("chkbox");
@@ -194,10 +170,10 @@ function remove2(str){
 	
 	inputparam = $("#inputstr").val();
 	var param = {
-			'postNo' : str
+			'messageNo' : str
 			};
 	$.ajax({
-		url : "/MiddlePro/post/delete.do"
+		url : "/MiddlePro/message/delete.do"
 		,type : "post"
 		,data : param
 // 		,dataType : "json"
@@ -213,15 +189,11 @@ function remove2(str){
 
  
 function create(){
-	inputparam = $("#inputstr").val();
-	var param = {
-			'postNo' : inputparam         
-			,'postTitle' : inputparam2         
-			};
+	memId = $("#inputstr").val();
 	$.ajax({
-		url : "/MiddlePro/post/insert.do"
+		url : "/MiddlePro/message/insert.do"
 		,type : "post"
-		,data : param
+		,data : memId
 // 		,dataType : "json"
 		,success : function(data){
 			console.log(data)
@@ -264,7 +236,7 @@ function chkmsg(){
 
 function select(){
 	$.ajax({
-		url : "/MiddlePro/post/list.do"
+		url : "/MiddlePro/message/list.do"
 		,type : "POST"
 // 		,dataType : "json"
 // 		,data : param

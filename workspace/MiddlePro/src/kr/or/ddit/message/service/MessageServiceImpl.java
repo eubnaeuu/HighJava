@@ -112,4 +112,16 @@ public class MessageServiceImpl implements MessageService {
 		return list;
 	}
 
+	@Override
+	public int getAllMessageListCount() {
+		int cnt=-1;
+		try {
+			cnt = MessageDao.getAllMessageListCount(smc);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return cnt;
+	}
+
 }

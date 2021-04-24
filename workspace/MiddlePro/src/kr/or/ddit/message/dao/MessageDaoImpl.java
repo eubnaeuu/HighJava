@@ -71,6 +71,13 @@ public List<MessageVO> getSearchMessage(SqlMapClient smc, MessageVO mv) throws S
 	List<MessageVO> MessageList = smc.queryForList("message.getSearchMessage", mv);
     return MessageList;
 	}
+
+@Override
+public int getAllMessageListCount(SqlMapClient smc) throws SQLException {
+	int cnt = 0;
+    cnt = (int) smc.queryForObject("post.getMessageAllCount");
+	return cnt;
+}
 }
 
 

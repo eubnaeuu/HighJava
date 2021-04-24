@@ -45,6 +45,7 @@ public class ListPostHandler implements CommandHandler {
 		IAtchFileService fileService = AtchFileServiceImpl.getInstance();
 			
 		  int totalCount = postService.getAllPostListCount();
+		  
 		    pagingVO.setTotalCount(totalCount);
 		    pagingVO.setCurrentPageNo(pageNo);
 		    pagingVO.setCountPerPage(5);

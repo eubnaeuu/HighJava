@@ -3,6 +3,7 @@ package kr.or.ddit.post.handler;
 import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -75,6 +76,8 @@ public class SearchPostHandler implements CommandHandler {
 		   req.setAttribute("list", list);
 		   System.out.println("퇴장 Post SEARCH Haldler 퇴장");
 		   
+		   RequestDispatcher view=req.getRequestDispatcher("index.jsp");
+		    view.forward(req,resp);
 		   return VIEW_PAGE;
 		}
 	}

@@ -51,5 +51,6 @@ public interface MessageService {
 	 */
 	
 	public List<MessageVO> getSearchMessage(MessageVO mv);
+	public int getAllMessageListCount();
 	
 }

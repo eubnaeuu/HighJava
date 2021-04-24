@@ -6,7 +6,9 @@
 <sqlMap namespace="post">
 
 	<insert id="insertPost" parameterClass="kr.or.ddit.post.vo.PostVO">
-
+		<selectKey keyProperty="postNo" resultClass="String">
+			SELECT LPAD(POST_SEQ.NEXTVAL,3,0) FROM DUAL
+		</selectKey>
 	INSERT INTO POST
 	(
 	POST_NO 		   
@@ -21,7 +23,7 @@
 	)
 	VALUES
 	(
-	#postNo#
+	'P'||#postNo#
 	,#hompiId#
 	,#lpostGu#
 	,#memId#
@@ -82,6 +84,7 @@
  		 FROM POST A
  		) AA
  		WHERE AA.RNUM BETWEEN #firstRecNo# AND #lastRecNo#
+ 		ORDER BY 1 DESC
 	</select>
 	
 	<select id="getPostAllCount" resultClass="int">
@@ -115,6 +118,7 @@
 	 <isNotEmpty property="memId">
            AND MEM_ID LIKE '%'||#memId#||'%'
 	 </isNotEmpty>
+	 ORDER BY 1 DESC
 
 <!-- 	 SELECT -->
 <!-- 		POST_NO 		   postNo -->

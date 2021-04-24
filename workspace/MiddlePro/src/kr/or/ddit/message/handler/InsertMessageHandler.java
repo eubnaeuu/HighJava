@@ -10,11 +10,15 @@ import kr.or.ddit.message.vo.MessageVO;
 
 public class InsertMessageHandler implements CommandHandler {
 	
-	private static final String VIEW_PAGE = "/WEB-INF/view/message/messageview.jsp";
+	private static final String VIEW_PAGE = "/WEB-INF/view/message/insert.jsp";
 	
 	@Override
 	public boolean isRedirect(HttpServletRequest req) {
-		return false;
+		if(req.getMethod().equals("GET")) { // Get방식인 경우.
+			return false;
+		}else { // POST 방식인 경우... 
+			return true;
+		}
 	}
 
 	@Override
