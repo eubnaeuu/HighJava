@@ -85,7 +85,7 @@ PagingVO pagingVO = (PagingVO)request.getAttribute("pagingVO");
 				<option value="3">작성자검색</option>
 			</select>
 		입력값<input type="text" id="inputstr"><br>
-		<a href="search.do"><button type="button" onclick="search()">서치</button></a>
+		<a href="list.do"><button type="button" onclick="search()">서치</button></a>
 		<a href="list.do"><button type="button" onclick="select()">조회</button></a>
 		<button type="button" onclick="toggleChk()">선택</button>
 <!-- 		<a href="list.do"><button type="button" onclick="update()">수정</button></a> -->
@@ -220,7 +220,6 @@ function create(){
 }
 function search(){
 	
-	
 	flag = $("#selectstr").val();
 	inputparam = $("#inputstr").val();
 	var param = {
@@ -231,15 +230,15 @@ function search(){
 		url : "/MiddlePro/post/list.do"
 		,type : "post"
 		,data : param
- 		,dataType : "json"
+//  		,dataType : "json"
 		,success : function(data){
 			console.log(data)
-			
 		}
 		,error : function(xhr){
 			console.error(xhr);
 			alert("실패");
 		}
+		
 	});
 }
 

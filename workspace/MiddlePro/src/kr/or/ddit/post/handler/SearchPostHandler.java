@@ -19,7 +19,7 @@ import util.FileUploadRequestWrapper;
 
 public class SearchPostHandler implements CommandHandler {
 		
-	private static final String VIEW_PAGE = "/WEB-INF/view/post/mainpost.html";
+	private static final String VIEW_PAGE = "/WEB-INF/view/post/list.jsp";
 	
 	@Override
 	public boolean isRedirect(HttpServletRequest req) {
