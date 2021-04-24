@@ -46,9 +46,38 @@ public class ListPostHandler implements CommandHandler {
 		    pagingVO.setCurrentPageNo(pageNo);
 		    pagingVO.setCountPerPage(5);
 		    pagingVO.setPageSize(5);
-		
-			List<PostVO> list = postService.getAllPostList(pagingVO);
 			
+		    String flag = req.getParameter("flag");
+			PostVO pv = new PostVO();
+			
+		    if("1".equals(flag)) {
+				String postTitle = req.getParameter("inputstr");
+				pv.setPostTitle(postTitle);
+				List<PostVO> list = postService.getSearchPost(pv);
+				System.out.println("퇴장 Post List Haldler 퇴장");
+				return VIEW_PAGE;
+			}else if("2".equals(flag)) {
+				String postContent = req.getParameter("inputstr");
+				pv.setPostContent(postContent);
+				List<PostVO> list = postService.getSearchPost(pv);
+				System.out.println("퇴장 Post List Haldler 퇴장");
+				return VIEW_PAGE;
+			}else if("3".equals(flag)) {
+				String memId = req.getParameter("inputstr");
+				pv.setMemId(memId);
+				List<PostVO> list = postService.getSearchPost(pv);
+				System.out.println("퇴장 Post List Haldler 퇴장");
+				return VIEW_PAGE;
+			} else {
+				List<PostVO> list = postService.getAllPostList(pagingVO);
+				req.setAttribute("list", list);
+				req.setAttribute("pagingVO", pagingVO);
+				System.out.println("퇴장 Post List Haldler 퇴장");
+				return VIEW_PAGE;
+				
+				
+			}
+		    
 			
 //			Gson gson = new Gson();
 //			String strJson =  gson.toJson(list);
@@ -60,12 +89,9 @@ public class ListPostHandler implements CommandHandler {
 //			out.print(strJson);
 			
 //			req.setAttribute("strJson", strJson);
-			req.setAttribute("list", list);
-			req.setAttribute("pagingVO", pagingVO);
 
-			System.out.println("퇴장 Post List Haldler 퇴장");
-			
-			return VIEW_PAGE;
+//			System.out.println("퇴장 Post List Haldler 퇴장");
+//			return VIEW_PAGE;
 			
 			
 	}

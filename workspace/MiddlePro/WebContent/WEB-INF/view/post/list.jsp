@@ -79,6 +79,11 @@ PagingVO pagingVO = (PagingVO)request.getAttribute("pagingVO");
 			</tbody>
 			</table>
 			<a href="insert.do"><button type="button" onclick="create()">등록</button></a>
+			<select id="selectstr">
+				<option value="1">제목검색</option>
+				<option value="2">내용검색</option>
+				<option value="3">작성자검색</option>
+			</select>
 		입력값<input type="text" id="inputstr"><br>
 		<a href="search.do"><button type="button" onclick="search()">서치</button></a>
 		<a href="list.do"><button type="button" onclick="select()">조회</button></a>
@@ -214,14 +219,16 @@ function create(){
 	});
 }
 function search(){
+	
+	
+	flag = $("#selectstr").val();
 	inputparam = $("#inputstr").val();
 	var param = {
-			"postNo" : inputparam
-			,"postTitle" : inputparam2
+			"inputstr" : inputparam
+			,"flag" : flag
 			};
-	
 	$.ajax({
-		url : "/MiddlePro/post/search.do"
+		url : "/MiddlePro/post/list.do"
 		,type : "post"
 		,data : param
  		,dataType : "json"

@@ -35,17 +35,25 @@ public class SearchPostHandler implements CommandHandler {
 		
 		PostService postService = PostServiceImpl.getInstance();
 		IAtchFileService fileService = AtchFileServiceImpl.getInstance();
+		String flag = req.getParameter("flag");
+		PostVO pv = new PostVO();
 		
-		String postNo = req.getParameter("postNo");
-		String postTitle = req.getParameter("postTitle");
-		String memId = req.getParameter("memId");
-		
-			PostVO pv = new PostVO();
-			pv.setPostNo(postNo);
+		if("1".equals(flag)) {
+			String postTitle = req.getParameter("inputstr");
 			pv.setPostTitle(postTitle);
+		}else if("2".equals(flag)) {
+			String postContent = req.getParameter("inputstr");
+			pv.setPostContent(postContent);
+		}else if("3".equals(flag)) {
+			String memId = req.getParameter("inputstr");
 			pv.setMemId(memId);
+		}
+
+//		String postNo = req.getParameter("postNo");
+//			pv.setPostNo(postNo);
 			
 			List<PostVO> list = postService.getSearchPost(pv);
+			
 			System.out.println("파일첨부명 : "+list.get(0).getAtchFileId());
 
 //		System.out.println("퇴장 Post Main Haldler 퇴장");

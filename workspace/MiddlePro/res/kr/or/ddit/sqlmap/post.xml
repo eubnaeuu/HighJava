@@ -109,6 +109,9 @@
 	 <isNotEmpty property="postTitle">
            AND POST_TITLE LIKE '%'||#postTitle#||'%'
 	 </isNotEmpty>
+	 <isNotEmpty property="postContent">
+           AND POST_CONTENT LIKE '%'||#postContent#||'%'
+	 </isNotEmpty>
 	 <isNotEmpty property="memId">
            AND MEM_ID LIKE '%'||#memId#||'%'
 	 </isNotEmpty>
