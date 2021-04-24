@@ -7,6 +7,9 @@
 // String strJson = (String)request.getAttribute("strJson");
 List<PostVO> list = (List<PostVO>)request.getAttribute("list");
 PagingVO pagingVO = (PagingVO)request.getAttribute("pagingVO");
+
+String msg = request.getParameter("msg") == null ? ""
+		: request.getParameter("msg");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -41,7 +44,7 @@ PagingVO pagingVO = (PagingVO)request.getAttribute("pagingVO");
 							<tr>
 							<th><input class="PostChk PostChkArr" id="<%=list.get(i).getPostNo() %>chkbox" style="display: none;" type="checkbox" name="PostCheckbox"></th>
 							<td><%= cnt%></td>
-							<td><%= list.get(i).getPostTitle()%></td>
+							<td><a href="select.do?postNo=<%=list.get(i).getPostNo()%>"><%= list.get(i).getPostTitle() %></a></td>
 							<td><%= list.get(i).getPostContent()%></td>
 							<td><%= list.get(i).getPostDate()%></td>
 							<td><%= list.get(i).getPostView()%></td>
@@ -78,14 +81,14 @@ PagingVO pagingVO = (PagingVO)request.getAttribute("pagingVO");
 					%>
 			</tbody>
 			</table>
-			<a href="insert.do"><button type="button" onclick="create()">등록</button></a>
+			<a href="insert.do"><button type="button">등록</button></a>
 			<select id="selectstr">
 				<option value="1">제목검색</option>
 				<option value="2">내용검색</option>
 				<option value="3">작성자검색</option>
 			</select>
 		입력값<input type="text" id="inputstr"><br>
-		<a href="list.do"><button type="button" onclick="search()">서치</button></a>
+		<a href="search.do"><button type="button" onclick="search()">서치</button></a>
 		<a href="list.do"><button type="button" onclick="select()">조회</button></a>
 		<button type="button" onclick="toggleChk()">선택</button>
 <!-- 		<a href="list.do"><button type="button" onclick="update()">수정</button></a> -->
@@ -227,7 +230,7 @@ function search(){
 			,"flag" : flag
 			};
 	$.ajax({
-		url : "/MiddlePro/post/list.do"
+		url : "/MiddlePro/post/search.do"
 		,type : "post"
 		,data : param
 //  		,dataType : "json"

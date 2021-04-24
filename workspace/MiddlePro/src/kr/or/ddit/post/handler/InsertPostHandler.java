@@ -68,8 +68,6 @@ public class InsertPostHandler implements CommandHandler {
 			}
 			int cnt = postService.insertPost(pv);
 			
-			System.out.println("post해결 완료");
-			
 			String msg = "";
 			
 			if(cnt > 0) {
@@ -78,12 +76,12 @@ public class InsertPostHandler implements CommandHandler {
 				msg = "실패";
 			}
 			
-			String redirectUrl = req.getContextPath() + "/post/mainpost.do?msg=" 
-					+ URLEncoder.encode(msg, "UTF-8");
+			String redirectUrl = req.getContextPath() + "/post/list.do";
 
-			System.out.println("퇴장 Post insert Haldler 퇴장");
-
-			return VIEW_PAGE;
+			System.out.println("POSTPOSTPOSTPOST 퇴장 Post insert Haldler 퇴장");
+			System.out.println(redirectUrl);
+			
+			return redirectUrl;
 		}
 	}
 }

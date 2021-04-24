@@ -8,6 +8,7 @@
     	List <PostVO> list = (List<PostVO>) request.getAttribute("list");
     	String memId = (String)session.getAttribute("nowLogin");
 //     	String memId = session.getId();
+
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -16,7 +17,9 @@
 <title>회원등록</title>
 </head>
 <script type="text/javascript">
-
+// $(document).ready(function(){
+// 	var nowLogin = sessionStorage.getItem("nowLogin");
+// });
 </script>
 <body>
 	<div>
@@ -32,7 +35,7 @@
 				</tr>
 				<tr>
 					<td>MEMID:</td>
-					<td><input type="text" name="memId" value="<%=memId%>"></td>
+					<td><input type="text" name="memId" value="a001" readonly="readonly"></td>
 				</tr>
 				<tr>
 					<td>첨부파일1</td>

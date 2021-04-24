@@ -23,9 +23,12 @@ public class ListPostHandler implements CommandHandler {
 	
 	@Override
 	public boolean isRedirect(HttpServletRequest req) {
-		return false;
+		if(req.getMethod().equals("GET")) { // Get방식인 경우.
+			return false;
+		}else { // POST 방식인 경우... 
+			return true;
+		}
 	}
-
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse resp) throws Exception, Exception {
 		
@@ -50,34 +53,13 @@ public class ListPostHandler implements CommandHandler {
 		    String flag = req.getParameter("flag");
 			PostVO pv = new PostVO();
 			
-		    if("1".equals(flag)) {
-				String postTitle = req.getParameter("inputstr");
-				pv.setPostTitle(postTitle);
-				List<PostVO> list = postService.getSearchPost(pv);
-				System.out.println("퇴장 Post List Haldler 퇴장");
-				return VIEW_PAGE;
-			}else if("2".equals(flag)) {
-				String postContent = req.getParameter("inputstr");
-				pv.setPostContent(postContent);
-				List<PostVO> list = postService.getSearchPost(pv);
-				System.out.println("퇴장 Post List Haldler 퇴장");
-				return VIEW_PAGE;
-			}else if("3".equals(flag)) {
-				String memId = req.getParameter("inputstr");
-				pv.setMemId(memId);
-				List<PostVO> list = postService.getSearchPost(pv);
-				System.out.println("퇴장 Post List Haldler 퇴장");
-				return VIEW_PAGE;
-			} else {
+		
 				List<PostVO> list = postService.getAllPostList(pagingVO);
 				req.setAttribute("list", list);
 				req.setAttribute("pagingVO", pagingVO);
 				System.out.println("퇴장 Post List Haldler 퇴장");
 				return VIEW_PAGE;
-				
-				
-			}
-		    
+		
 			
 //			Gson gson = new Gson();
 //			String strJson =  gson.toJson(list);

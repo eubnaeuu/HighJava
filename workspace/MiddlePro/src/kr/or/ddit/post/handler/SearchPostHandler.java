@@ -12,6 +12,7 @@ import kr.or.ddit.comm.handler.CommandHandler;
 import kr.or.ddit.comm.service.AtchFileServiceImpl;
 import kr.or.ddit.comm.service.IAtchFileService;
 import kr.or.ddit.comm.vo.AtchFileVO;
+import kr.or.ddit.paging.PagingVO;
 import kr.or.ddit.post.service.PostService;
 import kr.or.ddit.post.service.PostServiceImpl;
 import kr.or.ddit.post.vo.PostVO;
@@ -33,31 +34,39 @@ public class SearchPostHandler implements CommandHandler {
 
 		System.out.println("search중search중search중search중search중search중");
 		
+		 int pageNo = 
+			       req.getParameter("pageNo") == null ? 
+			       1 : Integer.parseInt(req.getParameter("pageNo"));
+			    
+			    PagingVO pagingVO = new PagingVO();
+		
 		PostService postService = PostServiceImpl.getInstance();
 		IAtchFileService fileService = AtchFileServiceImpl.getInstance();
+		
+		  int totalCount = postService.getAllPostListCount();
+		    pagingVO.setTotalCount(totalCount);
+		    pagingVO.setCurrentPageNo(pageNo);
+		    pagingVO.setCountPerPage(5);
+		    pagingVO.setPageSize(5);
+			
+		
 		String flag = req.getParameter("flag");
 		PostVO pv = new PostVO();
 		
-		if("1".equals(flag)) {
-			String postTitle = req.getParameter("inputstr");
-			pv.setPostTitle(postTitle);
-		}else if("2".equals(flag)) {
-			String postContent = req.getParameter("inputstr");
-			pv.setPostContent(postContent);
-		}else if("3".equals(flag)) {
-			String memId = req.getParameter("inputstr");
-			pv.setMemId(memId);
-		}
-
-//		String postNo = req.getParameter("postNo");
-//			pv.setPostNo(postNo);
-			
-			List<PostVO> list = postService.getSearchPost(pv);
-			
-			System.out.println("파일첨부명 : "+list.get(0).getAtchFileId());
-
-//		System.out.println("퇴장 Post Main Haldler 퇴장");
-
-			return VIEW_PAGE;
+		   if("1".equals(flag)) {
+				String postTitle = req.getParameter("inputstr");
+				pv.setPostTitle(postTitle);
+			}else if("2".equals(flag)) {
+				String postContent = req.getParameter("inputstr");
+				pv.setPostContent(postContent);
+			}else if("3".equals(flag)) {
+				String memId = req.getParameter("inputstr");
+				pv.setMemId(memId);
+			}
+		   List<PostVO> list = postService.getSearchPost(pv);
+		   System.out.println("퇴장 Post List Haldler 퇴장");
+		   
+		   
+		   return VIEW_PAGE;
 		}
 	}
