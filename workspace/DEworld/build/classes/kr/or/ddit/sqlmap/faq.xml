@@ -18,7 +18,7 @@
 	</select>
 
 	
-	<select id="getSearchFaq" parameterClass="kr.or.ddit.faq.vo.FaqVO" resultMap="faqMap">
+	<select id="getSearchFaq" parameterClass="kr.or.ddit.faq.vo.FaqVO"  resultClass="kr.or.ddit.faq.vo.FaqVO">
 		SELECT
     	FAQ_ID faqId, LFAQ_NM lfaqNm, FAQ_TITLE faqTitle, FAQ_CONTENT faqContent
 		FROM LFAQ L , FAQ F
@@ -29,7 +29,7 @@
 	 </isNotEmpty>
 	</select>
 	
-	<select id="getFaq" parameterClass="String" resultMap="faqMap">
+	<select id="getFaq" parameterClass="String" resultClass="kr.or.ddit.faq.vo.FaqVO">
 	 	SELECT
     	FAQ_ID faqId, LFAQ_NM lfaqNm, FAQ_TITLE faqTitle, FAQ_CONTENT faqContent
 		FROM LFAQ L , FAQ F

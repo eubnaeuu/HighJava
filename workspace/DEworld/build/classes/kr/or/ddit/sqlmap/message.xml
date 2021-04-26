@@ -70,8 +70,11 @@
 			,MESSAGE_STATUS   messageStatus 
 	FROM MESSAGE
 	WHERE 1 = 1
-	<isNotEmpty property="messageNo">
-           AND MESSAGE_NO = #messageNo#
+<!-- 	<isNotEmpty property="messageNo"> -->
+<!--            AND MESSAGE_NO = #messageNo# -->
+<!-- 	 </isNotEmpty> -->
+	<isNotEmpty property="receiveMem">
+           AND RECEIVE_MEM = #receiveMem#
 	 </isNotEmpty>
 	<isNotEmpty property="messageStatus">
            AND MESSAGE_STATUS = #messageStatus#

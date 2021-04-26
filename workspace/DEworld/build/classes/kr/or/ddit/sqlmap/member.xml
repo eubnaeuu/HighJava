@@ -186,6 +186,18 @@
 	where mem_id = #memId#
 	</update>
 	
+	<select id="adminConfirm" parameterClass="loginPage.vo.AdminVO" resultClass="loginPage.vo.AdminVO">
+	SELECT
+	    ADMIN_ID adminId
+	    ,ADMIN_CLASS adminClass
+	    ,ADMIN_PASS adminPass
+	    ,ADMIN_NICKNAME adminNickname
+	FROM
+	    ADMIN
+	WHERE
+	    ADMIN_ID = #adminId#
+	</select>
+	
 </sqlMap>			
 
 

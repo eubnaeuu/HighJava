@@ -5,6 +5,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
+
+String userId = (String)request.getSession().getAttribute("nowLogin"); // 세션의 로그인아이디값 가져오기
+userId ="cdwcdw34";
+
+
 	List<AtchFileVO> atchFileList = (List<AtchFileVO>) request.getAttribute("atchFileList");
 	List<PostVO> postlist = (List<PostVO>) request.getAttribute("postlist");
 	List<CommentsVO> commentslist = (List<CommentsVO>) request.getAttribute("commentslist");
@@ -17,6 +22,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>게시글상세</title>
+<script type="text/javascript">
+	$(document).ready(function() {
+		var userId = sessionStorage.getItem("nowLogin");
+		userId = "cdwcdw34"
+	});
+</script>
 </head>
 <body>
 	<table>
@@ -81,41 +92,54 @@
 			<td><%=cv.getCommentsContent()%>(<%=cv.getCommentsDate()%>)</td>
 		</tr>
 		<tr>
-			<td></td>
+			<td><button>수정미완</button></td>
 		</tr>
-		<%
+		<tr>
+			<td><button>삭제미완</button></td>
+		</tr>
+	</table>
+	<%
 			}
 			} else {
 		%>
-		<table>
-			<tr>
-				<td>댓글이 존재하지 않습니다</td>
-			</tr>
-
-		</table>
-		<%
+	<table>
+		<tr>
+			<td>댓글이 존재하지 않습니다</td>
+		</tr>
+	</table>
+	<%
 			}
 		%>
-		<form action="<%=request.getContextPath()%>/comments/insert.do" method="post">
-			<table>
-				<tr>
-					<td><input type="text" readonly="readonly"
-						value="<%=postlist.get(0).getMemId()%>" name="memId"></td>
-				</tr>
-				<tr>
-					<td><input type="text" name="commentsContent"></td>
-				</tr>
-				<tr>
-					<td><a href="<%=request.getContextPath()%>/post/select.do?postNo=<%=postlist.get(0).getPostNo() %>"><input type="hidden" name="postNo" value="<%=postlist.get(0).getPostNo()%>"><button type="submit">등록</button></a></td>
-				</tr>
-				
-			</table>
-		</form>
+	<form action="<%=request.getContextPath()%>/comments/insert.do"
+		method="post">
+		<table>
+			<tr>
+				<td><input type="text" readonly="readonly" value=userId
+					name="memId"></td>
+			</tr>
+			<tr>
+				<td><input type="text" name="commentsContent"></td>
+			</tr>
+			<tr>
+				<td><a
+					href="<%=request.getContextPath()%>/post/select.do?postNo=<%=postlist.get(0).getPostNo() %>"><input
+						type="hidden" name="postNo"
+						value="<%=postlist.get(0).getPostNo()%>">
+					<button type="submit">등록</button></a></td>
+			</tr>
+		</table>
+	</form>
+	<%
+			if(userId.equals(postlist.get(0).getPostNo())){%>
+	<table>
 		<tr>
 			<td colspan="3"><a href="list.do">[목록]</a> <a
 				href="update.do?postNo=<%=postlist.get(0).getPostNo()%>">[수정]</a> <a
 				href="delete.do?postNo=<%=postlist.get(0).getPostNo()%>">[삭제]</a></td>
 		</tr>
 	</table>
+	<%
+		}else {}
+	%>
 </body>
 </html>
