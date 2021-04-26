@@ -6,8 +6,6 @@ import javax.servlet.http.HttpServletResponse;
 import kr.or.ddit.comm.service.AtchFileServiceImpl;
 import kr.or.ddit.comm.service.IAtchFileService;
 import kr.or.ddit.comm.vo.AtchFileVO;
-import kr.or.ddit.post.service.PostService;
-import kr.or.ddit.post.service.PostServiceImpl;
 
 public class DeleteAtchFileDetailHandler implements CommandHandler {
 		
