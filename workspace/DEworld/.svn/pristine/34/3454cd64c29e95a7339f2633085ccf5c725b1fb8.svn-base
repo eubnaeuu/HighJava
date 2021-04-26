@@ -37,8 +37,8 @@
 /item/itemDetail.do=kr.or.ddit.item.handler.DetailItemHandler
 
 #message(쪽지)
+/message/view.do=kr.or.ddit.message.handler.ViewMessageHandler
 /message/list.do=kr.or.ddit.message.handler.ListMessageHandler
-/message/select.do=kr.or.ddit.message.handler.ViewMessageHandler
 /message/insert.do=kr.or.ddit.message.handler.InsertMessageHandler
 /message/delete.do=kr.or.ddit.message.handler.DeleteMessageHandler
 /message/update.do=kr.or.ddit.message.handler.UpdateMessageHandler

@@ -139,6 +139,18 @@
 <!--            AND post_TITLE = #postTitle# -->
 <!-- 	 </isNotEmpty> -->
 	</select>
-</sqlMap>			
+	
+	
+<update id="updatePostView" parameterClass="kr.or.ddit.post.vo.PostVO">
+		UPDATE POST
+         SET 
+         POST_VIEW = POST_VIEW+1
+         WHERE POST_NO = #postNo#
+</update>
+	
+	
+	
+</sqlMap>	
+
 
 

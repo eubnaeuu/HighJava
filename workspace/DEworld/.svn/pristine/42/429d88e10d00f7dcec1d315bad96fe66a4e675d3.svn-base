@@ -8,8 +8,8 @@
 // String strJson = (String)request.getAttribute("strJson");
 List<PostVO> postlist = (List<PostVO>)request.getAttribute("postlist");
 PagingVO pagingVO = (PagingVO)request.getAttribute("pagingVO");
-String msg = request.getParameter("msg") == null ? ""
-		: request.getParameter("msg");
+// String msg = request.getParameter("msg") == null ? ""
+// 		: request.getParameter("msg");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -172,8 +172,12 @@ function remove(){
 	}
 	
 	if(!chkmsg()){
+		alert("취소?");
 		return;
 	}
+	alert("확인");
+	
+	
 	var chkboxes = $(".PostChkArr");
 		$.each(chkboxes, function(index, item){
 		if($(item).prop("checked")==true){
@@ -231,72 +235,48 @@ function create(){
 	});
 }
 function search(){
-
-		var flag = $("#selectstr").val();
-		var inputparam = $("#inputstr").val();
-
-		if ("1" == flag) {
-			var URI="http://localhost/DEworld/post/search.do?postTitle="+inputparam;
-			alert(URI);
-// 			window.location.href = encodeURI(URI,"UTF-8");
-			window.location.href = URI;
-		} else if ("2" == flag) {
-			var URI="http://localhost/DEworld/post/search.do?postContent="
-					+ inputparam;
-			window.location.href = encodeURI(URI);
-		} else if ("3" == flag) {
-			var URI="http://localhost/DEworld/post/search.do?postMemId="
-					+ inputparam;
-			window.location.href = encodeURI(URI);
-		}
-	}
 	
-	function search1() {
-		flag = $("#selectstr").val();
-		inputparam = $("#inputstr").val();
-		alert(inputparam);
+	flag = $("#selectstr").val();
+	inputparam = $("#inputstr").val();
+	var param = {
+			"inputstr" : inputparam
+			,"flag" : flag
+			};
+	$.ajax({
+		url : "/DEworld/post/search.do"
+		,type : "POST"
+		,data : param
+//  		,dataType : "json"
+		,success : function(data){
+			console.log(data)
+		}
+		,error : function(xhr){
+			console.error(xhr);
+			alert("실패");
+		}
+		
+	});
+}
 
-		var param = {
-			"inputstr" : inputparam,
-			"flag" : flag
-		};
-		$.ajax({
-			url : "/DEworld/post/search.do",
-// 			type : "POST",
-			data : param
-			//  		,dataType : "json"
-			,
-			success : function(data) {
-				console.log(data)
-			},
-			error : function(xhr) {
-				console.error(xhr);
-				alert("실패");
-			}
+function chkmsg(){
+	return confirm("정말 삭제하시겠습니까?");
+}
 
-		});
-	}
-
-	function chkmsg() {
-		return confirm("정말 삭제하시겠습니까?");
-	}
-
-	function select() {
-		$.ajax({
-			url : "/DEworld/post/list.do",
-			type : "POST"
-			// 		,dataType : "json"
-			// 		,data : param
-			,
-			success : function(data) {
-				console.log(data)
-				// 			makeTable(data);
-			},
-			error : function(xhr) {
-				console.error(xhr);
-				alert("실패");
-			}
-		});
-	}
+function select(){
+	$.ajax({
+		url : "/DEworld/post/list.do"
+		,type : "POST"
+// 		,dataType : "json"
+// 		,data : param
+		,success : function(data){
+			console.log(data)
+// 			makeTable(data);
+		}
+		,error : function(xhr){
+			console.error(xhr);
+			alert("실패");
+		}
+	});
+}
 </script>
 </html>

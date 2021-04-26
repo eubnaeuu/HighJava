@@ -29,10 +29,10 @@
 	)                   
 	</insert>
 	
-	<update id="updateMessage" parameterClass="kr.or.ddit.message.vo.MessageVO">
+	<update id="updateMessageStatus" parameterClass="kr.or.ddit.message.vo.MessageVO">
 		UPDATE MESSAGE
          SET 
-         MESSAGE_STATUS = #messageStatus#
+         MESSAGE_STATUS = 'Y'
 	 	WHERE 1=1
 	 	AND MESSAGE_NO = #messageNo#
 	</update>

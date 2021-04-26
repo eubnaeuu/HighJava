@@ -56,7 +56,7 @@ public List<MessageVO> getAllMessageList(SqlMapClient smc) throws SQLException {
 @Override
 public int updateMessage(SqlMapClient smc, MessageVO mv) throws SQLException {
     int cnt = 0;
-    cnt = smc.update("message.updateMessage", mv);
+    cnt = smc.update("message.updateMessageStatus", mv);
     return cnt;
 }
 

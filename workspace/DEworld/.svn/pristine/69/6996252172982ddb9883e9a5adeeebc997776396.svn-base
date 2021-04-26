@@ -1,0 +1,12 @@
+@charset "UTF-8";
+		#noticeTb tr:hover{
+			background-color: #B4FBFF;
+		}
+		#noticeTb tr td.noticeTitle:hover{
+			text-decoration: underline;
+			cursor: Pointer;
+		}
+		.noticeTitle a{
+			color: black;
+			text-decoration: none;
+		}

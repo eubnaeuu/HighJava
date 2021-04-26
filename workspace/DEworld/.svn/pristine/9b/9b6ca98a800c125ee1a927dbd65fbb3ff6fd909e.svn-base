@@ -39,8 +39,7 @@ public class ViewPostHandler implements CommandHandler{
 		PostVO postVo = new PostVO(); 
 		postVo.setPostNo(postNo);
 		List<PostVO> postlist = postService.getSearchPost(postVo);
-		int cnt = postService.updatePostView(postVo); // View ++
-		System.out.println("update 됐음? :"  + cnt);
+		postService.updatePostView(postVo); // View ++
 		
 		if(postlist.get(0).getAtchFileId() > 0) { // 첨부파일이 존재한다면... 
 			

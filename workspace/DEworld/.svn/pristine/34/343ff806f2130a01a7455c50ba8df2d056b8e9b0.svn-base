@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+			PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+			"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="comments">
+
+	<insert id="insertComments" parameterClass="kr.or.ddit.comments.vo.CommentsVO">
+		<selectKey keyProperty="commentsId" resultClass="String">
+			SELECT LPAD(COMMENTS_SEQ.NEXTVAL,3,0) FROM DUAL
+		</selectKey>
+	INSERT INTO COMMENTS
+	(
+	COMMENTS_ID
+	,POST_NO
+	,MEM_ID
+	,COMMENTS_CONTENT
+	,COMMENTS_DATE
+	)
+	VALUES
+	(
+	'COM'||#commentsId#
+	,#postNo#
+	,#memId#
+	,#commentsContent#
+	,SYSDATE
+	)                   
+	</insert>
+	
+	<update id="updateComments" parameterClass="kr.or.ddit.comments.vo.CommentsVO">
+		UPDATE COMMENTS
+         SET 
+         COMMENTS_CONTENT = #commentsContent#
+	 	WHERE Comments_Id = #commentsId#
+	</update>
+	
+	<delete id="deleteComments" parameterClass="String">
+		DELETE 
+		FROM Comments
+		WHERE Comments_Id = #commentsId#
+	</delete>
+	
+	<select id="getCommentsAll" resultClass="kr.or.ddit.comments.vo.CommentsVO">
+		SELECT
+		COMMENTS_ID         commentsId
+		,POST_NO          	postNo
+		,MEM_ID           	memId
+		,COMMENTS_CONTENT 	commentsContent
+		,COMMENTS_DATE    	commentsDate
+		FROM Comments
+	</select>
+	
+	<select id="getSearchComments" parameterClass="kr.or.ddit.comments.vo.CommentsVO" resultClass="kr.or.ddit.comments.vo.CommentsVO">
+	
+ 	SELECT		
+	COMMENTS_ID         commentsId
+		,POST_NO          	postNo
+		,MEM_ID           	memId
+		,COMMENTS_CONTENT 	commentsContent
+		,COMMENTS_DATE    	commentsDate
+	FROM COMMENTS
+	WHERE 1 = 1
+	<isNotEmpty property="commentsId">
+           AND Comments_ID = #commentsId#
+	 </isNotEmpty>
+	<isNotEmpty property="postNo">
+           AND POST_NO = #postNo#
+	 </isNotEmpty>
+
+	</select>
+</sqlMap>			
+
+

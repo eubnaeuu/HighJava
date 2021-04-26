@@ -90,7 +90,7 @@ public class PostServiceImpl implements PostService {
 		int cnt = 0;
 		
 		try {
-			cnt = postDao.updatePostView(smc, pv);
+			cnt = postDao.updatePost(smc, pv);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

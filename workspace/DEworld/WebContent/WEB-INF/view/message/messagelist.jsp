@@ -1,52 +1,53 @@
-<%@page import="kr.or.ddit.paging.PagingVO"%>
 <%@page import="kr.or.ddit.comments.vo.CommentsVO"%>
+<%@page import="kr.or.ddit.paging.PagingVO"%>
+<%@page import="kr.or.ddit.message.vo.MessageVO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
 // String strJson = (String)request.getAttribute("strJson");
-List<CommentsVO> list = (List<CommentsVO>)request.getAttribute("commentslist");
+List<MessageVO> messagelist = (List<MessageVO>)request.getAttribute("messagelist");
 PagingVO pagingVO = (PagingVO)request.getAttribute("pagingVO");
-
-// String msg = request.getParameter("msg") == null ? ""
-// 		: request.getParameter("msg");
+String msg = request.getParameter("msg") == null ? ""
+		: request.getParameter("msg");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<title>게시글 목록</title>
+<title>쪽지 목록</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
 </script>
 </head>
 <body>
-<table border='2px solid' id="commentslisttable">
+<table border='2px solid' id="messagelisttable">
 			<thead>
 				<tr>
-					<th>글번호</th>
-					<th>제  목</th>
+					<th><input class="MessageChk" id="MessageCheckboxAll" style="display: none;" type="checkbox" name="MessageCheckboxAll" onclick="checkAll();"></th>
+					<th>구  분:</th>
+					<th>보낸이:</th>
+					<th>받는이</th>
 					<th>내 용</th>
-					<th>일 자</th>
-					<th>조회수</th>
+					<th>상 태</th>
 				</tr>
 			</thead>
 			<tbody>
 					<%
-					int size = list.size();
+					int size = messagelist.size();
 					if(size > 0){
 						int cnt = 1;
-						String CommentsChkId = "CommentsCheckbox"+cnt;
+						String MessageChkId = "MessageCheckbox"+cnt;
 						for (int i=0; i < size;  i++){
 							%>
 							<tr>
-							<th><input class="CommentsChk CommentsChkArr" id="<%=list.get(i).getCommentsNo() %>chkbox" style="display: none;" type="checkbox" name="CommentsCheckbox"></th>
+							<td><input class="MessageChk MessageChkArr" id="<%=messagelist.get(i).getMessageNo() %>chkbox" style="display: none;" type="checkbox" name="MessageCheckbox"></td>
 							<td><%= cnt%></td>
-							<td><a href="select.do?commentsNo=<%=list.get(i).getCommentsNo()%>"><%= list.get(i).getCommentsTitle() %></a></td>
-							<td><%= list.get(i).getCommentsContent()%></td>
-							<td><%= list.get(i).getCommentsDate()%></td>
-							<td><%= list.get(i).getCommentsView()%></td>
+							<td><%= messagelist.get(i).getMemId()%></td>
+							<td><%= messagelist.get(i).getReceiveMem()%></td>
+							<td><a href="select.do?messageNo=<%=messagelist.get(i).getMessageNo()%>"><%= messagelist.get(i).getMessageContent()%></a></td>
+							<td><%= messagelist.get(i).getMessageStatus()%></td>
 							</tr>
 							<%
 							cnt++;
@@ -90,33 +91,32 @@ PagingVO pagingVO = (PagingVO)request.getAttribute("pagingVO");
 		<button type="button" onclick="search()">서치</button>
 		<a href="list.do"><button type="button" onclick="select()">조회</button></a>
 		<button type="button" onclick="toggleChk()">선택</button>
-<!-- 		<a href="list.do"><button type="button" onclick="update()">수정</button></a> -->
 		<a href="list.do"><button type="button" onclick="remove()">삭제</button></a>
 </body>
 
 <script type="text/javascript">
 
 function checkAll(){
-	if($("[name=CommentsCheckboxAll]").prop("checked")){
-		$("[name=CommentsCheckbox]").prop("checked",true);
+	if($("[name=MessageCheckboxAll]").prop("checked")){
+		$("[name=MessageCheckbox]").prop("checked",true);
 	}else{
-		$("[name=CommentsCheckbox]").prop("checked",false);
+		$("[name=MessageCheckbox]").prop("checked",false);
 	}
 }
 
 function toggleChk(){
-$(".CommentsChk").toggle();
+$(".MessageChk").toggle();
 }
 
 function update(){
 	inputparam = $("#inputstr").val();
 	updateparam = $("#updatestr").val();
 	var param = {
-			'commentsNo' : inputparam         
-			,'commentsTitle' : updateparam    
+			'messageNo' : inputparam         
+			,'messageTitle' : updateparam    
 			};
 	$.ajax({
-		url : "/DEworld/comments/update.do"
+		url : "/DEworld/message/update.do"
 		,type : "post"
 		,data : param
 // 		,dataType : "json"
@@ -134,9 +134,9 @@ function update(){
 
 function chkdel(){
 	var cnt=0;
-	var commentsChkId="";
-	var chkboxes = $(".CommentsChkArr");
-	var length = $(".CommentsChkArr").length;
+	var messageChkId="";
+	var chkboxes = $(".MessageChkArr");
+	var length = $(".MessageChkArr").length;
 	var flag = "f";
 	$.each(chkboxes,function(idx, item){
 		if($(item).prop("checked")==true){
@@ -152,7 +152,7 @@ function chkdel(){
 
 function reload(){
 	$.ajax({
-		url : "/DEworld/comments/list.do"
+		url : "/DEworld/message/list.do"
 // 		,dataType : "json"
 		,success : function(data){
 			console.log(data)
@@ -171,13 +171,9 @@ function remove(){
 	}
 	
 	if(!chkmsg()){
-		alert("취소?");
 		return;
 	}
-	alert("확인");
-	
-	
-	var chkboxes = $(".CommentsChkArr");
+	var chkboxes = $(".MessageChkArr");
 		$.each(chkboxes, function(index, item){
 		if($(item).prop("checked")==true){
 			var idx  = $(item).attr("id").indexOf("chkbox");
@@ -193,13 +189,12 @@ function remove2(str){
 	
 	inputparam = $("#inputstr").val();
 	var param = {
-			'commentsNo' : str
+			'messageNo' : str
 			};
 	$.ajax({
-		url : "/DEworld/comments/delete.do"
+		url : "/DEworld/message/delete.do"
 		,type : "post"
 		,data : param
-// 		,dataType : "json"
 		,success : function(data){
 			console.log(data);
 		}
@@ -210,72 +205,73 @@ function remove2(str){
 	});
 }
 
- 
-function create(){
-	inputparam = $("#inputstr").val();
-	var param = {
-			'commentsNo' : inputparam         
-			,'commentsTitle' : inputparam2         
-			};
-	$.ajax({
-		url : "/DEworld/comments/insert.do"
-		,type : "post"
-		,data : param
-// 		,dataType : "json"
-		,success : function(data){
-			console.log(data)
-			alert("성공");
-		}
-		,error : function(xhr){
-			console.error(xhr);
-			alert("실패");
-		}
-		
-	});
-}
 function search(){
+
+		var flag = $("#selectstr").val();
+		var inputparam = $("#inputstr").val();
+
+		if ("1" == flag) {
+			var URI="http://localhost/DEworld/message/search.do?messageTitle="+inputparam;
+			alert(URI);
+// 			window.location.href = encodeURI(URI,"UTF-8");
+			window.location.href = URI;
+		} else if ("2" == flag) {
+			var URI="http://localhost/DEworld/message/search.do?messageContent="
+					+ inputparam;
+			window.location.href = encodeURI(URI);
+		} else if ("3" == flag) {
+			var URI="http://localhost/DEworld/message/search.do?messageMemId="
+					+ inputparam;
+			window.location.href = encodeURI(URI);
+		}
+	}
 	
-	flag = $("#selectstr").val();
-	inputparam = $("#inputstr").val();
-	var param = {
-			"inputstr" : inputparam
-			,"flag" : flag
-			};
-	$.ajax({
-		url : "/DEworld/comments/search.do"
-		,type : "POST"
-		,data : param
-//  		,dataType : "json"
-		,success : function(data){
-			console.log(data)
-		}
-		,error : function(xhr){
-			console.error(xhr);
-			alert("실패");
-		}
-		
-	});
-}
+	function search1() {
+		flag = $("#selectstr").val();
+		inputparam = $("#inputstr").val();
+		alert(inputparam);
 
-function chkmsg(){
-	return confirm("정말 삭제하시겠습니까?");
-}
+		var param = {
+			"inputstr" : inputparam,
+			"flag" : flag
+		};
+		$.ajax({
+			url : "/DEworld/message/search.do",
+// 			type : "POST",
+			data : param
+			//  		,dataType : "json"
+			,
+			success : function(data) {
+				console.log(data)
+			},
+			error : function(xhr) {
+				console.error(xhr);
+				alert("실패");
+			}
 
-function select(){
-	$.ajax({
-		url : "/DEworld/comments/list.do"
-		,type : "POST"
-// 		,dataType : "json"
-// 		,data : param
-		,success : function(data){
-			console.log(data)
-// 			makeTable(data);
-		}
-		,error : function(xhr){
-			console.error(xhr);
-			alert("실패");
-		}
-	});
-}
+		});
+	}
+
+	function chkmsg() {
+		return confirm("정말 삭제하시겠습니까?");
+	}
+
+	function select() {
+		$.ajax({
+			url : "/DEworld/message/list.do",
+			type : "POST"
+			// 		,dataType : "json"
+			// 		,data : param
+			,
+			success : function(data) {
+				console.log(data)
+				// 			makeTable(data);
+			},
+			error : function(xhr) {
+				console.error(xhr);
+				alert("실패");
+			}
+		});
+	}
 </script>
 </html>
