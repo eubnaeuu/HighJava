@@ -6,9 +6,8 @@
 	pageEncoding="UTF-8"%>
 <%
 
-String userId = (String)request.getSession().getAttribute("nowLogin"); // 세션의 로그인아이디값 가져오기
-userId ="cdwcdw34";
-
+// String userId = (String)request.getSession().getAttribute("nowLogin"); // 세션의 로그인아이디값 가져오기
+String userId ="cdwcdw34";
 
 	List<AtchFileVO> atchFileList = (List<AtchFileVO>) request.getAttribute("atchFileList");
 	List<PostVO> postlist = (List<PostVO>) request.getAttribute("postlist");
@@ -23,10 +22,10 @@ userId ="cdwcdw34";
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>게시글상세</title>
 <script type="text/javascript">
-	$(document).ready(function() {
-		var userId = sessionStorage.getItem("nowLogin");
-		userId = "cdwcdw34"
-	});
+// 	$(document).ready(function() {
+// 		var userId = sessionStorage.getItem("nowLogin");
+// 		userId = "cdwcdw34"
+// 	});
 </script>
 </head>
 <body>
@@ -64,6 +63,7 @@ userId ="cdwcdw34";
 																			&fileSn=<%=atchFileVO.getFileSn()%>">
 						<%=atchFileVO.getOrignlFileNm()%>
 					</a>
+			<img src="<%=atchFileVO.getFileStreCours()%>">
 				</div> <%
  	}
  	} else {
@@ -71,6 +71,8 @@ userId ="cdwcdw34";
  	}
  %>
 			</td>
+		</tr>
+		<tr>
 		</tr>
 		<!-- 		<tr> -->
 		<!-- 			<td colspan="3"> -->
@@ -116,11 +118,7 @@ userId ="cdwcdw34";
 			<tr>
 				<td><input type="text" readonly="readonly" value=userId
 					name="memId"></td>
-			</tr>
-			<tr>
 				<td><input type="text" name="commentsContent"></td>
-			</tr>
-			<tr>
 				<td><a
 					href="<%=request.getContextPath()%>/post/select.do?postNo=<%=postlist.get(0).getPostNo() %>"><input
 						type="hidden" name="postNo"
@@ -130,7 +128,7 @@ userId ="cdwcdw34";
 		</table>
 	</form>
 	<%
-			if(userId.equals(postlist.get(0).getPostNo())){%>
+			if(userId.equals(postlist.get(0).getMemId())){%>
 	<table>
 		<tr>
 			<td colspan="3"><a href="list.do">[목록]</a> <a

@@ -19,9 +19,9 @@ String msg = request.getParameter("msg") == null ? ""
 <title>게시글 목록</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
-$(document).ready(function(){
-	var userId = sessionStorage.getItem("nowLogin");
-});
+// $(document).ready(function(){
+// 	var userId = sessionStorage.getItem("nowLogin");
+// });
 </script>
 </head>
 <body>

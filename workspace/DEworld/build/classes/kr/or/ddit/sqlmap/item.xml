@@ -41,7 +41,7 @@
 	</select>
 
 	
-	<select id="getSearchItem" parameterClass="kr.or.ddit.item.vo.ItemVO">
+	<select id="getSearchItem" parameterClass="String" resultClass="kr.or.ddit.item.vo.ItemVO">
 	 select 
 	 	ITEM_ID 			itemId,
 		LITEM_GU            itemGu,
@@ -55,7 +55,7 @@
 	 from item 
 	 where 1=1
 	 <isNotEmpty>
-           and item_name = #itemName#
+           and item_name LIKE '%'||#searchItemName#||'%' 
 	 </isNotEmpty>
 	</select>
 	
