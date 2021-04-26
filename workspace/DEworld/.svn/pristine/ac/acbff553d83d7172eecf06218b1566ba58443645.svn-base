@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+#noticeShowDiv {
+	width: 100%;
+}
+
+#ShowNoticeContent {
+	padding: 0px 30px;
+}
+
+#noticeShowDiv button {
+	float: right;
+}
+
+#rightShow p {
+	margin: 0px;
+}
+
+#rightShow {
+	float: right;
+}
+#NextContent{
+	clear:  right;
+}

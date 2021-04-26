@@ -18,6 +18,8 @@ public class CommentsVO extends BaseVO {
 	private String commentsContent;
 	private String commentsDate;
 	
+	private String memNickname; 
+	
 	
 	public String getPostNo() {
 		return postNo;
@@ -48,6 +50,12 @@ public class CommentsVO extends BaseVO {
 	}
 	public void setCommentsId(String commentsId) {
 		this.commentsId = commentsId;
+	}
+	public String getMemNickname() {
+		return memNickname;
+	}
+	public void setMemNickname(String memNickname) {
+		this.memNickname = memNickname;
 	}
 	
 	

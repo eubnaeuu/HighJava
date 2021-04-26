@@ -17,7 +17,7 @@
 <body>
 	<table>
 		<tr>
-			<td>메시지NO:</td>
+			<td>NO:</td>
 			<td><%=messagelist.get(0).getMessageNo()%></td>
 		</tr>
 		<tr>
@@ -29,13 +29,17 @@
 			<td><%=messagelist.get(0).getReceiveMem()%></td>
 		</tr>
 		<tr>
+			<td>일 자:</td>
+			<td><%=messagelist.get(0).getMessageDate()%></td>
+		</tr>
+		<tr>
 			<td>내 용:</td>
 			<td><%=messagelist.get(0).getMessageContent()%></td>
 		</tr>
-		<tr>
-			<td>상 태:</td>
-			<td><%=messagelist.get(0).getMessageStatus()%></td>
-		</tr>
+<!-- 		<tr> -->
+<!-- 			<td>상 태:</td> -->
+<%-- 			<td><%=messagelist.get(0).getMessageStatus()%></td> --%>
+<!-- 		</tr> -->
 		<!-- 		<tr> -->
 		<!-- 			<td colspan="3"> -->
 		<!-- 				<a href="list.do">[목록]</a> -->

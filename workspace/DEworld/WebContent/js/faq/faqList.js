@@ -33,7 +33,7 @@ function makeFaqList(data){
 				strHtml += "<tr>"
 				+ "<td style='width: 30%;display: inline-block;'>"+data[i].lfaqNm+"</td>"
 				+ "<td style='width: 70%;display: inline-block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;'>"
-				+ "<a href='/DEworld/faq/faqDetail.do?faqId=" + data[i].faqId + "'>" + data[i].faqTitle + "</a></td>"
+				+ "<a href='/DEworld/faq/faqDetail.do?faqId=" + data[i].faqId + "' style='color:black'>" + data[i].faqTitle + "</a></td>"
 				+ "</tr>";
 		}
 		
@@ -49,7 +49,7 @@ function makeFaqList(data){
 			strHtml += "<tr>"
 				+ "<td style='width: 30%;display: inline-block;'>"+data[i].lfaqNm+"</td>"
 				+ "<td style='width: 70%;display: inline-block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;'>"
-				+ "<a href='/DEworld/faq/faqDetail.do?faqId=" + data[i].faqId + "'>" + data[i].faqTitle + "</a></td>"
+				+ "<a href='/DEworld/faq/faqDetail.do?faqId=" + data[i].faqId + "' style='color:black;'>" + data[i].faqTitle + "</a></td>"
 				+ "</tr>";
 		}
 
@@ -61,8 +61,8 @@ function makeFaqList(data){
 			for(var i=0 ; i<data.length ; i++) {
 			strHtml2 += "<tr>"
 				+ "<td style='width: 30%;display: inline-block;'>"+data[i].lfaqNm+"</td>"
-				+ "<td style='width: 70%;display: inline-block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;'>"
-				+ "<a href='/DEworld/faq/faqDetail.do?faqId=" + data[i].faqId + "'>" + data[i].faqTitle + "</a></td>"
+				+ "<td style='width: 70%;display: inline-block;'>"
+				+ "<a href='/DEworld/faq/faqDetail.do?faqId=" + data[i].faqId + "' style='color:black'>" + data[i].faqTitle + "</a></td>"
 				+ "</tr>";
 		}
 

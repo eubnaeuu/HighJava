@@ -28,7 +28,7 @@ public class InsertCommentsHandler implements CommandHandler {
 		
 		if(req.getMethod().equals("GET")) { //GET방식인 경우 isRedirect을 하지 않는다
 			return VIEW_PAGE;
-		}else { //Comments 방식인 경우 isRedirect를 한다 
+		}else { //Post 방식인 경우 isRedirect를 한다 
 		
 			CommentsService CommentsService = CommentsServiceImpl.getInstance();
 			CommentsVO cv = new CommentsVO();
@@ -46,13 +46,13 @@ public class InsertCommentsHandler implements CommandHandler {
 //				msg = "실패";
 //			}
 		
-			String redirectUrl ="" 
-					+ req.getContextPath() 
-					+ "/post/select.do?postNo=" 
+			String redirectUrl =
+//					+ req.getContextPath() 
+					 "/post/select.do?postNo=" 
 					+ req.getParameter("postNo");
 //			+URLEncoder.encode(msg, "UTF-8");
-		
 			
+			System.out.println(redirectUrl);
 			return redirectUrl;
 	}
 }

@@ -5,10 +5,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-
 // String userId = (String)request.getSession().getAttribute("nowLogin"); // 세션의 로그인아이디값 가져오기
-String userId ="cdwcdw34";
 
+// String userId ="cdwcdw34";
+	
 	List<AtchFileVO> atchFileList = (List<AtchFileVO>) request.getAttribute("atchFileList");
 	List<PostVO> postlist = (List<PostVO>) request.getAttribute("postlist");
 	List<CommentsVO> commentslist = (List<CommentsVO>) request.getAttribute("commentslist");
@@ -21,15 +21,42 @@ String userId ="cdwcdw34";
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>게시글상세</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
-// 	$(document).ready(function() {
-// 		var userId = sessionStorage.getItem("nowLogin");
-// 		userId = "cdwcdw34"
-// 	});
+	$(document).ready(function() {
+var nowLogin = sessionStorage.getItem("nowLogin");
+<%-- alert('<%=userId%>'); --%>
+$.ajax({
+	url : "/DEworld/MemberServlet",
+	type : "post",
+	data : {"memId" : nowLogin, "flag" : "setMyPage"},
+	dataType : "json",
+	success : function(data) {
+		var memNickname = data[0].memNickname;
+		var memId = data[0].memId;
+		$(".memNicknameText").html("<a href='해당미니홈피로'>"+memNickname+"</a>");
+		$(".memNicknameVal").val(memNickname);
+		$("#memId").val(memId);
+		$(".memIdVal").val(memId);
+		$(".memIdText").html(memId);
+	},
+	error : function(xhr) {
+		alert("알수없는 에러");
+	}
+});
+});
 </script>
+<style>
+	table, td {
+		border: 2px solid;
+		border-collapse: collapse;
+	}
+
+</style>
 </head>
 <body>
-	<table>
+<input type="hidden" value="" id="memNickname" class="memNickname">
+	<table style="border: 2px solid">
 		<tr>
 			<td>글ID:</td>
 			<td><%=postlist.get(0).getPostNo()%></td>
@@ -48,7 +75,7 @@ String userId ="cdwcdw34";
 		</tr>
 		<tr>
 			<td>작성자:</td>
-			<td><%=postlist.get(0).getMemId()%></td>
+			<td class="memNicknameText"></td>
 		</tr>
 		<tr>
 			<td>첨부파일:</td>
@@ -63,7 +90,7 @@ String userId ="cdwcdw34";
 																			&fileSn=<%=atchFileVO.getFileSn()%>">
 						<%=atchFileVO.getOrignlFileNm()%>
 					</a>
-			<img src="/DEworld/atchFile/<%=atchFileVO.getStreFileNm()%>.<%=atchFileVO.getFileExtsn()%>">
+			<img width="200px" src="/DEworld/atchFile/<%=atchFileVO.getStreFileNm()%>.<%=atchFileVO.getFileExtsn()%>">
 				</div> <%
  	}
  	} else {
@@ -88,16 +115,13 @@ String userId ="cdwcdw34";
 	%>
 	<table>
 		<tr>
-			<td><%=cv.getMemId()%></td>
-		</tr>
-		<tr>
+			<td><%=cv.getMemNickname()%></td>
 			<td><%=cv.getCommentsContent()%>(<%=cv.getCommentsDate()%>)</td>
-		</tr>
-		<tr>
-			<td><button>수정미완</button></td>
-		</tr>
-		<tr>
-			<td><button>삭제미완</button></td>
+<%-- 			<%if(cv.getMemId().equals()){ --%>
+<!-- 			} -->
+<!-- 			%> -->
+			<td><a href=""><button>수정미완</button></a></td>
+			<td><a href=""><button>삭제미완</button></a></td>
 		</tr>
 	</table>
 	<%
@@ -114,30 +138,26 @@ String userId ="cdwcdw34";
 		%>
 	<form action="<%=request.getContextPath()%>/comments/insert.do"
 		method="post">
+		<input type="hidden" value="" class="memIdVal" name="memId">
 		<table>
 			<tr>
-				<td><input type="text" readonly="readonly" value=userId
-					name="memId"></td>
+				<td class="memNicknameText"><input type="hidden" readonly="readonly" name="memNickname" class="memNicknameVal"></td>
 				<td><input type="text" name="commentsContent"></td>
-				<td><a
-					href="<%=request.getContextPath()%>/post/select.do?postNo=<%=postlist.get(0).getPostNo() %>"><input
-						type="hidden" name="postNo"
-						value="<%=postlist.get(0).getPostNo()%>">
-					<button type="submit">등록</button></a></td>
+				<td>
+					
+						<input type="hidden" name="postNo" value="<%=postlist.get(0).getPostNo()%>">
+						<a href="<%=request.getContextPath()%>/post/select.do?postNo=<%=postlist.get(0).getPostNo() %>"><button type="submit">등록</button></a>
+					</a>
+				</td>
 			</tr>
 		</table>
 	</form>
-	<%
-			if(userId.equals(postlist.get(0).getMemId())){%>
 	<table>
 		<tr>
-			<td colspan="3"><a href="list.do">[목록]</a> <a
-				href="update.do?postNo=<%=postlist.get(0).getPostNo()%>">[수정]</a> <a
-				href="delete.do?postNo=<%=postlist.get(0).getPostNo()%>">[삭제]</a></td>
+			<td colspan="3"><a href="list.do">[목록]</a></td> 
+			<td><a href="update.do?postNo=<%=postlist.get(0).getPostNo()%>">[수정]</a></td>
+			<td> <a href="delete.do?postNo=<%=postlist.get(0).getPostNo()%>">[삭제]</a></td>
 		</tr>
 	</table>
-	<%
-		}else {}
-	%>
 </body>
 </html>

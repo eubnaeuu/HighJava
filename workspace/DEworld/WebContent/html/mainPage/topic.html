@@ -9,6 +9,11 @@
 	<meta name="author" content="">
 
 	<title>DEWorld</title>
+	<style type="text/css">
+		#FaqTb tr:hover{
+			background-color: #B4FBFF;
+		}
+	</style>
 
 	<!-- Bootstrap core CSS -->
 	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -225,7 +230,7 @@
 						"<span id="idArea"></span>" 님 어서오세요
 					</h1>
 					<br>
-					<button type="button" class="btn btn-primary btn-lg raised">내
+					<button type="button" class="btn btn-primary btn-lg raised" onclick="goMyHompi()">내
 						미니홈피</button>
 					<br>
 					<br>
@@ -555,7 +560,9 @@
 	<!-- Footer -->
 	<footer class="py-5 bg-dark">
 		<div class="container">
-			<p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
+		<!-- ★ 영준 : 세션관련 게시판 연동 테스트 시작-->
+			<p onclick="yeongjun()" class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
+			<!-- ★ 영준 : 세션관련 게시판 연동 종료 -->
 		</div>
 	</footer>
 
@@ -563,5 +570,11 @@
 	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
-
+<!-- ★ 영준 : 세션관련 게시판 연동 테스트2 시작 -->
+<script type="text/javascript">
+	function yeongjun(){
+		window.location.href="http://localhost/DEworld/post/list.do";
+	}
+</script>
+<!-- ★ 영준 : 세션관련 게시판 연동 테스트2 종료 -->
 </html>

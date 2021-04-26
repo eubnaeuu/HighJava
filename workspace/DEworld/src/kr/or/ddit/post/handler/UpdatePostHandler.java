@@ -41,25 +41,25 @@ public class UpdatePostHandler implements CommandHandler {
 			SimpleDateFormat format1 = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss");
 			Date time = new Date();
 			String sysdate = format1.format(time);
-
 			
 			PostService postService = PostServiceImpl.getInstance();
 			PostVO postVo = new PostVO();
 			postVo.setPostNo(postNo);
 			List<PostVO> list = postService.getSearchPost(postVo);
+			long atchFileId = list.get(0).getAtchFileId();
 			
-			if(list.get(0).getAtchFileId() > 0) { // 첨부파일이 존재한다면... 
-				
-				// 첨부파일 정보 조회
-				AtchFileVO fileVO = new AtchFileVO();
-				
-				fileVO.setAtchFileId(list.get(0).getAtchFileId());
-				
-				IAtchFileService atchFileService = AtchFileServiceImpl.getInstance();
-				List <AtchFileVO> atchFileList = atchFileService.getAtchFileList(fileVO);
-				System.out.println(atchFileList.get(0).getAtchFileId());
-				req.setAttribute("atchFileList",atchFileList);
-		}
+//			if(list.get(0).getAtchFileId() > 0) { // 첨부파일이 존재한다면... 
+//				
+//				// 첨부파일 정보 조회
+//				AtchFileVO fileVO = new AtchFileVO();
+//				
+//				fileVO.setAtchFileId(list.get(0).getAtchFileId());
+//				
+//				IAtchFileService atchFileService = AtchFileServiceImpl.getInstance();
+//				List <AtchFileVO> atchFileList = atchFileService.getAtchFileList(fileVO);
+//				System.out.println(atchFileList.get(0).getAtchFileId());
+//				req.setAttribute("atchFileList",atchFileList);
+//		}
 			req.setAttribute("list", list);
 			req.setAttribute("sysdate", String.valueOf(sysdate));
 			System.out.println(req.getParameter("sysdate"));

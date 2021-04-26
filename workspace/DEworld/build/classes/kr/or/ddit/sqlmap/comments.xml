@@ -41,24 +41,29 @@
 	</delete>
 	
 	<select id="getCommentsAll" resultClass="kr.or.ddit.comments.vo.CommentsVO">
-		SELECT
-		COMMENTS_ID         commentsId
-		,POST_NO          	postNo
-		,MEM_ID           	memId
-		,COMMENTS_CONTENT 	commentsContent
-		,COMMENTS_DATE    	commentsDate
-		FROM Comments
+SELECT
+		C.COMMENTS_ID         commentsId
+		,C.POST_NO          	postNo
+		,C.MEM_ID           	memId
+		,C.COMMENTS_CONTENT 	commentsContent
+		,C.COMMENTS_DATE    	commentsDate
+        ,M.MEM_NICKNAME 		memNickname
+		FROM COMMENTS C 
+		INNER JOIN MEMBER M
+        ON C.MEM_ID = M.MEM_ID;
 	</select>
 	
 	<select id="getSearchComments" parameterClass="kr.or.ddit.comments.vo.CommentsVO" resultClass="kr.or.ddit.comments.vo.CommentsVO">
-	
- 	SELECT		
-	COMMENTS_ID         commentsId
-		,POST_NO          	postNo
-		,MEM_ID           	memId
-		,COMMENTS_CONTENT 	commentsContent
-		,COMMENTS_DATE    	commentsDate
-	FROM COMMENTS
+	SELECT
+		C.COMMENTS_ID         commentsId
+		,C.POST_NO          	postNo
+		,C.MEM_ID           	memId
+		,C.COMMENTS_CONTENT 	commentsContent
+		,C.COMMENTS_DATE    	commentsDate
+        ,M.MEM_NICKNAME 		memNickname
+	FROM COMMENTS C 
+	INNER JOIN MEMBER M
+    ON C.MEM_ID = M.MEM_ID
 	WHERE 1 = 1
 	<isNotEmpty property="commentsId">
            AND Comments_ID = #commentsId#

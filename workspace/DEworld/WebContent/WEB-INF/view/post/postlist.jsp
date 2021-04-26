@@ -130,7 +130,6 @@ function update(){
 		}
 		,error : function(xhr){
 			console.error(xhr);
-			alert("실패");
 		}
 		
 	});
@@ -205,7 +204,6 @@ function remove2(str){
 		}
 		,error : function(xhr){
 			console.error(xhr);
-			alert("실패");
 		}
 	});
 }
@@ -228,7 +226,6 @@ function create(){
 		}
 		,error : function(xhr){
 			console.error(xhr);
-			alert("실패");
 		}
 		
 	});
@@ -240,17 +237,15 @@ function search(){
 
 		if ("1" == flag) {
 			var URI="http://localhost/DEworld/post/search.do?postTitle="+inputparam;
-			alert(URI);
-// 			window.location.href = encodeURI(URI,"UTF-8");
 			window.location.href = URI;
 		} else if ("2" == flag) {
 			var URI="http://localhost/DEworld/post/search.do?postContent="
 					+ inputparam;
-			window.location.href = encodeURI(URI);
+			window.location.href = URI;
 		} else if ("3" == flag) {
-			var URI="http://localhost/DEworld/post/search.do?postMemId="
+			var URI="http://localhost/DEworld/post/search.do?memId="
 					+ inputparam;
-			window.location.href = encodeURI(URI);
+			window.location.href = URI;
 		}
 	}
 	
@@ -274,7 +269,6 @@ function search(){
 			},
 			error : function(xhr) {
 				console.error(xhr);
-				alert("실패");
 			}
 
 		});
@@ -297,7 +291,6 @@ function search(){
 			},
 			error : function(xhr) {
 				console.error(xhr);
-				alert("실패");
 			}
 		});
 	}

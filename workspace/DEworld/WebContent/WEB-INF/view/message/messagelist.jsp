@@ -30,6 +30,7 @@ String msg = request.getParameter("msg") == null ? ""
 					<th>보낸이:</th>
 					<th>받는이</th>
 					<th>내 용</th>
+					<th>일 자</th>
 					<th>상 태</th>
 				</tr>
 			</thead>
@@ -47,6 +48,7 @@ String msg = request.getParameter("msg") == null ? ""
 							<td><%= messagelist.get(i).getMemId()%></td>
 							<td><%= messagelist.get(i).getReceiveMem()%></td>
 							<td><a href="select.do?messageNo=<%=messagelist.get(i).getMessageNo()%>"><%= messagelist.get(i).getMessageContent()%></a></td>
+							<td><%= messagelist.get(i).getMessageDate()%></td>
 							<td><%= messagelist.get(i).getMessageStatus()%></td>
 							</tr>
 							<%
@@ -74,7 +76,7 @@ String msg = request.getParameter("msg") == null ? ""
 					<%}else{
 					%>
 					<tr>
-						<td colspan="5">게시글이  존재하지 않습니다.</td>
+						<td colspan="5">쪽지가  존재하지 않습니다.</td>
 					</tr>
 					<%
 						}
@@ -83,9 +85,8 @@ String msg = request.getParameter("msg") == null ? ""
 			</table>
 			<a href="insert.do"><button type="button">등록</button></a>
 			<select id="selectstr">
-				<option value="1">제목검색</option>
+				<option value="1">사람검색</option>
 				<option value="2">내용검색</option>
-				<option value="3">작성자검색</option>
 			</select>
 		입력값<input type="text" id="inputstr"><br>
 		<button type="button" onclick="search()">서치</button>
@@ -200,7 +201,6 @@ function remove2(str){
 		}
 		,error : function(xhr){
 			console.error(xhr);
-			alert("실패");
 		}
 	});
 }
@@ -211,18 +211,12 @@ function search(){
 		var inputparam = $("#inputstr").val();
 
 		if ("1" == flag) {
-			var URI="http://localhost/DEworld/message/search.do?messageTitle="+inputparam;
-			alert(URI);
-// 			window.location.href = encodeURI(URI,"UTF-8");
+			var URI="http://localhost/DEworld/message/search.do?memId="+inputparam;
 			window.location.href = URI;
 		} else if ("2" == flag) {
 			var URI="http://localhost/DEworld/message/search.do?messageContent="
 					+ inputparam;
-			window.location.href = encodeURI(URI);
-		} else if ("3" == flag) {
-			var URI="http://localhost/DEworld/message/search.do?messageMemId="
-					+ inputparam;
-			window.location.href = encodeURI(URI);
+			window.location.href = URI;
 		}
 	}
 	

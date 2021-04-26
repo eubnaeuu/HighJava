@@ -21,16 +21,12 @@ public class DeleteMessageHandler implements CommandHandler {
 		
 		System.out.println("입장 Delete Message Haldler 입장");
 
-		
 		MessageService MessageService = MessageServiceImpl.getInstance();
 		
-
 			String messageNo = req.getParameter("messageNo");
 			
 			int cnt = MessageService.deleteMessage(messageNo); // Message 삭제
 			
-	
-
 		String msg = "";
 		
 		if(cnt > 0) {

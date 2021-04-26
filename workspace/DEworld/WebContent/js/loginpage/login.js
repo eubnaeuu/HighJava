@@ -46,8 +46,8 @@ function checkAdmin(){
 				if(data[0] == null){
 					alert("해당 사용자 정보가 존재하지 않거나 비밀번호가 일치하지 않습니다.");
 				} else {
-					sessionStorage.setItem("nowLogin", data[0].adminId);
-					sessionStorage.setItem("adminClass", data[0].adminClass);
+					sessionStorage.setItem("Nickname", data[0].adminId);
+					sessionStorage.setItem("nowLogin", "admin");
 					window.location.href = "http://localhost/DEworld/html/adminPage/adminPage.html";
 				}
 			}
@@ -79,7 +79,8 @@ function checkIdPw(){
 				if(data[0] == null){
 					alert("해당 사용자 정보가 존재하지 않거나 비밀번호가 일치하지 않습니다.");
 				} else {
-					sessionStorage.setItem("nowLogin", data[0].memId);
+					sessionStorage.setItem("Nickname", data[0].memId);
+					sessionStorage.setItem("nowLogin", "user");
 					window.location.href = "http://localhost/DEworld/html/mainPage/topic.html";
 				}
 			}

@@ -82,6 +82,9 @@
 	<isNotEmpty property="messageDate">
            AND MESSAGE_DATE = #messageDate#
 	 </isNotEmpty>
+	<isNotEmpty property="messageContent">
+           AND MESSAGE_CONTENT = #messageContent#
+	 </isNotEmpty>
 	ORDER BY MESSAGE_DATE   
 
 	</select>

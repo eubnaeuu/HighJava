@@ -18,14 +18,14 @@ $(document).ready(function(){
 	//샵 내부 버튼 숨기기
 	$("#shopDetail").hide();
 	
-	var user = sessionStorage.getItem("nowLogin");
+	var user = sessionStorage.getItem("Nickname");
 	
 	if(user == null){
 		alert("세션ID 정보가 존재하지 않습니다.\n로그인 페이지로 이동합니다.");
 		window.location.href = "http://localhost/DEworld/html/loginpage/login.html";
 	}
 	
-	var memId = sessionStorage.getItem("nowLogin");
+	var memId = sessionStorage.getItem("Nickname");
 
 	$.ajax({
 		url : "/DEworld/MemberServlet"
@@ -149,5 +149,14 @@ function subAreaClick(){
 		});
 	}
 
-
+function openWindowPop(url, name){
+    var options = 'top=10, left=10, width=1085, height=551, status=no, menubar=no, toolbar=no, resizable=no';
+    window.open(url, name, options);
+}
+function goMyHompi(){
+	
+	openWindowPop("http://localhost/DEworld/html/hompi/hompi.html", "name");
+	//window.open("http://localhost/DEworld/html/hompi/hompi.html", "pop1", width="950" ,height="550")
+	
+}
 

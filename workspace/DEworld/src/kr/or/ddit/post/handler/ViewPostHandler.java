@@ -31,7 +31,7 @@ public class ViewPostHandler implements CommandHandler{
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse resp) throws Exception {
-		
+		System.out.println("들어옴 view post handler 들어옴");
 		String postNo = req.getParameter("postNo");
 		System.out.println(postNo);
 		// 회원정보 조회
@@ -40,10 +40,9 @@ public class ViewPostHandler implements CommandHandler{
 		postVo.setPostNo(postNo);
 		List<PostVO> postlist = postService.getSearchPost(postVo);
 		int cnt = postService.updatePostView(postVo); // View ++
-		System.out.println("update 됐음? :"  + cnt);
 		
-		if(postlist.get(0).getAtchFileId() > 0) { // 첨부파일이 존재한다면... 
-			
+		if(postlist.get(0).getAtchFileId() != -1) { // 첨부파일이 존재한다면... 
+			System.out.println("atchfile는 null이 아님");
 			// 첨부파일 정보 조회
 			AtchFileVO fileVO = new AtchFileVO();
 			
@@ -62,9 +61,9 @@ public class ViewPostHandler implements CommandHandler{
 		
 		
 		
-		
 		req.setAttribute("postlist", postlist);
 		req.setAttribute("commentslist", commentslist);
+		System.out.println("나감 view post handler 나감");
 		
 		return VIEW_PAGE;
 	}

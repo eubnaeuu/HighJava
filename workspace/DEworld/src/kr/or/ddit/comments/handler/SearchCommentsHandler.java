@@ -32,6 +32,7 @@ public class SearchCommentsHandler implements CommandHandler {
 			cv.setPostNo(req.getParameter("postNo"));
 			List<CommentsVO> list = commentsService.getSearchComments(cv);
 			System.out.println(list.get(0).getCommentsContent());
+			System.out.println("닉:"+list.get(0).getMemNickname());
 			
 			//printwriter사용
 			

@@ -32,19 +32,22 @@ public class SearchPostHandler implements CommandHandler {
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse resp) throws Exception, Exception {
 		if(req.getMethod().equals("GET")) { //GET방식인 경우 isRedirect을 하지 않는다
+			System.out.println("search post handler 입장 GET");
 			PostVO pv = new PostVO();
 			
 			if(req.getParameter("postTitle")!= null) {
+				System.out.println("타이틀:"+req.getParameter("postTitle"));
 				String postTitle = req.getParameter("postTitle");
 				postTitle = URLDecoder.decode(postTitle,"UTF-8");
 				pv.setPostTitle(postTitle);
-				System.out.println("제발 : "+postTitle);
 			}else if(req.getParameter("postContent")!= null) {
 				String postContent = req.getParameter("postContent");
 				pv.setPostTitle(postContent);
+				System.out.println("내용:"+req.getParameter("postContent"));
 			}else if(req.getParameter("memId")!= null) {
 				String memId = req.getParameter("memId");
 				pv.setPostTitle(memId);
+				System.out.println("아이디:"+req.getParameter("memId"));
 			}
 			
 			 int pageNo = 
@@ -64,30 +67,10 @@ public class SearchPostHandler implements CommandHandler {
 				
 			
 			String flag = req.getParameter("flag");
-//			PostVO pv = new PostVO();
-//			String input = new String(req.getParameter("inputstr").getBytes("8859_1"),"KSC5601");  
-//			System.out.println("inputstr :"+req.getParameter("inputstr"));
-//			System.out.println(input);
-//			   if("1".equals(flag)) {
-//					String postTitle = req.getParameter("inputstr");
-//					pv.setPostTitle(postTitle);
-//				}else if("2".equals(flag)) {
-//					String postContent = req.getParameter("inputstr");
-//					pv.setPostContent(postContent);
-//				}else if("3".equals(flag)) {
-//					String memId = req.getParameter("inputstr");
-//					pv.setMemId(memId);
-//				}
-		
 			  List<PostVO> list = postService.getSearchPost(pv);
 			   req.setAttribute("postlist", list);
 			   req.setAttribute("pagingVO", pagingVO);
-			   
-			
-			   RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/view/post/postlist.jsp");
-				dispatcher.forward(req, resp);
-
-			   
+			   System.out.println("search post handler 퇴장 GET");
 			return VIEW_PAGE;
 		}else { 
 //		System.out.println("입장 Post Main Haldler 입장");
@@ -113,13 +96,13 @@ public class SearchPostHandler implements CommandHandler {
 		PostVO pv = new PostVO();
 		
 		   if("1".equals(flag)) {
-				String postTitle = req.getParameter("inputstr");
+				String postTitle = req.getParameter("postTitle");
 				pv.setPostTitle(postTitle);
 			}else if("2".equals(flag)) {
-				String postContent = req.getParameter("inputstr");
+				String postContent = req.getParameter("postContent");
 				pv.setPostContent(postContent);
 			}else if("3".equals(flag)) {
-				String memId = req.getParameter("inputstr");
+				String memId = req.getParameter("memId");
 				pv.setMemId(memId);
 			}
 		   
@@ -128,7 +111,7 @@ public class SearchPostHandler implements CommandHandler {
 		   req.setAttribute("postlist", list);
 		   req.setAttribute("pagingVO", pagingVO);
 		   
-		   System.out.println("퇴장 Post SEARCH Haldler 퇴장");
+		   System.out.println("퇴장 Post SEARCH Haldler 퇴장 POST");
 		   
 //		   RequestDispatcher view=req.getRequestDispatcher("index.jsp");
 //		    view.forward(req,resp);

@@ -7,9 +7,16 @@ body {
   padding-top: 56px;
 }
 .container-fluid{
-	height: 1000px;
+	height: 100%;
 }
 
 #header{
 	background-image: url("/DEworld/image/banner.jpg");
+}
+
+footer{
+	clear: both; 
+}
+.sidenav{
+	height:1000px;
 }
