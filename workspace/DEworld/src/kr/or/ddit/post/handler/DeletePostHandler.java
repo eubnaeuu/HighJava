@@ -29,19 +29,19 @@ public class DeletePostHandler implements CommandHandler {
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse resp) throws Exception, Exception {
 		
-//		System.out.println("입장 Post Main Haldler 입장");
+		System.out.println("입장 Post DELETE Haldler 입장");
 
-		System.out.println("delete중delete중delete중delete중delete중delete중delete중delete중");
 		
 		PostService postService = PostServiceImpl.getInstance();
 		IAtchFileService fileService = AtchFileServiceImpl.getInstance();
 		
 			String postNo = req.getParameter("postNo");
+			
 			fileService.deleteAtchFile(postNo); // atchFile 삭제(detail 종속삭제)
 			postService.deletePost(postNo); // post 삭제
 			
 		
-//		System.out.println("퇴장 Post Main Haldler 퇴장");
+		System.out.println("퇴장 Post DELETE Haldler 퇴장");
 
 			return VIEW_PAGE;
 		}

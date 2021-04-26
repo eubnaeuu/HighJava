@@ -22,12 +22,18 @@ public class ViewPostHandler implements CommandHandler{
 	
 	@Override
 	public boolean isRedirect(HttpServletRequest req) {
-		return false;
+		if(req.getMethod().equals("GET")) {
+			return false;
+		}else { 
+			return true;
+		}
 	}
+
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		
 		String postNo = req.getParameter("postNo");
+		System.out.println(postNo);
 		// 회원정보 조회
 		PostService postService = PostServiceImpl.getInstance();
 		PostVO postVo = new PostVO(); 
@@ -54,6 +60,7 @@ public class ViewPostHandler implements CommandHandler{
 		
 		req.setAttribute("postlist", postlist);
 		req.setAttribute("commentslist", commentslist);
+		
 		return VIEW_PAGE;
 	}
 

@@ -20,7 +20,7 @@ import util.FileUploadRequestWrapper;
 
 public class InsertPostHandler implements CommandHandler {
 	
-	private static final String VIEW_PAGE = "/WEB-INF/view/post/insert.jsp";
+	private static final String VIEW_PAGE = "/WEB-INF/view/post/postinsert.jsp";
 	private Map<String, Object> fileItemMap;
 
 	@Override
@@ -65,6 +65,8 @@ public class InsertPostHandler implements CommandHandler {
 			
 			PostVO pv = new PostVO();
 			pv.setMemId(req.getParameter("memId"));
+			pv.setHompiId(req.getParameter("memId"));
+			pv.setLpostGu(req.getParameter("lpostGu"));
 			pv.setPostNo(req.getParameter("postNo"));
 			pv.setPostTitle(req.getParameter("postTitle"));
 			if(filecnt > 0) {

@@ -14,7 +14,7 @@ import util.FileUploadRequestWrapper;
 
 public class InsertCommentsHandler implements CommandHandler {
 	
-	private static final String VIEW_PAGE = "/WEB-INF/view/comments/insertcomments.html";
+	private static final String VIEW_PAGE = "/WEB-INF/view/post/postlist.jsp";
 	
 	@Override
 	public boolean isRedirect(HttpServletRequest req) {
@@ -38,20 +38,20 @@ public class InsertCommentsHandler implements CommandHandler {
 			cv.setCommentsContent(req.getParameter("commentsContent"));
 			int cnt = CommentsService.insertComments(cv);
 			
-			String msg = "";
-			
-			if(cnt > 0) {
-				msg = "성공";
-			}else {
-				msg = "실패";
-			}
-			
-//			String redirectUrl = req.getContextPath() + "/comments/list.do?msg=" 
-//					+ URLEncoder.encode(msg, "UTF-8");
-
-			System.out.println("퇴장 Comments insert Haldler 퇴장");
-
-			return VIEW_PAGE;
-		}
+//			String msg = "";
+//			
+//			if(cnt > 0) {
+//				msg = "성공";
+//			}else {
+//				msg = "실패";
+//			}
+		
+			String redirectUrl = req.getContextPath() 
+					+ "/post/select.do?postNo=" 
+					+ req.getParameter("postNo");
+//			+URLEncoder.encode(msg, "UTF-8");
+		
+			return redirectUrl;
 	}
+}
 }

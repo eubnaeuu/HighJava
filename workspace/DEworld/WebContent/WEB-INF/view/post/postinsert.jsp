@@ -27,6 +27,10 @@
 			<table>
 				<tr>
 					<td>POSTNO:</td>
+					<td><input type="text" name="lpostGu" value="LPO03"></td>
+				</tr>
+				<tr>
+					<td>POSTNO:</td>
 					<td><input type="text" name="postNo" value="p001"></td>
 				</tr>
 				<tr>
@@ -35,7 +39,7 @@
 				</tr>
 				<tr>
 					<td>MEMID:</td>
-					<td><input type="text" name="memId" value="a001" readonly="readonly"></td>
+					<td><input type="text" name="memId" value="cdwcdw34" readonly="readonly"></td>
 				</tr>
 				<tr>
 					<td>첨부파일1</td>

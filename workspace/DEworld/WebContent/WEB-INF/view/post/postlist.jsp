@@ -1,3 +1,4 @@
+<%@page import="kr.or.ddit.comments.vo.CommentsVO"%>
 <%@page import="kr.or.ddit.paging.PagingVO"%>
 <%@page import="kr.or.ddit.post.vo.PostVO"%>
 <%@page import="java.util.List"%>
@@ -7,8 +8,8 @@
 // String strJson = (String)request.getAttribute("strJson");
 List<PostVO> postlist = (List<PostVO>)request.getAttribute("postlist");
 PagingVO pagingVO = (PagingVO)request.getAttribute("pagingVO");
-// String msg = request.getParameter("msg") == null ? ""
-// 		: request.getParameter("msg");
+String msg = request.getParameter("msg") == null ? ""
+		: request.getParameter("msg");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>

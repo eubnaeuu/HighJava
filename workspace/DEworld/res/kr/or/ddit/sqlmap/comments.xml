@@ -6,7 +6,9 @@
 <sqlMap namespace="comments">
 
 	<insert id="insertComments" parameterClass="kr.or.ddit.comments.vo.CommentsVO">
-
+		<selectKey keyProperty="commentsId" resultClass="String">
+			SELECT LPAD(COMMENTS_SEQ.NEXTVAL,3,0) FROM DUAL
+		</selectKey>
 	INSERT INTO COMMENTS
 	(
 	COMMENTS_ID
@@ -17,7 +19,7 @@
 	)
 	VALUES
 	(
-	#commentsId#
+	'COM'||#commentsId#
 	,#postNo#
 	,#memId#
 	,#commentsContent#
