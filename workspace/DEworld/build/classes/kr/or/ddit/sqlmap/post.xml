@@ -57,18 +57,6 @@
 		WHERE post_NO = #postNo#
 	</delete>
 	<select id="getPostAll" resultClass="kr.or.ddit.post.vo.PostVO">
-<!-- 		SELECT -->
-<!-- 		POST_NO 		   postNo -->
-<!-- 		,HOMPI_ID         	hompiId -->
-<!-- 		,LPOST_GU         	lpostGu -->
-<!-- 		,MEM_ID           	memId -->
-<!-- 		,POST_TITLE       	postTitle -->
-<!-- 		,POST_CONTENT     	postContent -->
-<!-- 		,POST_DATE        	postDate -->
-<!-- 		,POST_VIEW        	postView -->
-<!-- 		,ATCH_FILE_ID 		atchFileId -->
-<!-- 		FROM POST -->
-		
 		SELECT 
 			AA.POST_NO 		   postNo
 			,AA.HOMPI_ID         	hompiId
@@ -84,7 +72,7 @@
  		 FROM POST A
  		) AA
  		WHERE AA.RNUM BETWEEN #firstRecNo# AND #lastRecNo#
- 		ORDER BY 1 DESC
+ 		ORDER BY AA.POST_NO DESC
 	</select>
 	
 	<select id="getPostAllCount" resultClass="int">
@@ -118,7 +106,7 @@
 	 <isNotEmpty property="memId">
            AND MEM_ID LIKE '%'||#memId#||'%'
 	 </isNotEmpty>
-	 ORDER BY 1 DESC
+	 ORDER BY POST_NO DESC
 
 <!-- 	 SELECT -->
 <!-- 		POST_NO 		   postNo -->

@@ -246,11 +246,18 @@
 							</tr>
 						</thead>
 						<tbody id="noticeTb">
-						
+
 						</tbody>
 					</table>
 					<input type="hidden" name="flag" id="flag">
 				</form>
+
+
+
+
+
+
+
 
 			</div>
 			<!-- 여백 -->

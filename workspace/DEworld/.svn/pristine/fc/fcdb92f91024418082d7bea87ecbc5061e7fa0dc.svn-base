@@ -227,7 +227,7 @@
 			<div class="col-sm-2 sidenav"></div>
 			<!-- 본문작성공간 -->
 			<div class="col-sm-8 text-left">
-				<h1>공지사항</h1>
+				<h1>FAQ</h1>
 				<hr>
 				<button id="deleteNotice" onclick="deleteNotice()"
 					disabled="disabled">삭제하기</button>
