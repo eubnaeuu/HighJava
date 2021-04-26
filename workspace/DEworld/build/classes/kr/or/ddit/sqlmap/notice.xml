@@ -43,7 +43,7 @@
 		,NOTICE_TITLE      noticeTitle
 		,TO_CHAR(NOTICE_DATE,'yyyy-mm-dd')       noticeDate
 		FROM NOTICE
-		ORDER BY NOTICE_NO
+		ORDER BY NOTICE_NO DESC
 	</select>
 	<!-- 수정 -->
 	<update id="updateNotice" parameterClass="kr.or.ddit.notice.vo.NoticeVO">

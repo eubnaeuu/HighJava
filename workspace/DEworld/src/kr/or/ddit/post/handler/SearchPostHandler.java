@@ -4,6 +4,7 @@ import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -83,7 +84,8 @@ public class SearchPostHandler implements CommandHandler {
 			   req.setAttribute("pagingVO", pagingVO);
 			   
 			
-
+			   RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/view/post/postlist.jsp");
+				dispatcher.forward(req, resp);
 
 			   
 			return VIEW_PAGE;
