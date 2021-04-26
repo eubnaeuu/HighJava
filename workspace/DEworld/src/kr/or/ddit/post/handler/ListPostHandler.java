@@ -19,7 +19,7 @@ import kr.or.ddit.post.vo.PostVO;
 
 public class ListPostHandler implements CommandHandler {
 		
-	private static final String VIEW_PAGE = "/WEB-INF/view/post/list.jsp";
+	private static final String VIEW_PAGE = "/WEB-INF/view/post/postlist.jsp";
 	
 	@Override
 	public boolean isRedirect(HttpServletRequest req) {
@@ -56,7 +56,7 @@ public class ListPostHandler implements CommandHandler {
 			
 		
 				List<PostVO> list = postService.getAllPostList(pagingVO);
-				req.setAttribute("list", list);
+				req.setAttribute("postlist", list);
 				req.setAttribute("pagingVO", pagingVO);
 				System.out.println("퇴장 Post List Haldler 퇴장");
 				return VIEW_PAGE;

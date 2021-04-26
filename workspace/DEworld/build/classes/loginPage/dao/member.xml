@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="member">
+
+	<select id="matchinIdPw" parameterClass="kr.or.ddit.member.vo.MemberVO" resultClass="kr.or.ddit.member.vo.MemberVO">
+		SELECT
+			MEM_ID memId
+			,MEM_PASS memPass
+		FROM  MEMBER
+		WHERE MEM_ID = #memId#
+		AND MEM_PASS = #memPass#
+	</select>
+	
+</sqlMap>

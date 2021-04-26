@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+			PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+			"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="friendreq">
+
+	<insert id="insertFriendReq" parameterClass="kr.or.ddit.friendreq.vo.FriendReqVO">
+
+	INSERT INTO FRIEND_REQ_LIST
+	(
+			MEM_ID        
+			,FRIEND_ID     
+			,REQ_DATE       
+			,REQ_YN         
+	)
+	VALUES
+	(
+			#memId#
+			,#friendId#
+			,SYSDATE
+			,#reqYn#
+	)                   
+	</insert>
+	
+	<update id="updateFriendReq" parameterClass="kr.or.ddit.friendreq.vo.FriendReqVO">
+		UPDATE FRIEND_REQ_LIST
+         SET 
+         REQ_YN = #reqYn#
+	 	WHERE 1=1
+	 	AND FRIEND_ID = #friendId#
+	 	AND MEM_ID = #memId#
+	</update>
+	
+	<delete id="deleteFriendReq" parameterClass="String">
+		DELETE 
+		FROM FRIEND_REQ_LIST
+		WHERE FRIEND_ID = #friendId#
+	</delete>
+	
+	<select id="getFriendReqAll" resultClass="kr.or.ddit.friendreq.vo.FriendReqVO">
+		SELECT
+			MEM_ID        memId      
+			,FRIEND_ID    friendId  
+			,REQ_DATE     reqDate   
+			,REQ_YN       reqYn     
+		FROM FRIEND_REQ_LIST
+	</select>
+	
+	<select id="getSearchFriendReq" parameterClass="kr.or.ddit.friendreq.vo.FriendReqVO" resultClass="kr.or.ddit.friendreq.vo.FriendReqVO">
+ 	SELECT		
+			MEM_ID        memId      
+			,FRIEND_ID    friendId  
+			,REQ_DATE     reqDate   
+			,REQ_YN       reqYn    
+	FROM FRIEND_REQ_LIST
+	WHERE 1 = 1
+	<isNotEmpty property="friendId">
+           AND FRIEND_ID = #friendId#
+	 </isNotEmpty>
+	<isNotEmpty property="memId">
+           AND MEM_ID = #memId#
+	 </isNotEmpty>
+	<isNotEmpty property="reqYn">
+           AND REQ_YN = #reqYn#
+	 </isNotEmpty>
+
+	</select>
+</sqlMap>			
+
+

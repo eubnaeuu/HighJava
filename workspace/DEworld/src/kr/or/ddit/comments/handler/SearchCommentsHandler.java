@@ -12,7 +12,7 @@ import kr.or.ddit.comments.vo.CommentsVO;
 
 public class SearchCommentsHandler implements CommandHandler {
 		
-	private static final String VIEW_PAGE = "/WEB-INF/view/comments/list.html";
+	private static final String VIEW_PAGE = "/WEB-INF/view/comments/commentslist.jsp";
 	
 	@Override
 	public boolean isRedirect(HttpServletRequest req) {
@@ -22,12 +22,11 @@ public class SearchCommentsHandler implements CommandHandler {
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse resp) throws Exception, Exception {
 		
-//		System.out.println("입장 comments Main Haldler 입장");
+		System.out.println("입장 comments Main Haldler 입장");
 
 		
 		CommentsService commentsService = CommentsServiceImpl.getInstance();
 	
-			System.out.println("서치중 서치중 서치중 서치중 서치중 서치중 서치중 서치중 서치중 서치중 ");
 			CommentsVO cv = new CommentsVO();
 			cv.setCommentsId(req.getParameter("commentsId"));
 			cv.setPostNo(req.getParameter("postNo"));
@@ -42,7 +41,7 @@ public class SearchCommentsHandler implements CommandHandler {
 //			out.print(strJson);
 ////			out.flush();
 
-//		System.out.println("퇴장 comments Main Haldler 퇴장");
+		System.out.println("퇴장 comments Main Haldler 퇴장");
 
 			return VIEW_PAGE;
 		}
