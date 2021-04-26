@@ -234,49 +234,72 @@ function create(){
 		
 	});
 }
-function search(){
+// function search(){
+
+// 		var flag = $("#selectstr").val();
+// 		var inputparam = $("#inputstr").val();
+
+// 		if ("1" == flag) {
+// 			var URI="http://localhost/DEworld/post/search.do?postTitle="+inputparam;
+// 			alert(URI);
+// 			window.location.href = encodeURI(URI);
+// 		} else if ("2" == flag) {
+// 			var URI="http://localhost/DEworld/post/search.do?postContent="
+// 					+ inputparam;
+// 			window.location.href = encodeURI(URI);
+// 		} else if ("3" == flag) {
+// 			var URI="http://localhost/DEworld/post/search.do?postMemId="
+// 					+ inputparam;
+// 			window.location.href = encodeURI(URI);
+// 		}
+// 	}
 	
-	flag = $("#selectstr").val();
-	inputparam = $("#inputstr").val();
-	var param = {
-			"inputstr" : inputparam
-			,"flag" : flag
-			};
-	$.ajax({
-		url : "/DEworld/post/search.do"
-		,type : "POST"
-		,data : param
-//  		,dataType : "json"
-		,success : function(data){
-			console.log(data)
-		}
-		,error : function(xhr){
-			console.error(xhr);
-			alert("실패");
-		}
-		
-	});
-}
+	function search() {
+		flag = $("#selectstr").val();
+		inputparam = $("#inputstr").val();
+		alert(inputparam);
 
-function chkmsg(){
-	return confirm("정말 삭제하시겠습니까?");
-}
+		var param = {
+			"inputstr" : inputparam,
+			"flag" : flag
+		};
+		$.ajax({
+			url : "/DEworld/post/search.do",
+// 			type : "POST",
+			data : param
+			//  		,dataType : "json"
+			,
+			success : function(data) {
+				console.log(data)
+			},
+			error : function(xhr) {
+				console.error(xhr);
+				alert("실패");
+			}
 
-function select(){
-	$.ajax({
-		url : "/DEworld/post/list.do"
-		,type : "POST"
-// 		,dataType : "json"
-// 		,data : param
-		,success : function(data){
-			console.log(data)
-// 			makeTable(data);
-		}
-		,error : function(xhr){
-			console.error(xhr);
-			alert("실패");
-		}
-	});
-}
+		});
+	}
+
+	function chkmsg() {
+		return confirm("정말 삭제하시겠습니까?");
+	}
+
+	function select() {
+		$.ajax({
+			url : "/DEworld/post/list.do",
+			type : "POST"
+			// 		,dataType : "json"
+			// 		,data : param
+			,
+			success : function(data) {
+				console.log(data)
+				// 			makeTable(data);
+			},
+			error : function(xhr) {
+				console.error(xhr);
+				alert("실패");
+			}
+		});
+	}
 </script>
 </html>
