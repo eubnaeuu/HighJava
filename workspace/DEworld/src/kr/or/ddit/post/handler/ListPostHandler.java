@@ -59,6 +59,7 @@ public class ListPostHandler implements CommandHandler {
 				req.setAttribute("postlist", list);
 				req.setAttribute("pagingVO", pagingVO);
 				System.out.println("퇴장 Post List Haldler 퇴장");
+				
 				return VIEW_PAGE;
 		
 			

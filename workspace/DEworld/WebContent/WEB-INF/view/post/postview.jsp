@@ -106,9 +106,9 @@
 					<td><input type="text" name="commentsContent"></td>
 				</tr>
 				<tr>
-					<td><button type="submit">등록</button></td>
+					<td><a href="<%=request.getContextPath()%>/post/select.do?postNo=<%=postlist.get(0).getPostNo() %>"><input type="hidden" name="postNo" value="<%=postlist.get(0).getPostNo()%>"><button type="submit">등록</button></a></td>
 				</tr>
-				<input type="hidden" name="postNo" value="<%=postlist.get(0).getPostNo()%>">
+				
 			</table>
 		</form>
 		<tr>

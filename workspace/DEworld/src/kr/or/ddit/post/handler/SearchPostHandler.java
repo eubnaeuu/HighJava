@@ -21,7 +21,7 @@ import util.FileUploadRequestWrapper;
 
 public class SearchPostHandler implements CommandHandler {
 		
-	private static final String VIEW_PAGE = "/WEB-INF/view/post/postlist.jsp";
+	private static final String VIEW_PAGE = "/WEB-INF/view/post/postsearchlist.jsp";
 	
 	@Override
 	public boolean isRedirect(HttpServletRequest req) {
@@ -34,9 +34,9 @@ public class SearchPostHandler implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse resp) throws Exception, Exception {
-		if(req.getMethod().equals("GET")) { //GET방식인 경우 isRedirect을 하지 않는다
-			return VIEW_PAGE;
-		}else { 
+//		if(req.getMethod().equals("GET")) { //GET방식인 경우 isRedirect을 하지 않는다
+//			return VIEW_PAGE;
+//		}else { 
 //		System.out.println("입장 Post Main Haldler 입장");
 
 		System.out.println("search중search중search중search중search중search중");
@@ -73,7 +73,10 @@ public class SearchPostHandler implements CommandHandler {
 		   
 		   List<PostVO> list = postService.getSearchPost(pv);
 		   
-		   req.setAttribute("list", list);
+		   req.setAttribute("postlist", list);
+		   req.setAttribute("pagingVO", pagingVO);
+		   
+		   
 		   System.out.println("퇴장 Post SEARCH Haldler 퇴장");
 		   
 		   RequestDispatcher view=req.getRequestDispatcher("index.jsp");
@@ -81,4 +84,4 @@ public class SearchPostHandler implements CommandHandler {
 		   return VIEW_PAGE;
 		}
 	}
-}
+//}

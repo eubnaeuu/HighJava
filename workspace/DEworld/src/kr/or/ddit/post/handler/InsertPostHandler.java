@@ -84,8 +84,7 @@ public class InsertPostHandler implements CommandHandler {
 			
 			String redirectUrl = req.getContextPath() + "/post/list.do";
 
-			System.out.println("POSTPOSTPOSTPOST 퇴장 Post insert Haldler 퇴장");
-			System.out.println(redirectUrl);
+			System.out.println("퇴장 Post insert Haldler 퇴장");
 			
 			return redirectUrl;
 		}

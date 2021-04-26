@@ -95,7 +95,9 @@ public class UpdatePostHandler implements CommandHandler {
 
 		System.out.println("퇴장 Post update Haldler 퇴장");
 
-		String redirectUrl = req.getContextPath() + "/post/main.do";
+		String redirectUrl = req.getContextPath() 
+				+ "/post/select.do?postNo="
+				+ req.getParameter("postNo");
 		
 		return redirectUrl;
 		}

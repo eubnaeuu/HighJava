@@ -13,7 +13,7 @@ import kr.or.ddit.comments.vo.CommentsVO;
 import util.FileUploadRequestWrapper;
 
 public class InsertCommentsHandler implements CommandHandler {
-	
+									// 뷰페이지 임의설정
 	private static final String VIEW_PAGE = "/WEB-INF/view/post/postlist.jsp";
 	
 	@Override
@@ -46,11 +46,13 @@ public class InsertCommentsHandler implements CommandHandler {
 //				msg = "실패";
 //			}
 		
-			String redirectUrl = req.getContextPath() 
+			String redirectUrl ="" 
+					+ req.getContextPath() 
 					+ "/post/select.do?postNo=" 
 					+ req.getParameter("postNo");
 //			+URLEncoder.encode(msg, "UTF-8");
 		
+			
 			return redirectUrl;
 	}
 }

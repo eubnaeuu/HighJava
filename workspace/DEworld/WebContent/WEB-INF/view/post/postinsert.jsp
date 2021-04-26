@@ -26,12 +26,12 @@
 			<form action="insert.do" method="post" enctype="multipart/form-data">
 			<table>
 				<tr>
-					<td>POSTNO:</td>
-					<td><input type="text" name="lpostGu" value="LPO03"></td>
+					<td></td>
+					<td><input type="hidden" name="lpostGu" value="LPO03"></td>
 				</tr>
 				<tr>
-					<td>POSTNO:</td>
-					<td><input type="text" name="postNo" value="p001"></td>
+					<td></td>
+					<td><input type="hidden" name="postNo"></td>
 				</tr>
 				<tr>
 					<td>POSTTITLE:</td>
