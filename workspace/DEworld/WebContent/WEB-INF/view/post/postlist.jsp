@@ -10,6 +10,10 @@ List<PostVO> postlist = (List<PostVO>)request.getAttribute("postlist");
 PagingVO pagingVO = (PagingVO)request.getAttribute("pagingVO");
 String msg = request.getParameter("msg") == null ? ""
 		: request.getParameter("msg");
+
+HttpSession saveKey = request.getSession();
+String key = (String)saveKey.getAttribute("AuthenticationKey");
+
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -25,6 +29,7 @@ String msg = request.getParameter("msg") == null ? ""
 </script>
 </head>
 <body>
+<%=saveKey %>
 <table border='2px solid' id="postlisttable">
 			<thead>
 				<tr>
