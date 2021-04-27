@@ -34,8 +34,12 @@
 					<td><input type="hidden" name="postNo"></td>
 				</tr>
 				<tr>
-					<td>POSTTITLE:</td>
-					<td><input type="text" name="postTitle" value="게시글제목"></td>
+					<td>제목:</td>
+					<td><input type="text" name="postTitle" value=""></td>
+				</tr>
+				<tr>
+					<td>내용:</td>
+					<td><input type="text" name="postContent" value=""></td>
 				</tr>
 				<tr>
 					<td>MEMID:</td>

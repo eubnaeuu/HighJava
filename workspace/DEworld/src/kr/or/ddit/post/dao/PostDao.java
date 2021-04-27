@@ -6,6 +6,7 @@ import java.util.List;
 import com.ibatis.sqlmap.client.SqlMapClient;
 
 import kr.or.ddit.paging.PagingVO;
+import kr.or.ddit.post.vo.AllPostVO;
 import kr.or.ddit.post.vo.PostVO;
 
 /**
@@ -30,6 +31,7 @@ public interface PostDao {
 	 * @return 해당 회원ID가 존재하면 true, 존재하지 않으면 false
 	 * @throws SQLException JDBC관련 예외객체 발생
 	 */
+	
 	public boolean checkPost(SqlMapClient smc, String postNo)
 						throws SQLException;
 	
@@ -40,7 +42,7 @@ public interface PostDao {
 	 * @throws SQLException JDBC관련 예외객체
 	 */
 	
-	public List<PostVO> getAllPostList(SqlMapClient smc, PagingVO pv)
+	public List<PostVO> getAllPostList(SqlMapClient smc, AllPostVO apv)
 	 					throws SQLException;
 	
 	/**
@@ -71,9 +73,9 @@ public interface PostDao {
 	 * @return 검색된 결과를 담은 List
 	 * @throws SQLException JDBC관련 예외 객체
 	 */
-	public List<PostVO> getSearchPost(SqlMapClient smc, PostVO pv) 
+	public List<PostVO> getSearchPost(SqlMapClient smc, AllPostVO apv) 
 						throws SQLException;
-	public List<PostVO> getSearchPhoto(SqlMapClient smc, PostVO pv) 
+	public List<PostVO> getSearchPhoto(SqlMapClient smc, AllPostVO apv) 
 			throws SQLException;
 	
 	/**
@@ -84,5 +86,5 @@ public interface PostDao {
 	 */
 	public PostVO getPost(SqlMapClient smc, String postNo) throws SQLException;
 	
-	public int getAllPostListCount(SqlMapClient smc, PostVO pv) throws SQLException;
+	public int getAllPostListCount(SqlMapClient smc,PostVO pv) throws SQLException;
 }

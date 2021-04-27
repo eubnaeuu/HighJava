@@ -15,6 +15,7 @@ import kr.or.ddit.comm.service.IAtchFileService;
 import kr.or.ddit.comm.vo.AtchFileVO;
 import kr.or.ddit.post.service.PostService;
 import kr.or.ddit.post.service.PostServiceImpl;
+import kr.or.ddit.post.vo.AllPostVO;
 import kr.or.ddit.post.vo.PostVO;
 import util.FileUploadRequestWrapper;
 
@@ -43,9 +44,11 @@ public class UpdatePostHandler implements CommandHandler {
 			String sysdate = format1.format(time);
 			
 			PostService postService = PostServiceImpl.getInstance();
-			PostVO postVo = new PostVO();
-			postVo.setPostNo(postNo);
-			List<PostVO> list = postService.getSearchPost(postVo);
+			PostVO pv = new PostVO();
+			AllPostVO apv = new AllPostVO();
+			pv.setPostNo(postNo);
+			apv.setPostNo(postNo);
+			List<PostVO> list = postService.getSearchPost(apv);
 			long atchFileId = list.get(0).getAtchFileId();
 			
 //			if(list.get(0).getAtchFileId() > 0) { // 첨부파일이 존재한다면... 

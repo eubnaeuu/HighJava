@@ -6,9 +6,9 @@ import java.util.List;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 
-import kr.or.ddit.paging.PagingVO;
 import kr.or.ddit.post.dao.PostDao;
 import kr.or.ddit.post.dao.PostDaoImpl;
+import kr.or.ddit.post.vo.AllPostVO;
 import kr.or.ddit.post.vo.PostVO;
 import kr.or.ddit.util.SqlMapClientUtil;
 
@@ -60,12 +60,12 @@ public class PostServiceImpl implements PostService {
 	}
 
 	@Override
-	public List<PostVO> getAllPostList(PagingVO pv) {
+	public List<PostVO> getAllPostList(AllPostVO apv) {
 		
 		List<PostVO> list = new ArrayList<>();
 		
 		try {
-			list = postDao.getAllPostList(smc, pv);
+			list = postDao.getAllPostList(smc, apv);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -111,12 +111,12 @@ public class PostServiceImpl implements PostService {
 	}
 	
 	@Override
-	public List<PostVO> getSearchPost(PostVO pv) {
+	public List<PostVO> getSearchPost(AllPostVO apv) {
 		
 		List<PostVO> memList = new ArrayList<>();
 		
 		try {
-			memList = postDao.getSearchPost(smc, pv);
+			memList = postDao.getSearchPost(smc, apv);
 			
 		}catch(SQLException ex) {
 			ex.printStackTrace();
@@ -125,12 +125,12 @@ public class PostServiceImpl implements PostService {
 		return memList;
 	}
 	@Override
-	public List<PostVO> getSearchPhoto(PostVO pv) {
+	public List<PostVO> getSearchPhoto(AllPostVO apv) {
 		
 		List<PostVO> memList = new ArrayList<>();
 		
 		try {
-			memList = postDao.getSearchPost(smc, pv);
+			memList = postDao.getSearchPost(smc, apv);
 			
 		}catch(SQLException ex) {
 			ex.printStackTrace();

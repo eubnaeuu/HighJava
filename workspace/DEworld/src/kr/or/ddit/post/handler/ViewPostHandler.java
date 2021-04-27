@@ -14,6 +14,7 @@ import kr.or.ddit.comments.service.CommentsServiceImpl;
 import kr.or.ddit.comments.vo.CommentsVO;
 import kr.or.ddit.post.service.PostService;
 import kr.or.ddit.post.service.PostServiceImpl;
+import kr.or.ddit.post.vo.AllPostVO;
 import kr.or.ddit.post.vo.PostVO;
 
 public class ViewPostHandler implements CommandHandler{
@@ -36,10 +37,12 @@ public class ViewPostHandler implements CommandHandler{
 		System.out.println(postNo);
 		// 회원정보 조회
 		PostService postService = PostServiceImpl.getInstance();
-		PostVO postVo = new PostVO(); 
-		postVo.setPostNo(postNo);
-		List<PostVO> postlist = postService.getSearchPost(postVo);
-		int cnt = postService.updatePostView(postVo); // View ++
+		AllPostVO apv = new AllPostVO(); 
+		PostVO pv = new PostVO(); 
+		apv.setPostNo(postNo);
+		pv.setPostNo(postNo);
+		List<PostVO> postlist = postService.getSearchPost(apv);
+		int cnt = postService.updatePostView(pv); // View ++
 		
 		if(postlist.get(0).getAtchFileId() != -1) { // 첨부파일이 존재한다면... 
 			System.out.println("atchfile는 null이 아님");

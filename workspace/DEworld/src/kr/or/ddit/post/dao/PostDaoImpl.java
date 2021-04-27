@@ -6,6 +6,7 @@ import java.util.List;
 import com.ibatis.sqlmap.client.SqlMapClient;
 
 import kr.or.ddit.paging.PagingVO;
+import kr.or.ddit.post.vo.AllPostVO;
 import kr.or.ddit.post.vo.PostVO;
 
 
@@ -50,9 +51,9 @@ public class PostDaoImpl implements PostDao {
    }
 
    @Override
-   public List<PostVO> getAllPostList(SqlMapClient smc, PagingVO pv) throws SQLException {
+   public List<PostVO> getAllPostList(SqlMapClient smc, AllPostVO apv) throws SQLException {
       
-      List<PostVO> postList = smc.queryForList("post.getPostAll", pv);
+      List<PostVO> postList = smc.queryForList("post.getPostAll", apv);
       return postList;
    }
 
@@ -80,17 +81,17 @@ public class PostDaoImpl implements PostDao {
    }
 
    @Override
-   public List<PostVO> getSearchPost(SqlMapClient smc,PostVO pv) throws SQLException {
+   public List<PostVO> getSearchPost(SqlMapClient smc,AllPostVO apv) throws SQLException {
       
       List<PostVO> postList = 
-    		  smc.queryForList("post.getSearchPost", pv);
+    		  smc.queryForList("post.getSearchPost", apv);
       
       return postList;
    }
-   public List<PostVO> getSearchPhoto(SqlMapClient smc,PostVO pv) throws SQLException {
+   public List<PostVO> getSearchPhoto(SqlMapClient smc,AllPostVO apv) throws SQLException {
 	   
 	   List<PostVO> postList = 
-			   smc.queryForList("post.getSearchPhoto", pv);
+			   smc.queryForList("post.getSearchPhoto", apv);
 	   
 	   return postList;
    }

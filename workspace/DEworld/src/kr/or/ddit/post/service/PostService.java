@@ -3,6 +3,7 @@ package kr.or.ddit.post.service;
 import java.util.List;
 
 import kr.or.ddit.paging.PagingVO;
+import kr.or.ddit.post.vo.AllPostVO;
 import kr.or.ddit.post.vo.PostVO;
 
 /**
@@ -28,7 +29,7 @@ public interface PostService {
 	 * 전체 회원정보 조회 메서드
 	 * @return 회원정보를 담고있는 List객체
 	 */
-	public List<PostVO> getAllPostList(PagingVO pv);
+	public List<PostVO> getAllPostList(AllPostVO apv);
 	
 	/**
 	 * 하나의 회원정보를 수정하는 메서드
@@ -51,8 +52,8 @@ public interface PostService {
 	 * @param pv 검색할 자료가 들어있는 PostVO 객체
 	 * @return 검색된 결과를 담은 List
 	 */
-	public List<PostVO> getSearchPost(PostVO pv);
-	public List<PostVO> getSearchPhoto(PostVO pv);
+	public List<PostVO> getSearchPost(AllPostVO apv);
+	public List<PostVO> getSearchPhoto(AllPostVO apv);
 	
 	/**
 	 * 주어진 회원ID에 해당하는 회원정보를 조회하는 메서드
