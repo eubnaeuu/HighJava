@@ -20,6 +20,9 @@ public class PostVO extends BaseVO {
 	private String postContent;
 	private String postDate;
 	
+	private String fileStreCours;
+	private String fileExtsn;
+	
 	private String memNickname;
 	
 	private long postView =0;

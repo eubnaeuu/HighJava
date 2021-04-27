@@ -112,25 +112,6 @@
            AND MEM_ID LIKE '%'||#memId#||'%'
 	 </isNotEmpty>
 	 ORDER BY POST_NO DESC
-
-<!-- 	 SELECT -->
-<!-- 		POST_NO 		   postNo -->
-<!-- 		,HOMPI_ID         	hompiId -->
-<!-- 		,LPOST_GU         	lpostGu -->
-<!-- 		,MEM_ID           	memId -->
-<!-- 		,POST_TITLE       	postTitle -->
-<!-- 		,POST_CONTENT     	postContent -->
-<!-- 		,POST_ATTACHMENTS 	postAttachments -->
-<!-- 		,POST_DATE        	postDate -->
-<!-- 		,POST_VIEW        	postView -->
-<!-- 		 FROM post -->
-<!-- 	 where 1=1 -->
-<!-- 	 <isNotEmpty property="postNo"> -->
-<!--            AND POST_NO = #postNo# -->
-<!-- 	 </isNotEmpty> -->
-<!-- 	 <isNotEmpty property="postTitle"> -->
-<!--            AND post_TITLE = #postTitle# -->
-<!-- 	 </isNotEmpty> -->
 	</select>
 	
 	

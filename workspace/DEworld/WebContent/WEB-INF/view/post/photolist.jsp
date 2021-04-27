@@ -19,6 +19,12 @@ IMemberService memberService = MemberServiceImpl.getInstance();
 MemberVO logininfo = memberService.getMember(userId);
 
 
+
+// List<AtchFileVO> atchFileList = (List<AtchFileVO>) request.getAttribute("atchFileList");
+// List<PostVO> postlist = (List<PostVO>) request.getAttribute("postlist");
+// List<CommentsVO> commentslist = (List<CommentsVO>) request.getAttribute("commentslist");
+
+
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -36,13 +42,16 @@ MemberVO logininfo = memberService.getMember(userId);
 <body>
 <table border='2px solid' id="postlisttable">
 			<thead>
+			<tr>
+			<td colspan="6">사진첩</td>
+			</tr>
 				<tr>
-					<th><input class="PostChk" id="PostCheckboxAll" style="display: none;" type="checkbox" name="PostCheckboxAll" onclick="checkAll();"></th>
-					<th>구   분</th>
-					<th>제   목</th>
-					<th>내   용</th>
-					<th>작성일</th>
-					<th>조   회</th>
+					<th colspan="6"><input class="PostChk" id="PostCheckboxAll" style="display: none;" type="checkbox" name="PostCheckboxAll" onclick="checkAll();"></th>
+<!-- 					<th>구   분</th> -->
+<!-- 					<th>제   목</th> -->
+<!-- 					<th>내   용</th> -->
+<!-- 					<th>작성일</th> -->
+<!-- 					<th>조   회</th> -->
 				</tr>
 			</thead>
 			<tbody>
@@ -56,11 +65,24 @@ MemberVO logininfo = memberService.getMember(userId);
 							<tr>
 							<th><input class="PostChk PostChkArr" id="<%=postlist.get(i).getPostNo() %>chkbox" style="display: none;" type="checkbox" name="PostCheckbox"></th>
 							<td><%= cnt%></td>
-							<td><a href="select.do?postNo=<%=postlist.get(i).getPostNo()%>"><%= postlist.get(i).getPostTitle() %></a></td>
-							<td><%= postlist.get(i).getPostContent()%></td>
-							<td><%= postlist.get(i).getPostDate()%></td>
-							<td><%= postlist.get(i).getPostView()%></td>
+							<td><a href="select.do?postNo=<%=postlist.get(i).getPostNo()%>"><%= postlist.get(i).getAtchFileId() %></a></td>
 							</tr>
+		<tr>
+			<td>첨부파일:</td>
+<!-- 			<td colspan="2"> -->
+				<%
+// 					if (atchFileList != null) {
+// 						for (AtchFileVO atchFileVO : atchFileList) {
+ 				%> 
+<!-- 				<div> -->
+<%-- 					<a href="<%=request.getContextPath()%>/filedownLoad.do?fileId=<%=atchFileVO.getAtchFileId()%> --%>
+<%-- 																			&fileSn=<%=atchFileVO.getFileSn()%>"> --%>
+<%-- 						<%=atchFileVO.getOrignlFileNm()%> --%>
+<!-- 					</a> -->
+<%-- 			<img width="200px" src="/DEworld/atchFile/<%=atchFileVO.getStreFileNm()%>.<%=atchFileVO.getFileExtsn()%>"> --%>
+<!-- 				</div> -->
+			</td>
+		</tr>
 							<%
 							cnt++;
 							}
