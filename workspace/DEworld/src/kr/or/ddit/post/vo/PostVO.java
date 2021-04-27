@@ -20,7 +20,7 @@ public class PostVO extends BaseVO {
 	private String postContent;
 	private String postDate;
 	
-	private String fileStreCours;
+	private String streFileNm;
 	private String fileExtsn;
 	
 	private String memNickname;
@@ -88,5 +88,17 @@ public class PostVO extends BaseVO {
 	}
 	public void setMemNickname(String memNickname) {
 		this.memNickname = memNickname;
+	}
+	public String getFileExtsn() {
+		return fileExtsn;
+	}
+	public void setFileExtsn(String fileExtsn) {
+		this.fileExtsn = fileExtsn;
+	}
+	public String getStreFileNm() {
+		return streFileNm;
+	}
+	public void setStreFileNm(String streFileNm) {
+		this.streFileNm = streFileNm;
 	}
 }

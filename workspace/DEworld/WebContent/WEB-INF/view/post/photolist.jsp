@@ -71,16 +71,12 @@ MemberVO logininfo = memberService.getMember(userId);
 			<td>첨부파일:</td>
 <!-- 			<td colspan="2"> -->
 				<%
-// 					if (atchFileList != null) {
-// 						for (AtchFileVO atchFileVO : atchFileList) {
+					if (atchFileList != null) {
+						for (AtchFileVO atchFileVO : atchFileList) {
  				%> 
-<!-- 				<div> -->
-<%-- 					<a href="<%=request.getContextPath()%>/filedownLoad.do?fileId=<%=atchFileVO.getAtchFileId()%> --%>
-<%-- 																			&fileSn=<%=atchFileVO.getFileSn()%>"> --%>
-<%-- 						<%=atchFileVO.getOrignlFileNm()%> --%>
-<!-- 					</a> -->
-<%-- 			<img width="200px" src="/DEworld/atchFile/<%=atchFileVO.getStreFileNm()%>.<%=atchFileVO.getFileExtsn()%>"> --%>
-<!-- 				</div> -->
+				<div>
+			<img width="200px" src="/DEworld/atchFile/<%=postlist.getStreFileNm()%>.<%=atchFileVO.getFileExtsn()%>">
+				</div>
 			</td>
 		</tr>
 							<%

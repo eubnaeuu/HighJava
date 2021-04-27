@@ -82,7 +82,7 @@
 	
 	<select id="getSearchPost" parameterClass="kr.or.ddit.post.vo.PostVO" resultClass="kr.or.ddit.post.vo.PostVO">
 	
-	SELECT
+SELECT
 		P.POST_NO 		   postNo
 		,P.HOMPI_ID         	hompiId
 		,P.LPOST_GU         	lpostGu
@@ -93,23 +93,25 @@
 		,P.POST_VIEW        	postView
 		,P.ATCH_FILE_ID 		atchFileId
         ,M.MEM_NICKNAME         memNickname
+        ,D.STRE_FILE_NM   	   streFileNm
+        ,D.FILE_EXTSN           fileExtsn
 	FROM POST P
     INNER JOIN MEMBER M
     ON P.MEM_ID = M.MEM_ID
-    WHERE 1 = 1
-    
-    
+    INNER JOIN ATCH_FILE_DETAIL D
+    ON P.ATCH_FILE_ID = D.ATCH_FILE_ID
+    WHERE D.FILE_SN = 1
 	<isNotEmpty property="postNo">
-           AND POST_NO = #postNo#
+           AND P.POST_NO = #postNo#
 	 </isNotEmpty>
 	 <isNotEmpty property="postTitle">
-           AND POST_TITLE LIKE '%'||#postTitle#||'%'
+           AND P.POST_TITLE LIKE '%'||#postTitle#||'%'
 	 </isNotEmpty>
 	 <isNotEmpty property="postContent">
-           AND POST_CONTENT LIKE '%'||#postContent#||'%'
+           AND P.POST_CONTENT LIKE '%'||#postContent#||'%'
 	 </isNotEmpty>
 	 <isNotEmpty property="memId">
-           AND MEM_ID LIKE '%'||#memId#||'%'
+           AND P.MEM_ID LIKE '%'||#memId#||'%'
 	 </isNotEmpty>
 	 ORDER BY POST_NO DESC
 	</select>
