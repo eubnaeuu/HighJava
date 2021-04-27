@@ -1,19 +1,18 @@
+<%@page import="java.util.List"%>
 <%@page import="kr.or.ddit.member.vo.MemberVO"%>
 <%@page import="kr.or.ddit.member.service.MemberServiceImpl"%>
 <%@page import="kr.or.ddit.member.service.IMemberService"%>
 <%@page import="kr.or.ddit.comments.vo.CommentsVO"%>
 <%@page import="kr.or.ddit.post.vo.PostVO"%>
 <%@page import="kr.or.ddit.comm.vo.AtchFileVO"%>
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
 	// String userId = (String)request.getSession().getAttribute("nowLogin"); // 세션의 로그인아이디값 가져오기
 	// String userId ="cdwcdw34";
-	List<AtchFileVO> atchFileList;
-if(request.getAttribute("atchFileList") != null){
-	atchFileList = (List<AtchFileVO>) request.getAttribute("atchFileList");
-}
+// if(request.getAttribute("atchFileList") != null){
+// }
+	List<AtchFileVO> atchFileList = (List<AtchFileVO>) request.getAttribute("atchFileList");
 	List<PostVO> postlist = (List<PostVO>) request.getAttribute("postlist");
 	List<CommentsVO> commentslist = (List<CommentsVO>) request.getAttribute("commentslist");
 

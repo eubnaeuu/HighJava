@@ -124,6 +124,20 @@ public class PostServiceImpl implements PostService {
 		
 		return memList;
 	}
+	@Override
+	public List<PostVO> getSearchPhoto(PostVO pv) {
+		
+		List<PostVO> memList = new ArrayList<>();
+		
+		try {
+			memList = postDao.getSearchPost(smc, pv);
+			
+		}catch(SQLException ex) {
+			ex.printStackTrace();
+		}
+		
+		return memList;
+	}
 
 	@Override
 	public PostVO getPost(String postId) {
@@ -139,10 +153,10 @@ public class PostServiceImpl implements PostService {
 	}
 
 	@Override
-	public int getAllPostListCount() {
+	public int getAllPostListCount(PostVO pv) {
 		int cnt=-1;
 		try {
-			cnt = postDao.getAllPostListCount(smc);
+			cnt = postDao.getAllPostListCount(smc,pv);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

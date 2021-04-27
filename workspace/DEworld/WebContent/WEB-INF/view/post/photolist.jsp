@@ -9,7 +9,10 @@
     pageEncoding="UTF-8"%>
 <%
 // String strJson = (String)request.getAttribute("strJson");
-List<PostVO> postlist = (List<PostVO>)request.getAttribute("postlist");
+
+// hompiId 어떻게?
+String hompiId="cdwcdw34";
+
 PagingVO pagingVO = (PagingVO)request.getAttribute("pagingVO");
 String msg = request.getParameter("msg") == null ? ""
 		: request.getParameter("msg");
@@ -17,6 +20,12 @@ String msg = request.getParameter("msg") == null ? ""
 String userId = (String)request.getSession().getAttribute("userId");
 IMemberService memberService = MemberServiceImpl.getInstance();
 MemberVO logininfo = memberService.getMember(userId);
+
+PostVO postVo = new PostVO(); 
+postVo.setHompiId(hompiId);
+List<PostVO> photolist = (List<PostVO>)request.getAttribute("photolist");
+// List<PostVO> photolist = postService.getSearchPhoto(postVo);
+
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -32,7 +41,7 @@ MemberVO logininfo = memberService.getMember(userId);
 </script>
 </head>
 <body>
-<table border='2px solid' id="postlisttable">
+<table border='2px solid' id="photolisttable">
 			<thead>
 			<tr>
 			<td colspan="6">사진첩</td>
@@ -48,26 +57,28 @@ MemberVO logininfo = memberService.getMember(userId);
 			</thead>
 			<tbody>
 					<%
-					int size = postlist.size();
+					int size = photolist.size();
 					if(size > 0){
 						int cnt = 1;
 						String PostChkId = "PostCheckbox"+cnt;
 						for (int i=0; i < size;  i++){
 							%>
 							<tr>
-								<th><input class="PostChk PostChkArr" id="<%=postlist.get(i).getPostNo() %>chkbox" style="display: none;" type="checkbox" name="PostCheckbox"></th>
+								<th><input class="PostChk PostChkArr" id="<%=photolist.get(i).getPostNo() %>chkbox" style="display: none;" type="checkbox" name="PostCheckbox"></th>
 								<td><%= cnt%></td>
-								<td><a href="select.do?postNo=<%=postlist.get(i).getPostNo()%>"><%= postlist.get(i).getAtchFileId() %></a></td>
+								<td><a href="select.do?postNo=<%=photolist.get(i).getPostNo()%>"><%= photolist.get(i).getAtchFileId() %></a></td>
 							</tr>
 							<tr>
 								<td>
 									<div>
-								<img width="200px" src="/DEworld/atchFile/<%=postlist.get(0).getStreFileNm()%>.<%=postlist.get(0).getFileExtsn()%>">
+								<img width="200px" src="/DEworld/atchFile/<%=photolist.get(0).getStreFileNm()%>.<%=photolist.get(0).getFileExtsn()%>">
 									</div>
 								</td>
 							</tr>
 							<%
-								} 
+							cnt++;
+								}
+						} 
 							%>
 <!-- 페이징 처리 시작 -->
 	      <%if(pagingVO.getTotalCount() > 0) {%>
@@ -88,7 +99,7 @@ MemberVO logininfo = memberService.getMember(userId);
 <!-- 페이징 처리 끝 --> 
 			</tbody>
 			</table>
-			<%if((userId.trim()).equals(postlist.get(0).getHompiId().trim())){
+			<%if((userId.trim()).equals(photolist.get(0).getHompiId().trim())){
 				%>
 			<a href="insert.do"><button type="button">등록</button></a>
 			<%
@@ -102,7 +113,7 @@ MemberVO logininfo = memberService.getMember(userId);
 		<input type="text" id="inputstr">
 		<button type="button" onclick="search()">검색</button>
 <!-- 		<a href="list.do"><button type="button" onclick="select()">조회</button></a> -->
-			<%if((userId.trim()).equals(postlist.get(0).getHompiId().trim())){
+			<%if((userId.trim()).equals(photolist.get(0).getHompiId().trim())){
 				%>
 		<button type="button" onclick="toggleChk()">선택</button>
 		<a href="list.do"><button type="button" onclick="remove()">삭제</button></a>

@@ -44,18 +44,30 @@ public class ListPostHandler implements CommandHandler {
 		PostService postService = PostServiceImpl.getInstance();
 		IAtchFileService fileService = AtchFileServiceImpl.getInstance();
 			
-		  int totalCount = postService.getAllPostListCount();
-		  
+		String flag = req.getParameter("flag");
+		PostVO pv = new PostVO();
+		pv.setHompiId("cdwcdw34");
+		
+			int totalCount = postService.getAllPostListCount(hompiId);
+			if("pho".equals(flag)) {
+				totalCount = postService.getAllPostListCount(hompiId);
+			}
 		    pagingVO.setTotalCount(totalCount);
 		    pagingVO.setCurrentPageNo(pageNo);
 		    pagingVO.setCountPerPage(5);
 		    pagingVO.setPageSize(5);
 			
-		    String flag = req.getParameter("flag");
-			PostVO pv = new PostVO();
 			
 		
 				List<PostVO> list = postService.getAllPostList(pagingVO);
+				if("pho".equals(flag)) {
+					System.out.println("pho if문 탐");
+					req.setAttribute("photolist", list);
+					req.setAttribute("pagingVO", pagingVO);
+					System.out.println("pho if문 끝");
+					return "/WEB-INF/view/post/photolist.jsp";
+					
+				}
 				req.setAttribute("postlist", list);
 				req.setAttribute("pagingVO", pagingVO);
 				System.out.println("퇴장 Post List Haldler 퇴장");

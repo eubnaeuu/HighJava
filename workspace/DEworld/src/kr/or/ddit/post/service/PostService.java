@@ -52,6 +52,7 @@ public interface PostService {
 	 * @return 검색된 결과를 담은 List
 	 */
 	public List<PostVO> getSearchPost(PostVO pv);
+	public List<PostVO> getSearchPhoto(PostVO pv);
 	
 	/**
 	 * 주어진 회원ID에 해당하는 회원정보를 조회하는 메서드
@@ -60,6 +61,6 @@ public interface PostService {
 	 */
 	public PostVO getPost(String postNo);
 	
-	public int getAllPostListCount();
+	public int getAllPostListCount(PostVO pv);
 	
 }

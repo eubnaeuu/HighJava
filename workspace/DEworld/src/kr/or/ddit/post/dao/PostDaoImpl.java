@@ -87,6 +87,13 @@ public class PostDaoImpl implements PostDao {
       
       return postList;
    }
+   public List<PostVO> getSearchPhoto(SqlMapClient smc,PostVO pv) throws SQLException {
+	   
+	   List<PostVO> postList = 
+			   smc.queryForList("post.getSearchPhoto", pv);
+	   
+	   return postList;
+   }
 
    @Override
    public PostVO getPost(SqlMapClient smc, String postNo) throws SQLException {
@@ -97,9 +104,9 @@ public class PostDaoImpl implements PostDao {
 			return pv;
 	}
    @Override
-public int getAllPostListCount(SqlMapClient smc) throws SQLException {
+public int getAllPostListCount(SqlMapClient smc,PostVO pv) throws SQLException {
 	int cnt = 0;
-    cnt = (int) smc.queryForObject("post.getPostAllCount");
+    cnt = (int) smc.queryForObject("post.getPostAllCount", pv);
 	return cnt;
 }
 }

@@ -73,6 +73,8 @@ public interface PostDao {
 	 */
 	public List<PostVO> getSearchPost(SqlMapClient smc, PostVO pv) 
 						throws SQLException;
+	public List<PostVO> getSearchPhoto(SqlMapClient smc, PostVO pv) 
+			throws SQLException;
 	
 	/**
 	 * 주어진 회원 ID에 해당하는 회원정보를 조회하는 메서드
@@ -82,5 +84,5 @@ public interface PostDao {
 	 */
 	public PostVO getPost(SqlMapClient smc, String postNo) throws SQLException;
 	
-	public int getAllPostListCount(SqlMapClient smc) throws SQLException;
+	public int getAllPostListCount(SqlMapClient smc, PostVO pv) throws SQLException;
 }
