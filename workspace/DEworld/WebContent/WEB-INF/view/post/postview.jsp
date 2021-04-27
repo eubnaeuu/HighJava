@@ -8,17 +8,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-// String userId = (String)request.getSession().getAttribute("nowLogin"); // 세션의 로그인아이디값 가져오기
-// String userId ="cdwcdw34";
-	
-	List<AtchFileVO> atchFileList = (List<AtchFileVO>) request.getAttribute("atchFileList");
+	// String userId = (String)request.getSession().getAttribute("nowLogin"); // 세션의 로그인아이디값 가져오기
+	// String userId ="cdwcdw34";
+	List<AtchFileVO> atchFileList;
+if(request.getAttribute("atchFileList") != null){
+	atchFileList = (List<AtchFileVO>) request.getAttribute("atchFileList");
+}
 	List<PostVO> postlist = (List<PostVO>) request.getAttribute("postlist");
 	List<CommentsVO> commentslist = (List<CommentsVO>) request.getAttribute("commentslist");
-	
-	String msg = request.getParameter("msg") == null ? ""
-			: request.getParameter("msg");
-	
-	String userId = (String)request.getSession().getAttribute("userId");
+
+	String msg = request.getParameter("msg") == null ? "" : request.getParameter("msg");
+
+	String userId = (String) request.getSession().getAttribute("userId");
 	IMemberService memberService = MemberServiceImpl.getInstance();
 	MemberVO logininfo = memberService.getMember(userId);
 %>
@@ -27,21 +28,20 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>게시글상세</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <style>
-	table, td {
-		border: 2px solid;
-		border-collapse: collapse;
-	}
-
+table, td {
+	border: 2px solid;
+	border-collapse: collapse;
+}
 </style>
 </head>
 <body>
-<input type="hidden" value="" id="memNickname" class="memNickname">
+	<input type="hidden" value="" id="memNickname" class="memNickname">
 	<table style="border: 2px solid">
 		<tr>
 			<td colspan="3">게시판</td>
-<%-- 			<td><%=postlist.get(0).getPostNo()%></td> --%>
 		</tr>
 		<tr>
 			<td colspan="3"><%=postlist.get(0).getPostTitle()%></td>
@@ -51,7 +51,7 @@
 			<td><%=postlist.get(0).getPostDate()%></td>
 		</tr>
 		<tr>
-			<td  colspan="3"><%=postlist.get(0).getPostContent()%></td>
+			<td colspan="3"><%=postlist.get(0).getPostContent()%></td>
 		</tr>
 		<tr>
 			<td>첨부파일:</td>
@@ -65,8 +65,8 @@
 						href="<%=request.getContextPath()%>/filedownLoad.do?fileId=<%=atchFileVO.getAtchFileId()%>
 																			&fileSn=<%=atchFileVO.getFileSn()%>">
 						<%=atchFileVO.getOrignlFileNm()%>
-					</a>
-			<img width="200px" src="/DEworld/atchFile/<%=atchFileVO.getStreFileNm()%>.<%=atchFileVO.getFileExtsn()%>">
+					</a> <img width="200px"
+						src="/DEworld/atchFile/<%=atchFileVO.getStreFileNm()%>.<%=atchFileVO.getFileExtsn()%>">
 				</div> <%
  	}
  	} else {
@@ -80,16 +80,16 @@
 	</table>
 	<table>
 		<tr>
-			<td>태그</td> 
+			<td>태그</td>
 			<td><input type="text"></td>
 			<td><button type="button">추가</button></td>
 		</tr>
 	</table>
-		<table>
+	<table>
 		<tr>
-			<td colspan="3"><a href="list.do">[★목록]</a></td> 
+			<td colspan="3"><a href="list.do">[★목록]</a></td>
 			<td><a href="update.do?postNo=<%=postlist.get(0).getPostNo()%>">[수정]</a></td>
-			<td> <a href="delete.do?postNo=<%=postlist.get(0).getPostNo()%>">[삭제]</a></td>
+			<td><a href="delete.do?postNo=<%=postlist.get(0).getPostNo()%>">[삭제]</a></td>
 		</tr>
 	</table>
 	<%
@@ -100,44 +100,43 @@
 		<tr>
 			<td><%=cv.getMemNickname()%></td>
 			<td><%=cv.getCommentsContent()%>(<%=cv.getCommentsDate()%>)</td>
-			<%if(userId.equals(cv.getMemId())){
-				%>
+			<%
+				if (userId.equals(cv.getMemId())) {
+			%>
 			<td><a href=""><button>수정</button></a></td>
 			<td><a href=""><button>삭제</button></a></td>
 			<%
-			}
+				}
 			%>
 		</tr>
 	</table>
 	<%
-			}
-			} else {
-		%>
+		}
+		} else {
+	%>
 	<table>
 		<tr>
 			<td>댓글이 존재하지 않습니다</td>
 		</tr>
 	</table>
 	<%
-			}
-		%>
+		}
+	%>
 	<form action="<%=request.getContextPath()%>/comments/insert.do"
 		method="post">
-		<input type="hidden" class="memIdVal" name="memId" value="<%=logininfo.getMemId()%>">
+		<input type="hidden" class="memIdVal" name="memId"
+			value="<%=logininfo.getMemId()%>">
 		<table>
 			<tr>
-				<td class="memNicknameText">
-				댓글
-				</td>
+				<td class="memNicknameText">댓글</td>
 				<td><input type="text" name="commentsContent"></td>
-				<td>
-						<input type="hidden" name="postNo" value="<%=postlist.get(0).getPostNo()%>">
-						<a href="<%=request.getContextPath()%>/post/select.do?postNo=<%=postlist.get(0).getPostNo() %>"><button type="submit">등록</button></a>
-					</a>
-				</td>
+				<td><input type="hidden" name="postNo"
+					value="<%=postlist.get(0).getPostNo()%>"> <a
+					href="<%=request.getContextPath()%>/post/select.do?postNo=<%=postlist.get(0).getPostNo()%>"><button
+							type="submit">등록</button></a> </a></td>
 			</tr>
 		</table>
 	</form>
-	
+
 </body>
 </html>

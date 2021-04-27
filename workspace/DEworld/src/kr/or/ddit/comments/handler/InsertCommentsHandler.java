@@ -14,7 +14,7 @@ import util.FileUploadRequestWrapper;
 
 public class InsertCommentsHandler implements CommandHandler {
 									// 뷰페이지 임의설정
-	private static final String VIEW_PAGE = "/WEB-INF/view/post/postlist.jsp";
+	private static final String VIEW_PAGE = "/WEB-INF/view/post/postview.jsp";
 	
 	@Override
 	public boolean isRedirect(HttpServletRequest req) {

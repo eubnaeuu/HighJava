@@ -28,7 +28,7 @@ public class ViewMessageHandler implements CommandHandler{
 	public String process(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		
 		String messageNo = req.getParameter("messageNo");
-		// 회원정보 조회
+		
 		MessageService messageService = MessageServiceImpl.getInstance();
 		MessageVO messageVo = new MessageVO(); 
 		messageVo.setMessageNo(Long.valueOf(messageNo));
