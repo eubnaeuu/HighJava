@@ -59,7 +59,7 @@ public interface FriendReqDao {
 	 * @return 작업성공 : 1, 작업실패: 0 
 	 * @throws SQLException JDBC관련 예외 객체
 	 */
-	public int deleteFriendReq(SqlMapClient smc, String FriendReqNo)
+	public int deleteFriendReq(SqlMapClient smc, FriendReqVO fv)
 						throws SQLException;
 	
 	/**

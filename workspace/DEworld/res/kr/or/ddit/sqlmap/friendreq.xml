@@ -19,7 +19,7 @@
 			#memId#
 			,#friendId#
 			,SYSDATE
-			,#reqYn#
+			,'N'
 	)                   
 	</insert>
 	
@@ -32,10 +32,11 @@
 	 	AND MEM_ID = #memId#
 	</update>
 	
-	<delete id="deleteFriendReq" parameterClass="String">
+	<delete id="deleteFriendReq" parameterClass="kr.or.ddit.friendreq.vo.FriendReqVO">
 		DELETE 
 		FROM FRIEND_REQ_LIST
 		WHERE FRIEND_ID = #friendId#
+		AND MEM_ID = #memId#
 	</delete>
 	
 	<select id="getFriendReqAll" resultClass="kr.or.ddit.friendreq.vo.FriendReqVO">

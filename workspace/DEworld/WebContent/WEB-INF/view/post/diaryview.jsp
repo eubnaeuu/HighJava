@@ -26,7 +26,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>게시글상세</title>
+<title>사진글상세</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <style>
@@ -34,37 +34,44 @@ table, td {
 	border: 2px solid;
 	border-collapse: collapse;
 }
+body
+	{scrollbar-face-color: #FFFFFF;
+	 scrollbar-highlight-color: #DBDBDB;
+	 scrollbar-3dlight-color: #FFFFFF;
+	 scrollbar-shadow-color: #9C92FF;
+	 scrollbar-darkshadow-color: #FFFFFF;
+	 scrollbar-track-color: #FFFFFF;
+	 scrollbar-arrow-color: #9C92FF}
 </style>
 </head>
 <body>
 	<input type="hidden" value="" id="memNickname" class="memNickname">
-	<table style="border: 2px solid">
+	<center><img src="images/bar.jpg" width="420" height="6" border="0" alt=""></center>
+	<table border="0" bgcolor="#EBEBEB" width="420" cellpadding="1" cellspacing="1" align="center">
 		<tr>
-			<td colspan="3">게시판</td>
+			<td>
+			<font face="굴림" style="font-size:9pt;"><b><%=pv.getPostContent()%></b></font>
+			</td>
+		</tr>
+	</table>
+	<!-- 따옴 시작 -->
+	<table border="0" align="center" width="420" cellpadding="1" cellspacing="1">
+		<tr>
+			<td width="100">  
+				<font face="굴림" style="font-size:9pt;"><%=pv.getMemNickname()%></font>
+			</td>
+			<td align="right">  
+				<font face="굴림" style="font-size:9pt;"><%=pv.getPostDate()%> 스크랩:0</font>
+			</td>
 		</tr>
 		<tr>
-			<td colspan="3"><%=pv.getPostTitle()%></td>
-		</tr>
-		<tr>
-			<td colspan="2"><%=pv.getMemNickname()%></td>
-			<td><%=pv.getPostDate()%></td>
-		</tr>
-		<tr>
-			<td colspan="3"><%=pv.getPostContent()%></td>
-		</tr>
-		<tr>
-			<td>첨부파일</td>
-			<td colspan="2">
+			<td colspan="2" align="center">
 				<%
 					if (atchFileList != null) {
 						for (AtchFileVO atchFileVO : atchFileList) {
 				%>
 				<div>
-					<a
-						href="<%=request.getContextPath()%>/filedownLoad.do?fileId=<%=atchFileVO.getAtchFileId()%>
-																			&fileSn=<%=atchFileVO.getFileSn()%>">
-						<%=atchFileVO.getOrignlFileNm()%>
-					</a> <img width="200px"
+					<img width="200px"
 						src="/DEworld/atchFile/<%=atchFileVO.getStreFileNm()%>.<%=atchFileVO.getFileExtsn()%>">
 				</div> <%
  	}
@@ -74,14 +81,12 @@ table, td {
  %>
 			</td>
 		</tr>
-		<tr>
-		</tr>
 	</table>
 	<table>
 		<tr>
 			<td>태그</td>
-			<td><input type="text"></td>
-			<td><button type="button">추가</button></td>
+			<td><input type="text" id="tags"></td>
+			<td><button type="button" onclick="tagAdd()">추가</button></td>
 		</tr>
 	</table>
 	<table>

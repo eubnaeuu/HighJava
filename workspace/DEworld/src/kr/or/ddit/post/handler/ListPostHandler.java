@@ -85,6 +85,10 @@ public class ListPostHandler implements CommandHandler {
 				List<PostVO> list;
 				
 				if("pho".equals(flag)) {
+					apv.setCountPerPage(3);
+				    apv.setPageSize(3);
+				    pagingVO.setCountPerPage(3);
+				    pagingVO.setPageSize(3);
 					list = postService.getSearchPhoto(apv);
 					System.out.println("pho if문 탐");
 					req.setAttribute("photolist", list);

@@ -55,7 +55,7 @@ MemberVO logininfo = memberService.getMember(userId);
 							<tr>
 							<th><input class="PostChk PostChkArr" id="<%=diarylist.get(i).getPostNo() %>chkbox" style="display: none;" type="checkbox" name="PostCheckbox"></th>
 							<td><%= cnt%></td>
-							<td><a href="select.do?postNo=<%=diarylist.get(i).getPostNo()%>"><%= diarylist.get(i).getPostTitle() %></a></td>
+							<td><a href="select.do?flag=dia&postNo=<%=diarylist.get(i).getPostNo()%>"><%= diarylist.get(i).getPostTitle() %></a></td>
 							<td><%= diarylist.get(i).getPostContent()%></td>
 							<td><%= diarylist.get(i).getPostDate()%></td>
 							<td><%= diarylist.get(i).getPostView()%></td>
@@ -69,13 +69,13 @@ MemberVO logininfo = memberService.getMember(userId);
 	         <tr>
 	            <td colspan="6" align="center">
 	               <%if(pagingVO.getFirstPageNo() > pagingVO.getPageSize()) { %>
-	               <a href="list.do?pageNo=<%=pagingVO.getFirstPageNo() - pagingVO.getPageSize() %>">[이전]</a>
+	               <a href="list.do?flag=dia&pageNo=<%=pagingVO.getFirstPageNo() - pagingVO.getPageSize() %>">[이전]</a>
 	               <%} %>
 	               <%for(int pNo = pagingVO.getFirstPageNo(); pNo <= pagingVO.getLastPageNo(); pNo++) { %>
 	                  <a <%if(pNo == pagingVO.getCurrentPageNo()){ %> style="color:orange;"<%} %> href="list.do?pageNo=<%=pNo %>">[<%=pNo %>]</a>
 	               <%} %>
 	               <%if(pagingVO.getLastPageNo() < pagingVO.getTotalPageCount()) {%>
-	               <a href="list.do?pageNo=<%=pagingVO.getFirstPageNo() + pagingVO.getPageSize() %>">[다음]</a>
+	               <a href="list.do?flag=dia&pageNo=<%=pagingVO.getFirstPageNo() + pagingVO.getPageSize() %>">[다음]</a>
 	               <%} %>
 	            </td>
 	         </tr>
@@ -85,7 +85,7 @@ MemberVO logininfo = memberService.getMember(userId);
 					<%}else{
 					%>
 					<tr>
-						<td colspan="5">게시글이  존재하지 않습니다.</td>
+						<td colspan="5">다이어리가  존재하지 않습니다.</td>
 					</tr>
 					<%
 						}

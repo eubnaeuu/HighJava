@@ -10,7 +10,7 @@ import kr.or.ddit.friendreq.vo.FriendReqVO;
 
 public class UpdateFriendReqHandler implements CommandHandler {
 		
-	private static final String VIEW_PAGE = "/WEB-INF/view/friendreq/list.html";
+	private static final String VIEW_PAGE = "/WEB-INF/view/friendreq/friendreqlist.html";
 	
 	@Override
 	public boolean isRedirect(HttpServletRequest req) {

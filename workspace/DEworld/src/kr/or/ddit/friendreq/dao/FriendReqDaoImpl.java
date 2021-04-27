@@ -61,8 +61,8 @@ public int updateFriendReq(SqlMapClient smc, FriendReqVO fv) throws SQLException
 }
 
 @Override
-public int deleteFriendReq(SqlMapClient smc, String FriendReqNo) throws SQLException {
-	 int cnt = smc.delete("friendreq.deleteFriendReq", FriendReqNo);
+public int deleteFriendReq(SqlMapClient smc, FriendReqVO fv) throws SQLException {
+	 int cnt = smc.delete("friendreq.deleteFriendReq", fv);
      return cnt;
 }
 

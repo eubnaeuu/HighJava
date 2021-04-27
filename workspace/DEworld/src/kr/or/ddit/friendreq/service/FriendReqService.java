@@ -42,7 +42,7 @@ public interface FriendReqService {
 	 * @param FriendReqNo 삭제할 회원ID
 	 * @return 작업성공 : 1, 작업실패: 0 
 	 */
-	public int deleteFriendReq(String FriendReqNo);
+	public int deleteFriendReq(FriendReqVO fv);
 	
 	/**
 	 * FriendReqVO 객체에 담긴 자료를 이용하여 회원을 검색하는 메서드

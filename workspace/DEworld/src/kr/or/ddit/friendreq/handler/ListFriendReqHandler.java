@@ -12,7 +12,7 @@ import kr.or.ddit.friendreq.vo.FriendReqVO;
 
 public class ListFriendReqHandler implements CommandHandler {
 		
-	private static final String VIEW_PAGE = "/WEB-INF/view/friendreq/list.html";
+	private static final String VIEW_PAGE = "/WEB-INF/view/friendreq/friendreqlist.jsp";
 	
 	@Override
 	public boolean isRedirect(HttpServletRequest req) {
@@ -27,8 +27,19 @@ public class ListFriendReqHandler implements CommandHandler {
 		FriendReqService FriendReqsService = FriendReqServiceImpl.getInstance();
 	
 			System.out.println("조회중 조회중 조회중 조회중 조회중 조회중 조회중 조회중 조회중 조회중 ");
-			List<FriendReqVO> list = FriendReqsService.getAllFriendReqList();
-
+			
+			FriendReqVO fv = new FriendReqVO();
+			
+			
+			String userId = (String)req.getSession().getAttribute("userId");
+			
+			fv.setFriendId(req.getParameter("friendReqId"));
+			fv.setMemId(userId);
+			fv.setReqYn(req.getParameter("reqYn"));
+			
+			List<FriendReqVO> list = FriendReqsService.getSearchFriendReq(fv);
+			
+			req.setAttribute("friendreqlist", list);
 
 			return VIEW_PAGE;
 	}

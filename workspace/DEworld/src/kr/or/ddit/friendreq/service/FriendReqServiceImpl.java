@@ -86,10 +86,10 @@ public class FriendReqServiceImpl implements FriendReqService {
 	}
 
 	@Override
-	public int deleteFriendReq(String FriendReqId) {
+	public int deleteFriendReq(FriendReqVO fv) {
 		int cnt = 0;
 		try {
-			cnt = FriendReqDao.deleteFriendReq(smc, FriendReqId);
+			cnt = FriendReqDao.deleteFriendReq(smc, fv);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

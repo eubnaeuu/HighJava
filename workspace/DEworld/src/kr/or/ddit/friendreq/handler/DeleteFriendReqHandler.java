@@ -6,10 +6,11 @@ import javax.servlet.http.HttpServletResponse;
 import kr.or.ddit.comm.handler.CommandHandler;
 import kr.or.ddit.friendreq.service.FriendReqService;
 import kr.or.ddit.friendreq.service.FriendReqServiceImpl;
+import kr.or.ddit.friendreq.vo.FriendReqVO;
 
 public class DeleteFriendReqHandler implements CommandHandler {
 		
-	private static final String VIEW_PAGE = "/WEB-INF/view/friendreq/list.html";
+	private static final String VIEW_PAGE = "/WEB-INF/view/friendreq/friendreqlist.html";
 	
 	@Override
 	public boolean isRedirect(HttpServletRequest req) {
@@ -23,12 +24,16 @@ public class DeleteFriendReqHandler implements CommandHandler {
 
 		
 		FriendReqService FriendReqService = FriendReqServiceImpl.getInstance();
-		
+		FriendReqVO fv = new FriendReqVO();
 			System.out.println("delete중delete중delete중delete중delete중delete중delete중delete중");
 
 			String friendId = req.getParameter("friendId");
+			String memId = req.getParameter("memId");
+			System.out.println(friendId);
+			fv.setFriendId(friendId);
+			fv.setMemId(memId);
 			
-			int cnt = FriendReqService.deleteFriendReq(friendId); // FriendReq 삭제
+			int cnt = FriendReqService.deleteFriendReq(fv); // FriendReq 삭제
 			
 	
 		System.out.println("퇴장 Delete FriendReq Haldler 퇴장");

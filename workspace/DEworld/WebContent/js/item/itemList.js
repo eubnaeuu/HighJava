@@ -39,6 +39,7 @@ function readItemList(){
 //}
 
 function makeItemList(data){
+	
 	$("#innerMinimi .nav").empty();
 	$("#innerTheme .nav").empty();
 	
@@ -62,7 +63,6 @@ function makeItemList(data){
 				+  '</h4><p class="card-text">' + data[i].itemDesc + '</p></div>'
 				+  '<div class="card-footer"><a href="/DEworld/item/itemDetail.do?flag=L&itemId=' + data[i].itemId +'" class="btn btn-primary">상세페이지로 가기</a></div></div></div>';
 		}
-		
 	}
 	
 	$("#innerMinimi .nav").html(strHtml);

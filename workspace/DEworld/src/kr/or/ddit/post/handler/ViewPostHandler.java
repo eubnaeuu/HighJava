@@ -72,9 +72,9 @@ public class ViewPostHandler implements CommandHandler{
 		if("pho".equals(flag)) {
 			return VIEW_PAGE+"/post/photoview.jsp";
 		}else if("dia".equals(flag)) {
-			return VIEW_PAGE+"/post/postview.jsp";
-		} else if("pos".equals(flag)) {
 			return VIEW_PAGE+"/post/diaryview.jsp";
+		} else if("pos".equals(flag)) {
+			return VIEW_PAGE+"/post/postview.jsp";
 		} else {
 			return VIEW_PAGE+"/post/postview.jsp";
 		}

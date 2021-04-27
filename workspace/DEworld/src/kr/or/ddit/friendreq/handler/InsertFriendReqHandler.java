@@ -10,7 +10,7 @@ import kr.or.ddit.friendreq.vo.FriendReqVO;
 
 public class InsertFriendReqHandler implements CommandHandler {
 	
-	private static final String VIEW_PAGE = "/WEB-INF/view/friendreq/list.html";
+	private static final String VIEW_PAGE = "/WEB-INF/view/friendreq/friendreqinsert.jsp";
 	
 	@Override
 	public boolean isRedirect(HttpServletRequest req) {
@@ -30,7 +30,6 @@ public class InsertFriendReqHandler implements CommandHandler {
 			FriendReqVO fv = new FriendReqVO();
 			fv.setFriendId(req.getParameter("friendId"));
 			fv.setMemId(req.getParameter("memId"));
-			fv.setReqYn(req.getParameter("reqYn"));
 			
 			int cnt = FriendReqService.insertFriendReq(fv);
 			
