@@ -123,7 +123,11 @@ function openWindowPop(url, name){
 function goMyHompi(){
 	
 	openWindowPop("http://localhost/DEworld/html/hompi/hompi.html", "name");
-	//window.open("http://localhost/DEworld/html/hompi/hompi.html", "pop1", width="950" ,height="550")
 	
 }
+
+function goMyMessage(){
+	window.open("http://localhost/DEworld/message/list.do");
+}
+
 

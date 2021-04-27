@@ -1,3 +1,6 @@
+<%@page import="kr.or.ddit.member.service.MemberServiceImpl"%>
+<%@page import="kr.or.ddit.member.vo.MemberVO"%>
+<%@page import="kr.or.ddit.member.service.IMemberService"%>
 <%@page import="kr.or.ddit.comments.vo.CommentsVO"%>
 <%@page import="kr.or.ddit.paging.PagingVO"%>
 <%@page import="kr.or.ddit.message.vo.MessageVO"%>
@@ -10,6 +13,11 @@ List<MessageVO> messagelist = (List<MessageVO>)request.getAttribute("messagelist
 PagingVO pagingVO = (PagingVO)request.getAttribute("pagingVO");
 String msg = request.getParameter("msg") == null ? ""
 		: request.getParameter("msg");
+
+String userId = (String)request.getSession().getAttribute("userId");
+IMemberService memberService = MemberServiceImpl.getInstance();
+MemberVO logininfo = memberService.getMember(userId);
+
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>

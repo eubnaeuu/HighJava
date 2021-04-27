@@ -64,6 +64,7 @@
 	-->
 	<sqlMap resource="kr/or/ddit/sqlmap/faq.xml" />
 	<sqlMap resource="kr/or/ddit/sqlmap/item.xml" />
+	<sqlMap resource="kr/or/ddit/sqlmap/music.xml" />
 	<sqlMap resource="kr/or/ddit/sqlmap/zip.xml" />
 	<sqlMap resource="kr/or/ddit/sqlmap/member.xml" />
 	<sqlMap resource="kr/or/ddit/sqlmap/atchFile.xml" />

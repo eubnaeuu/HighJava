@@ -524,7 +524,8 @@
 							</div>
 							<div class="card-body" style="">
 								<div>
-									<a href="#" class="btn btn-primary col-md-5" style="">쪽지</a> <a
+									<span class="btn btn-primary col-md-5" style="" onclick="goMyMessage()">쪽지</span> 
+									<a
 										href="#" class="btn btn-primary col-md-5" style="float: right">충전하기</a>
 								</div>
 								<br>
@@ -553,7 +554,11 @@
 
 	<script src="vendor/jquery/jquery.min.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+	<script type="text/javascript">
+	function goMyMessage(){
+		window.open("http://localhost/DEworld/message/list.do");
+	}
+	</script>
 </body>
 
 </html>

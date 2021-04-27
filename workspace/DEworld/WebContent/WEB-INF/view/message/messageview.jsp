@@ -17,15 +17,11 @@
 <body>
 	<table>
 		<tr>
-			<td>NO:</td>
-			<td><%=messagelist.get(0).getMessageNo()%></td>
-		</tr>
-		<tr>
-			<td>보낸이:</td>
+			<td>FROM:</td>
 			<td><%=messagelist.get(0).getMemId()%></td>
 		</tr>
 		<tr>
-			<td>받는이:</td>
+			<td>TO:</td>
 			<td><%=messagelist.get(0).getReceiveMem()%></td>
 		</tr>
 		<tr>
@@ -34,7 +30,7 @@
 		</tr>
 		<tr>
 			<td>내 용:</td>
-			<td><%=messagelist.get(0).getMessageContent()%></td>
+			<td><textarea readonly="readonly"><%=messagelist.get(0).getMessageContent()%></textarea></td>
 		</tr>
 <!-- 		<tr> -->
 <!-- 			<td>상 태:</td> -->
@@ -50,9 +46,45 @@
 	</table>
 		<tr>
 			<td colspan="3"><a href="list.do">[목록]</a> <a
-				href="update.do?postNo=<%=messagelist.get(0).getMessageNo()%>">[수정]</a> <a
-				href="delete.do?postNo=<%=messagelist.get(0).getMessageNo()%>">[삭제]</a></td>
+				href="delete.do?messageNo=<%=messagelist.get(0).getMessageNo()%>">[삭제]</a></td>
 		</tr>
 	</table>
 </body>
+<script type="text/javascript">
+
+function remove(){
+	
+	if(!chkdel()){
+		alert("삭제하실 글을 선택해주세요")
+		return;
+	}
+	
+	if(!chkmsg()){
+		return;
+	}
+	
+}
+
+function chkmsg() {
+	return confirm("정말 삭제하시겠습니까?");
+}
+
+function select() {
+	$.ajax({
+		url : "/DEworld/post/list.do",
+		type : "POST"
+		// 		,dataType : "json"
+		// 		,data : param
+		,
+		success : function(data) {
+			console.log(data)
+			// 			makeTable(data);
+		},
+		error : function(xhr) {
+			console.error(xhr);
+		}
+	});
+}
+
+</script>
 </html>

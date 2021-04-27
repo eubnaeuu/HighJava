@@ -5,7 +5,6 @@
 
 <sqlMap namespace="notice">
 
-	<!-- 추가 -->
 	<insert id="createNotice" parameterClass="kr.or.ddit.notice.vo.NoticeVO">
 		INSERT INTO NOTICE(
 		NOTICE_NO
@@ -22,7 +21,6 @@
 		)
 	</insert>
 	
-	<!--  조회 -->
 	<select id="searchNotice" parameterClass="kr.or.ddit.notice.vo.NoticeVO"
 	resultClass="kr.or.ddit.notice.vo.NoticeVO">
 		SELECT NOTICE_NO       noticeNo
@@ -35,7 +33,6 @@
 		
 	</select>
 	
-	<!-- 여러개조회 -->
 	<select id="searchNoticeList" parameterClass="kr.or.ddit.notice.vo.NoticeVO"
 	resultClass="kr.or.ddit.notice.vo.NoticeVO">
 		SELECT NOTICE_NO noticeNo
@@ -45,7 +42,6 @@
 		FROM NOTICE
 		ORDER BY NOTICE_NO DESC
 	</select>
-	<!-- 수정 -->
 	<update id="updateNotice" parameterClass="kr.or.ddit.notice.vo.NoticeVO">
 		UPDATE NOTICE
 		SET ADMIN_ID =#adminId#
@@ -54,12 +50,10 @@
 		,NOTICE_DATE= sysdate
 		WHERE NOTICE_NO = #noticeNo#
 	</update>
-	<!-- 삭제 -->
 	<delete id="deleteNotice" parameterClass="int">
 		DELETE FROM NOTICE
 		WHERE NOTICE_NO = #noticeNo#
 	</delete>
-	<!-- 여러개 삭제 -->
 	<delete id="deleteNoticeList" parameterClass="kr.or.ddit.notice.vo.NoticeVO">
 	DELETE FROM NOTICE
 	WHERE NOTICE_NO

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+			PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+			"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="music">
+
+	<insert id="insertWishlist" parameterClass="kr.or.ddit.music.vo.MusicVO" >
+		insert into wishlist 
+		(mem_id, item_id, item_gu) values(#memId#,#musicId#,'MUSIC')
+	</insert>
+	
+	<insert id="giftMusic" parameterClass="kr.or.ddit.music.vo.MusicVO" >
+		insert into gift 
+		(RECIPIENT_ID,SEND_ID,Music_ID,SEND_DATE,GIFT_MESSAGE,ITEM_GU) 
+		values(#friendId#,#memId#,#musicId#,sysdate,#giftMessage#,'MUSIC')
+	</insert>
+	
+	<insert id="buyMusic" parameterClass="kr.or.ddit.music.vo.MusicVO" >
+		insert into music_collection 
+		(mem_id, music_id) values(#memId#,#musicId#)
+	</insert>
+	
+	
+	
+	<update id="payment" parameterClass="kr.or.ddit.music.vo.MusicVO" >
+		update member set 
+			MEM_CYBERMONEY = MEM_CYBERMONEY - (select music_price from Music where music_id = #musicId#)
+		where mem_id = #memId#
+	</update>
+	
+	
+	<select id="getMusicAll" resultClass="kr.or.ddit.music.vo.MusicVO">
+		SELECT 
+		MUSIC_ID 		musicId,
+		lmusic.LMUSIC_GU		lmusicGu,
+		lmusic.LMUSIC_GENRE	lmusicGenre,
+		MUSIC_TITLE		musicTitle,
+		MUSIC_DESC		musicDesc,
+		MUSIC_ARTIST	musicArtist,
+		MUSIC_PATH		musicPath,
+		MUSIC_COST		musicCost,
+		MUSIC_TIME		musicTime	
+		FROM music, lmusic
+		where music.lmusic_gu = lmusic.lmusic_gu
+	</select>
+
+	
+	<select id="getSearchMusic" parameterClass="String" resultClass="kr.or.ddit.music.vo.MusicVO">
+	 select 
+		MUSIC_ID 		musicId,
+		LMUSIC_GU		lmusicGu,
+		
+		MUSIC_TITLE		musicTitle,
+		MUSIC_DESC		musicDesc,
+		MUSIC_ARTIST	musicArtist,
+		MUSIC_PATH		musicPath,
+		MUSIC_COST		musicCost,
+		MUSIC_TIME		musicTime	
+	 
+	 from music 
+	 where 1=1
+	 <isNotEmpty>
+           and music_name LIKE '%'||#searchMusicName#||'%' 
+	 </isNotEmpty>
+	</select>
+	
+	<select id="getMusic" parameterClass="String" resultClass="kr.or.ddit.music.vo.MusicVO">
+	 select 
+		MUSIC_ID 		musicId,
+		LMUSIC_GU		lmusicGu,
+		MUSIC_TITLE		musicTitle,
+		MUSIC_DESC		musicDesc,
+		MUSIC_ARTIST	musicArtist,
+		MUSIC_PATH		musicPath,
+		MUSIC_COST		musicCost,
+		MUSIC_TIME		musicTime	
+	 from music
+	 where 1=1
+	 <isNotEmpty>
+           and music_id = #musicId#
+	 </isNotEmpty>
+	</select>
+	
+	<select id="getFriendList" parameterClass="String" resultClass="kr.or.ddit.music.vo.MusicVO" >
+		SELECT 
+			f.FRIEND_ID friendId, 
+			m.MEM_NICKNAME friendNickname
+		FROM 
+			MEMBER m
+			, FRIEND f
+		WHERE 1=1
+			and f.friend_id = m.mem_id
+		<isNotEmpty>
+           and f.mem_id = #memId#
+	 	</isNotEmpty>
+	 </select>
+	
+</sqlMap>			
+
+
+
+

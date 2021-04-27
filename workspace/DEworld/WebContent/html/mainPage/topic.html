@@ -16,10 +16,10 @@
 	</style>
 
 	<!-- Bootstrap core CSS -->
-	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/DEworld/html/mainPage/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	
 	<!-- Custom styles for this template -->
-	<link href="css/business-frontpage.css" rel="stylesheet">
+	<link href="/DEworld/html/mainPage/css/business-frontpage.css" rel="stylesheet">
 	
 	<!-- favicon -->
 	<link rel="icon" type="image/png" sizes="32x32" href="/DEworld/image/DEWorld-favicion.png" />
@@ -29,7 +29,7 @@
 	<script src="/DEworld/js/mainPage/mainPage.js"></script>
 	<script src="/DEworld/js/item/itemList.js"></script>
 	<!-- 공지사항  -->
-	<link rel="stylesheet" href="css/notice/topic_notice.css">
+	<link rel="stylesheet" href="/DEworld/html/mainPage/css/notice/topic_notice.css">
 	<script type="text/javascript" src="/DEworld/js/mainPage/main_Notice.js"></script>
 	<script src="/DEworld/js/faq/faqList.js"></script>
 	
@@ -50,9 +50,16 @@
 		integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
 		crossorigin="anonymous">
 	<!-- 공통사항 -->
-	<script type="text/javascript" src="../../js/common/commonMainpage.js"></script>
+	<script type="text/javascript" src="/DEworld/js/common/commonMainpage.js"></script>
+	<script src="/DEworld/js/music/musicList.js"></script>
 	<!-- Channel Plugin Scripts -->
 	<script>
+	
+	if(sessionStorage.getItem("nowLogin") == "user"){
+	    channelChatBot();
+	}
+	
+	function channelChatBot(){
 	  (function() {
 	    var w = window;
 	    if (w.ChannelIO) {
@@ -91,6 +98,7 @@
 	  ChannelIO('boot', {
 	    "pluginKey": "ad03c7e1-7548-42e4-9984-8a98037031f4"
 	  });
+	}
 	</script>
 	<!-- End Channel Plugin -->
 	<style>
@@ -186,7 +194,6 @@
 </head>
 
 <body>
-
 	<!-- Navigation -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 		<div class="container">
@@ -231,7 +238,7 @@
 						"<span id="idArea"></span>" 님 어서오세요
 					</h1>
 					<br>
-					<button type="button" class="btn btn-primary btn-lg raised" onclick="goMyHompi()">내
+					<button type="button" class="btn btn-primary btn-lg raised" id="changeBtn" onclick="goMyHompi()">내
 						미니홈피</button>
 					<br>
 					<br>
@@ -373,46 +380,24 @@
 						<h1>MUSIC</h1>
 						<br>
 						<div class="nav nav-pills">
-							<div class="col-md-4 mb-5">
-								<div class="card h-100">
-									<img class="card-img-top"
-										src="/DEworld/image/DEWorld-350x350.png" alt="">
-									<div class="card-body">
-										<h4 class="card-title">TITLE</h4>
-										<p class="card-text">대충 설명ㅁㄴㅇㅁㄶㅇ ㅎ뢰아ㅓ; ㅏ시ㅏㅛㅣ마ㅓㅚㅏ기ㅘ싀ㅏㅡ퓰니
-											ㅏㄴ;일,ㅍㄴㅇ륜로</p>
-									</div>
-									<div class="card-footer">
-										<a href="#" class="btn btn-primary">미니홈피로 가기</a>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4 mb-5">
-								<div class="card h-100">
-									<img class="card-img-top"
-										src="/DEworld/image/DEWorld-350x350.png" alt="">
-									<div class="card-body">
-										<h4 class="card-title">TITLE</h4>
-										<p class="card-text">대충 설명</p>
-									</div>
-									<div class="card-footer">
-										<a href="#" class="btn btn-primary">미니홈피로 가기</a>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4 mb-5">
-								<div class="card h-100">
-									<img class="card-img-top"
-										src="/DEworld/image/DEWorld-350x350.png" alt="">
-									<div class="card-body">
-										<h4 class="card-title">TITLE</h4>
-										<p class="card-text">대충 설명</p>
-									</div>
-									<div class="card-footer">
-										<a href="#" class="btn btn-primary">미니홈피로 가기</a>
-									</div>
-								</div>
-							</div>
+							<table id="musicListTable" class="table" >
+								<thead>
+								<tr>
+									<td>제목</td>
+									<td>가수</td>
+									<td>재생시간</td>
+									<td>장르</td>
+									<td>가격</td>
+									<td>위시리스트</td>
+									<td>구매하기</td>
+									<td>선물하기</td>
+								</tr>
+								</thead>
+								<tbody>
+									
+								</tbody>
+							</table>
+						
 						</div>
 					</div>
 					
@@ -421,46 +406,7 @@
 						<h1>THEME</h1>
 						<br>
 						<div class="nav nav-pills">
-							<div class="col-md-4 mb-5">
-								<div class="card h-100">
-									<img class="card-img-top"
-										src="/DEworld/image/DEWorld-350x350.png" alt="">
-									<div class="card-body">
-										<h4 class="card-title">TITLE</h4>
-										<p class="card-text">대충 설명ㅁㄴㅇㅁㄶㅇ ㅎ뢰아ㅓ; ㅏ시ㅏㅛㅣ마ㅓㅚㅏ기ㅘ싀ㅏㅡ퓰니
-											ㅏㄴ;일,ㅍㄴㅇ륜로</p>
-									</div>
-									<div class="card-footer">
-										<a href="#" class="btn btn-primary">미니홈피로 가기</a>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4 mb-5">
-								<div class="card h-100">
-									<img class="card-img-top"
-										src="/DEworld/image/DEWorld-350x350.png" alt="">
-									<div class="card-body">
-										<h4 class="card-title">TITLE</h4>
-										<p class="card-text">대충 설명</p>
-									</div>
-									<div class="card-footer">
-										<a href="#" class="btn btn-primary">미니홈피로 가기</a>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4 mb-5">
-								<div class="card h-100">
-									<img class="card-img-top"
-										src="/DEworld/image/DEWorld-350x350.png" alt="">
-									<div class="card-body">
-										<h4 class="card-title">TITLE</h4>
-										<p class="card-text">대충 설명</p>
-									</div>
-									<div class="card-footer">
-										<a href="#" class="btn btn-primary">미니홈피로 가기</a>
-									</div>
-								</div>
-							</div>
+							
 						</div>
 					</div>
 					
@@ -469,46 +415,7 @@
 						<h1>MINIMI</h1>
 						<br>
 						<div class="nav nav-pills">
-							<div class="col-md-4 mb-5">
-								<div class="card h-100">
-									<img class="card-img-top"
-										src="/DEworld/image/DEWorld-350x350.png" alt="">
-									<div class="card-body">
-										<h4 class="card-title">TITLE</h4>
-										<p class="card-text">대충 설명ㅁㄴㅇㅁㄶㅇ ㅎ뢰아ㅓ; ㅏ시ㅏㅛㅣ마ㅓㅚㅏ기ㅘ싀ㅏㅡ퓰니
-											ㅏㄴ;일,ㅍㄴㅇ륜로</p>
-									</div>
-									<div class="card-footer">
-										<a href="#" class="btn btn-primary">미니홈피로 가기</a>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4 mb-5">
-								<div class="card h-100">
-									<img class="card-img-top"
-										src="/DEworld/image/DEWorld-350x350.png" alt="">
-									<div class="card-body">
-										<h4 class="card-title">TITLE</h4>
-										<p class="card-text">대충 설명</p>
-									</div>
-									<div class="card-footer">
-										<a href="#" class="btn btn-primary">미니홈피로 가기</a>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4 mb-5">
-								<div class="card h-100">
-									<img class="card-img-top"
-										src="/DEworld/image/DEWorld-350x350.png" alt="">
-									<div class="card-body">
-										<h4 class="card-title">TITLE</h4>
-										<p class="card-text">대충 설명</p>
-									</div>
-									<div class="card-footer">
-										<a href="#" class="btn btn-primary">미니홈피로 가기</a>
-									</div>
-								</div>
-							</div>
+							
 						</div>
 					</div>
 				</div>
@@ -538,8 +445,8 @@
 							</div>
 							<div class="card-body" style="">
 								<div>
-									<a href="#" class="btn btn-primary col-md-5" style="">쪽지</a> <a
-										href="#" class="btn btn-primary col-md-5" style="float: right">충전하기</a>
+									<span class="btn btn-primary col-md-5" style="" onclick="goMyMessage()">쪽지</span>
+										<a href="#" class="btn btn-primary col-md-5" style="float: right">충전하기</a>
 								</div>
 								<br>
 								<div>
@@ -561,9 +468,7 @@
 	<!-- Footer -->
 	<footer class="py-5 bg-dark">
 		<div class="container">
-		<!-- ★ 영준 : 세션관련 게시판 연동 테스트 시작-->
-			<p onclick="yeongjun()" class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
-			<!-- ★ 영준 : 세션관련 게시판 연동 종료 -->
+			<p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
 		</div>
 	</footer>
 
@@ -571,11 +476,4 @@
 	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
-<!-- ★ 영준 : 세션관련 게시판 연동 테스트2 시작 -->
-<script type="text/javascript">
-	function yeongjun(){
-		window.location.href="http://localhost/DEworld/post/list.do";
-	}
-</script>
-<!-- ★ 영준 : 세션관련 게시판 연동 테스트2 종료 -->
 </html>

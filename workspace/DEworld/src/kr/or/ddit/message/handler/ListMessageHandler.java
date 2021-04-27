@@ -46,7 +46,8 @@ public class ListMessageHandler implements CommandHandler {
 			    
 			    MessageVO mv = new MessageVO();
 			    
-			    mv.setReceiveMem("cdwcdw34");
+			    String userId = (String)req.getSession().getAttribute("userId");
+			    mv.setReceiveMem(userId);
 			    
 			List<MessageVO> list = messageService.getSearchMessage(mv);
 			req.setAttribute("messagelist", list);
