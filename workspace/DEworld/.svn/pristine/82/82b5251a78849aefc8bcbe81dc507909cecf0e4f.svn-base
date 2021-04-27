@@ -41,8 +41,11 @@ public class MemberServlet extends HttpServlet {
 				
 				List<MemberVO> list = matchinIdPw(req);
 				req.setAttribute("list", list);
+				
 				HttpSession session = req.getSession();
 				session.setAttribute("userId", list.get(0).getMemId());
+				session.setAttribute("loginInfo", list);
+				
 			} else if(flag.equals("findId")) {
 				
 				List<MemberVO> list = findId(req);

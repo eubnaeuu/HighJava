@@ -103,7 +103,7 @@
 	<select id="getSearchMember" parameterClass="memVO" 
 					resultMap="memMap">
 	
-	 select * from mymember 
+	 select * from member 
 	 where 1=1
 	 <isNotEmpty property="memId">
            and mem_id = #memId#
@@ -113,8 +113,22 @@
 	 </isNotEmpty>
 	
 	</select>
-	<select id="getMemberInfo" resultMap="memMap">
-		select * from mymember where mem_id = #memId#
+	<select id="getMemberInfo" resultClass="kr.or.ddit.member.vo.MemberVO">
+		SELECT
+		MEM_ID          memId
+		,MEM_PASS       memPass
+		,MEM_NAME       memName
+		,MEM_NICKNAME   memNickname
+		,MEM_GENDER     memGender
+		,MEM_BIR        memBir
+		,MEM_ZIP        memZip
+		,MEM_ADD1       memAdd1
+		,MEM_ADD2       memAdd2
+		,MEM_HP         memHp
+		,MEM_MAIL       memMail
+		,MEM_CYBERMONEY memCybermoney
+		FROM MEMBER 
+		WHERE MEM_ID = #memId#
 	</select>
 	
 	<select id="matchinIdPw" parameterClass="kr.or.ddit.member.vo.MemberVO" resultClass="kr.or.ddit.member.vo.MemberVO">

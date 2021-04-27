@@ -95,13 +95,13 @@ String userId = (String)request.getSession().getAttribute("userId");
 			}
 			%>
 			<select id="selectstr">
-				<option value="1">제목</option>
-				<option value="2">내용</option>
-				<option value="3">작성자</option>
+				<option value="1">제목검색</option>
+				<option value="2">내용검색</option>
+				<option value="3">작성자검색</option>
 			</select>
-		<input type="text" id="inputstr"><br>
-		<button type="button" onclick="search()">검색</button>
-<!-- 		<a href="list.do"><button type="button" onclick="select()">조회</button></a> -->
+		입력값<input type="text" id="inputstr"><br>
+		<button type="button" onclick="search()">서치</button>
+		<a href="list.do"><button type="button" onclick="select()">조회</button></a>
 			<%if((userId.trim()).equals(postlist.get(0).getHompiId().trim())){
 				%>
 		<button type="button" onclick="toggleChk()">선택</button>

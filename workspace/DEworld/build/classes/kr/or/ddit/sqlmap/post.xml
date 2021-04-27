@@ -82,18 +82,23 @@
 	
 	<select id="getSearchPost" parameterClass="kr.or.ddit.post.vo.PostVO" resultClass="kr.or.ddit.post.vo.PostVO">
 	
-	 SELECT
-		POST_NO 		   postNo
-		,HOMPI_ID         	hompiId
-		,LPOST_GU         	lpostGu
-		,MEM_ID           	memId
-		,POST_TITLE       	postTitle
-		,POST_CONTENT     	postContent
-		,POST_DATE        	postDate
-		,POST_VIEW        	postView
-		,ATCH_FILE_ID 		atchFileId
-	FROM POST
-	WHERE 1 = 1
+	SELECT
+		P.POST_NO 		   postNo
+		,P.HOMPI_ID         	hompiId
+		,P.LPOST_GU         	lpostGu
+		,P.MEM_ID           	memId
+		,P.POST_TITLE       	postTitle
+		,P.POST_CONTENT     	postContent
+		,P.POST_DATE        	postDate
+		,P.POST_VIEW        	postView
+		,P.ATCH_FILE_ID 		atchFileId
+        ,M.MEM_NICKNAME         memNickname
+	FROM POST P
+    INNER JOIN MEMBER M
+    ON P.MEM_ID = M.MEM_ID
+    WHERE 1 = 1
+    
+    
 	<isNotEmpty property="postNo">
            AND POST_NO = #postNo#
 	 </isNotEmpty>
