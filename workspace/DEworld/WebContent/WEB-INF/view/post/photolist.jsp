@@ -79,7 +79,7 @@ List<PostVO> photolist = (List<PostVO>)request.getAttribute("photolist");
 							<tr>
 								<th><input class="PostChk PostChkArr" id="<%=photolist.get(i).getPostNo() %>chkbox" style="display: none;" type="checkbox" name="PostCheckbox"></th>
 								<td><%= cnt%></td>
-								<td><a href="select.do?postNo=<%=photolist.get(i).getPostNo()%>"><%= photolist.get(i).getAtchFileId() %></a></td>
+								<td><a href="select.do?postNo=<%=photolist.get(i).getPostNo()%>&flag=pho"><%= photolist.get(i).getAtchFileId() %></a></td>
 							</tr>
 							<tr>
 								<td>

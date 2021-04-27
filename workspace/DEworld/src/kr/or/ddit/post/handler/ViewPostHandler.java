@@ -19,7 +19,7 @@ import kr.or.ddit.post.vo.PostVO;
 
 public class ViewPostHandler implements CommandHandler{
 
-	private static final String VIEW_PAGE = "/WEB-INF/view/post/postview.jsp";
+	private static final String VIEW_PAGE = "/WEB-INF/view";
 	
 	@Override
 	public boolean isRedirect(HttpServletRequest req) {
@@ -62,13 +62,22 @@ public class ViewPostHandler implements CommandHandler{
 		cv.setPostNo(req.getParameter("postNo"));
 		List<CommentsVO> commentslist = commentsService.getSearchComments(cv);
 		
-		
+		String flag = req.getParameter("flag");
 		
 		req.setAttribute("pv", postpv);
 		req.setAttribute("commentslist", commentslist);
+		
 		System.out.println("나감 view post handler 나감");
 		
-		return VIEW_PAGE;
+		if("pho".equals(flag)) {
+			return VIEW_PAGE+"/post/photoview.jsp";
+		}else if("dia".equals(flag)) {
+			return VIEW_PAGE+"/post/postview.jsp";
+		} else if("pos".equals(flag)) {
+			return VIEW_PAGE+"/post/diaryview.jsp";
+		} else {
+			return VIEW_PAGE+"/post/postview.jsp";
+		}
 	}
 
 }

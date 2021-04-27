@@ -106,10 +106,9 @@ public class SearchPostHandler implements CommandHandler {
 		    pagingVO.setCountPerPage(5);
 		    pagingVO.setPageSize(5);
 			
-		
 		String flag = req.getParameter("flag");
 		
-		   if("1".equals(flag)) {
+		   if("".equals(flag)) {
 				String postTitle = req.getParameter("postTitle");
 				pv.setPostTitle(postTitle);
 				apv.setPostTitle(postTitle);
@@ -122,6 +121,20 @@ public class SearchPostHandler implements CommandHandler {
 				pv.setMemId(memId);
 				apv.setMemId(memId);
 			}
+		   
+//		   if("1".equals(flag)) {
+//			   String postTitle = req.getParameter("postTitle");
+//			   pv.setPostTitle(postTitle);
+//			   apv.setPostTitle(postTitle);
+//		   }else if("2".equals(flag)) {
+//			   String postContent = req.getParameter("postContent");
+//			   pv.setPostContent(postContent);
+//			   apv.setPostContent(postContent);
+//		   }else if("3".equals(flag)) {
+//			   String memId = req.getParameter("memId");
+//			   pv.setMemId(memId);
+//			   apv.setMemId(memId);
+//		   }
 		   
 		   List<PostVO> list = postService.getSearchPost(apv);
 		   

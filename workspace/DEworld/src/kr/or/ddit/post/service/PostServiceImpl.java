@@ -130,7 +130,7 @@ public class PostServiceImpl implements PostService {
 		List<PostVO> memList = new ArrayList<>();
 		
 		try {
-			memList = postDao.getSearchPost(smc, apv);
+			memList = postDao.getSearchPhoto(smc, apv);
 			
 		}catch(SQLException ex) {
 			ex.printStackTrace();
