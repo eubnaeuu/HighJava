@@ -19,7 +19,7 @@ import kr.or.ddit.post.vo.PostVO;
 
 public class ListPostHandler implements CommandHandler {
 		
-	private static final String VIEW_PAGE = "/WEB-INF/view/post/photolist.jsp";
+	private static final String VIEW_PAGE = "/WEB-INF/view/post/postlist.jsp";
 	
 	@Override
 	public boolean isRedirect(HttpServletRequest req) {

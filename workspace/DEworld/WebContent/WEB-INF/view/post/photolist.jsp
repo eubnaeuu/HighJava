@@ -17,14 +17,6 @@ String msg = request.getParameter("msg") == null ? ""
 String userId = (String)request.getSession().getAttribute("userId");
 IMemberService memberService = MemberServiceImpl.getInstance();
 MemberVO logininfo = memberService.getMember(userId);
-
-
-
-// List<AtchFileVO> atchFileList = (List<AtchFileVO>) request.getAttribute("atchFileList");
-// List<PostVO> postlist = (List<PostVO>) request.getAttribute("postlist");
-// List<CommentsVO> commentslist = (List<CommentsVO>) request.getAttribute("commentslist");
-
-
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -63,25 +55,19 @@ MemberVO logininfo = memberService.getMember(userId);
 						for (int i=0; i < size;  i++){
 							%>
 							<tr>
-							<th><input class="PostChk PostChkArr" id="<%=postlist.get(i).getPostNo() %>chkbox" style="display: none;" type="checkbox" name="PostCheckbox"></th>
-							<td><%= cnt%></td>
-							<td><a href="select.do?postNo=<%=postlist.get(i).getPostNo()%>"><%= postlist.get(i).getAtchFileId() %></a></td>
+								<th><input class="PostChk PostChkArr" id="<%=postlist.get(i).getPostNo() %>chkbox" style="display: none;" type="checkbox" name="PostCheckbox"></th>
+								<td><%= cnt%></td>
+								<td><a href="select.do?postNo=<%=postlist.get(i).getPostNo()%>"><%= postlist.get(i).getAtchFileId() %></a></td>
 							</tr>
-		<tr>
-			<td>첨부파일:</td>
-<!-- 			<td colspan="2"> -->
-				<%
-					if (atchFileList != null) {
-						for (AtchFileVO atchFileVO : atchFileList) {
- 				%> 
-				<div>
-			<img width="200px" src="/DEworld/atchFile/<%=postlist.getStreFileNm()%>.<%=atchFileVO.getFileExtsn()%>">
-				</div>
-			</td>
-		</tr>
+							<tr>
+								<td>
+									<div>
+								<img width="200px" src="/DEworld/atchFile/<%=postlist.get(0).getStreFileNm()%>.<%=postlist.get(0).getFileExtsn()%>">
+									</div>
+								</td>
+							</tr>
 							<%
-							cnt++;
-							}
+								} 
 							%>
 <!-- 페이징 처리 시작 -->
 	      <%if(pagingVO.getTotalCount() > 0) {%>
@@ -100,15 +86,6 @@ MemberVO logininfo = memberService.getMember(userId);
 	         </tr>
 	      <%} %>
 <!-- 페이징 처리 끝 --> 
-						
-					<%}else{
-					%>
-					<tr>
-						<td colspan="5">게시글이  존재하지 않습니다.</td>
-					</tr>
-					<%
-						}
-					%>
 			</tbody>
 			</table>
 			<%if((userId.trim()).equals(postlist.get(0).getHompiId().trim())){
