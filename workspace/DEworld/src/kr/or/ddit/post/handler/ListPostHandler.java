@@ -16,7 +16,7 @@ import kr.or.ddit.post.vo.PostVO;
 
 public class ListPostHandler implements CommandHandler {
 		
-	private static final String VIEW_PAGE = "/WEB-INF/view/post/postlist.jsp";
+	private static final String VIEW_PAGE = "/WEB-INF/view/post/";
 	
 	@Override
 	public boolean isRedirect(HttpServletRequest req) {
@@ -48,21 +48,27 @@ public class ListPostHandler implements CommandHandler {
 		
 		
 		int totalCount=0;
-			if("pho".equals(flag)) {
+			if("pho".equals(flag)) { // 사진첩
 				pv.setHompiId("cdwcdw34");
 				pv.setLpostGu("LPO02");
 				
 				apv.setHompiId("cdwcdw34");
 				apv.setLpostGu("LPO02");
 				totalCount = postService.getAllPostListCount(pv);
-			}else {
+			}else if("dia".equals(flag)) { // 다이어리
+				pv.setHompiId("cdwcdw34");
+				pv.setLpostGu("LPO01");
+				
+				apv.setHompiId("cdwcdw34");
+				apv.setLpostGu("LPO01");
+				totalCount = postService.getAllPostListCount(pv);
+			} else {		 // 게시판
 				pv.setHompiId("cdwcdw34");
 				pv.setLpostGu("LPO03");
 				
 				apv.setHompiId("cdwcdw34");
 				apv.setLpostGu("LPO03");
 				totalCount = postService.getAllPostListCount(pv);
-				System.out.println("카운트 :"+ totalCount);
 			}
 			
 		    apv.setTotalCount(totalCount);
@@ -84,33 +90,21 @@ public class ListPostHandler implements CommandHandler {
 					req.setAttribute("photolist", list);
 					req.setAttribute("pagingVO", pagingVO);
 					System.out.println("pho if문 끝");
-					return "/WEB-INF/view/post/photolist.jsp";
-				}else {
-					System.out.println("pho if문 아래 탐");
+					return VIEW_PAGE+"/photolist.jsp";
+				}else if("dia".equals(flag)) {
+					System.out.println("dia if문 아래 탐");
+					list = postService.getSearchPost(apv);
+					req.setAttribute("diarylist", list);
+					req.setAttribute("pagingVO", pagingVO);
+					System.out.println("dia if문 아래 끝");
+					return VIEW_PAGE+"/diarylist.jsp";
+				} else {
+					System.out.println("dia if문 아래 탐");
 					list = postService.getSearchPost(apv);
 					req.setAttribute("postlist", list);
 					req.setAttribute("pagingVO", pagingVO);
-					System.out.println("pho if문 아래 끝");
+					System.out.println("dia if문 아래 끝");
+					return VIEW_PAGE+"/postlist.jsp";
 				}
-				
-				System.out.println("퇴장 Post List Haldler 퇴장");
-				return VIEW_PAGE;
-		
-			
-//			Gson gson = new Gson();
-//			String strJson =  gson.toJson(list);
-//			
-//			resp.setContentType("application/json");
-//			resp.setCharacterEncoding("UTF-8");
-//			
-//			PrintWriter out = resp.getWriter();
-//			out.print(strJson);
-			
-//			req.setAttribute("strJson", strJson);
-
-//			System.out.println("퇴장 Post List Haldler 퇴장");
-//			return VIEW_PAGE;
-			
-			
 	}
 }

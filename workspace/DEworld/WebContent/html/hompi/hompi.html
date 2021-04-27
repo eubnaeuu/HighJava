@@ -3,10 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <title>홈</title>
+<script src="/DEworld/js/jquery-3.6.0.js"></script>
+<script src="/DEworld/js/hompi/hompi.js"></script>
 <style type="text/css">
-table{
-	background-color: blue;
-}
 body {
 	scrollbar-face-color: #FFFFFF;
 	scrollbar-highlight-color: #DBDBDB;
@@ -38,10 +37,10 @@ body {
 <body bgcolor="#F3F3F3" topmargin="0" leftmargin="0">
 	<form name="main">
 		<!-- 미니 홈페이지 외각 테이블 -->
-		<table border="0" align="left" width="950" height="550"
-			bgcolor="#003366" cellspacing="0" cellpadding="0">
+		<table border="0" align="left" width="950" height="550" cellspacing="0" cellpadding="0" 
+		background="/DEworld/image/hompiBackground/minion.jpg">
 			<tr>
-				<td background="./images/bg_kim1.jpg"><script
+				<td><script
 						language="javascript">
 						var now = new Date()
 						document.write('<span style="font-size:9pt;font-weight:bold">&nbsp;&nbsp;&nbsp; 지금은.. ')
@@ -52,7 +51,7 @@ body {
 					</script>
 
 					<table border="0" align="left" width="800" height="510"
-						background="bg_big.gif">
+						background="/DEworld/html/hompi/theme/bg_big.gif">
 						<tr>
 							<td colspan="2" align="center"><br> <font face="굴림"><span
 									style="font-size: 8pt;">today 9999 total 9999</span></font></td>
@@ -79,23 +78,29 @@ body {
 								<center>
 									<!-- 오른쪽 내용 부분 ----------------------------------------------------------- -->
 									<iframe frameborder="0" width="470" height="430"
-										src="./r_home.html"></iframe>
+										src="r_home.html" id="rightIframe"></iframe>
 									<!-- ---------------------------------------------------------------------------- -->
 								</center>
 							</td>
 							<!-- 오른쪽 메뉴 부분 ----------------------------------------------------------- -->
 							<td>
 								<button type="button" class="btm_image" id="img_btn"
-									onclick="menu_click_pagereload('./m1.html')">홈</button> <br />
+									onclick="iframeChange('r_home.html')">홈</button> <br />
 								<br />
 								<button type="button" class="btm_image" id="img_btn"
-									onclick="menu_click_pagereload('./m2.html')">프로필</button> <br />
+									onclick="iframeChange('r_profile.html')">프로필</button> <br />
 								<br />
 								<button type="button" class="btm_image" id="img_btn"
-									onclick="menu_click_pagereload('./m3.html')">사진첩</button> <br />
+									onclick="iframeChangelink('/post/list.do?')">게시판</button> <br />
 								<br />
 								<button type="button" class="btm_image" id="img_btn"
-									onclick="menu_click_pagereload('./m4.html')">방명록</button> <br />
+									onclick="iframeChangelink('/post/list.do?flag=pho')">사진첩</button> <br />
+								<br />
+								<button type="button" class="btm_image" id="img_btn"
+									onclick="iframeChange('r_guest.html')">방명록</button> <br />
+								<br />
+								<button type="button" class="btm_image" id="img_btn"
+									onclick="iframeChangelink('/post/list.do?flag=pho')">다이어리</button> <br />
 								<br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
 								<br />
 							</td>
@@ -103,7 +108,7 @@ body {
 						</tr>
 					</table>
 				<td style="position: relative; top: 0px; left: 0px;">
-					<iframe frameborder="0" width="250" height="480" src="/DEworld/html/hompi/musicOn.html" style="padding-top: 10px; padding-right: 35px;" scrolling="no""></iframe>
+					<iframe frameborder="0" width="250" height="480" src="/DEworld/html/hompi/music/musicOn.html" style="padding-top: 10px; padding-right: 35px;" scrolling="no""></iframe>
 				</td>
 			</tr>
 		</table>

@@ -35,9 +35,22 @@ List<PostVO> photolist = (List<PostVO>)request.getAttribute("photolist");
 <title>게시글 목록</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
-// $(document).ready(function(){
-// 	var userId = sessionStorage.getItem("nowLogin");
-// });
+<!--
+	function comment_ok()
+	{
+		var text = document.poto.commenti.value;
+		if (text != "")
+		{
+			text = text + '\n\n\n' + '댓글이 추가되었습니다. ^_^';
+			alert(text);
+
+		}
+		else
+		{
+			alert('댓글을 입력해 주세요 ^^');
+		}
+	}
+//-->
 </script>
 </head>
 <body>
