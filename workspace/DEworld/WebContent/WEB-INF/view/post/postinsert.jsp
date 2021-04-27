@@ -54,6 +54,7 @@
 					<td><input type="file" name="atchFile2" id="atch2"></td>
 				</tr>
 			</table>
+			<input type="hidden" value="posend" name="flag">
 			<input type="submit" value="post등록">
 			</form>
 			

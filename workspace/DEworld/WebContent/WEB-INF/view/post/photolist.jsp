@@ -91,7 +91,6 @@ List<PostVO> photolist = (List<PostVO>)request.getAttribute("photolist");
 							<%
 							cnt++;
 								}
-						} 
 							%>
 <!-- 페이징 처리 시작 -->
 	      <%if(pagingVO.getTotalCount() > 0) {%>
@@ -110,11 +109,19 @@ List<PostVO> photolist = (List<PostVO>)request.getAttribute("photolist");
 	         </tr>
 	      <%} %>
 <!-- 페이징 처리 끝 --> 
+					<%}else{
+					%>
+					<tr>
+						<td colspan="5">게시글이  존재하지 않습니다.</td>
+					</tr>
+					<%
+						}
+					%>
 			</tbody>
 			</table>
-			<%if((userId.trim()).equals(photolist.get(0).getHompiId().trim())){
+			<%if((userId.trim()).equals("cdwcdw34")){
 				%>
-			<a href="insert.do"><button type="button">등록</button></a>
+			<a href="insert.do?flag=pho"><button type="button">등록</button></a>
 			<%
 			}
 			%>
@@ -126,7 +133,7 @@ List<PostVO> photolist = (List<PostVO>)request.getAttribute("photolist");
 		<input type="text" id="inputstr">
 		<button type="button" onclick="search()">검색</button>
 <!-- 		<a href="list.do"><button type="button" onclick="select()">조회</button></a> -->
-			<%if((userId.trim()).equals(photolist.get(0).getHompiId().trim())){
+			<%if((userId.trim()).equals("cdwcdw34")){
 				%>
 		<button type="button" onclick="toggleChk()">선택</button>
 		<a href="list.do"><button type="button" onclick="remove()">삭제</button></a>

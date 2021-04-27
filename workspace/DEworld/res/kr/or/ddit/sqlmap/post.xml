@@ -82,6 +82,9 @@
 	 <isNotEmpty property="hompiId">
            AND HOMPI_ID LIKE '%'||#hompiId#||'%'
 	 </isNotEmpty>
+	 <isNotEmpty property="lpostGu">
+           AND LPOST_GU LIKE '%'||#lpostGu#||'%'
+	 </isNotEmpty>
 	 </select>
 	
 	<select id="getSearchPost" parameterClass="kr.or.ddit.post.vo.AllPostVO" resultClass="kr.or.ddit.post.vo.PostVO">
@@ -116,6 +119,9 @@
 	 </isNotEmpty>
 	 <isNotEmpty property="hompiId">
            AND AA.HOMPI_ID LIKE '%'||#hompiId#||'%'
+	 </isNotEmpty>
+ 	 <isNotEmpty property="lpostGu">
+           AND AA.LPOST_GU LIKE '%'||#lpostGu#||'%'
 	 </isNotEmpty>
 	 ORDER BY POST_NO DESC
 	</select>
@@ -155,6 +161,9 @@
 	 </isNotEmpty>
 	 <isNotEmpty property="hompiId">
            AND AA.HOMPI_ID LIKE '%'||#hompiId#||'%'
+	 </isNotEmpty>
+ 	 <isNotEmpty property="lpostGu">
+           AND AA.LPOST_GU LIKE '%'||#lpostGu#||'%'
 	 </isNotEmpty>
 	 ORDER BY POST_NO DESC
 	</select>

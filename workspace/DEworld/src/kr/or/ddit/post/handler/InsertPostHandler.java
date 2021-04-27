@@ -20,7 +20,7 @@ import util.FileUploadRequestWrapper;
 
 public class InsertPostHandler implements CommandHandler {
 	
-	private static final String VIEW_PAGE = "/WEB-INF/view/post/postinsert.jsp";
+	private static final String VIEW_PAGE = "/WEB-INF/view/";
 	private Map<String, Object> fileItemMap;
 
 	@Override
@@ -36,16 +36,20 @@ public class InsertPostHandler implements CommandHandler {
 	public String process(HttpServletRequest req, HttpServletResponse resp) throws Exception, Exception {
 		
 		System.out.println("입장 Post insert Haldler 입장");
-		
-		if(req.getMethod().equals("GET")) { //GET방식인 경우 isRedirect을 하지 않는다
-			return VIEW_PAGE;
-		}else { //POST 방식인 경우 isRedirect를 한다 
 			
 //			FileItem item = ((FileUploadRequestWrapper)req).getFileItem("atchFile");
 //			AtchFileVO atchFileVO = new AtchFileVO();
 //			IAtchFileService fileService = AtchFileServiceImpl.getInstance();
 //			String postNo = req.getParameter("postNo");
 //			atchFileVO = fileService.saveAtchFile(item);
+			
+		if("pho".equals(req.getParameter("flag"))) { //GET방식인 경우 isRedirect을 하지 않는다
+			return VIEW_PAGE+"post/photoinsert.jsp";
+		}else if("dia".equals(req.getParameter("flag"))) {
+			return VIEW_PAGE+"post/diaryinsert.jsp";
+		}else if("pos".equals(req.getParameter("flag"))) {
+			return VIEW_PAGE+"post/postinsert.jsp";
+		}else {			
 			
 			fileItemMap = ((FileUploadRequestWrapper)req).getFileItemMap();
 			
@@ -64,12 +68,18 @@ public class InsertPostHandler implements CommandHandler {
 			
 			PostService postService = PostServiceImpl.getInstance();
 			
+			
+			// 왜 못불러옴?
+			String userId = (String)req.getSession().getAttribute("userId");
+			System.out.println("세션따오기 : "+userId);
+			
 			PostVO pv = new PostVO();
-			pv.setMemId(req.getParameter("memId"));
-			pv.setHompiId(req.getParameter("memId"));
+			pv.setMemId(userId);
+			pv.setHompiId("cdwcdw34");
 			pv.setLpostGu(req.getParameter("lpostGu"));
 			pv.setPostNo(req.getParameter("postNo"));
 			pv.setPostTitle(req.getParameter("postTitle"));
+			pv.setPostContent(req.getParameter("postContent"));
 			if(filecnt > 0) {
 			pv.setAtchFileId(atchFileVO.getAtchFileId());
 			}
@@ -84,11 +94,19 @@ public class InsertPostHandler implements CommandHandler {
 			}
 			
 			String redirectUrl = req.getContextPath() + "/post/list.do";
+			
+			if("phoend".equals(req.getParameter("flag"))) { //GET방식인 경우 isRedirect을 하지 않는다
+				return redirectUrl+"?flag=pho";
+			}else if("diaend".equals(req.getParameter("flag"))) {
+				return redirectUrl+"?flag=dia";
+			}else if("posend".equals(req.getParameter("flag"))) {
+				return redirectUrl+"?flag=pos";
+			}else {			
 
 			System.out.println("퇴장 Post insert Haldler 퇴장");
 			
 			return redirectUrl;
+			}
 		}
 	}
 }
-

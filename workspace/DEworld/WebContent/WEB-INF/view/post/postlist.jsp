@@ -68,7 +68,7 @@ MemberVO logininfo = memberService.getMember(userId);
 <!-- 페이징 처리 시작 -->
 	      <%if(pagingVO.getTotalCount() > 0) {%>
 	         <tr>
-	            <td colspan="4" align="center">
+	            <td colspan="6" align="center">
 	               <%if(pagingVO.getFirstPageNo() > pagingVO.getPageSize()) { %>
 	               <a href="list.do?pageNo=<%=pagingVO.getFirstPageNo() - pagingVO.getPageSize() %>">[이전]</a>
 	               <%} %>
@@ -93,9 +93,9 @@ MemberVO logininfo = memberService.getMember(userId);
 					%>
 			</tbody>
 			</table>
-			<%if((userId.trim()).equals(postlist.get(0).getHompiId().trim())){
+			<%if((userId.trim()).equals("cdwcdw34")){
 				%>
-			<a href="insert.do"><button type="button">등록</button></a>
+			<a href="insert.do?flag=pos"><button type="button">등록</button></a>
 			<%
 			}
 			%>
@@ -107,7 +107,7 @@ MemberVO logininfo = memberService.getMember(userId);
 		<input type="text" id="inputstr">
 		<button type="button" onclick="search()">검색</button>
 <!-- 		<a href="list.do"><button type="button" onclick="select()">조회</button></a> -->
-			<%if((userId.trim()).equals(postlist.get(0).getHompiId().trim())){
+			<%if((userId.trim()).equals("cdwcdw34")){
 				%>
 		<button type="button" onclick="toggleChk()">선택</button>
 		<a href="list.do"><button type="button" onclick="remove()">삭제</button></a>

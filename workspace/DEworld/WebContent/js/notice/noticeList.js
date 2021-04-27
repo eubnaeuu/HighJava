@@ -14,24 +14,25 @@ function startCheck(){
 		window.location.href = "http://localhost/DEworld/html/loginpage/login.html";
 	}else if(userAuth == "user"){
 	var memId = sessionStorage.getItem("Nickname");
-		
+		newPage(userAuth);
 
 	}else if(userAuth =="admin"){
 // 두환쓰 아이디어 기다리는중
 		
-		newPageAdmin();
+		newPage(userAuth);
 		
 	}else{
 		alert("오류입니다. 사이트담당자에게 연락 부탁드립니다.");
 	}
 }
 // 공지 리스트 조회
-function makeTable(data){
+function makeTable(data,tmp){
 	var str = "";
-	
+	//유저
+	if(tmp=="admin"){
 	for(var i=0 ; i<data.length ; i++) {
 		str += "<tr>"
-			+ "<td><input type='checkbox' name='noticeNoArr' id='chk" + data[i].noticeNo + "' value='" + data[i].noticeNo + "'>"
+			+ "<td><input type='checkbox' name='noticeNoArr' id='chk" + data[i].noticeNo + "' value='" + data[i].noticeNo + "'></td>"
 			+ "<td>" + data[i].noticeNo + "</td>"
 			+ "<td class='noticeTitle'><a href='http://localhost/DEworld/html/notice/noticeShow.html?noticeTitle="+data[i].noticeNo+"'>" + data[i].noticeTitle + "</a></td>"
 			+ "<td>";
@@ -43,7 +44,25 @@ function makeTable(data){
 			+ "</tr>";
 	}
 	$("#NoticeList tbody").html(str);
-	
+	//관리자
+	}else{
+		for(var i=0 ; i<data.length ; i++) {
+			str += "<tr>"
+				+ "<td>" + data[i].noticeNo + "</td>"
+				+ "<td class='noticeTitle'><a href='http://localhost/DEworld/html/notice/noticeShow.html?noticeTitle="+data[i].noticeNo+"'>" + data[i].noticeTitle + "</a></td>"
+				+ "<td>";
+			if(data[i].adminId=="a001"){
+				str +="관리자";
+			}
+			str += "</td>"
+				+ "<td>" + data[i].noticeDate.substr(0,10) + "</td>"
+				+ "</tr>";
+		}
+		$("#NoticeList tbody").html(str);
+		$("#thChkBx").hide();
+		$("#deleteNotice").hide();
+		$("#insertNotice").hide();
+	}
 
 	$("input[type='checkbox']").on("click", function(){
 		var BooleanChk = false;
@@ -84,7 +103,7 @@ function deleteNotice(){
 		,success : function(data){
 			alert("데이터가 " + data.resultCnt + "개 삭제되었습니다.");
 
-			newPage();
+			startCheck();
 		}
 	,error : function(request,status, error){
 		alert("code:" + request.status+ "\n\r" 
@@ -93,7 +112,7 @@ function deleteNotice(){
 		}
 	});
 }
-function newPageAdmin(){
+function newPage(tmp){
 	var param = {
 			 flag : "L"
 			};
@@ -104,7 +123,7 @@ function newPageAdmin(){
 		,data : param
 		,dataType : "json"
 		,success : function(data){
-			makeTable(data);
+			makeTable(data,tmp);
 			
 		}
 	,error : function(request,status, error){

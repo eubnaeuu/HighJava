@@ -49,7 +49,7 @@ function checkAdmin(){
 					sessionStorage.setItem("Nickname", data[0].adminId);
 					sessionStorage.setItem("nowLogin", "admin");
 					
-					window.location.href = "http://localhost/DEworld/html/adminPage/adminPage.html";
+					window.location.href = "http://localhost/DEworld/html/mainPage/topic.html";
 				}
 			}
 		}

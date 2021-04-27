@@ -1,5 +1,7 @@
 package kr.or.ddit.post.vo;
 
+import java.util.List;
+
 import kr.or.ddit.comm.vo.BaseVO;
 
 /**
@@ -27,6 +29,8 @@ public class AllPostVO extends BaseVO {
 	
 	private long postView =0;
 	private long atchFileId = -1;
+	
+	private List<PostVO> postVOList;
 	
 	
 	public String getPostNo() {
@@ -179,5 +183,14 @@ public class AllPostVO extends BaseVO {
 	public int getLastRecNo() {
 		lastRecNo = getCurrentPageNo() * getCountPerPage();
 		return lastRecNo;
+	}
+	
+	
+	
+	public List<PostVO> getPostVOList() {
+		return postVOList;
+	}
+	public void setPostVOList(List<PostVO> postVOList) {
+		this.postVOList = postVOList;
 	}
 }

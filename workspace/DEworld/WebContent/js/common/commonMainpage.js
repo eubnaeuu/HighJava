@@ -1,13 +1,14 @@
 /**
  * 
  */
+//로그아웃버튼
 function logOut(){
 	window.location.href = "http://localhost/DEworld/html/loginpage/login.html";
 	
 	sessionStorage.clear();
 }
 
-
+// 상단페이지 ""님 어서오세요 안에들어가는값 지정
 $(document).ready(function(){
 	var user = sessionStorage.getItem("nowLogin");
 	
@@ -39,5 +40,7 @@ $(document).ready(function(){
 	}
 	if(user =="admin"){
 		$("#idArea").html("관리자");
+		//관리자 로그인시 내미니홈피 버튼이 >>>>>>회원관리페이지 버튼
+		
 	}
 });

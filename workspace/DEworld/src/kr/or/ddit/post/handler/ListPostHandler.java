@@ -99,11 +99,11 @@ public class ListPostHandler implements CommandHandler {
 					System.out.println("dia if문 아래 끝");
 					return VIEW_PAGE+"/diarylist.jsp";
 				} else {
-					System.out.println("dia if문 아래 탐");
+					System.out.println("post if문 아래 탐");
 					list = postService.getSearchPost(apv);
 					req.setAttribute("postlist", list);
 					req.setAttribute("pagingVO", pagingVO);
-					System.out.println("dia if문 아래 끝");
+					System.out.println("post if문 아래 끝");
 					return VIEW_PAGE+"/postlist.jsp";
 				}
 	}

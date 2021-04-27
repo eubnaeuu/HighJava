@@ -17,7 +17,8 @@ for(int i=0; i<list.size(); i++){
 		"itemName" : "<%=iv.getItemName()%>",
 		"itemPrice" : "<%=iv.getItemPrice()%>",
 		"itemImg" : "<%=iv.getItemImg()%>",
-		"itemDesc" : "<%=iv.getItemDesc()%>"
+		"itemDesc" : "<%=iv.getItemDesc()%>",
+		"litemGu"  : "<%=iv.getLitemGu()%>"
 	}
 	<%
 }
