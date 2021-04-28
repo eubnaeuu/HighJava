@@ -190,6 +190,12 @@
 	    ADMIN_ID = #adminId#
 	</select>
 	
+	<update id="updateCoin" parameterClass="kr.or.ddit.member.vo.MemberVO">
+	UPDATE MEMBER
+	SET MEM_CYBERMONEY = MEM_CYBERMONEY + #memCyberMoney#
+	WHERE MEM_ID = #memId#
+	</update>
+	
 </sqlMap>			
 
 

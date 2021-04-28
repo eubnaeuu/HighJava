@@ -6,13 +6,13 @@
 
 	<insert id="insertWishlist" parameterClass="kr.or.ddit.music.vo.MusicVO" >
 		insert into wishlist 
-		(mem_id, item_id, item_gu) values(#memId#,#musicId#,'MUSIC')
+		(mem_id, music_id, litem_gu) values(#memId#,#musicId#,'03')
 	</insert>
 	
 	<insert id="giftMusic" parameterClass="kr.or.ddit.music.vo.MusicVO" >
 		insert into gift 
-		(RECIPIENT_ID,SEND_ID,Music_ID,SEND_DATE,GIFT_MESSAGE,ITEM_GU) 
-		values(#friendId#,#memId#,#musicId#,sysdate,#giftMessage#,'MUSIC')
+		(RECIPIENT_ID,SEND_ID,Music_ID,SEND_DATE,GIFT_MESSAGE,LITEM_GU) 
+		values(#friendId#,#memId#,#musicId#,sysdate,#giftMessage#,'03')
 	</insert>
 	
 	<insert id="buyMusic" parameterClass="kr.or.ddit.music.vo.MusicVO" >
@@ -24,7 +24,7 @@
 	
 	<update id="payment" parameterClass="kr.or.ddit.music.vo.MusicVO" >
 		update member set 
-			MEM_CYBERMONEY = MEM_CYBERMONEY - (select music_price from Music where music_id = #musicId#)
+			MEM_CYBERMONEY = MEM_CYBERMONEY - (select music_cost from Music where music_id = #musicId#)
 		where mem_id = #memId#
 	</update>
 	
