@@ -1,4 +1,4 @@
-package kr.or.ddit.post.handler;
+package kr.or.ddit.guestbook.handler;
 
 import java.net.URLEncoder;
 import java.util.HashMap;

@@ -100,8 +100,29 @@
 			,AA.POST_VIEW        	postView
 			,AA.ATCH_FILE_ID 		atchFileId
             ,M.MEM_NICKNAME         memNickname
- 		FROM
- 		(SELECT A.*, ROWNUM AS RNUM FROM POST A) AA
+ 		FROM (
+ 				SELECT A.*, ROWNUM AS RNUM 
+ 				FROM POST A
+ 				WHERE 1=1
+	 <isNotEmpty property="hompiId">
+           AND A.HOMPI_ID LIKE '%'||#hompiId#||'%'
+	 </isNotEmpty>
+ 	 <isNotEmpty property="lpostGu">
+           AND A.LPOST_GU LIKE '%'||#lpostGu#||'%'
+	 </isNotEmpty>
+	 <isNotEmpty property="postNo">
+           AND A.POST_NO = #postNo#
+	 </isNotEmpty>
+	 <isNotEmpty property="postTitle">
+           AND A.POST_TITLE LIKE '%'||#postTitle#||'%'
+	 </isNotEmpty>
+	 <isNotEmpty property="postContent">
+           AND A.POST_CONTENT LIKE '%'||#postContent#||'%'
+	 </isNotEmpty>
+	 <isNotEmpty property="memId">
+           AND A.MEM_ID LIKE '%'||#memId#||'%'
+	 </isNotEmpty>
+			) AA
         INNER JOIN MEMBER M
         ON AA.MEM_ID = M.MEM_ID
 		WHERE AA.RNUM BETWEEN #firstRecNo# AND #lastRecNo#
@@ -140,7 +161,29 @@
             ,M.MEM_NICKNAME         memNickname
 	        ,F.STRE_FILE_NM   	   streFileNm
 	        ,F.FILE_EXTSN           fileExtsn
-	FROM (SELECT A.*, ROWNUM AS RNUM FROM POST A) AA
+		FROM (
+ 				SELECT A.*, ROWNUM AS RNUM 
+ 				FROM POST A
+ 				WHERE 1=1
+	 <isNotEmpty property="hompiId">
+           AND A.HOMPI_ID LIKE '%'||#hompiId#||'%'
+	 </isNotEmpty>
+ 	 <isNotEmpty property="lpostGu">
+           AND A.LPOST_GU LIKE '%'||#lpostGu#||'%'
+	 </isNotEmpty>
+ 	<isNotEmpty property="postNo">
+           AND A.POST_NO = #postNo#
+	 </isNotEmpty>
+	 <isNotEmpty property="postTitle">
+           AND A.POST_TITLE LIKE '%'||#postTitle#||'%'
+	 </isNotEmpty>
+	 <isNotEmpty property="postContent">
+           AND A.POST_CONTENT LIKE '%'||#postContent#||'%'
+	 </isNotEmpty>
+	 <isNotEmpty property="memId">
+           AND A.MEM_ID LIKE '%'||#memId#||'%'
+	 </isNotEmpty>
+			) AA
     INNER JOIN MEMBER M
     ON AA.MEM_ID = M.MEM_ID
     INNER JOIN ATCH_FILE_DETAIL F
