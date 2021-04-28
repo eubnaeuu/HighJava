@@ -33,7 +33,32 @@ String hompiId	= request.getParameter("hompiId");
 
 	function comment_ok()
 	{
-		var text = document.guest.commenti.value;
+		
+		$.ajax({
+			url : "/DEworld/guestbook/insert.do",
+			type : "post",
+			data : {"memId" : memId, "flag" : "setMyPage"},
+			dataType : "json",
+			async: false,
+			success : function(data) {
+				var memCybermoney = data[0].memCybermoney;
+				var itemPrice = <%=itemVO.getItemPrice() %>;
+				var result = memCybermoney - itemPrice;
+				if(result < 0){
+					alert("보유한 땅콩이 부족합니다!");
+					m = false;
+				}else{
+					m = true;
+				}
+			},
+			error : function(xhr) {
+				alert("알수없는 에러");
+			}
+		
+		
+		
+		
+		
 		if (text != "")
 		{
 			text = text + '\n\n\n' + '댓글이 추가되었습니다. ^_^';
@@ -169,7 +194,9 @@ String hompiId	= request.getParameter("hompiId");
 			%>
 		<tr>
 			<td colspan="2" align="center">
-				<textarea name="commenti" rows="2" cols="47"></textarea>
+				<input id="gbUserId" type="hidden" value="<%=userId%>" name="guestbookWriter">
+				<input id="gbHompiId" type="hidden" value="<%=hompiId%>" name="hompiId">
+				<textarea id="gbContent" name="guestbookContent" rows="2" cols="47"></textarea>
 				<input type="button" name="comment_save" value="확인" onclick="comment_ok()">
 			</td>
 		</tr>
