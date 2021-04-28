@@ -34,6 +34,7 @@
 		MUSIC_ID 		musicId,
 		lmusic.LMUSIC_GU		lmusicGu,
 		lmusic.LMUSIC_GENRE	lmusicGenre,
+		MUSIC_ALBUM		musicAlbum,
 		MUSIC_TITLE		musicTitle,
 		MUSIC_DESC		musicDesc,
 		MUSIC_ARTIST	musicArtist,
@@ -49,7 +50,7 @@
 	 select 
 		MUSIC_ID 		musicId,
 		LMUSIC_GU		lmusicGu,
-		
+		MUSIC_ALBUM		musicAlbum,
 		MUSIC_TITLE		musicTitle,
 		MUSIC_DESC		musicDesc,
 		MUSIC_ARTIST	musicArtist,

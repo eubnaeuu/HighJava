@@ -90,7 +90,7 @@ body {
 								<!-- 왼쪽 내용 부분 ----------------------------------------------------------- -->
 								<center>
 									<iframe frameborder="0" width="160" height="440"
-										src="./left_intro.html"></iframe>
+										src="/DEworld/html/hompi/left_intro.jsp?hompiId="<%=hompiId %>></iframe>
 								</center>
 							</td>
 							<td width="480" height="450"
@@ -98,17 +98,17 @@ body {
 								<center>
 									<!-- 오른쪽 내용 부분 ----------------------------------------------------------- -->
 									<iframe frameborder="0" width="470" height="430"
-										src="r_home.html" id="rightIframe"></iframe>
+										src="/DEworld/html/hompi/r_home.jsp" id="rightIframe"></iframe>
 									<!-- ---------------------------------------------------------------------------- -->
 								</center>
 							</td>
 							<!-- 오른쪽 메뉴 부분 ----------------------------------------------------------- -->
 							<td>
 								<button type="button" class="btm_image" id="img_btn"
-									onclick="iframeChange('r_home.html')">홈</button> <br />
+									onclick="iframeChange('/DEworld/html/hompi/r_home.jsp')">홈</button> <br />
 								<br />
 								<button type="button" class="btm_image" id="img_btn"
-									onclick="iframeChange('r_profile.html')">프로필</button> <br />
+									onclick="iframeChange('/DEworld/html/hompi/r_profile.jsp')">프로필</button> <br />
 								<br />
 								<button type="button" class="btm_image" id="img_btn"
 									onclick="iframeChangelink('/post/list.do?hompiId=<%=hompiId%>')">게시판</button> <br />
@@ -117,7 +117,7 @@ body {
 									onclick="iframeChangelink('/post/list.do?flag=pho')">사진첩</button> <br />
 								<br />
 								<button type="button" class="btm_image" id="img_btn"
-									onclick="iframeChange('r_guest.html')">방명록</button> <br />
+									onclick="iframeChange('/DEworld/html/hompi/r_guest.jsp')">방명록</button> <br />
 								<br />
 								<button type="button" class="btm_image" id="img_btn"
 									onclick="iframeChangelink('/post/list.do?flag=dia')">다이어리</button> <br />

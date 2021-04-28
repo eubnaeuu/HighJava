@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
     <%
    	 String userId = (String)request.getSession().getAttribute("userId");
+    
     %>
 <!DOCTYPE html>
 <html lang="en">
@@ -203,7 +204,8 @@
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 		<div class="container">
 			<img src="/DEworld/image/DEWorld-350x350.png" style="width: 32px">
-			<a class="navbar-brand" href="topic.html">&nbsp;DEWorld</a>
+			<!-- 링크 안맞을수도 확인할 것 ★ ☆  -->
+			<a class="navbar-brand" href="topic.jsp">&nbsp;DEWorld</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarResponsive" aria-controls="navbarResponsive"
 				aria-expanded="false" aria-label="Toggle navigation">
@@ -243,7 +245,7 @@
 						"<span id="idArea"></span>" 님 어서오세요
 					</h1>
 					<br>
-					<button type="button" class="btn btn-primary btn-lg raised" id="changeBtn" onclick="goHompi(<%=userId%>)">내
+					<button type="button" class="btn btn-primary btn-lg raised" id="changeBtn" onclick="goHompi('<%=userId%>')">내
 						미니홈피</button>
 					<br>
 					<br>
@@ -252,7 +254,6 @@
 			</div>
 		</div>
 	</header>
-
 	<!-- Page Content -->
 	<div>
 		<!-- 버튼 공간 -->
