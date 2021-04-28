@@ -75,7 +75,7 @@ public class InsertPostHandler implements CommandHandler {
 			
 			PostVO pv = new PostVO();
 			pv.setMemId(userId);
-			pv.setHompiId("cdwcdw34");
+			pv.setHompiId(req.getParameter("HompiId"));
 			pv.setLpostGu(req.getParameter("lpostGu"));
 			pv.setPostNo(req.getParameter("postNo"));
 			pv.setPostTitle(req.getParameter("postTitle"));

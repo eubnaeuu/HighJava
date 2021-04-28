@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 
+import kr.or.ddit.friend.vo.FriendVO;
 import kr.or.ddit.friendreq.dao.FriendReqDao;
 import kr.or.ddit.friendreq.dao.FriendReqDaoImpl;
 import kr.or.ddit.friendreq.vo.FriendReqVO;

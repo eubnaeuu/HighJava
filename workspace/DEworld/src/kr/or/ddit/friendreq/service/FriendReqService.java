@@ -2,6 +2,7 @@ package kr.or.ddit.friendreq.service;
 
 import java.util.List;
 
+import kr.or.ddit.friend.vo.FriendVO;
 import kr.or.ddit.friendreq.vo.FriendReqVO;
 
 /**
@@ -51,5 +52,6 @@ public interface FriendReqService {
 	 */
 	
 	public List<FriendReqVO> getSearchFriendReq(FriendReqVO fv);
+
 	
 }

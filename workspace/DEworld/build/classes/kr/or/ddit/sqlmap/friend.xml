@@ -6,7 +6,6 @@
 <sqlMap namespace="friend">
 
 	<insert id="insertFriend" parameterClass="kr.or.ddit.friend.vo.FriendVO">
-
 	INSERT INTO FRIEND
 	(
 			MEM_ID
@@ -19,11 +18,31 @@
 			,#friendId#
 			,SYSDATE
 	)
-	                   
 	</insert>
-		
+	<delete id="deleteFriend" parameterClass="kr.or.ddit.friend.vo.FriendVO">
+		DELETE 
+		FROM FRIEND
+		WHERE FRIEND_ID = #friendId#
+		AND MEM_ID = #memId#
+	</delete>
 	
-	
+	<select id="getSearchFriend" parameterClass="kr.or.ddit.friend.vo.FriendVO" resultClass="kr.or.ddit.friend.vo.FriendVO">
+ 	SELECT		
+		 	FRIEND_ID		 friendId
+			,MEM_ID 			memId
+			,FRIEND_DATE 	friendDate
+	FROM FRIEND
+	WHERE 1 = 1
+	<isNotEmpty property="friendId">
+           AND FRIEND_ID = #friendId#
+	 </isNotEmpty>
+	<isNotEmpty property="memId">
+           AND MEM_ID = #memId#
+	 </isNotEmpty>
+	<isNotEmpty property="friendDate">
+           AND FRIEND_DATE = #friendDate#
+	 </isNotEmpty>
+	</select>
 	
 </sqlMap>			
 

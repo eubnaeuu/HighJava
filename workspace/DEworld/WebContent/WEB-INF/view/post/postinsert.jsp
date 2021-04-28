@@ -6,8 +6,11 @@
 <%
 		List <AtchFileVO> atchFileList = (List<AtchFileVO>)request.getAttribute("atchFileList");
     	List <PostVO> list = (List<PostVO>) request.getAttribute("list");
-    	String memId = (String)session.getAttribute("nowLogin");
+//     	String memId = (String)session.getAttribute("nowLogin");
 //     	String memId = session.getId();
+
+String userId = (String)request.getSession().getAttribute("userId");
+		 
 
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -43,7 +46,7 @@
 				</tr>
 				<tr>
 					<td>MEMID:</td>
-					<td><input type="text" name="memId" value="cdwcdw34" readonly="readonly"></td>
+					<td><input type="text" name="memId" value="<%=userId %>" readonly="readonly"></td>
 				</tr>
 				<tr>
 					<td>첨부파일1</td>

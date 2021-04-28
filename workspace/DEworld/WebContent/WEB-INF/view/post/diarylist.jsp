@@ -18,6 +18,8 @@ String userId = (String)request.getSession().getAttribute("userId");
 IMemberService memberService = MemberServiceImpl.getInstance();
 MemberVO logininfo = memberService.getMember(userId);
 
+String hompiId = request.getParameter("hompiId");
+
 
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -92,7 +94,7 @@ MemberVO logininfo = memberService.getMember(userId);
 					%>
 			</tbody>
 			</table>
-			<%if((userId.trim()).equals("cdwcdw34")){
+			<%if((userId.trim()).equals(hompiId)){
 				%>
 			<a href="insert.do?flag=dia"><button type="button">등록</button></a>
 			<%
@@ -106,7 +108,7 @@ MemberVO logininfo = memberService.getMember(userId);
 		<input type="text" id="inputstr">
 		<button type="button" onclick="search()">검색</button>
 <!-- 		<a href="list.do"><button type="button" onclick="select()">조회</button></a> -->
-			<%if((userId.trim()).equals("cdwcdw34")){
+			<%if((userId.trim()).equals(hompiId)){
 				%>
 		<button type="button" onclick="toggleChk()">선택</button>
 		<a href="list.do"><button type="button" onclick="remove()">삭제</button></a>

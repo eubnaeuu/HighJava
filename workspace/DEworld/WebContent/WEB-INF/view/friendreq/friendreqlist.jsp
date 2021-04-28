@@ -22,7 +22,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<title>게시글 목록</title>
+<title>일촌신청</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
@@ -88,13 +88,7 @@
 			%>
 		</tbody>
 	</table>
-	<%
-		if ((userId.trim()).equals("cdwcdw34")) {
-	%>
 	<a href="insert.do"><button type="button">등록</button></a>
-	<%
-		}
-	%>
 	<select id="selectstr">
 		<option value="1">FROM</option>
 		<option value="2">TO</option>
@@ -102,14 +96,8 @@
 	</select>
 	<input type="text" id="inputstr">
 	<button type="button" onclick="search()">검색</button>
-	<%
-		if ((userId.trim()).equals("cdwcdw34")) {
-	%>
 	<button type="button" onclick="toggleChk()">선택</button>
 	<a href="list.do"><button type="button" onclick="remove()">삭제</button></a>
-	<%
-		}
-	%>
 </body>
 <script type="text/javascript">
 	function checkAll() {

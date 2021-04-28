@@ -9,7 +9,6 @@
 	pageEncoding="UTF-8"%>
 <%
 	// String userId = (String)request.getSession().getAttribute("nowLogin"); // 세션의 로그인아이디값 가져오기
-	// String userId ="cdwcdw34";
 // if(request.getAttribute("atchFileList") != null){
 // }
 	List<AtchFileVO> atchFileList = (List<AtchFileVO>) request.getAttribute("atchFileList");

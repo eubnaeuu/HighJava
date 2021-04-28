@@ -11,7 +11,9 @@
 	// String strJson = (String)request.getAttribute("strJson");
 
 	// hompiId 어떻게?
-	String hompiId = "cdwcdw34";
+			
+			
+	String hompiId = request.getParameter("hompiId");
 
 	PagingVO pagingVO = (PagingVO) request.getAttribute("pagingVO");
 	String msg = request.getParameter("msg") == null ? "" : request.getParameter("msg");
@@ -171,7 +173,7 @@
 	</div>
 
 	<%
-		if ((userId.trim()).equals("cdwcdw34")) {
+		if ((userId.trim()).equals(hompiId)) {
 	%>
 	<a href="insert.do?flag=pho"><button type="button">등록</button></a>
 	<%
@@ -186,7 +188,7 @@
 	<button type="button" onclick="search()">검색</button>
 	<!-- 		<a href="list.do"><button type="button" onclick="select()">조회</button></a> -->
 	<%
-		if ((userId.trim()).equals("cdwcdw34")) {
+		if ((userId.trim()).equals(hompiId)) {
 	%>
 	<button type="button" onclick="toggleChk()">선택</button>
 	<a href="list.do"><button type="button" onclick="remove()">삭제</button></a>

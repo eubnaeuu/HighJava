@@ -49,24 +49,24 @@ public class ListPostHandler implements CommandHandler {
 		
 		int totalCount=0;
 			if("pho".equals(flag)) { // 사진첩
-				pv.setHompiId("cdwcdw34");
+				pv.setHompiId(req.getParameter("hompiId"));
 				pv.setLpostGu("LPO02");
 				
-				apv.setHompiId("cdwcdw34");
+				apv.setHompiId(req.getParameter("hompiId"));
 				apv.setLpostGu("LPO02");
 				totalCount = postService.getAllPostListCount(pv);
 			}else if("dia".equals(flag)) { // 다이어리
-				pv.setHompiId("cdwcdw34");
+				pv.setHompiId(req.getParameter("hompiId"));
 				pv.setLpostGu("LPO01");
 				
-				apv.setHompiId("cdwcdw34");
+				apv.setHompiId(req.getParameter("hompiId"));
 				apv.setLpostGu("LPO01");
 				totalCount = postService.getAllPostListCount(pv);
 			} else {		 // 게시판
-				pv.setHompiId("cdwcdw34");
+				pv.setHompiId(req.getParameter("hompiId"));
 				pv.setLpostGu("LPO03");
 				
-				apv.setHompiId("cdwcdw34");
+				apv.setHompiId(req.getParameter("hompiId"));
 				apv.setLpostGu("LPO03");
 				totalCount = postService.getAllPostListCount(pv);
 			}

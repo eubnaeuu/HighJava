@@ -34,8 +34,8 @@ public class SearchPostHandler implements CommandHandler {
 			System.out.println("search post handler 입장 GET");
 			PostVO pv = new PostVO();
 			AllPostVO apv = new AllPostVO();
-			pv.setHompiId("cdwcdw34");
-			apv.setHompiId("cdwcdw34");
+			pv.setHompiId(req.getParameter("hompiId"));
+			apv.setHompiId(req.getParameter("hompiId"));
 			
 			if(req.getParameter("postTitle")!= null) {
 				System.out.println("타이틀:"+req.getParameter("postTitle"));
@@ -89,8 +89,8 @@ public class SearchPostHandler implements CommandHandler {
 			
 			PostVO pv = new PostVO();
 			AllPostVO apv = new AllPostVO();
-			pv.setHompiId("cdwcdw34");
-			apv.setHompiId("cdwcdw34");
+			pv.setHompiId(req.getParameter("hompiId"));
+			apv.setHompiId(req.getParameter("hompiId"));
 		 int pageNo = 
 			       req.getParameter("pageNo") == null ? 
 			       1 : Integer.parseInt(req.getParameter("pageNo"));
