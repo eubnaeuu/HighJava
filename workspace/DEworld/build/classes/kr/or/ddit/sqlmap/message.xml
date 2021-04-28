@@ -43,9 +43,10 @@
 		WHERE MESSAGE_NO = #messageNo#
 	</delete>
 	
-	<select id="getMessageAllCount" resultClass="int">
+	<select id="getMessageAllCount" parameterClass="kr.or.ddit.message.vo.MessageVO" resultClass="int">
 	 		SELECT COUNT(*)
 	 		FROM MESSAGE
+			WHERE RECEIVE_MEM = #receiveMem#
 	 </select>
 	 
 	<select id="getMessageAll" resultClass="kr.or.ddit.message.vo.MessageVO">
@@ -70,9 +71,6 @@
 			,MESSAGE_STATUS   messageStatus 
 	FROM MESSAGE
 	WHERE 1 = 1
-<!-- 	<isNotEmpty property="messageNo"> -->
-<!--            AND MESSAGE_NO = #messageNo# -->
-<!-- 	 </isNotEmpty> -->
 	<isNotEmpty property="receiveMem">
            AND RECEIVE_MEM = #receiveMem#
 	 </isNotEmpty>
@@ -83,10 +81,37 @@
            AND MESSAGE_DATE = #messageDate#
 	 </isNotEmpty>
 	<isNotEmpty property="messageContent">
-           AND MESSAGE_CONTENT = #messageContent#
+           AND MESSAGE_CONTENT LIKE '%'||#messageContent#||'%'
 	 </isNotEmpty>
 	ORDER BY MESSAGE_DATE   
-
+	</select>
+	
+		<select id="getViewMessage" parameterClass="kr.or.ddit.message.vo.MessageVO" resultClass="kr.or.ddit.message.vo.MessageVO">
+ 	SELECT		
+			MESSAGE_NO        messageNo      
+			,MEM_ID           memId     
+			,RECEIVE_MEM      receiveMem 
+			,MESSAGE_CONTENT  messageContent
+			,MESSAGE_DATE     messageDate 
+			,MESSAGE_STATUS   messageStatus 
+	FROM MESSAGE
+	WHERE 1 = 1
+	<isNotEmpty property="messageNo">
+           AND MESSAGE_NO = #messageNo#
+	 </isNotEmpty>
+	<isNotEmpty property="receiveMem">
+           AND RECEIVE_MEM = #receiveMem#
+	 </isNotEmpty>
+	<isNotEmpty property="messageStatus">
+           AND MESSAGE_STATUS = #messageStatus#
+	 </isNotEmpty>
+	<isNotEmpty property="messageDate">
+           AND MESSAGE_DATE = #messageDate#
+	 </isNotEmpty>
+	<isNotEmpty property="messageContent">
+           AND MESSAGE_CONTENT LIKE '%'||#messageContent#||'%'
+	 </isNotEmpty>
+	ORDER BY MESSAGE_DATE   
 	</select>
 	
 </sqlMap>			
