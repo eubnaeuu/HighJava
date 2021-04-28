@@ -32,15 +32,13 @@ public class ListFriendHandler implements CommandHandler {
 			
 			String userId = (String)req.getSession().getAttribute("userId");
 			
-			fv.setMemId(userId);
+			fv.setMemId("memId");
 			fv.setFriendId(req.getParameter("friendId"));
 			fv.setFriendDate(req.getParameter("friendDate"));
 			
 			List<FriendVO> list = FriendService.getSearchFriend(fv);
 			
 			req.setAttribute("friendlist", list);
-			
-			System.out.println("퇴장 Friend List Haldler 퇴장");
 
 			return VIEW_PAGE;
 		}

@@ -130,5 +130,8 @@ function goHompi(str){
 function goMyMessage(){
 	window.open("http://localhost/DEworld/message/list.do");
 }
+function goMyFriend(){
+	window.open("http://localhost/DEworld/friend/list.do");
+}
 
 

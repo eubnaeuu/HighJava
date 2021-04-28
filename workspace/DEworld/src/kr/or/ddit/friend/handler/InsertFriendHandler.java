@@ -1,4 +1,4 @@
-package kr.or.ddit.friendreq.handler;
+package kr.or.ddit.friend.handler;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -8,7 +8,7 @@ import kr.or.ddit.friendreq.service.FriendReqService;
 import kr.or.ddit.friendreq.service.FriendReqServiceImpl;
 import kr.or.ddit.friendreq.vo.FriendReqVO;
 
-public class InsertFriendReqHandler implements CommandHandler {
+public class InsertFriendHandler implements CommandHandler {
 	
 	private static final String VIEW_PAGE = "/WEB-INF/view/friendreq/friendreqinsert.jsp";
 	
