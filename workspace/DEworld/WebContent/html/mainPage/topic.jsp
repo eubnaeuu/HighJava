@@ -1,3 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%
+   	 String userId = (String)request.getSession().getAttribute("userId");
+    %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -238,9 +243,8 @@
 						"<span id="idArea"></span>" 님 어서오세요
 					</h1>
 					<br>
-					<button type="button" class="btn btn-primary btn-lg raised" id="changeBtn" onclick="goMyHompi()">내
+					<button type="button" class="btn btn-primary btn-lg raised" id="changeBtn" onclick="goHompi(<%=userId%>)">내
 						미니홈피</button>
-<!-- 					<button type="button" class="btn btn-primary btn-lg raised" id="changeBtn" onclick="goTest()">☆ 테스트중</button> -->
 					<br>
 					<br>
 					<p class="lead mb-5 text-white-50">DEWorld에서 당신의 취향을 공유하고, 친구들에게 자신의 근황을 알리세요 !</p>

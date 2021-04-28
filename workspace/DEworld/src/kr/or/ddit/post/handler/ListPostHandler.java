@@ -40,7 +40,7 @@ public class ListPostHandler implements CommandHandler {
 
 		PostService postService = PostServiceImpl.getInstance();
 		IAtchFileService fileService = AtchFileServiceImpl.getInstance();
-			
+		req.getParameter("hompiId");	
 		String flag = req.getParameter("flag");
 		
 		PostVO pv = new PostVO();

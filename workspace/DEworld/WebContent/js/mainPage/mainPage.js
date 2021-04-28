@@ -121,11 +121,12 @@ function openWindowPop(url, name){
     window.open(url, name, options);
 }
 function goMyHompi(){
-	
 	openWindowPop("http://localhost/DEworld/html/hompi/hompi.html", "name");
-	
+	//openWindowPop("http://localhost/DEworld/hompi/main.do?flag=", "name");
 }
-
+function goHompi(str){
+	openWindowPop("http://localhost/DEworld/hompi/main.do?hompiId="+str,"name");
+}
 function goMyMessage(){
 	window.open("http://localhost/DEworld/message/list.do");
 }

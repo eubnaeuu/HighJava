@@ -48,7 +48,6 @@ function checkAdmin(){
 				} else {
 					sessionStorage.setItem("Nickname", data[0].adminId);
 					sessionStorage.setItem("nowLogin", "admin");
-					
 					window.location.href = "http://localhost/DEworld/html/mainPage/topic.html";
 				}
 			}
@@ -82,7 +81,8 @@ function checkIdPw(){
 				} else {
 					sessionStorage.setItem("Nickname", data[0].memId);
 					sessionStorage.setItem("nowLogin", "user");
-					window.location.href = "http://localhost/DEworld/html/mainPage/topic.html";
+					alert("맞음?");
+					window.location.href = "http://localhost/DEworld/html/mainPage/topic.jsp";
 				}
 			}
 		}
