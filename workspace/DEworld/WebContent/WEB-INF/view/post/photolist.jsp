@@ -175,7 +175,7 @@
 	<%
 		if ((userId.trim()).equals(hompiId)) {
 	%>
-	<a href="insert.do?hompiId=<%=hompiId %>&flag=pho"><button type="button">등록</button></a>
+	<a href="insert.do?hompiId=<%=hompiId %>flag=pho"><button type="button">등록</button></a>
 	<%
 		}
 	%>

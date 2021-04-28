@@ -37,7 +37,6 @@ public class ListPostHandler implements CommandHandler {
 			    
 			    PagingVO pagingVO = new PagingVO();
 			    
-
 		PostService postService = PostServiceImpl.getInstance();
 		IAtchFileService fileService = AtchFileServiceImpl.getInstance();
 		
@@ -46,10 +45,8 @@ public class ListPostHandler implements CommandHandler {
 		
 		System.out.println("hompiId : "+hompiId);
 		
-		
 		PostVO pv = new PostVO();
 		AllPostVO apv = new AllPostVO();
-		
 		
 		int totalCount=0;
 			if("pho".equals(flag)) { // 사진첩

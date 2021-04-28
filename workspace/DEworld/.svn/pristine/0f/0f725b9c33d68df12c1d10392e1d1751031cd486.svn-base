@@ -17,7 +17,7 @@ import kr.or.ddit.post.service.PostServiceImpl;
 import kr.or.ddit.post.vo.PostVO;
 import util.FileUploadRequestWrapper;
 
-public class DeletePostHandler implements CommandHandler {
+public class DeleteGuestBookHandler implements CommandHandler {
 		
 	private static final String VIEW_PAGE = "/WEB-INF/view/post/mainpost.html";
 	

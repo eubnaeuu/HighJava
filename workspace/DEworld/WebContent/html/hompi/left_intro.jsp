@@ -1,3 +1,4 @@
+<%@page import="kr.or.ddit.hompi.vo.HompiVO"%>
 <%@page import="kr.or.ddit.friend.service.FriendServiceImpl"%>
 <%@page import="java.util.List"%>
 <%@page import="kr.or.ddit.friend.service.FriendService"%>
@@ -16,8 +17,12 @@
     String hompiId = request.getParameter("hompiId");
     
     FriendVO fv = new FriendVO();
+	HompiVO hv = new HompiVO();
 	
 	fv.setMemId(hompiId);
+	
+	
+	
 	fv.setFriendId(request.getParameter("friendId"));
 	fv.setFriendDate(request.getParameter("friendDate"));
 	
@@ -46,8 +51,10 @@
 			<td>
 				<table bgcolor="#DBDBDB" width="130" cellpadding="1" cellspacing="1">
 					<tr bgcolor="#FFFFFF">
-						<td bg><img src="images/left_my.jpg" width="128" height="110"
-							border="0" alt="오늘의 나의 사진" /></td>
+						<td bg><img src="/DEworld/image/hompiProfile/"+mem1.png" width="128" height="110"
+							border="0" alt="오늘의 나의 사진" />
+<!-- 						<img src="/DEworld/image/hompiProfile/" width="128" height="110" -->
+							</td>
 					</tr>
 				</table>
 			</td>

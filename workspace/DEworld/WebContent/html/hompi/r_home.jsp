@@ -1,5 +1,25 @@
+<%@page import="java.util.List"%>
+<%@page import="kr.or.ddit.hompi.vo.HompiVO"%>
+<%@page import="kr.or.ddit.hompi.service.HompiServiceImpl"%>
+<%@page import="kr.or.ddit.hompi.service.HompiService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%
+    
+    String userId = (String)request.getSession().getAttribute("userId");
+    
+    
+    HompiVO hv = new HompiVO();
+    HompiService hompiService = HompiServiceImpl.getInstance();
+    
+    String hompiId = request.getParameter("hompiId");
+    hv.setHompiId(hompiId);
+    List<HompiVO> list = hompiService.getSearchHompi(hv);
+    
+    String hompiminiroom = list.get(0).getHompiMiniroom();
+    String hompibackground = list.get(0).getHompiBackground();
+    
+    %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <htmL>
  <head>
@@ -15,6 +35,21 @@
 	 scrollbar-darkshadow-color: #FFFFFF;
 	 scrollbar-track-color: #FFFFFF;
 	 scrollbar-arrow-color: #9C92FF}
+	 
+	 
+ 	 #minimi { 
+ 	 position : absolute;
+ 		
+ 		bottom : 150px; 
+ 		left : 150px;
+ 	 } 
+ 	 #bg { 
+ 	 position: absolute;
+ 	 right : 30px;
+ 	 left : 0px; 
+ 	  
+ 	 
+ 	 } 
 	</style>
  </head>
 
@@ -62,7 +97,8 @@
 		</tr>
 		<tr bgcolor="#FFFFFF">
 			<td align="center" colspan="2">  
-				<img src="images/r_myhome.gif" width="389" height="192" border="0" alt="아바타 집 그림">
+				<img id="bg" src="/DEworld/image/miniRoom/<%=hompiminiroom %>" width="389" height="192" border="0" alt="아바타 집 그림">
+				<img id="minimi" src="/DEworld/image/item/default_boy.png" width="50" height="100" border="0" alt="미니미">
 			</td>
 		</tr>
 	</table>

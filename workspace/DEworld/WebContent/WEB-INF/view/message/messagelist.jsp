@@ -57,7 +57,18 @@ MemberVO logininfo = memberService.getMember(userId);
 							<td><%= messagelist.get(i).getReceiveMem()%></td>
 							<td><a href="select.do?messageNo=<%=messagelist.get(i).getMessageNo()%>"><%= messagelist.get(i).getMessageContent()%></a></td>
 							<td><%= messagelist.get(i).getMessageDate()%></td>
-							<td><%= messagelist.get(i).getMessageStatus()%></td>
+							<td><%
+							String messageStatus = messagelist.get(i).getMessageStatus().trim();
+								if(messageStatus.equals("N")){
+									%>
+									읽지않음
+									<%
+								}else if(messageStatus.equals("Y")){
+									%>
+									읽음
+									<%
+								}
+							%></td>
 							</tr>
 							<%
 							cnt++;
@@ -81,7 +92,8 @@ MemberVO logininfo = memberService.getMember(userId);
 	      <%} %>
 <!-- 페이징 처리 끝 --> 
 						
-					<%}else{
+					<%
+					}else{
 					%>
 					<tr>
 						<td colspan="5">쪽지가  존재하지 않습니다.</td>

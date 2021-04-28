@@ -335,10 +335,15 @@ function save(){
 		return;
 	}
 	
+	var memId = $("#memId").val();
+	alert(memId);
+	$("#hompiId").val(memId);
+	
 	// 사용자 컨펌
 	if(!confirm("저장하시겠습니까?")) {
 		return;
 	}
+	
 	
 	// DB에 저장하는 ajax 호출
 	$("#formFlag").val("C");
@@ -357,6 +362,9 @@ function save(){
 			console.log(xhr);
 		}
 	});
+	
+	
+	
 	
 }
 

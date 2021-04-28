@@ -1,3 +1,5 @@
+<%@page import="kr.or.ddit.hompi.service.HompiServiceImpl"%>
+<%@page import="kr.or.ddit.hompi.service.HompiService"%>
 <%@page import="kr.or.ddit.hompi.vo.HompiVO"%>
 <%@page import="kr.or.ddit.member.service.MemberServiceImpl"%>
 <%@page import="kr.or.ddit.member.vo.MemberVO"%>
@@ -17,8 +19,16 @@ long hompiCountTot = hv.getVisitCountTotal();
 String userId = (String)request.getSession().getAttribute("userId");
 
 IMemberService memberService = MemberServiceImpl.getInstance();
+
 MemberVO logininfo = memberService.getMember(userId);
+
 MemberVO hompiinfo = memberService.getMember(hompiId);
+
+HompiService hompiService = HompiServiceImpl.getInstance();
+hv.setHompiId(hompiId);
+List<HompiVO> list = hompiService.getSearchHompi(hv);
+
+String miniRoom = list.get(0).getHompiMiniroom();
 
     
     %>
@@ -93,7 +103,7 @@ body {
 								background="./images/bg_left_rect.jpg">
 								<!-- 왼쪽 내용 부분 ----------------------------------------------------------- -->
 								<center>
-									<iframe frameborder="0" width="160" height="440"
+									<iframe frameborder="0" width="160" height="440" id="leftframe"
 										src="/DEworld/html/hompi/left_intro.jsp?hompiId=<%=hompiId %>"></iframe>
 								</center>
 							</td>
@@ -124,7 +134,7 @@ body {
 									onclick="iframeChangelink('/guestbook/list.do?hompiId=<%=hompiId%>')">방명록</button> <br />
 								<br />
 								<button type="button" class="btm_image" id="img_btn"
-									onclick="iframeChangelink('/post/list.do?flag=dia&hompiId=<%=hompiId%>')">다이어리</button> <br />
+									onclick="iframeChangelinkdiary('/post/list.do?flag=dia&hompiId=<%=hompiId%>')">다이어리</button> <br />
 								<br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
 								<br />
 							</td>

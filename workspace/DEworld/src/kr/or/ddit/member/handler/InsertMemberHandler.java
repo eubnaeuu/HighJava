@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.beanutils.BeanUtils;
 
 import kr.or.ddit.comm.handler.CommandHandler;
+import kr.or.ddit.hompi.service.HompiService;
+import kr.or.ddit.hompi.service.HompiServiceImpl;
+import kr.or.ddit.hompi.vo.HompiVO;
 import kr.or.ddit.member.service.IMemberService;
 import kr.or.ddit.member.service.MemberServiceImpl;
 import kr.or.ddit.member.service.ZipService;
@@ -124,6 +127,15 @@ public class InsertMemberHandler implements CommandHandler {
 		BeanUtils.populate(memberVo, req.getParameterMap());
 		IMemberService memberService = MemberServiceImpl.getInstance();
 		memberService.insertMember(memberVo);
+		String memId = memberVo.getMemId();
+		
+		HompiService hompiService = HompiServiceImpl.getInstance();
+		HompiVO hv = new HompiVO();
+		hv.setHompiId(memId);
+		hv.setMemId(memId);
+		
+		hompiService.insertHompi(hv);
+		
 		
 	}
 }

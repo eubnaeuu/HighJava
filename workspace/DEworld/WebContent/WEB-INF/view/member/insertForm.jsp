@@ -103,6 +103,7 @@
 					</div>
 				</div>
 			</div>
+			<input type="hidden" name="hompiId" value="">
 <!-- 			<input type="hidden" name="action" id="actionFm"> -->
 			<input type="hidden" name="flag" id="formFlag">
 		</form>
