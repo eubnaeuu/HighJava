@@ -75,6 +75,7 @@
 	<sqlMap resource="kr/or/ddit/sqlmap/comments.xml"/>
 	<sqlMap resource="kr/or/ddit/sqlmap/message.xml"/>
 	<sqlMap resource="kr/or/ddit/sqlmap/adminroom.xml"/>
+	<sqlMap resource="kr/or/ddit/sqlmap/guestbook.xml"/>
 </sqlMapConfig>
 
 

@@ -30,7 +30,7 @@ String hompiId	= request.getParameter("hompiId");
  </head>
 
 <script language="javascript">
-<!--
+
 	function comment_ok()
 	{
 		var text = document.guest.commenti.value;
@@ -46,37 +46,37 @@ String hompiId	= request.getParameter("hompiId");
 		}
 	}
 
-	function write_guest_ok()
-	{
-		//alert("쓰기 방명록");
-		var text = document.guest.guest_edit.value;
-		if (text != "")
-		{
-			document.write('<br/><br/>');
-			document.write('<table width="410" border="0" cellpadding="3" cellspacing="1" bgcolor="#DBDBDB" align="center">');
-			document.write('<tr bgcolor="#FFFFFF">');
-			document.write('<td align="center">'); 
-			document.write('<font face="굴림" style="font-size:9pt;">');
-			document.write(text);
-			document.write('</font>');
-			document.write('</td>');
-			document.write('</tr>');
-			document.write('</table>');
-			document.write('<br/><br/>');
+// 	function write_guest_ok()
+// 	{
+// 		//alert("쓰기 방명록");
+// 		var text = document.guest.guest_edit.value;
+// 		if (text != "")
+// 		{
+// 			document.write('<br/><br/>');
+// 			document.write('<table width="410" border="0" cellpadding="3" cellspacing="1" bgcolor="#DBDBDB" align="center">');
+// 			document.write('<tr bgcolor="#FFFFFF">');
+// 			document.write('<td align="center">'); 
+// 			document.write('<font face="굴림" style="font-size:9pt;">');
+// 			document.write(text);
+// 			document.write('</font>');
+// 			document.write('</td>');
+// 			document.write('</tr>');
+// 			document.write('</table>');
+// 			document.write('<br/><br/>');
 
-			document.write('<center><font face="굴림" style="font-size:9pt;">');
-			document.write('<b>방명록 글이 추가 되었습니다.</b><br/><br/>');
-			document.write('<a href="./r_guest.html">돌아가기</a>');
-			document.write('</font></center>');
-		}
-		else
-		{
-			alert("글을 입력해 주세요!!!");
-		}
+// 			document.write('<center><font face="굴림" style="font-size:9pt;">');
+// 			document.write('<b>방명록 글이 추가 되었습니다.</b><br/><br/>');
+// 			document.write('<a href="./r_guest.html">돌아가기</a>');
+// 			document.write('</font></center>');
+// 		}
+// 		else
+// 		{
+// 			alert("글을 입력해 주세요!!!");
+// 		}
 
 		
-	}
-//-->
+// 	}
+
 </script>
 
  <body>
@@ -164,7 +164,7 @@ String hompiId	= request.getParameter("hompiId");
 				</font>
 			</td>
 		</tr>
-	<%}
+	<%
 						if(hompiId.equals(userId)){
 			%>
 		<tr>
@@ -173,42 +173,64 @@ String hompiId	= request.getParameter("hompiId");
 				<input type="button" name="comment_save" value="확인" onclick="comment_ok()">
 			</td>
 		</tr>
-		</table><br><br>
-			<%				
+		</table><br><br>		
+		
+		<%
 						}else{
 							%>
 		</table><br><br>					
 							<%
 						}
+	
+						}	
+						%>
+<!-- 페이징 처리 시작 -->
+	      <%if(pagingVO.getTotalCount() > 0) {%>
+	         <tr>
+	            <td colspan="6" align="center">
+	               <%if(pagingVO.getFirstPageNo() > pagingVO.getPageSize()) { %>
+	               <a href="list.do?pageNo=<%=pagingVO.getFirstPageNo() - pagingVO.getPageSize() %>">[이전]</a>
+	               <%} %>
+	               <%for(int pNo = pagingVO.getFirstPageNo(); pNo <= pagingVO.getLastPageNo(); pNo++) { %>
+	                  <a <%if(pNo == pagingVO.getCurrentPageNo()){ %> style="color:orange;"<%} %> href="list.do?pageNo=<%=pNo %>">[<%=pNo %>]</a>
+	               <%} %>
+	               <%if(pagingVO.getLastPageNo() < pagingVO.getTotalPageCount()) {%>
+	               <a href="list.do?pageNo=<%=pagingVO.getFirstPageNo() + pagingVO.getPageSize() %>">[다음]</a>
+	               <%} %>
+	            </td>
+	         </tr>
+	      <%} %>
+<!-- 페이징 처리 끝 --> 							
+						<%
 					}else{
 						%>
-						방명록이 존재하지 않습니다.
+						
 						<% 
 					}
 						%>
 
 	<!-- 방명록 아랫부분 글 검색 부분 ------------------------------------------------------------ -->
-	<table align="center" border="0" cellpadding="1" cellspacing="1">
-		<tr height="30">
-			<td align="center" >
-				<font face="굴림" style="font-size:9pt;">
-					<img src="../images/left_arr.gif" width="12" height="13" border="0" alt="이전 페이지로">
-					page 2 1
-					<img src="../images/right_arr.gif" width="12" height="13" border="0" alt="다음 페이지로">
-					</font>	
-			</td>
-		</tr>
-		<tr>
-			<td align="center">  
-				<select name="find">
-					<option value="find_name">이름으로 검색</option>
-					<option value="find_name">내용으로 검색</option>
-				</select>
-				<input type="text" name="fils_words" size="15"/>
-				<input type="submit" value="확인"/>
-			</td>
-		</tr>
-	</table>
+<!-- 	<table align="center" border="0" cellpadding="1" cellspacing="1"> -->
+<!-- 		<tr height="30"> -->
+<!-- 			<td align="center" > -->
+<!-- 				<font face="굴림" style="font-size:9pt;"> -->
+<!-- 					<img src="../images/left_arr.gif" width="12" height="13" border="0" alt="이전 페이지로"> -->
+<!-- 					page 2 1 -->
+<!-- 					<img src="../images/right_arr.gif" width="12" height="13" border="0" alt="다음 페이지로"> -->
+<!-- 					</font>	 -->
+<!-- 			</td> -->
+<!-- 		</tr> -->
+<!-- 		<tr> -->
+<!-- 			<td align="center">   -->
+<!-- 				<select name="find"> -->
+<!-- 					<option value="find_name">이름으로 검색</option> -->
+<!-- 					<option value="find_name">내용으로 검색</option> -->
+<!-- 				</select> -->
+<!-- 				<input type="text" name="fils_words" size="15"/> -->
+<!-- 				<input type="submit" value="확인"/> -->
+<!-- 			</td> -->
+<!-- 		</tr> -->
+<!-- 	</table> -->
 		<!-- ---------- ------------------------------------------------------------ -->
 	<br/>
 	

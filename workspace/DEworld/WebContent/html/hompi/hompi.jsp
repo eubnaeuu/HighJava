@@ -121,7 +121,7 @@ body {
 									onclick="iframeChangelink('/post/list.do?flag=pho&hompiId=<%=hompiId%>')">사진첩</button> <br />
 								<br />
 								<button type="button" class="btm_image" id="img_btn"
-									onclick="iframeChange('/DEworld/html/hompi/r_guest.jsp?hompiId=<%=hompiId%>')">방명록</button> <br />
+									onclick="iframeChangelink('/guestbook/list.do?hompiId=<%=hompiId%>')">방명록</button> <br />
 								<br />
 								<button type="button" class="btm_image" id="img_btn"
 									onclick="iframeChangelink('/post/list.do?flag=dia&hompiId=<%=hompiId%>')">다이어리</button> <br />
