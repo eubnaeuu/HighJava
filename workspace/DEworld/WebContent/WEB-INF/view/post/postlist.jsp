@@ -1,3 +1,5 @@
+
+
 <%@page import="kr.or.ddit.member.service.MemberServiceImpl"%>
 <%@page import="kr.or.ddit.member.service.IMemberService"%>
 <%@page import="kr.or.ddit.member.vo.MemberVO"%>
@@ -24,10 +26,12 @@ String hompiId	= request.getParameter("hompiId");
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<meta name="viewport" http-equiv="Content-Type" content="width=device-width, initial-scale=1; text/html; charset=UTF-8">
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
 <title>게시글 목록</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 // $(document).ready(function(){
 // 	var userId = sessionStorage.getItem("nowLogin");
@@ -35,13 +39,14 @@ String hompiId	= request.getParameter("hompiId");
 </script>
 </head>
 <body>
-<table border='2px solid' id="postlisttable">
+<div class="container">
+<table id="postlisttable" class="table table-hover">
 			<thead>
 				<tr>
 					<th><input class="PostChk" id="PostCheckboxAll" style="display: none;" type="checkbox" name="PostCheckboxAll" onclick="checkAll();"></th>
 					<th>구   분</th>
 					<th>제   목</th>
-					<th>내   용</th>
+<!-- 					<th>내   용</th> -->
 					<th>작성일</th>
 					<th>조   회</th>
 				</tr>
@@ -58,7 +63,7 @@ String hompiId	= request.getParameter("hompiId");
 							<th><input class="PostChk PostChkArr" id="<%=postlist.get(i).getPostNo() %>chkbox" style="display: none;" type="checkbox" name="PostCheckbox"></th>
 							<td><%= cnt%></td>
 							<td><a href="select.do?postNo=<%=postlist.get(i).getPostNo()%>"><%= postlist.get(i).getPostTitle() %></a></td>
-							<td><%= postlist.get(i).getPostContent()%></td>
+<%-- 							<td><%= postlist.get(i).getPostContent()%></td> --%>
 							<td><%= postlist.get(i).getPostDate()%></td>
 							<td><%= postlist.get(i).getPostView()%></td>
 							</tr>
@@ -115,6 +120,7 @@ String hompiId	= request.getParameter("hompiId");
 			<%
 			}
 			%>
+			</div>
 </body>
 
 <script type="text/javascript">

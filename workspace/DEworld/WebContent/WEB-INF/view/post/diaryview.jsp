@@ -29,18 +29,18 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <style>
-table, td {
-	border: 2px solid;
-	border-collapse: collapse;
-}
 body
-	{scrollbar-face-color: #FFFFFF;
+	{
+	font-family : 굴림;
+	font-size : 9pt;
+	scrollbar-face-color: #FFFFFF;
 	 scrollbar-highlight-color: #DBDBDB;
 	 scrollbar-3dlight-color: #FFFFFF;
 	 scrollbar-shadow-color: #9C92FF;
 	 scrollbar-darkshadow-color: #FFFFFF;
 	 scrollbar-track-color: #FFFFFF;
-	 scrollbar-arrow-color: #9C92FF}
+	 scrollbar-arrow-color: #9C92FF
+	 }
 </style>
 </head>
 <body>
@@ -75,7 +75,7 @@ body
 				</div> <%
  	}
  	} else {
- %>X<%
+%><% 
  	}
  %>
 			</td>
@@ -83,16 +83,16 @@ body
 	</table>
 	<table>
 		<tr>
-			<td>태그</td>
-			<td><input type="text" id="tags"></td>
-			<td><button type="button" onclick="tagAdd()">추가</button></td>
+<!-- 			<td>태그</td> -->
+<!-- 			<td><input type="text" id="tags"></td> -->
+<!-- 			<td><button type="button" onclick="tagAdd()">추가</button></td> -->
 		</tr>
 	</table>
 	<table>
 		<tr>
-			<td colspan="3"><a href="list.do">[★목록]</a></td>
-			<td><a href="update.do?postNo=<%=pv.getPostNo()%>">[수정]</a></td>
-			<td><a href="delete.do?postNo=<%=pv.getPostNo()%>">[삭제]</a></td>
+			<td colspan="3"><a href="list.do">목록</a></td>
+			<td><a href="update.do?postNo=<%=pv.getPostNo()%>">수정</a></td>
+			<td><a href="delete.do?postNo=<%=pv.getPostNo()%>">삭제</a></td>
 		</tr>
 	</table>
 	<%

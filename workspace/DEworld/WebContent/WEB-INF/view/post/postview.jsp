@@ -33,17 +33,18 @@ table, td {
 </style>
 </head>
 <body>
-	<input type="hidden" value="" id="memNickname" class="memNickname">
-	<table style="border: 2px solid">
+<%-- 				<font face="굴림" style="font-size:9pt;"><%=pv.getMemNickname()%></font> --%>
+<!-- 			<td align="right">   -->
+	<table border="0" align="center" width="420" cellpadding="1" cellspacing="1">
 		<tr>
-			<td colspan="3">게시판</td>
+<!-- 			<td colspan="3">게시판</td> -->
 		</tr>
 		<tr>
-			<td colspan="3"><%=pv.getPostTitle()%></td>
+			<td width="100" colspan="3"><%=pv.getPostTitle()%></td>
 		</tr>
 		<tr>
-			<td colspan="2"><%=pv.getMemNickname()%></td>
-			<td><%=pv.getPostDate()%></td>
+			<td width="100" colspan="2"><%=pv.getMemNickname()%></td>
+			<td width="100"><%=pv.getPostDate()%></td>
 		</tr>
 		<tr>
 			<td colspan="3"><%=pv.getPostContent()%></td>
@@ -111,7 +112,7 @@ table, td {
 	%>
 	<table>
 		<tr>
-			<td>댓글이 존재하지 않습니다</td>
+			<td></td>
 		</tr>
 	</table>
 	<%
