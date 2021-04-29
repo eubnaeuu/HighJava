@@ -49,7 +49,6 @@ a {
 			</td>
 		</tr>
 	</table>
-	<%="2021-04-29 09:53:36.0" %>
 	<table border="0" align="center" width="450" cellpadding="1"
 		cellspacing="1">
 		<tr>
@@ -59,53 +58,38 @@ a {
 		<tr>
 			<td width="100" colspan="2"><font face="굴림"
 				style="font-size: 9pt;"><%=pv.getMemNickname()%></font></td>
-			<td width="100"><font face="굴림" style="font-size: 9pt;"><%=pv.getPostDate().substring(2, 10)%></font></td>
+			<td width="100"><font face="굴림" style="font-size: 9pt;"><%=pv.getPostDate().substring(2,16)%></font></td>
 		</tr>
 		<tr>
 			<td colspan="3"><font face="굴림" style="font-size: 9pt;"><%=pv.getPostContent()%></font></td>
 		</tr>
-		<tr>
-			<td><font face="굴림" style="font-size: 9pt;">첨부파일</font></td>
-			<td colspan="2">
-				<div>
+	</table>
 					<%
 						int cnt = 0;
 						if (atchFileList != null) {
+							%>
+			<font face="굴림" style="font-size: 9pt;">첨부파일</font><br>
+							<%
 							for (AtchFileVO atchFileVO : atchFileList) {
 								cnt++;
 					%>
-					<tr>
 						<font face="굴림" style="font-size: 9pt;"> <a
 							href="<%=request.getContextPath()%>/filedownLoad.do?fileId=<%=atchFileVO.getAtchFileId()%>
 																			&fileSn=<%=atchFileVO.getFileSn()%>">
 								<%=atchFileVO.getOrignlFileNm()%>
 						</a>
 						</font>
-						<img width="200px"
+						<img width="50px" height="50px"
 							src="/DEworld/atchFile/<%=atchFileVO.getStreFileNm()%>.<%=atchFileVO.getFileExtsn()%>">
-					</tr>
 			 <%
  	}
 %>
-	</div>
 <%							
  	} else {
  %>
 				<%
 					}
 				%>
-			</td>
-		</tr>
-		<tr>
-		</tr>
-	</table>
-	<!-- 	<table> -->
-	<!-- 		<tr> -->
-	<!-- 			<td>태그</td> -->
-	<!-- 			<td><input type="text"></td> -->
-	<!-- 			<td><button type="button">추가</button></td> -->
-	<!-- 		</tr> -->
-	<!-- 	</table> -->
 	<div style="text-align: right;">
 		<a href="list.do"><font face="굴림"
 			style="font-size: 9pt; color: #FDA500">[목록]</font></a> <a

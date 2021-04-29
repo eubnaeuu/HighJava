@@ -44,6 +44,7 @@ public class ListPostHandler implements CommandHandler {
 		String flag = req.getParameter("flag");
 		
 		System.out.println("hompiId : "+hompiId);
+		System.out.println("flag : "+flag);
 		
 		PostVO pv = new PostVO();
 		AllPostVO apv = new AllPostVO();

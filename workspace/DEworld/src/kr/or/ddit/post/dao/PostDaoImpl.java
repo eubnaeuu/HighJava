@@ -74,7 +74,7 @@ public class PostDaoImpl implements PostDao {
 
    @Override
    public int deletePost(SqlMapClient smc, String postNo) throws SQLException {
-      
+	   System.out.println("여기들어오는지2");
       int cnt = smc.delete("post.deletePost", postNo);
       
       return cnt;

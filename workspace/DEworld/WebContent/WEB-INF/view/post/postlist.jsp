@@ -21,6 +21,7 @@ IMemberService memberService = MemberServiceImpl.getInstance();
 MemberVO logininfo = memberService.getMember(userId);
 
 String hompiId	= request.getParameter("hompiId");
+String lpostGu = "LPO03"; 
 
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -216,8 +217,12 @@ function remove(){
 function remove2(str){
 	
 	inputparam = $("#inputstr").val();
+	var hompiId = '<%=hompiId%>';
+	alert(hompiId);
 	var param = {
 			'postNo' : str
+			,'hompiId' : hompiId 
+			,'flag' : 'pos' 
 			};
 	$.ajax({
 		url : "/DEworld/post/delete.do"
@@ -258,6 +263,7 @@ function create(){
 function search(){
 
 		var flag = $("#selectstr").val();
+// 		var  = $("#selectstr").val();
 		var inputparam = $("#inputstr").val();
 
 		if ("1" == flag) {
