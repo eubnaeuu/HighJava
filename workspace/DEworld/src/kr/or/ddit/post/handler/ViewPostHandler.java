@@ -34,6 +34,14 @@ public class ViewPostHandler implements CommandHandler{
 	public String process(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		System.out.println("들어옴 view post handler 들어옴");
 		String postNo = req.getParameter("postNo");
+		String hompiId = req.getParameter("hompiId");
+		System.out.println(hompiId);
+		System.out.println(hompiId);
+		System.out.println(hompiId);
+		System.out.println(hompiId);
+		System.out.println(hompiId);
+		System.out.println(hompiId);
+		System.out.println(hompiId);
 		System.out.println(postNo);
 		// 회원정보 조회
 		PostService postService = PostServiceImpl.getInstance();
@@ -66,17 +74,18 @@ public class ViewPostHandler implements CommandHandler{
 		
 		req.setAttribute("pv", postpv);
 		req.setAttribute("commentslist", commentslist);
+		req.setAttribute("hompiId", hompiId);
 		
 		System.out.println("나감 view post handler 나감");
 		
 		if("pho".equals(flag)) {
-			return VIEW_PAGE+"/post/photoview.jsp";
+			return VIEW_PAGE+"/post/photoview.jsp?hompiId="+hompiId;
 		}else if("dia".equals(flag)) {
-			return VIEW_PAGE+"/post/diaryview.jsp";
+			return VIEW_PAGE+"/post/diaryview.jsp?hompiId="+hompiId;
 		} else if("pos".equals(flag)) {
-			return VIEW_PAGE+"/post/postview.jsp";
+			return VIEW_PAGE+"/post/postview.jsp?hompiId="+hompiId;
 		} else {
-			return VIEW_PAGE+"/post/postview.jsp";
+			return VIEW_PAGE+"/post/postview.jsp?hompiId="+hompiId;
 		}
 	}
 

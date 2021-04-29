@@ -20,6 +20,9 @@
 	String userId = (String) request.getSession().getAttribute("userId");
 	IMemberService memberService = MemberServiceImpl.getInstance();
 	MemberVO logininfo = memberService.getMember(userId);
+	
+	String hompiId = request.getParameter("hompiId");
+	String postNo = pv.getPostNo();
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -94,8 +97,10 @@ a {
 	</table>
 	<div style="text-align: right;">
 			<a href="list.do"><span style="color: #E1BC77">목록</span></a>
-			<a href="update.do?postNo=<%=pv.getPostNo()%>"><span style="color: #E1BC77">수정</span></a>
-			<a href="delete.do?postNo=<%=pv.getPostNo()%>"><span style="color: #E1BC77">삭제</span></a>
+			<font face="굴림"
+			style="font-size: 9pt; color: #FDA500"> <span onclick="update()">[수정]</span></font>
+			 <font face="굴림"
+			style="font-size: 9pt; color: #FDA500"> <span onclick="remove()">[삭제]</span></font>
 	</div>
 	
 	<%
@@ -145,4 +150,50 @@ a {
 	</form>
 
 </body>
+<script type="text/javascript">
+
+function chkmsg() {
+	return confirm("정말 삭제하시겠습니까?");
+}
+
+function remove() {
+	var hompiId = '<%=hompiId%>';
+	var postNo = '<%=postNo%>';
+	var flag = 'dia';
+	
+	if (!chkmsg()) {
+		return;
+	}
+	var param = {
+			'postNo' : postNo
+			,'hompiId' : hompiId 
+			,'flag' : flag 
+	};
+		$.ajax({
+			url : "/DEworld/post/delete.do"
+			,type : "post"
+			,data : param
+			,success : function(data){
+				gobeforelist(hompiId,flag);
+			}
+			,error : function(xhr){
+				console.error(xhr);
+			}
+		});
+}
+
+function gobeforelist(hompiId,flag){
+	var URI="http://localhost/DEworld/post/list.do?hompiId="
+			+hompiId+"&flag="+flag
+	window.location.href = URI;
+}
+
+function gobeforeview(hompiId,flag,postNo){
+	var URI="http://localhost/DEworld/post/select.do?hompiId="
+			+hompiId+"&flag="+flag+"&postNo="+postNo
+	window.location.href = URI;
+
+}
+
+</script>
 </html>

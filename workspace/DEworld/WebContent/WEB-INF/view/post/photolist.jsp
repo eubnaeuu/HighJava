@@ -329,9 +329,7 @@
 		$.ajax({
 			url : "/DEworld/post/delete.do",
 			type : "post",
-			data : param
-			// 		,dataType : "json"
-			,
+			data : param,
 			success : function(data) {
 				console.log(data);
 			},
@@ -354,28 +352,6 @@
 	
 }
 
-	function create() {
-		inputparam = $("#inputstr").val();
-		var param = {
-			'postNo' : inputparam,
-			'postTitle' : inputparam2
-		};
-		$.ajax({
-			url : "/DEworld/post/insert.do",
-			type : "post",
-			data : param
-			// 		,dataType : "json"
-			,
-			success : function(data) {
-				console.log(data)
-				alert("성공");
-			},
-			error : function(xhr) {
-				console.error(xhr);
-			}
-
-		});
-	}
 	function search() {
 
 		var flag = $("#selectstr").val();

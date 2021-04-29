@@ -73,7 +73,7 @@ text-align: center;
 							<tr>
 							<th width="5"><input class="PostChk PostChkArr" id="<%=postlist.get(i).getPostNo() %>chkbox" style="display: none;" type="checkbox" name="PostCheckbox"></th>
 							<td width="50"><%= cnt%></td>
-							<td width="200" style="text-align: left;"><a href="select.do?postNo=<%=postlist.get(i).getPostNo()%>"><%= postlist.get(i).getPostTitle() %></a></td>
+							<td width="200" style="text-align: left;"><a href="select.do?hompiId=<%=hompiId %>&postNo=<%=postlist.get(i).getPostNo()%>"><%= postlist.get(i).getPostTitle() %></a></td>
 <%-- 							<td><%= postlist.get(i).getPostContent()%></td> --%>
 							<td width="70"><%= postlist.get(i).getPostDate().substring(2, 10)%></td>
 							<td width="50"><%= postlist.get(i).getPostView()%></td>
@@ -202,37 +202,65 @@ function reload(){
 	});
 }
 
-function remove(){
+function remove() {
+	var hompiId = '<%=hompiId%>';
+	var flag = 'pos';
 	
-	if(!chkdel()){
+	if (!chkdel()) {
 		alert("삭제하실 글을 선택해주세요")
 		return;
 	}
-	
-	if(!chkmsg()){
+
+	if (!chkmsg()) {
 		return;
 	}
 	var chkboxes = $(".PostChkArr");
-		$.each(chkboxes, function(index, item){
-		if($(item).prop("checked")==true){
-			var idx  = $(item).attr("id").indexOf("chkbox");
-			var id = ($(item).attr("id").substring(0,idx));
+	$.each(chkboxes, function(index, item) {
+		if ($(item).prop("checked") == true) {
+			var idx = $(item).attr("id").indexOf("chkbox");
+			var id = ($(item).attr("id").substring(0, idx));
 			console.log(id);
-			remove2(id);
+			removelist(id);
+			gobeforelist(hompiId,flag);
 		}
 	});
 }
+	
+
+function removelist(str) {
+	var postNo = str;
+	inputparam = $("#inputstr").val();
+	var hompiId = '<%=hompiId%>';
+	var flag = 'pos';
+	var param = {
+			'postNo' : postNo
+			,'hompiId' : hompiId 
+			,'flag' : flag 
+	};
+	$.ajax({
+		url : "/DEworld/post/delete.do",
+		type : "post",
+		data : param
+		// 		,dataType : "json"
+		,
+		success : function(data) {
+			console.log(data);
+		},
+		error : function(xhr) {
+			console.error(xhr);
+		}
+	});
+}	
 	
 function remove2(str){
 	var postNo = str;
 	inputparam = $("#inputstr").val();
 	var hompiId = '<%=hompiId%>';
 	var flag = 'pos';
-	alert(hompiId);
 	var param = {
 			'postNo' : postNo
 			,'hompiId' : hompiId 
-			,'flag' : 'pos' 
+			,'flag' : flag 
 			};
 	$.ajax({
 		url : "/DEworld/post/delete.do"
@@ -240,7 +268,6 @@ function remove2(str){
 		,data : param
 		,success : function(data){
 			console.log(data);
-			gobefore(hompiId,postNo,flag);
 		}
 		,error : function(xhr){
 			console.error(xhr);

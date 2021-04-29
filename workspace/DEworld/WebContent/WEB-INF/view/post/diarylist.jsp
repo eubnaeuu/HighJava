@@ -67,7 +67,7 @@ String hompiId = request.getParameter("hompiId");
 							<tr>
 							<th width="5"><input class="PostChk PostChkArr" id="<%=diarylist.get(i).getPostNo() %>chkbox" style="display: none;" type="checkbox" name="PostCheckbox"></th>
 							<td width="50"><%= cnt%></td>
-							<td width="200"><a href="select.do?flag=dia&postNo=<%=diarylist.get(i).getPostNo()%>"><%= diarylist.get(i).getPostTitle() %></a></td>
+							<td width="200"><a href="select.do?select.do?hompiId=<%=hompiId %>&flag=dia&postNo=<%=diarylist.get(i).getPostNo()%>"><%= diarylist.get(i).getPostTitle() %></a></td>
 <%-- 							<td><%= diarylist.get(i).getPostContent()%></td> --%>
 							<td width="70"><%= diarylist.get(i).getPostDate().substring(2, 10)%></td>
 							<td width="50"><%= diarylist.get(i).getPostView()%></td>
@@ -121,7 +121,7 @@ String hompiId = request.getParameter("hompiId");
 			<%if((userId.trim()).equals(hompiId)){
 				%>
 		<button type="button" onclick="toggleChk()">선택</button>
-		<a href="list.do"><button type="button" onclick="remove()">삭제</button></a>
+		<button type="button" onclick="remove()">삭제</button>
 			<%
 			}
 			%>
@@ -196,41 +196,72 @@ function reload(){
 	});
 }
 
-function remove(){
+function remove() {
+	var hompiId = '<%=hompiId%>';
+	var flag = 'dia';
 	
-	if(!chkdel()){
+	if (!chkdel()) {
 		alert("삭제하실 글을 선택해주세요")
 		return;
 	}
-	
-	if(!chkmsg()){
+
+	if (!chkmsg()) {
 		return;
 	}
 	var chkboxes = $(".PostChkArr");
-		$.each(chkboxes, function(index, item){
-		if($(item).prop("checked")==true){
-			var idx  = $(item).attr("id").indexOf("chkbox");
-			var id = ($(item).attr("id").substring(0,idx));
+	$.each(chkboxes, function(index, item) {
+		if ($(item).prop("checked") == true) {
+			var idx = $(item).attr("id").indexOf("chkbox");
+			var id = ($(item).attr("id").substring(0, idx));
 			console.log(id);
-			remove2(id);
+			removelist(id);
+			gobeforelist(hompiId,flag);
 		}
 	});
 }
-	
-		
-function remove2(str){
-	
+
+function removelist(str) {
+	var postNo = str;
 	inputparam = $("#inputstr").val();
+	var hompiId = '<%=hompiId%>';
+	var flag = 'dia';
 	var param = {
-			'postNo' : str
+			'postNo' : postNo
+			,'hompiId' : hompiId 
+			,'flag' : flag 
+	};
+	$.ajax({
+		url : "/DEworld/post/delete.do",
+		type : "post",
+		data : param
+		,
+		success : function(data) {
+			console.log(data);
+		},
+		error : function(xhr) {
+			console.error(xhr);
+		}
+	});
+}		
+
+function remove2(str){
+	var postNo = str;
+	inputparam = $("#inputstr").val();
+	var hompiId = '<%=hompiId%>';
+	var flag = 'dia';
+	alert(hompiId);
+	var param = {
+			'postNo' : postNo
+			,'hompiId' : hompiId 
+			,'flag' : flag 
 			};
 	$.ajax({
 		url : "/DEworld/post/delete.do"
 		,type : "post"
 		,data : param
-// 		,dataType : "json"
 		,success : function(data){
 			console.log(data);
+			gobefore(hompiId,postNo,flag);
 		}
 		,error : function(xhr){
 			console.error(xhr);
@@ -238,7 +269,16 @@ function remove2(str){
 	});
 }
 
- 
+function gobeforelist(hompiId,flag){
+	var URI="http://localhost/DEworld/post/list.do?hompiId="
+			+hompiId+"&flag="+flag
+	window.location.href = URI;
+}
+function gobeforeview(hompiId,flag,postNo){
+	var URI="http://localhost/DEworld/post/list.do?hompiId="
+			+hompiId+"&flag="+flag+"&postNo="+postNo
+	window.location.href = URI;
+}
 function create(){
 	inputparam = $("#inputstr").val();
 	var param = {

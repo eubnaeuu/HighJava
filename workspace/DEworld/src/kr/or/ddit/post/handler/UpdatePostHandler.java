@@ -102,7 +102,7 @@ public class UpdatePostHandler implements CommandHandler {
 				+ "/post/select.do?postNo="
 				+ req.getParameter("postNo");
 		
-		return redirectUrl;
+		return null;
 		}
 	}
 }

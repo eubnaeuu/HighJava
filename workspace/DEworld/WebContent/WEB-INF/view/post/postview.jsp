@@ -18,7 +18,9 @@
 	IMemberService memberService = MemberServiceImpl.getInstance();
 	MemberVO logininfo = memberService.getMember(userId);
 	
-	
+	String hompiId = request.getParameter("hompiId");
+	String postNo = pv.getPostNo();
+	String flag = "pos";
 	
 	
 %>
@@ -91,12 +93,13 @@ a {
 					}
 				%>
 	<div style="text-align: right;">
-		<a href="list.do"><font face="굴림"
-			style="font-size: 9pt; color: #FDA500">[목록]</font></a> <a
-			href="update.do?postNo=<%=pv.getPostNo()%>"><font face="굴림"
-			style="font-size: 9pt; color: #FDA500"> [수정]</font></a> <a
-			href="delete.do?postNo=<%=pv.getPostNo()%>"><font face="굴림"
-			style="font-size: 9pt; color: #FDA500"> [삭제]</font></a>
+		<font face="굴림" style="font-size: 9pt; color: #FDA500">
+			<span onclick="list()">[목록]</span>
+		</font>
+			 <font face="굴림"
+			style="font-size: 9pt; color: #FDA500"> <span onclick="update()">[수정]</span></font>
+			 <font face="굴림"
+			style="font-size: 9pt; color: #FDA500"> <span onclick="remove()">[삭제]</span></font>
 	</div>
 	<%
 		if (commentslist != null) {
@@ -150,4 +153,85 @@ a {
 	</form>
 
 </body>
+<script type="text/javascript">
+function chkmsg() {
+	return confirm("정말 삭제하시겠습니까?");
+}
+function chkmsg1() {
+	return confirm("수정을 완료 하시겠습니까?");
+}
+
+function list(){
+	var hompiId = '<%=hompiId%>';
+	var flag = 'pos';
+	gobeforelist(hompiId,flag);
+}
+
+function remove() {
+	var hompiId = '<%=hompiId%>';
+	var postNo = '<%=postNo%>';
+	var flag = 'pos';
+	
+	if (!chkmsg()) {
+		return;
+	}
+	var param = { 
+			'postNo' : postNo
+			,'hompiId' : hompiId 
+			,'flag' : flag 
+	};
+		$.ajax({
+			url : "/DEworld/post/delete.do"
+			,type : "post"
+			,data : param
+			,success : function(data){
+				gobeforelist(hompiId,flag);
+			}
+			,error : function(xhr){
+				console.error(xhr);
+			}
+		});
+}
+
+
+function update(){
+	var hompiId = '<%=hompiId%>';
+	var postNo = '<%=postNo%>';
+	var flag = 'pos';
+	
+	if (!chkmsg1()) {
+		return;
+	}
+	var param = {
+			'postNo' : postNo
+			,'hompiId' : hompiId 
+			,'flag' : flag 
+	};
+		$.ajax({
+			url : "/DEworld/post/update.do"
+			,type : "post"
+			,data : param
+			,success : function(data){
+				gobeforeview(hompiId,flag,postNo);
+			}
+			,error : function(xhr){
+				console.error(xhr);
+			}
+		});
+}
+
+function gobeforelist(hompiId,flag){
+	var URI="http://localhost/DEworld/post/list.do?hompiId="
+			+hompiId+"&flag="+flag;
+	window.location.href = URI;
+}
+
+function gobeforeview(hompiId,flag,postNo){
+	var URI="http://localhost/DEworld/post/select.do?hompiId="
+			+hompiId+"&flag="+flag+"&postNo="+postNo;
+	window.location.href = URI;
+
+}
+
+</script>
 </html>

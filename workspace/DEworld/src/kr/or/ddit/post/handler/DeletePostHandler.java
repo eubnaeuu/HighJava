@@ -69,14 +69,17 @@ public class DeletePostHandler implements CommandHandler {
 			
 		}else if("pho".equals(flag)) {
 			System.out.println("pho탐");
-			return redirectUrl+"?hompiId="+hompiId+"&flag=pho";
+//			return redirectUrl+"?hompiId="+hompiId+"&flag=pho";
+			return null;
 			
 		}else if("dia".equals(flag)) {
 			System.out.println("dia탐");
-			return redirectUrl+"?hompiId="+hompiId+"&flag=dia";
+//			return redirectUrl+"?hompiId="+hompiId+"&flag=dia";
+			return null;
 			
 		} else 
-			return redirectUrl+"?hompiId="+hompiId+"&flag=pos";
+//			return redirectUrl+"?hompiId="+hompiId+"&flag=pos";
+		return null;
 
 		}
 	}
