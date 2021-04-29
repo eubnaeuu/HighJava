@@ -116,8 +116,6 @@ String hompiId	= request.getParameter("hompiId");
 	<table width="430" border="0" align="center">
 		<tr>
 			<td align="right"> 
-				<input type="button" name="font" value="글꼴설정" onclick="javascript:alert('미완성입니다. ^^;')"/>
-				<input type="button" name="edit" value="수정" onclick="javascript:alert('미완성입니다. ^^;')"/>
 			</td>
 		</tr>
 	</table>
@@ -139,8 +137,8 @@ String hompiId	= request.getParameter("hompiId");
 		<tr>
 			<td width="230">  
 				<font face="굴림" style="font-size:9pt;">
-				<input type="radio" name="minami_or_card" value="mimami" checked>미나미
-				<input type="radio" name="minami_or_card" value="card">카드
+				<input type="hidden" name="minami_or_card" value="mimami" checked>
+				<input type="hidden" name="minami_or_card" value="card">
 				</font>
 			</td>
 			<td width="200" align="right">  
