@@ -87,7 +87,7 @@
 	 </isNotEmpty>
 	 </select>
 	
-	<select id="getSearchPost" parameterClass="kr.or.ddit.post.vo.AllPostVO" resultClass="kr.or.ddit.post.vo.PostVO">
+	<select id="getSearchPost1" parameterClass="kr.or.ddit.post.vo.AllPostVO" resultClass="kr.or.ddit.post.vo.PostVO">
 	
 	    SELECT 
 			AA.POST_NO 		         postNo
@@ -145,6 +145,47 @@
            AND AA.LPOST_GU LIKE '%'||#lpostGu#||'%'
 	 </isNotEmpty>
 	 ORDER BY POST_NO DESC
+	</select>
+	<select id="getSearchPost" parameterClass="kr.or.ddit.post.vo.AllPostVO" resultClass="kr.or.ddit.post.vo.PostVO">
+            SELECT 
+            	ROWNUM AS RNUM
+            	,AA.POST_NO 		    postNo
+				,AA.HOMPI_ID         	hompiId
+				,AA.LPOST_GU         	lpostGu
+				,AA.MEM_ID           	memId
+				,AA.POST_TITLE       	postTitle
+				,AA.POST_CONTENT     	postContent
+				,AA.POST_DATE        	postDate
+				,AA.POST_VIEW        	postView
+				,AA.ATCH_FILE_ID 		atchFileId
+	            ,M.MEM_NICKNAME         memNickname
+ 			FROM (
+ 				SELECT A.*
+ 				FROM POST A
+ 				WHERE 1=1
+	<isNotEmpty property="hompiId">
+           AND A.HOMPI_ID LIKE '%'||#hompiId#||'%'
+	 </isNotEmpty>
+ 	 <isNotEmpty property="lpostGu">
+           AND A.LPOST_GU LIKE '%'||#lpostGu#||'%'
+	 </isNotEmpty>
+	 <isNotEmpty property="postNo">
+           AND A.POST_NO = #postNo#
+	 </isNotEmpty>
+	 <isNotEmpty property="postTitle">
+           AND A.POST_TITLE LIKE '%'||#postTitle#||'%'
+	 </isNotEmpty>
+	 <isNotEmpty property="postContent">
+           AND A.POST_CONTENT LIKE '%'||#postContent#||'%'
+	 </isNotEmpty>
+	 <isNotEmpty property="memId">
+           AND A.MEM_ID LIKE '%'||#memId#||'%'
+	 </isNotEmpty>
+	 		ORDER BY A.POST_NO DESC
+			) AA
+        INNER JOIN MEMBER M
+        ON AA.MEM_ID = M.MEM_ID 	
+        WHERE ROWNUM BETWEEN #firstRecNo# AND #lastRecNo#	
 	</select>
 	
 	<select id="getSearchPhoto" parameterClass="kr.or.ddit.post.vo.AllPostVO" resultClass="kr.or.ddit.post.vo.PostVO">
