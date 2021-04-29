@@ -41,26 +41,29 @@ public class DeletePostHandler implements CommandHandler {
 			String postNo = req.getParameter("postNo");
 			String hompiId = req.getParameter("hompiId");
 			String flag = req.getParameter("flag");
-			System.out.println("제발베자베랍제랍ㅈ베잘"+postNo);
-			System.out.println("제발베자베랍제랍ㅈ베잘"+hompiId);
-			System.out.println("제발베자베랍제랍ㅈ베잘"+flag);
+			System.out.println("DELETE POST 핸들러 : "+postNo);
+			System.out.println("DELETE POST 핸들러 : "+hompiId);
+			System.out.println("DELETE POST 핸들러 : "+flag);
 			
 			
-			System.out.println("여기맞는지");
+			System.out.println("atch delete전");
 			fileService.deleteAtchFile(postNo); // atchFile 삭제(detail 종속삭제)
+			System.out.println("atch delete후");
 			
-			System.out.println("여기맞는지2");
+			
+			System.out.println("post delete전");
 			postService.deletePost(postNo); // post 삭제
+			System.out.println("post delete후");
 			
-			
-			
-		System.out.println("퇴장 Post DELETE Haldler 퇴장");
+//		System.out.println("퇴장 Post DELETE Haldler 퇴장");
 		
 		String redirectUrl = req.getContextPath() + "/post/list.do";
 		
 		
 		if("pos".equals(flag)) {
 			System.out.println("pos탐");
+			System.out.println(hompiId);
+			System.out.println(flag);
 			return redirectUrl+"?hompiId="+hompiId+"&flag=pos";
 			
 		}else if("pho".equals(flag)) {

@@ -64,7 +64,7 @@ a {
 				<font face="굴림" style="font-size:9pt;"><%=pv.getMemNickname()%></font>
 			</td>
 			<td align="right">  
-				<font face="굴림" style="font-size:9pt;"><%=pv.getPostDate()%> 스크랩:0</font>
+				<font face="굴림" style="font-size:9pt;"><%=pv.getPostDate().substring(2,16)%> 스크랩:0</font>
 			</td>
 		</tr>
 		<tr>

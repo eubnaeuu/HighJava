@@ -2,35 +2,25 @@
 <!DOCTYPE sqlMap
 			PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
 			"http://ibatis.apache.org/dtd/sql-map-2.dtd">
-<sqlMap namespace="item">
+<sqlMap namespace="giftbox">
 
 	
 	
-	<select id="getItemAll" resultClass="kr.or.ddit.item.vo.ItemVO">
+	<select id="getGiftboxAll" resultClass="kr.or.ddit.giftbox.vo.GiftboxVO">
 		SELECT 
-			RECIPIENT_ID,
-			SEND_ID,
-			ITEM_ID,
-			SEND_DATE,
-			GIFT_MESSAGE,
-			
-			
+			RECIPIENT_ID 		recipientId,
+			SEND_ID				sendId,
+			ITEM_ID				itemId,
+			SEND_DATE			sendDate,
+			GIFT_MESSAGE		giftMessage,
 			LITEM_GU            litemGu,
-			ITEM_NAME           itemName,
-			
-			ITEM_IMG            itemImg,
-			
+			ITEM_NAME           itemName,	
+			ITEM_IMG            itemImg,	
 		FROM item i, gift g
-		where i.item_ID, g.item_ID and i.LITEM_GU != 
+		where i.item_ID, g.item_ID and i.LITEM_GU != '03'
 	</select>
 
-	
-			<td>보내는 사람</td>
-			<td>선물 메시지</td>
-			<td>상품종류</td>
-			<td>상품 이미지</td>
-			<td>상품 이름</td>
-			<td>보낸 시간</td>	
+
 	
 </sqlMap>			
 

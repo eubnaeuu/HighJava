@@ -1,15 +1,15 @@
 <%@page import="java.util.List"%>
-<%@page import="kr.or.ddit.item.vo.ItemVO"%>
+<%@page import="kr.or.ddit.item.vo.ItemCollectionVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 [
 <%
-List<ItemVO> list = (List<ItemVO>)request.getAttribute("itemList");
+	List<ItemCollectionVO> list = (List<ItemCollectionVO>)request.getAttribute("itemList");
 
 for(int i=0; i<list.size(); i++){
-	ItemVO iv = list.get(i);
+	ItemCollectionVO iv = list.get(i);
 	if(i>0){
-		%>,<%
+%>,<%
 	}
 	%>
 	{

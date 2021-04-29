@@ -102,8 +102,9 @@ public class PostServiceImpl implements PostService {
 	public int deletePost(String postId) {
 		int cnt = 0;
 		try {
+			System.out.println("deleteDAO 전 ");
 			cnt = postDao.deletePost(smc, postId);
-			System.out.println("여기들어오는지1");
+			System.out.println("deleteDAO 후");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

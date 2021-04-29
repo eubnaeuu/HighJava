@@ -196,6 +196,39 @@
 	WHERE MEM_ID = #memId#
 	</update>
 	
+	<select id="highVisitCnt" parameterClass="kr.or.ddit.member.vo.MemberVO" resultClass="kr.or.ddit.hompi.vo.HompiVO">
+	SELECT
+	    VISIT_COUNT_TODAY visitCountToday,
+	    MEM_ID memId,
+	    MEM_NICKNAME memNickname,
+	    HOMPI_PROFILE_IMG hompiProfileImg,
+	    HOMPI_INFO hompiInfo
+	FROM
+	    (
+	        SELECT
+	            MAX(A.VISIT_COUNT_TODAY) VISIT_COUNT_TODAY,
+	            A.HOMPI_PROFILE_IMG,
+	            A.MEM_ID,
+	            B.MEM_NICKNAME,
+	            A.HOMPI_INFO
+	        FROM
+	            HOMPI A,
+	            MEMBER B
+	        WHERE
+	            A.MEM_ID = B.MEM_ID
+	            AND   B.MEM_GENDER = #memGender#
+	        GROUP BY
+	            A.MEM_ID,
+	            B.MEM_NICKNAME,
+	            A.HOMPI_PROFILE_IMG,
+	            A.HOMPI_INFO
+	        ORDER BY
+	            VISIT_COUNT_TODAY DESC
+	    )
+	WHERE
+	    ROWNUM = 1
+	</select>
+	
 </sqlMap>			
 
 

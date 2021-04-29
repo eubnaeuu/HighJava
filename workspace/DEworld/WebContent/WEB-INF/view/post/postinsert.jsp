@@ -24,11 +24,14 @@ String hompiId = request.getParameter("hompiId");
 // 	var nowLogin = sessionStorage.getItem("nowLogin");
 // });
 </script>
+<style>
+</style>
 <body>
 	<div>
 			<form action="insert.do" method="post" enctype="multipart/form-data">
 		<input type="hidden" value="<%=hompiId%>" name="hompiId">
-			<table>
+			<table border="0" align="center" width="450" cellpadding="1"
+		cellspacing="1">
 				<tr>
 					<td></td>
 					<td><input type="hidden" name="lpostGu" value="LPO03"></td>
@@ -38,23 +41,22 @@ String hompiId = request.getParameter("hompiId");
 					<td><input type="hidden" name="postNo"></td>
 				</tr>
 				<tr>
-					<td>제목:</td>
-					<td><input type="text" name="postTitle" value=""></td>
+					<td><font face="굴림" style="font-size: 9pt;">제목</font></td>
+					<td><input size="50" type="text" name="postTitle" value=""></td>
 				</tr>
 				<tr>
-					<td>내용:</td>
-					<td><input type="text" name="postContent" value=""></td>
+					<td><font face="굴림" style="font-size: 9pt;">내용</font></td>
+					<td>
+						<textarea name="postContent" row="10" cols="30" style="margin: 0px; width: 381px; height: 193px;"></textarea>
+<!-- 					<input type="text" name="postContent" value=""></td> -->
 				</tr>
+					<input type="hidden" name="memId" value="<%=userId %>" readonly="readonly">
 				<tr>
-					<td>MEMID:</td>
-					<td><input type="text" name="memId" value="<%=userId %>" readonly="readonly"></td>
-				</tr>
-				<tr>
-					<td>첨부파일1</td>
+					<td><font face="굴림" style="font-size: 9pt;">첨부파일1</font></td>
 					<td><input type="file" name="atchFile1" id="atch1"></td>
 				</tr>
 				<tr>
-					<td>첨부파일2</td>
+					<td><font face="굴림" style="font-size: 9pt;">첨부파일2</font></td>
 					<td><input type="file" name="atchFile2" id="atch2"></td>
 				</tr>
 			</table>

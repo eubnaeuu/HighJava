@@ -49,12 +49,11 @@ String hompiId = request.getParameter("hompiId");
 <table id="postlisttable"  class="table table-hover">
 			<thead>
 				<tr>
-					<th><input class="PostChk" id="PostCheckboxAll" style="display: none;" type="checkbox" name="PostCheckboxAll" onclick="checkAll();"></th>
-					<th>구   분</th>
-					<th>제   목</th>
-<!-- 					<th>내   용</th> -->
-					<th>작성일</th>
-					<th>조   회</th>
+					<th width="5" style="text-align: center;"><input class="PostChk" id="PostCheckboxAll" style="display: none;" type="checkbox" name="PostCheckboxAll" onclick="checkAll();"></th>
+					<th width="50" style="text-align: center;">구   분</th>
+					<th width="200" style="text-align: center;">제   목</th>
+					<th width="70" style="text-align: center;">작성일</th>
+					<th width="50" style="text-align: center;">조   회</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -66,12 +65,12 @@ String hompiId = request.getParameter("hompiId");
 						for (int i=0; i < size;  i++){
 							%>
 							<tr>
-							<th><input class="PostChk PostChkArr" id="<%=diarylist.get(i).getPostNo() %>chkbox" style="display: none;" type="checkbox" name="PostCheckbox"></th>
-							<td><%= cnt%></td>
-							<td><a href="select.do?flag=dia&postNo=<%=diarylist.get(i).getPostNo()%>"><%= diarylist.get(i).getPostTitle() %></a></td>
+							<th width="5"><input class="PostChk PostChkArr" id="<%=diarylist.get(i).getPostNo() %>chkbox" style="display: none;" type="checkbox" name="PostCheckbox"></th>
+							<td width="50"><%= cnt%></td>
+							<td width="200"><a href="select.do?flag=dia&postNo=<%=diarylist.get(i).getPostNo()%>"><%= diarylist.get(i).getPostTitle() %></a></td>
 <%-- 							<td><%= diarylist.get(i).getPostContent()%></td> --%>
-							<td><%= diarylist.get(i).getPostDate()%></td>
-							<td><%= diarylist.get(i).getPostView()%></td>
+							<td width="70"><%= diarylist.get(i).getPostDate().substring(2, 10)%></td>
+							<td width="50"><%= diarylist.get(i).getPostView()%></td>
 							</tr>
 							<%
 							cnt++;
