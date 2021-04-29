@@ -49,7 +49,7 @@
 function fn_goUrl(vara){
 	//if(this.value) location.href=(this.value);
 	if(vara.value!=""&&vara.value!="파도타기"){
-		window.open("http://localhost/DEworld/hompi/main.do?hompiId="+vara.value,"width=1200,height=600,scrollbars=no,toolbar=no,location=no,resizable=no,status=no,menubar=no,resizable=no");
+		window.open("http://localhost/DEworld/hompi/main.do?hompiId="+vara.value,"width=1085,height=551,scrollbars=no,toolbar=no,location=no,resizable=no,status=no,menubar=no,resizable=no");
 	}
 }
 </script>
