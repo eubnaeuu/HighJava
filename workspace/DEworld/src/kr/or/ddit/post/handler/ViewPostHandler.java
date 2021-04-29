@@ -35,7 +35,7 @@ public class ViewPostHandler implements CommandHandler{
 		System.out.println("들어옴 view post handler 들어옴");
 		String postNo = req.getParameter("postNo");
 		String hompiId = req.getParameter("hompiId");
-		System.out.println(postNo);
+		
 		// 회원정보 조회
 		PostService postService = PostServiceImpl.getInstance();
 		AllPostVO apv = new AllPostVO(); 

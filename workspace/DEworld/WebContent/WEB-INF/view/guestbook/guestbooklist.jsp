@@ -33,10 +33,7 @@ String hompiId	= request.getParameter("hompiId");
 
 // 	function comment_ok()
 // 	{
-		
 // 		var 
-		
-		
 // 		$.ajax({
 // 			url : "/DEworld/guestbook/insert.do",
 // 			type : "post",
@@ -57,11 +54,7 @@ String hompiId	= request.getParameter("hompiId");
 // 			error : function(xhr) {
 // 				alert("알수없는 에러");
 // 			}
-		
-		
-		
-		
-		
+
 // 		if (text != "")
 // 		{
 // 			text = text + '\n\n\n' + '댓글이 추가되었습니다. ^_^';

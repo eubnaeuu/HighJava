@@ -69,7 +69,7 @@
 	 <isNotEmpty property="hompiId">
            AND AA.HOMPI_ID LIKE '%'||#hompiId#||'%'
 	 </isNotEmpty>
-	 ORDER BY GUESTBOOK_NO DESC
+	 ORDER BY GUESTBOOK_NO
 	</select>
 	
 </sqlMap>	

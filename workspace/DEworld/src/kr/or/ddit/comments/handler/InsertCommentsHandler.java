@@ -32,7 +32,7 @@ public class InsertCommentsHandler implements CommandHandler {
 		
 			CommentsService CommentsService = CommentsServiceImpl.getInstance();
 			CommentsVO cv = new CommentsVO();
-			cv.setCommentsId(req.getParameter("commentsId"));
+//			cv.setCommentsId(req.getParameter("commentsId"));
 			cv.setPostNo(req.getParameter("postNo"));
 			cv.setMemId(req.getParameter("memId"));
 			cv.setCommentsContent(req.getParameter("commentsContent"));
@@ -53,7 +53,7 @@ public class InsertCommentsHandler implements CommandHandler {
 //			+URLEncoder.encode(msg, "UTF-8");
 			
 			System.out.println(redirectUrl);
-			return redirectUrl;
+			return null;
 	}
 }
 }

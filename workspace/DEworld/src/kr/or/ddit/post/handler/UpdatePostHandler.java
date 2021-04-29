@@ -21,7 +21,7 @@ import util.FileUploadRequestWrapper;
 
 public class UpdatePostHandler implements CommandHandler {
 		
-	private static final String VIEW_PAGE = "/WEB-INF/view/post/postupdate.jsp";
+	private static final String VIEW_PAGE = "/WEB-INF/view/post/postupdate2.jsp";
 	
 	@Override
 	public boolean isRedirect(HttpServletRequest req) {
@@ -37,30 +37,27 @@ public class UpdatePostHandler implements CommandHandler {
 		
 		System.out.println("입장 Post update Haldler 입장");
 		if(req.getMethod().equals("GET")) {
-			String postNo = req.getParameter("postNo");
-			// 회원정보 조회
-			SimpleDateFormat format1 = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss");
-			Date time = new Date();
-			String sysdate = format1.format(time);
 			
+			String postNo = req.getParameter("postNo");
+			String hompiId = req.getParameter("hompiId");
+			
+			// 회원정보 조회
 			PostService postService = PostServiceImpl.getInstance();
 			PostVO pv = new PostVO();
 			AllPostVO apv = new AllPostVO();
+			
 			pv.setPostNo(postNo);
 			apv.setPostNo(postNo);
+			
 			System.out.println("구분1");
 //			List<PostVO> list = postService.getSearchPost(apv);
 //			long atchFileId = list.get(0).getAtchFileId();
 
 			PostVO postpv = postService.getPostView(pv);
-			long atchFileId = postpv.getAtchFileId();
 			
-			System.out.println(postpv.getAtchFileId());
-			System.out.println(postpv.getPostNo());
 			System.out.println("구분2");
 //			req.setAttribute("list", list);
 			req.setAttribute("pv", postpv);
-			req.setAttribute("sysdate", String.valueOf(sysdate));
 			System.out.println("퇴장 Post update Haldler 퇴장");
 			return VIEW_PAGE;
 		}else {
