@@ -1,0 +1,47 @@
+@charset "UTF-8";
+#MemberList{
+	font-size: 20px;
+	width: 100%;
+}
+#MemberTb{
+	font-size : 15px;
+}
+
+#MemberTb tr:hover {
+	background-color: #B4FBFF;
+}
+#MemberTh{
+	background-color: #D8D8D8;
+	font-size:22px;
+	height: 40px;
+
+}
+#MemberList th,td{
+		padding: 10px;
+}
+.size_4th{
+	width: 100px;	
+}
+.size_3th{
+	width: 200px;	
+}
+
+#searchUser{
+	height : 30px;
+	border: 1px solid #999;
+	font-family: inherit;
+	border-radius: 0px;
+	text-align: center;
+}
+#searchBtn{
+	width: 20px;
+	height: 20px;
+}
+#searchBtn:hover {
+	cursor: Pointer;
+	width: 1.5em;
+	height: 1.5em;
+}
+tr{
+	border-bottom: 1px solid black;
+}

@@ -48,28 +48,26 @@
 	
 	<select id="getSearchGuestBook" parameterClass="kr.or.ddit.guestbook.vo.GuestBookVO" resultClass="kr.or.ddit.guestbook.vo.GuestBookVO">
 	    SELECT 
-			AA.GUESTBOOK_NO       	guestbookNo
+	    	ROWNUM AS RNUM
+			,AA.GUESTBOOK_NO       	guestbookNo
 			,AA.HOMPI_ID          	hompiId
 			,AA.GUESTBOOK_TITLE   	guestbookTitle
 			,AA.GUESTBOOK_CONTENT 	guestbookContent
 			,AA.GUSETBOOK_WRITER  	gusetbookWriter
 			,AA.GUESTBOOK_DATE    	guestbookDate
  		FROM (
- 				SELECT A.*, ROWNUM AS RNUM 
+ 				SELECT A.*
  				FROM GUESTBOOK A
  				WHERE 1=1
 	 <isNotEmpty property="hompiId">
            AND A.HOMPI_ID LIKE '%'||#hompiId#||'%'
 	 </isNotEmpty>
-			) AA
-		WHERE AA.RNUM BETWEEN #firstRecNo# AND #lastRecNo#
 	<isNotEmpty property="guestbookNo">
-           AND AA.GUESTBOOK_NO = #guestbookNo#
+           AND A.GUESTBOOK_NO = #guestbookNo#
 	 </isNotEmpty>
-	 <isNotEmpty property="hompiId">
-           AND AA.HOMPI_ID LIKE '%'||#hompiId#||'%'
-	 </isNotEmpty>
-	 ORDER BY GUESTBOOK_NO
+	 ORDER BY A.GUESTBOOK_NO DESC
+			) AA
+		WHERE ROWNUM BETWEEN #firstRecNo# AND #lastRecNo#
 	</select>
 	
 </sqlMap>	

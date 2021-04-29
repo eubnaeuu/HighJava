@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+			PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+			"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="guestbook">
+
+	<insert id="insertGuestBook" parameterClass="kr.or.ddit.guestbook.vo.GuestBookVO">
+		<selectKey keyProperty="guestbookNo" resultClass="String">
+			SELECT LPAD(GUESTBOOK_SEQ.NEXTVAL,3,0) FROM DUAL
+		</selectKey>
+	INSERT INTO GUESTBOOK
+	(
+	GUESTBOOK_NO
+	,HOMPI_ID
+	,GUESTBOOK_TITLE
+	,GUESTBOOK_CONTENT
+	,GUSETBOOK_WRITER
+	,GUESTBOOK_DATE     
+	)
+	VALUES
+	(
+	'GB'||#guestbookNo#
+	,#hompiId#
+	,#guestbookTitle#
+	,#guestbookContent#
+	,#gusetbookWriter#
+	,SYSDATE
+	)                   
+	</insert>
+	
+	
+	<delete id="deleteGuestBook" parameterClass="String">
+		DELETE 
+		FROM GUESTBOOK
+		WHERE GUESTBOOK_NO = #guestbookNo#
+	</delete>
+	
+	
+	<select id="getGuestBookAllCount" parameterClass="kr.or.ddit.guestbook.vo.GuestBookVO" resultClass="int">
+	 		SELECT COUNT(*)
+	 		FROM GUESTBOOK
+	 		WHERE 1=1
+	 <isNotEmpty property="hompiId">
+           AND HOMPI_ID LIKE '%'||#hompiId#||'%'
+	 </isNotEmpty>
+	 </select>
+	
+	<select id="getSearchGuestBook" parameterClass="kr.or.ddit.guestbook.vo.GuestBookVO" resultClass="kr.or.ddit.guestbook.vo.GuestBookVO">
+	    SELECT 
+			AA.GUESTBOOK_NO       	guestbookNo
+			,AA.HOMPI_ID          	hompiId
+			,AA.GUESTBOOK_TITLE   	guestbookTitle
+			,AA.GUESTBOOK_CONTENT 	guestbookContent
+			,AA.GUSETBOOK_WRITER  	gusetbookWriter
+			,AA.GUESTBOOK_DATE    	guestbookDate
+ 		FROM (
+ 				SELECT A.*, ROWNUM AS RNUM 
+ 				FROM GUESTBOOK A
+ 				WHERE 1=1
+	 <isNotEmpty property="hompiId">
+           AND A.HOMPI_ID LIKE '%'||#hompiId#||'%'
+	 </isNotEmpty>
+			) AA
+		WHERE AA.RNUM BETWEEN #firstRecNo# AND #lastRecNo#
+	<isNotEmpty property="guestbookNo">
+           AND AA.GUESTBOOK_NO = #guestbookNo#
+	 </isNotEmpty>
+	 <isNotEmpty property="hompiId">
+           AND AA.HOMPI_ID LIKE '%'||#hompiId#||'%'
+	 </isNotEmpty>
+	 ORDER BY GUESTBOOK_NO
+	</select>
+	
+</sqlMap>	
+
+
+

@@ -241,6 +241,7 @@
 		,nvl(VISIT_COUNT_TODAY, 0) visitCountToday
 		,nvl(VISIT_COUNT_TOTAL, 0) visitCountTotal
 		,nvl(SCRAP_COUNT, 0) scrapCount
+		,HOMPI_MINIMI hompiMinimi
 	FROM HOMPI
 	WHERE MEM_ID = #memId#
 	</select>

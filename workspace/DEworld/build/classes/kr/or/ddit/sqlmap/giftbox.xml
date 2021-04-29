@@ -18,6 +18,23 @@
 		where i.item_ID =  g.item_ID and i.LITEM_GU != '03'
 		and g.RECIPIENT_ID = #memId#
 	</select>
+	
+	<select id="getMusicGiftboxAll" parameterClass="kr.or.ddit.giftbox.vo.GiftboxVO"  resultClass="kr.or.ddit.giftbox.vo.GiftboxVO">
+		SELECT 
+		    g.RECIPIENT_ID 			recipientId,
+		    g.SEND_ID				sendId,
+		    g.ITEM_ID				itemId,
+		    g.SEND_DATE				sendDate,
+		    g.GIFT_MESSAGE			giftMessage,
+		    m.MUSIC_ID 			    musicId,
+		    m.MUSIC_ALBUM			musicAlbum,
+		    m.MUSIC_TITLE			musicTitle,
+		    m.MUSIC_ARTIST		    musicArtist,
+		    m.MUSIC_TIME			musicTime
+		FROM music m, gift g
+		where m.MUSIC_ID =  g.item_ID
+		and g.RECIPIENT_ID = #memId#
+	</select>
 
 
 	

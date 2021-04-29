@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>DEWorld</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="../mainPage/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+ 
+  <!-- favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/DEworld/image/DEWorld-favicion.png" />
+  <script src="/DEworld/js/jquery-3.6.0.js"></script>
+<!--   <script src="/DEworld/js/mainPage/mainPage.js"></script> -->
+  
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <!-- Channel Plugin Scripts -->
+  <!-- common -->
+  <script type="text/javascript" src="../../js/common/commonMainpage.js"></script>
+  <link href="css/commonMainpage.css" rel="stylesheet">
+  <!-- notice -->
+  <script type="text/javascript" src="../../js/adminRoom/adminRoom.js"></script>
+  <link href="css/adminRoom.css" rel="stylesheet">
+</head>
+<body>
+
+	<!-- Navigation -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+		<div class="container">
+			<img src="/DEworld/image/DEWorld-350x350.png" style="width: 32px">
+			<a class="navbar-brand" href="http://localhost/DEworld/html/mainPage/topic.jsp#">&nbsp;DEWorld</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarResponsive" aria-controls="navbarResponsive"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="d-flex justify-content">
+				<div class="searchbar">
+					<input class="search_input" type="text" name=""
+						placeholder="닉네임을 입력해주세요."> <a href="#" class="search_icon"><i
+						class="fas fa-search"></i></a>
+				</div>
+			</div>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item"><a class="nav-link" onclick="logOut()">
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+								fill="currentColor" class="bi bi-door-closed"
+								viewBox="0 0 16 16">
+			  <path
+									d="M3 2a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v13h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V2zm1 13h8V2H4v13z" />
+			  <path d="M9 9a1 1 0 1 0 2 0 1 1 0 0 0-2 0z" />
+		  </svg> LogOut
+					</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	
+	<header class="bg-primary py-3 mb-5" id="header">
+		<div class="container h-100">
+			<div class="row h-100 align-items-center">
+				<div class="col-lg-12">
+					<h1 class="display-4 text-white mt-5 mb-2">
+						"<span id="idArea"></span>" 님 어서오세요
+					</h1>
+					<br>
+					<button type="button" class="btn btn-primary btn-lg raised" id="changeBtn" onclick="goMyHompi()">내
+						미니홈피</button>
+					<br>
+					<hr>
+				</div>
+			</div>
+		</div>
+	</header>
+
+<div class="container-fluid text-center">    
+  <div class="row content">
+     <!-- 여백 -->
+			<div class="col-sm-2 sidenav"></div>
+			<!-- 본문작성공간 -->
+			<div class="col-sm-8 text-left">
+				<h1>유저 관리 페이지</h1>
+				<hr>
+				<select id="searchUser">
+					<option>모두보기</option>
+					<option value="이름">이름</option>
+					<option value="닉네임">닉네임</option>
+					<option value="아이디">아이디</option>
+				</select>
+				<input id="WriteUser">
+				<img id="searchBtn" src="../../image/adminRoom/71403.png" onclick="searchUser()">
+				<br>
+				<br>
+				<table id="MemberList">
+					<thead id="MemberTh">
+						<tr>
+							<th>이름(아이디)</th>
+							<th>닉네임</th>
+							<th class="size_3th">개인정보</th>
+							<th class="size_4th">미니홈피</th>
+						</tr>
+					</thead>
+					<tbody id="MemberTb">
+
+					</tbody>
+				</table>
+				<input type="hidden" name="flag" id="flag">
+
+			</div>
+			<!-- 여백 -->
+    <div class="col-sm-2 sidenav">
+    </div>
+  </div>
+</div>
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="../mainPage/vendor/jquery/jquery.min.js"></script>
+  <script src="../mainPage/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

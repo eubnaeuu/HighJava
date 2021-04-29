@@ -18,7 +18,22 @@
 		and g.mem_id = #memId#
 	</select>
 
-
+	<select id="getMusicBuyAll" parameterClass="kr.or.ddit.buy.vo.BuyVO"  resultClass="kr.or.ddit.buy.vo.BuyVO">
+		SELECT 
+		    m.MUSIC_ID 			musicId,
+		    l.LMUSIC_GU			lmusicGu,
+		    l.LMUSIC_GENRE		lmusicGenre,
+		    MUSIC_ALBUM			musicAlbum,
+		    MUSIC_TITLE			musicTitle,
+		    MUSIC_DESC			musicDesc,
+		    MUSIC_ARTIST		musicArtist,
+		    MUSIC_PATH			musicPath,
+		    MUSIC_COST			musicCost,
+		    MUSIC_TIME			musicTime
+		FROM music m , lmusic l, music_collection w
+		where m.lmusic_gu = l.lmusic_gu and m.music_id = w.music_ID
+		and w.mem_id = #memId#
+	</select>
 	
 </sqlMap>			
 

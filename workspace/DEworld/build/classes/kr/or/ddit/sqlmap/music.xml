@@ -28,16 +28,16 @@
 	
 	<select id="getMusicAll" resultClass="kr.or.ddit.music.vo.MusicVO">
 		SELECT 
-		MUSIC_ID 		musicId,
+		MUSIC_ID 				musicId,
 		lmusic.LMUSIC_GU		lmusicGu,
-		lmusic.LMUSIC_GENRE	lmusicGenre,
-		MUSIC_ALBUM		musicAlbum,
-		MUSIC_TITLE		musicTitle,
-		MUSIC_DESC		musicDesc,
-		MUSIC_ARTIST	musicArtist,
-		MUSIC_PATH		musicPath,
-		MUSIC_COST		musicCost,
-		MUSIC_TIME		musicTime	
+		lmusic.LMUSIC_GENRE		lmusicGenre,
+		MUSIC_ALBUM			musicAlbum,
+		MUSIC_TITLE			musicTitle,
+		MUSIC_DESC			musicDesc,
+		MUSIC_ARTIST		musicArtist,
+		MUSIC_PATH			musicPath,
+		MUSIC_COST			musicCost,
+		MUSIC_TIME			musicTime	
 		FROM music, lmusic
 		where music.lmusic_gu = lmusic.lmusic_gu
 	</select>

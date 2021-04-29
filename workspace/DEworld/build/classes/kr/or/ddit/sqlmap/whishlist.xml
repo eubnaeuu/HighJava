@@ -17,9 +17,24 @@
 		where i.item_ID = g.item_ID and i.LITEM_GU != '03'
 		and g.mem_id = #memId#
 	</select>
-
-
 	
+	<select id="getMusicWhishlistAll" parameterClass="kr.or.ddit.whishlist.vo.WhishlistVO"  resultClass="kr.or.ddit.whishlist.vo.WhishlistVO">
+		SELECT 
+		    m.MUSIC_ID 			musicId,
+		    l.LMUSIC_GU			lmusicGu,
+		    l.LMUSIC_GENRE		lmusicGenre,
+		    MUSIC_ALBUM			musicAlbum,
+		    MUSIC_TITLE			musicTitle,
+		    MUSIC_DESC			musicDesc,
+		    MUSIC_ARTIST		musicArtist,
+		    MUSIC_PATH			musicPath,
+		    MUSIC_COST			musicCost,
+		    MUSIC_TIME			musicTime
+		FROM music m , lmusic l, wishlist w
+		where m.lmusic_gu = l.lmusic_gu and m.music_id = w.item_ID and w.LITEM_GU = '03'
+		and w.mem_id = #memId#
+	</select>
+
 </sqlMap>			
 
 

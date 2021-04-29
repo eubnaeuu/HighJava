@@ -52,19 +52,20 @@
 	 </select>
 	
 	<select id="getSearchHompi" parameterClass="kr.or.ddit.hompi.vo.HompiVO" resultClass="kr.or.ddit.hompi.vo.HompiVO">
-	    SELECT 
-		    HOMPI_ID
-			,MEM_ID
-			,VISIT_COUNT_TODAY
-			,VISIT_COUNT_TOTAL
-			,SCRAP_COUNT
-			,HOMPI_INFO
-			,HOMPI_PROFILE_IMG
-			,HOMPI_MINIROOM
-			,HOMPI_BACKGROUND
-			,HOMPI_TEXTCOLOR
- 		FROM HOMPI
-		WHERE 1=1
+	SELECT
+		HOMPI_ID hompiId
+		,MEM_ID memId
+		,nvl(VISIT_COUNT_TODAY,0) visitCountToday
+		,nvl(VISIT_COUNT_TOTAL,0) visitCountTotal
+		,HOMPI_INFO hompiInfo
+		,HOMPI_PROFILE_IMG hompiProfileImg
+		,HOMPI_MINIROOM hompiMiniroom
+		,HOMPI_BACKGROUND hompiBackground
+		,HOMPI_TEXTCOLOR hompiTextcolor
+		,nvl(SCRAP_COUNT,0) scrapCount
+		,HOMPI_MINIMI hompiMinimi
+	FROM HOMPI
+	WHERE 1=1
 	 <isNotEmpty property="hompiId">
            AND HOMPI_ID LIKE '%'||#hompiId#||'%'
 	 </isNotEmpty>
