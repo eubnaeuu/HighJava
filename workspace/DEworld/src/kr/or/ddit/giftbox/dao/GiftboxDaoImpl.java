@@ -6,7 +6,7 @@ import java.util.List;
 import com.ibatis.sqlmap.client.SqlMapClient;
 
 import kr.or.ddit.giftbox.vo.GiftboxVO;
-import kr.or.ddit.item.vo.ItemCollectionVO;
+import kr.or.ddit.item.vo.ItemVO;
 
 
 public class GiftboxDaoImpl implements IGiftboxDao {

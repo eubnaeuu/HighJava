@@ -127,7 +127,7 @@ text-align: center;
 			<%if((userId.trim()).equals(hompiId)){
 				%>
 		<button type="button" onclick="toggleChk()">선택</button>
-		<button type="button" onclick="remove()">삭제</button>
+		<a href="list.do"><button type="button" onclick="remove()">삭제</button></a>
 			<%
 			}
 			%>
@@ -223,14 +223,14 @@ function remove(){
 	});
 }
 	
+		
 function remove2(str){
-	var postNo = str;
+	
 	inputparam = $("#inputstr").val();
 	var hompiId = '<%=hompiId%>';
-	var flag = 'pos';
 	alert(hompiId);
 	var param = {
-			'postNo' : postNo
+			'postNo' : str
 			,'hompiId' : hompiId 
 			,'flag' : 'pos' 
 			};
@@ -238,21 +238,14 @@ function remove2(str){
 		url : "/DEworld/post/delete.do"
 		,type : "post"
 		,data : param
+// 		,dataType : "json"
 		,success : function(data){
 			console.log(data);
-			gobefore(hompiId,postNo,flag);
 		}
 		,error : function(xhr){
 			console.error(xhr);
 		}
 	});
-}
-
-function gobefore(hompiId,postNo,flag){
-		var URI="http://localhost/DEworld/post/list.do?hompiId"
-				+hompiId+"&flag"+flag
-		window.location.href = URI;
-	
 }
 
  

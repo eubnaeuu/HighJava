@@ -46,14 +46,12 @@ public class InsertCommentsHandler implements CommandHandler {
 //				msg = "실패";
 //			}
 		
-			String redirectUrl =
-//					+ req.getContextPath() 
-					 "/post/select.do?postNo=" 
-					+ req.getParameter("postNo");
-//			+URLEncoder.encode(msg, "UTF-8");
+			String redirectUrl = req.getContextPath() + "/post/select.do";
 			
-			System.out.println(redirectUrl);
-			return redirectUrl;
+			String postNo = req.getParameter("postNo");
+			System.out.println(redirectUrl+"?postNo="+postNo);
+			
+			return redirectUrl+"?postNo="+postNo;
 	}
 }
 }

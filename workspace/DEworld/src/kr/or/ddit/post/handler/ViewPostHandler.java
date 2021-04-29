@@ -29,7 +29,6 @@ public class ViewPostHandler implements CommandHandler{
 			return true;
 		}
 	}
-
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		System.out.println("들어옴 view post handler 들어옴");

@@ -99,11 +99,11 @@ public class PostServiceImpl implements PostService {
 	}
 
 	@Override
-	public int deletePost(String postNo) {
+	public int deletePost(String postId) {
 		int cnt = 0;
 		try {
 			System.out.println("deleteDAO 전 ");
-			cnt = postDao.deletePost(smc, postNo);
+			cnt = postDao.deletePost(smc, postId);
 			System.out.println("deleteDAO 후");
 		} catch (SQLException e) {
 			e.printStackTrace();

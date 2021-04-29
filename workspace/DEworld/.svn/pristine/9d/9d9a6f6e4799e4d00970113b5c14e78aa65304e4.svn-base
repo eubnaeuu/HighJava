@@ -33,7 +33,7 @@ public class ListWhishlistHandler implements CommandHandler {
 			String flag = req.getParameter("flag");
 			
 			try {
-				if("L".equals(flag)) { // 불러오기
+				if("L".equals(flag)) { // 등록
 					String memId = req.getParameter("memId");
 					IWhishlistService whishlistService =  WhishlistServiceImpl.getInstance();
 					WhishlistVO wv = new WhishlistVO();
@@ -48,7 +48,7 @@ public class ListWhishlistHandler implements CommandHandler {
 				e.printStackTrace();
 			}
 		}
-		return VIEW_PAGE;
+		return null;
 		
 	}
 

@@ -6,7 +6,7 @@
 <%
 	// String strJson = (String)request.getAttribute("strJson");
 
-	
+	String friendId = request.getParameter("friendId");
 	String msg = request.getParameter("msg") == null ? "" : request.getParameter("msg");
 
 	String userId = (String) request.getSession().getAttribute("userId");
@@ -23,7 +23,6 @@
 <title>Insert title here</title>
 
 <script src="/DEworld/js/jquery-3.6.0.js"></script>
-<script src="/DEworld/js/whishlist/whishlistList.js"></script>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link
 		href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
@@ -118,6 +117,53 @@
 		color:#fff;
 	}
 </style>
+<script>
+$(document).ready(function(){
+	readWhishlistList();
+});
+var memId = '<%=friendId%>';
+
+function readWhishlistList(){
+	var param = {
+		flag : "L",
+		memId : memId
+	};
+	$.ajax({
+		url : "/DEworld/whishlist/whishlistList.do"
+		,type : "post"
+		,data : param
+		,dataType : "json"
+		,success : function(data){
+			console.log(data);
+			makeWhishlistList(data);
+		}
+	,error : function(request,status, error){
+		alert("code:" + request.status+ "\n\r" 
+		+ "message: " + request.responseText +"\n\r"
+		+ "error : " + error);
+		}
+	});
+	
+}
+
+
+function makeWhishlistList(data){
+//	$("#whishlistListTable tbody").empty();
+	
+	var strHtml = "";
+	for(var i=0 ; i<data.length ; i++) {
+		strHtml += '<tr>'
+				+  '<td>' + data[i].litemGu + '</td>'
+				+  '<td><img src="/DEworld/image/item/' + data[i].itemImg + '" style="width:auto; height:50px;"></td>'
+				+  '<td>' + data[i].itemName + '</td>'
+				+  '<td>' + data[i].itemPrice + '</td>'
+				+ 	'</tr>';
+	}
+	
+	$("#whishlistListTable tbody").html(strHtml);
+}
+
+</script>
 </head>
 <body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> 
@@ -176,7 +222,7 @@
 	</div>
 </header>
 <div id="friendListWrapper">
-<h1>위시리스트</h1><hr>
+<h1><%=friendId %>님의 위시리스트</h1><hr>
 	<table id="whishlistListTable" class="table" >
 		<thead>
 		<tr>

@@ -512,7 +512,7 @@
 								</div>
 								<br>
 								<div>
-									<a href="javascript:linkTo()" class="btn btn-primary col-md-5">위시리스트</a> 
+									<a href="/DEworld/whishlist/whishlistList.do" class="btn btn-primary col-md-5">위시리스트</a> 
 									<a href="#" class="btn btn-primary col-md-5" style="float: right">구매내역	조회</a>
 								</div>
 							</div>
@@ -522,9 +522,6 @@
 			</div>
 		</div>
 	</div>
-	<form name="wishForm">
-		
-	</form>
 
 	<!-- 토픽 끝 -->
 
@@ -538,14 +535,6 @@
 
 	<script src="vendor/jquery/jquery.min.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<script>
-		function linkTo(){
-			const frm = document.wishForm;
-			frm.action = "/DEworld/whishlist/whishlistList.do";
-			frm.method = "post";
-			frm.submit();
-		}
-	</script>
 
 </body>
 </html>

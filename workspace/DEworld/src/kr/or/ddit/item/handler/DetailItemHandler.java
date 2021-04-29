@@ -7,9 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kr.or.ddit.comm.handler.CommandHandler;
-import kr.or.ddit.item.service.IItemCollectionService;
-import kr.or.ddit.item.service.ItemCollectionServiceImpl;
-import kr.or.ddit.item.vo.ItemCollectionVO;
+import kr.or.ddit.item.service.IItemService;
+import kr.or.ddit.item.service.ItemServiceImpl;
+import kr.or.ddit.item.vo.ItemVO;
 
 public class DetailItemHandler implements CommandHandler{
 private static final String VIEW_PAGE = "/WEB-INF/view/item/itemDetail.jsp";
@@ -26,8 +26,8 @@ private static final String VIEW_PAGE = "/WEB-INF/view/item/itemDetail.jsp";
 		try {
 			if("L".equals(flag)) { // 상세정보 불러오기
 				String itemId = req.getParameter("itemId");		
-				IItemCollectionService itemService =  ItemCollectionServiceImpl.getInstance();
-				ItemCollectionVO iv = itemService.getItem(itemId);
+				IItemService itemService =  ItemServiceImpl.getInstance();
+				ItemVO iv = itemService.getItem(itemId);
 				req.setAttribute("itemVO", iv);
 				return VIEW_PAGE;
 			}
@@ -38,8 +38,8 @@ private static final String VIEW_PAGE = "/WEB-INF/view/item/itemDetail.jsp";
 			}
 			else if("GF".equals(flag)) { // 친구목록 불러오기
 				String memId = req.getParameter("memId");		
-				IItemCollectionService itemService =  ItemCollectionServiceImpl.getInstance();
-				List<ItemCollectionVO> friendList = itemService.getFriendList(memId);
+				IItemService itemService =  ItemServiceImpl.getInstance();
+				List<ItemVO> friendList = itemService.getFriendList(memId);
 //				System.out.println(friendList.get(0).getFriendId());
 				req.setAttribute("friendList", friendList);
 				return "/WEB-INF/view/item/friendListResult.jsp";
@@ -47,9 +47,9 @@ private static final String VIEW_PAGE = "/WEB-INF/view/item/itemDetail.jsp";
 			else if("BUY".equals(flag)) { // 구매
 				String memId = req.getParameter("memId");
 				String itemId =  req.getParameter("itemId");
-				IItemCollectionService itemService =  ItemCollectionServiceImpl.getInstance();
+				IItemService itemService =  ItemServiceImpl.getInstance();
 				
-				ItemCollectionVO iv = new ItemCollectionVO();
+				ItemVO iv = new ItemVO();
 				iv.setMemId(memId);
 				iv.setItemId(itemId);
 				
@@ -65,9 +65,9 @@ private static final String VIEW_PAGE = "/WEB-INF/view/item/itemDetail.jsp";
 				String itemId =  req.getParameter("itemId");
 				String giftMessage =  req.getParameter("giftMessage");
 				String litemGu = req.getParameter("litemGu");
-				IItemCollectionService itemService =  ItemCollectionServiceImpl.getInstance();
+				IItemService itemService =  ItemServiceImpl.getInstance();
 				
-				ItemCollectionVO iv = new ItemCollectionVO();
+				ItemVO iv = new ItemVO();
 				iv.setMemId(memId);
 				iv.setFriendId(friendId);
 				iv.setItemId(itemId);
@@ -90,12 +90,12 @@ private static final String VIEW_PAGE = "/WEB-INF/view/item/itemDetail.jsp";
 	}
 
 	private int insertWishlist(HttpServletRequest req) {
-		IItemCollectionService itemService =  ItemCollectionServiceImpl.getInstance();
+		IItemService itemService =  ItemServiceImpl.getInstance();
 		String itemId = req.getParameter("itemId");		
 		String memId = req.getParameter("memId");		
 		String litemGu = req.getParameter("litemGu");		
 		
-		ItemCollectionVO iv = new ItemCollectionVO();
+		ItemVO iv = new ItemVO();
 		iv.setMemId(memId);
 		iv.setItemId(itemId);
 		iv.setLitemGu(litemGu);

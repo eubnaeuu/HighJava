@@ -6,15 +6,16 @@
 
 	
 	
-	<select id="getWhishlistAll" resultClass="kr.or.ddit.whishlist.vo.WhishlistVO">
+	<select id="getWhishlistAll" parameterClass="kr.or.ddit.whishlist.vo.WhishlistVO"  resultClass="kr.or.ddit.whishlist.vo.WhishlistVO">
 		SELECT 
-			ITEM_ID				itemId,
-			LITEM_GU            litemGu,
-			ITEM_NAME           itemName,	
-			ITEM_IMG            itemImg,	
-			ITEM_PRICE			itemPrice
+			i.ITEM_ID				itemId,
+			i.LITEM_GU            	litemGu,
+			i.ITEM_NAME           	itemName,	
+			i.ITEM_IMG            	itemImg,	
+			i.ITEM_PRICE			itemPrice
 		FROM item i, wishlist g
-		where i.item_ID, g.item_ID and i.LITEM_GU != '03'
+		where i.item_ID = g.item_ID and i.LITEM_GU != '03'
+		and g.mem_id = #memId#
 	</select>
 
 

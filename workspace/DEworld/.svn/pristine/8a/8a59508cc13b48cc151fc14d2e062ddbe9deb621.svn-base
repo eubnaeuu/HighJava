@@ -1,5 +1,0 @@
-@charset "UTF-8";
-#MemberList{
-	width: 100%;
-	font-size: 20px;
-}

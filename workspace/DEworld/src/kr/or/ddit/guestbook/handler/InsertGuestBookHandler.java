@@ -22,7 +22,7 @@ public class InsertGuestBookHandler implements CommandHandler {
 			return true;
 		}
 	}
-
+	
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse resp) throws Exception, Exception {
 		
