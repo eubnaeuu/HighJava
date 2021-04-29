@@ -39,14 +39,18 @@ body
 	 scrollbar-shadow-color: #9C92FF;
 	 scrollbar-darkshadow-color: #FFFFFF;
 	 scrollbar-track-color: #FFFFFF;
-	 scrollbar-arrow-color: #9C92FF
+	 scrollbar-arrow-color: #9C92FF;
 	 }
+a {
+	text-decoration: none;
+}	 
+	 
 </style>
 </head>
 <body>
 	<input type="hidden" value="" id="memNickname" class="memNickname">
-	<center><img src="images/bar.jpg" width="420" height="6" border="0" alt=""></center>
-	<table border="0" bgcolor="#EBEBEB" width="420" cellpadding="1" cellspacing="1" align="center">
+	<center><img src="images/bar.jpg" width="450" height="6" border="0" alt=""></center>
+	<table border="0" bgcolor="#EBEBEB" width="450" cellpadding="1" cellspacing="1" align="center">
 		<tr>
 			<td>
 			<font face="굴림" style="font-size:9pt;"><b><%=pv.getPostContent()%></b></font>
@@ -54,7 +58,7 @@ body
 		</tr>
 	</table>
 	<!-- 따옴 시작 -->
-	<table border="0" align="center" width="420" cellpadding="1" cellspacing="1">
+	<table border="0" align="center" width="450" cellpadding="1" cellspacing="1">
 		<tr>
 			<td width="100">  
 				<font face="굴림" style="font-size:9pt;"><%=pv.getMemNickname()%></font>
@@ -88,20 +92,19 @@ body
 <!-- 			<td><button type="button" onclick="tagAdd()">추가</button></td> -->
 		</tr>
 	</table>
-	<table>
-		<tr>
-			<td colspan="3"><a href="list.do">목록</a></td>
-			<td><a href="update.do?postNo=<%=pv.getPostNo()%>">수정</a></td>
-			<td><a href="delete.do?postNo=<%=pv.getPostNo()%>">삭제</a></td>
-		</tr>
-	</table>
+	<div style="text-align: right;">
+			<a href="list.do"><span style="color: #E1BC77">목록</span></a>
+			<a href="update.do?postNo=<%=pv.getPostNo()%>"><span style="color: #E1BC77">수정</span></a>
+			<a href="delete.do?postNo=<%=pv.getPostNo()%>"><span style="color: #E1BC77">삭제</span></a>
+	</div>
+	
 	<%
 		if (commentslist != null) {
 			for (CommentsVO cv : commentslist) {
 	%>
-	<table>
+	<table bgcolor="#F6F6F6" width="450" >
 		<tr>
-			<td><%=cv.getMemNickname()%></td>
+			<td><a href=""><%=cv.getMemNickname()%></a></td>
 			<td><%=cv.getCommentsContent()%>(<%=cv.getCommentsDate()%>)</td>
 			<%
 				if (userId.equals(cv.getMemId())) {
@@ -117,7 +120,7 @@ body
 		}
 		} else {
 	%>
-	<table>
+	<table bgcolor="#F6F6F6" width="450" >
 		<tr>
 			<td>댓글이 존재하지 않습니다</td>
 		</tr>
@@ -129,7 +132,7 @@ body
 		method="post">
 		<input type="hidden" class="memIdVal" name="memId"
 			value="<%=logininfo.getMemId()%>">
-		<table>
+		<table bgcolor="#F6F6F6" width="450" >
 			<tr>
 				<td class="memNicknameText">댓글</td>
 				<td><input type="text" name="commentsContent"></td>

@@ -64,7 +64,7 @@ String hompiId	= request.getParameter("hompiId");
 							<td><%= cnt%></td>
 							<td><a href="select.do?postNo=<%=postlist.get(i).getPostNo()%>"><%= postlist.get(i).getPostTitle() %></a></td>
 <%-- 							<td><%= postlist.get(i).getPostContent()%></td> --%>
-							<td><%= postlist.get(i).getPostDate()%></td>
+							<td><%= postlist.get(i).getPostDate().substring(2, 10)%></td>
 							<td><%= postlist.get(i).getPostView()%></td>
 							</tr>
 							<%

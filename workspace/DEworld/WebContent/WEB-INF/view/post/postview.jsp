@@ -9,7 +9,7 @@
 	pageEncoding="UTF-8"%>
 <%
 	List<AtchFileVO> atchFileList = (List<AtchFileVO>) request.getAttribute("atchFileList");
-	PostVO pv = (PostVO)request.getAttribute("pv");
+	PostVO pv = (PostVO) request.getAttribute("pv");
 	List<CommentsVO> commentslist = (List<CommentsVO>) request.getAttribute("commentslist");
 
 	String msg = request.getParameter("msg") == null ? "" : request.getParameter("msg");
@@ -17,6 +17,10 @@
 	String userId = (String) request.getSession().getAttribute("userId");
 	IMemberService memberService = MemberServiceImpl.getInstance();
 	MemberVO logininfo = memberService.getMember(userId);
+	
+	
+	
+	
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -26,81 +30,104 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <style>
-table, td {
-	border: 2px solid;
-	border-collapse: collapse;
+body .fonts {
+	
+}
+
+a {
+	text-decoration: none;
 }
 </style>
 </head>
 <body>
-<%-- 				<font face="굴림" style="font-size:9pt;"><%=pv.getMemNickname()%></font> --%>
-<!-- 			<td align="right">   -->
-	<table border="0" align="center" width="420" cellpadding="1" cellspacing="1">
+	<%-- 				<font face="굴림" style="font-size:9pt;"><%=pv.getMemNickname()%></font> --%>
+	<!-- 			<td align="right">   -->
+	<table border="0" bgcolor="#EBEBEB" width="450" cellpadding="1"
+		cellspacing="1" align="center">
 		<tr>
-<!-- 			<td colspan="3">게시판</td> -->
+			<td><font face="굴림" style="font-size: 9pt;"><b><%=pv.getPostTitle()%></b></font>
+			</td>
+		</tr>
+	</table>
+	<%="2021-04-29 09:53:36.0" %>
+	<table border="0" align="center" width="450" cellpadding="1"
+		cellspacing="1">
+		<tr>
+			<font face="굴림" style="font-size: 9pt;"><td width="100"
+				colspan="3"></td></font>
 		</tr>
 		<tr>
-			<td width="100" colspan="3"><%=pv.getPostTitle()%></td>
+			<td width="100" colspan="2"><font face="굴림"
+				style="font-size: 9pt;"><%=pv.getMemNickname()%></font></td>
+			<td width="100"><font face="굴림" style="font-size: 9pt;"><%=pv.getPostDate().substring(2, 10)%></font></td>
 		</tr>
 		<tr>
-			<td width="100" colspan="2"><%=pv.getMemNickname()%></td>
-			<td width="100"><%=pv.getPostDate()%></td>
+			<td colspan="3"><font face="굴림" style="font-size: 9pt;"><%=pv.getPostContent()%></font></td>
 		</tr>
 		<tr>
-			<td colspan="3"><%=pv.getPostContent()%></td>
-		</tr>
-		<tr>
-			<td>첨부파일</td>
+			<td><font face="굴림" style="font-size: 9pt;">첨부파일</font></td>
 			<td colspan="2">
-				<%
-					if (atchFileList != null) {
-						for (AtchFileVO atchFileVO : atchFileList) {
-				%>
 				<div>
-					<a
-						href="<%=request.getContextPath()%>/filedownLoad.do?fileId=<%=atchFileVO.getAtchFileId()%>
+					<%
+						int cnt = 0;
+						if (atchFileList != null) {
+							for (AtchFileVO atchFileVO : atchFileList) {
+								cnt++;
+					%>
+					<tr>
+						<font face="굴림" style="font-size: 9pt;"> <a
+							href="<%=request.getContextPath()%>/filedownLoad.do?fileId=<%=atchFileVO.getAtchFileId()%>
 																			&fileSn=<%=atchFileVO.getFileSn()%>">
-						<%=atchFileVO.getOrignlFileNm()%>
-					</a> <img width="200px"
-						src="/DEworld/atchFile/<%=atchFileVO.getStreFileNm()%>.<%=atchFileVO.getFileExtsn()%>">
-				</div> <%
+								<%=atchFileVO.getOrignlFileNm()%>
+						</a>
+						</font>
+						<img width="200px"
+							src="/DEworld/atchFile/<%=atchFileVO.getStreFileNm()%>.<%=atchFileVO.getFileExtsn()%>">
+					</tr>
+			 <%
  	}
+%>
+	</div>
+<%							
  	} else {
- %>X<%
- 	}
  %>
+				<%
+					}
+				%>
 			</td>
 		</tr>
 		<tr>
 		</tr>
 	</table>
-	<table>
-		<tr>
-			<td>태그</td>
-			<td><input type="text"></td>
-			<td><button type="button">추가</button></td>
-		</tr>
-	</table>
-	<table>
-		<tr>
-			<td colspan="3"><a href="list.do">[★목록]</a></td>
-			<td><a href="update.do?postNo=<%=pv.getPostNo()%>">[수정]</a></td>
-			<td><a href="delete.do?postNo=<%=pv.getPostNo()%>">[삭제]</a></td>
-		</tr>
-	</table>
+	<!-- 	<table> -->
+	<!-- 		<tr> -->
+	<!-- 			<td>태그</td> -->
+	<!-- 			<td><input type="text"></td> -->
+	<!-- 			<td><button type="button">추가</button></td> -->
+	<!-- 		</tr> -->
+	<!-- 	</table> -->
+	<div style="text-align: right;">
+		<a href="list.do"><font face="굴림"
+			style="font-size: 9pt; color: #FDA500">[목록]</font></a> <a
+			href="update.do?postNo=<%=pv.getPostNo()%>"><font face="굴림"
+			style="font-size: 9pt; color: #FDA500"> [수정]</font></a> <a
+			href="delete.do?postNo=<%=pv.getPostNo()%>"><font face="굴림"
+			style="font-size: 9pt; color: #FDA500"> [삭제]</font></a>
+	</div>
 	<%
 		if (commentslist != null) {
 			for (CommentsVO cv : commentslist) {
 	%>
-	<table>
+	<table bgcolor="#F6F6F6" width="450">
 		<tr>
-			<td><%=cv.getMemNickname()%></td>
-			<td><%=cv.getCommentsContent()%>(<%=cv.getCommentsDate()%>)</td>
+			<td width="30"><a href=""><font face="굴림"
+					style="font-size: 9pt;"><%=cv.getMemNickname()%></font></a></td>
+			<td width="200"><font face="굴림" style="font-size: 9pt;"><%=cv.getCommentsContent()%>(<%=cv.getCommentsDate()%>)</font></td>
 			<%
 				if (userId.equals(cv.getMemId())) {
 			%>
-			<td><a href=""><button>수정</button></a></td>
-			<td><a href=""><button>삭제</button></a></td>
+			<td width="8"><a href=""><button>수정</button></a></td>
+			<td width="8"><a href=""><button>삭제</button></a></td>
 			<%
 				}
 			%>
@@ -122,14 +149,18 @@ table, td {
 		method="post">
 		<input type="hidden" class="memIdVal" name="memId"
 			value="<%=logininfo.getMemId()%>">
-		<table>
+		<table bgcolor="#F6F6F6" width="450">
 			<tr>
-				<td class="memNicknameText">댓글</td>
-				<td><input type="text" name="commentsContent"></td>
-				<td><input type="hidden" name="postNo"
+				<td width="30" class="memNicknameText"><font face="굴림"
+					style="font-size: 9pt;">댓글</font></td>
+				<td width="100"><font face="굴림" style="font-size: 9pt;">
+						<input size="30" type="text" name="commentsContent">
+				</font></td>
+				<td width="30"><input type="hidden" name="postNo"
 					value="<%=pv.getPostNo()%>"> <a
-					href="<%=request.getContextPath()%>/post/select.do?postNo=<%=pv.getPostNo()%>"><button
-							type="submit">등록</button></a> </a></td>
+					href="<%=request.getContextPath()%>/post/select.do?postNo=<%=pv.getPostNo()%>">
+						<button type="submit">등록</button>
+				</a></td>
 			</tr>
 		</table>
 	</form>
