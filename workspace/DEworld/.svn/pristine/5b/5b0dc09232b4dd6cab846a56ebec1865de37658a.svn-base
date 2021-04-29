@@ -102,7 +102,7 @@ a {
 			<font face="굴림"
 			style="font-size: 9pt; color: #FDA500"> <span onclick="update()">[수정]</span></font>
 			 <font face="굴림"
-			style="font-size: 9pt; color: #FDA500"><span onclick="remove()">[삭제]</span></font>
+			style="font-size: 9pt; color: #FDA500"> <span onclick="remove()">[삭제]</span></font>
 	</div>
 	
 	<%

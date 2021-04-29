@@ -88,20 +88,13 @@ String hompiId	= request.getParameter("hompiId");
 				, "guestbookContent" : gbContent
 				},
 			success : function(data) {
-				gobeforeguestbook(hompiId);
+
 			},
 			error : function(xhr) {
 				console.error(xhr);
 			}
 	});
 }
-	
-	function gobeforeguestbook(hompiId){
-		var URI="http://localhost/DEworld/guestbook/list.do?hompiId="
-				+hompiId
-		window.location.href = URI;
-
-	}
 
 </script>
 
@@ -151,7 +144,7 @@ String hompiId	= request.getParameter("hompiId");
 				</font>
 			</td>
 			<td width="200" align="right">  
-				<input type="button" name="write_guest" value="확인" onclick="write_guest_ok()">
+				<a href="DEworld/guestbook/list.do?hompiId=<%=hompiId %>"><input type="button" name="write_guest" value="확인" onclick="write_guest_ok()"></a>
 			</td>
 		</tr>
 	</table>

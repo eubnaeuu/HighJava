@@ -3,21 +3,20 @@
 			PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
 			"http://ibatis.apache.org/dtd/sql-map-2.dtd">
 <sqlMap namespace="giftbox">
-
 	
-	
-	<select id="getGiftboxAll" resultClass="kr.or.ddit.giftbox.vo.GiftboxVO">
+	<select id="getGiftboxAll" parameterClass="kr.or.ddit.giftbox.vo.GiftboxVO"  resultClass="kr.or.ddit.giftbox.vo.GiftboxVO">
 		SELECT 
-			RECIPIENT_ID 		recipientId,
-			SEND_ID				sendId,
-			ITEM_ID				itemId,
-			SEND_DATE			sendDate,
-			GIFT_MESSAGE		giftMessage,
-			LITEM_GU            litemGu,
-			ITEM_NAME           itemName,	
-			ITEM_IMG            itemImg,	
+			g.RECIPIENT_ID 			recipientId,
+			g.SEND_ID				sendId,
+			g.ITEM_ID				itemId,
+			g.SEND_DATE				sendDate,
+			g.GIFT_MESSAGE			giftMessage,
+			i.LITEM_GU            	litemGu,
+			i.ITEM_NAME           	itemName,	
+			i.ITEM_IMG            	itemImg	
 		FROM item i, gift g
-		where i.item_ID, g.item_ID and i.LITEM_GU != '03'
+		where i.item_ID =  g.item_ID and i.LITEM_GU != '03'
+		and g.RECIPIENT_ID = #memId#
 	</select>
 
 

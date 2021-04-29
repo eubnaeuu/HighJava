@@ -61,6 +61,7 @@ public class UpdatePostHandler implements CommandHandler {
 //			req.setAttribute("list", list);
 			req.setAttribute("pv", postpv);
 			req.setAttribute("sysdate", String.valueOf(sysdate));
+			System.out.println(req.getParameter("sysdate"));
 			System.out.println("퇴장 Post update Haldler 퇴장");
 			return VIEW_PAGE;
 		}else {

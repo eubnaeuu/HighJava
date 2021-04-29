@@ -134,22 +134,24 @@ a {
 	%>
 	<form action="<%=request.getContextPath()%>/comments/insert.do"
 		method="post">
-		<input id="comemId" type="hidden" class="memIdVal" name="memId"
+		<input type="hidden" class="memIdVal" name="memId"
 			value="<%=logininfo.getMemId()%>">
 		<table bgcolor="#F6F6F6" width="450">
 			<tr>
 				<td width="30" class="memNicknameText"><font face="굴림"
 					style="font-size: 9pt;">댓글</font></td>
 				<td width="100"><font face="굴림" style="font-size: 9pt;">
-						<input id="cocontent" size="30" type="text" name="commentsContent">
+						<input size="30" type="text" name="commentsContent">
 				</font></td>
-				<td width="30"><input id="copostNo" type="hidden" name="postNo"
-					value="<%=pv.getPostNo()%>"> 
-						<button type="button" onclick="create()">등록</button>
-				</td>
+				<td width="30"><input type="hidden" name="postNo"
+					value="<%=pv.getPostNo()%>"> <a
+					href="<%=request.getContextPath()%>/post/select.do?postNo=<%=pv.getPostNo()%>">
+						<button type="submit">등록</button>
+				</a></td>
 			</tr>
 		</table>
 	</form>
+
 </body>
 <script type="text/javascript">
 function chkmsg() {
@@ -164,39 +166,6 @@ function list(){
 	var flag = 'pos';
 	gobeforelist(hompiId,flag);
 }
-
-function create(){
-	
-	var comemId = $("comemId").val(); 
-	var cocontent = $("cocontent").val();
-	var hompiId = '<%=hompiId%>';
-	var postNo = '<%=postNo%>';
-	var flag = 'pos';
-	
-	var param = { 
-			'postNo' : postNo
-			,'hompiId' : hompiId 
-			,'flag' : flag 
-			,'commentsContent' : cocontent 
-	};
-	
-	$.ajax({
-		url : "/DEworld/post/update.do"
-		,type : "type"
-		,data : param
-		,success : function(data){
-		}
-		,error : function(xhr){
-			console.error(xhr);
-		}
-	});
-	
-	
-// 	var URI="http://localhost/DEworld/post/update.do?hompiId="
-// 		+hompiId+"&flag="+flag+"&postNo="+postNo;
-// 	window.location.href = URI;
-}
-
 
 function remove() {
 	var hompiId = '<%=hompiId%>';

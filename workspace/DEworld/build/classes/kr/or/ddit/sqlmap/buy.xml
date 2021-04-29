@@ -13,7 +13,7 @@
 			i.ITEM_NAME           	itemName,	
 			i.ITEM_IMG            	itemImg,	
 			i.ITEM_PRICE			itemPrice
-		FROM item i, buy g
+		FROM item i, item_collection g
 		where i.item_ID = g.item_ID and i.LITEM_GU != '03'
 		and g.mem_id = #memId#
 	</select>

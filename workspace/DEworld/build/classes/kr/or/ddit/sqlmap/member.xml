@@ -228,6 +228,22 @@
 	WHERE
 	    ROWNUM = 1
 	</select>
+
+	<select id="setHompi" parameterClass="kr.or.ddit.hompi.vo.HompiVO" resultClass="kr.or.ddit.hompi.vo.HompiVO">
+	SELECT
+		HOMPI_ID hompiId
+		,MEM_ID memId
+		,HOMPI_INFO hompiInfo
+		,HOMPI_PROFILE_IMG hompiProfileImg
+		,HOMPI_MINIROOM hompiMiniroom
+		,HOMPI_BACKGROUND hompiBackground
+		,HOMPI_TEXTCOLOR hompiTextcolor
+		,nvl(VISIT_COUNT_TODAY, 0) visitCountToday
+		,nvl(VISIT_COUNT_TOTAL, 0) visitCountTotal
+		,nvl(SCRAP_COUNT, 0) scrapCount
+	FROM HOMPI
+	WHERE MEM_ID = #memId#
+	</select>
 	
 </sqlMap>			
 
