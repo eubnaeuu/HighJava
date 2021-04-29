@@ -191,7 +191,7 @@
 		if ((userId.trim()).equals(hompiId)) {
 	%>
 	<button type="button" onclick="toggleChk()">선택</button>
-	<a href="list.do"><button type="button" onclick="remove()">삭제</button></a>
+	<button type="button" onclick="remove()">삭제</button>
 	<%
 		}
 	%>
@@ -268,7 +268,9 @@
 	}
 
 	function remove() {
-
+		var hompiId = '<%=hompiId%>';
+		var flag = 'pho';
+		
 		if (!chkdel()) {
 			alert("삭제하실 글을 선택해주세요")
 			return;
@@ -283,16 +285,21 @@
 				var idx = $(item).attr("id").indexOf("chkbox");
 				var id = ($(item).attr("id").substring(0, idx));
 				console.log(id);
-				remove2(id);
+				removelist(id);
+				gobeforelist(hompiId,flag);
 			}
 		});
 	}
 
-	function remove2(str) {
-
+	function removelist(str) {
+		var postNo = str;
 		inputparam = $("#inputstr").val();
+		var hompiId = '<%=hompiId%>';
+		var flag = 'pho';
 		var param = {
-			'postNo' : str
+				'postNo' : postNo
+				,'hompiId' : hompiId 
+				,'flag' : flag 
 		};
 		$.ajax({
 			url : "/DEworld/post/delete.do",
@@ -308,6 +315,44 @@
 			}
 		});
 	}
+	
+	function remove2(str) {
+		var postNo = str;
+		inputparam = $("#inputstr").val();
+		var hompiId = '<%=hompiId%>';
+		var flag = 'pho';
+		var param = {
+				'postNo' : postNo
+				,'hompiId' : hompiId 
+				,'flag' : flag 
+		};
+		$.ajax({
+			url : "/DEworld/post/delete.do",
+			type : "post",
+			data : param
+			// 		,dataType : "json"
+			,
+			success : function(data) {
+				console.log(data);
+			},
+			error : function(xhr) {
+				console.error(xhr);
+			}
+		});
+	}
+	
+	function gobeforelist(hompiId,flag){
+		var URI="http://localhost/DEworld/post/list.do?hompiId="
+				+hompiId+"&flag="+flag
+		window.location.href = URI;
+	
+}
+	function gobeforeview(hompiId,flag,postNo){
+		var URI="http://localhost/DEworld/post/list.do?hompiId="
+				+hompiId+"&flag="+flag+"&postNo="+postNo
+		window.location.href = URI;
+	
+}
 
 	function create() {
 		inputparam = $("#inputstr").val();

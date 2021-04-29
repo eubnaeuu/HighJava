@@ -105,11 +105,11 @@ public class ListPostHandler implements CommandHandler {
 					System.out.println("dia if문 아래 끝");
 					return VIEW_PAGE+"/diarylist.jsp";
 				} else {
-					System.out.println("LIST POST 핸들러에서 postif문 아래 탐(listservice 전)");
+					System.out.println("post if문 아래 탐");
 					list = postService.getSearchPost(apv);
 					req.setAttribute("postlist", list);
 					req.setAttribute("pagingVO", pagingVO);
-					System.out.println("LIST POST 핸들러에서 postif문 아래 탐(listservice 전)");
+					System.out.println("post if문 아래 끝");
 					return VIEW_PAGE+"/postlist.jsp";
 				}
 	}

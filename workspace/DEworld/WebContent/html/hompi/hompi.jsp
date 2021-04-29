@@ -11,13 +11,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-
 HompiVO hv = (HompiVO)request.getAttribute("hompiVO");
 
 String hompiId = hv.getHompiId();
 long hompiCountTod = hv.getVisitCountToday();
 long hompiCountTot = hv.getVisitCountTotal();
-
 String userId = (String)request.getSession().getAttribute("userId");
 
 IMemberService memberService = MemberServiceImpl.getInstance();

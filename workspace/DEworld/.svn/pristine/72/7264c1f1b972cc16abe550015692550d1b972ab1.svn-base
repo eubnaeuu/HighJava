@@ -239,6 +239,9 @@ function remove2(str){
 		,type : "post"
 		,data : param
 		,success : function(data){
+			alert(hompiId);
+			alert(postNo);
+			alert(flag);
 			console.log(data);
 			gobefore(hompiId,postNo,flag);
 		}
@@ -248,20 +251,35 @@ function remove2(str){
 	});
 }
 
-
-function gobeforelist(hompiId,flag){
-	var URI="http://localhost/DEworld/post/list.do?hompiId="
-			+hompiId+"&flag="+flag
-	window.location.href = URI;
-
-}
-function gobeforeview(hompiId,flag,postNo){
-	var URI="http://localhost/DEworld/post/list.do?hompiId="
-			+hompiId+"&flag="+flag+"&postNo="+postNo
-	window.location.href = URI;
-
+function gobefore(hompiId,postNo,flag){
+		var URI="http://localhost/DEworld/post/list.do?hompiId="
+				+hompiId+"&flag="+flag
+		window.location.href = URI;
+	
 }
 
+ 
+function create(){
+	inputparam = $("#inputstr").val();
+	var param = {
+			'postNo' : inputparam         
+			,'postTitle' : inputparam2         
+			};
+	$.ajax({
+		url : "/DEworld/post/insert.do"
+		,type : "post"
+		,data : param
+// 		,dataType : "json"
+		,success : function(data){
+			console.log(data)
+			alert("성공");
+		}
+		,error : function(xhr){
+			console.error(xhr);
+		}
+		
+	});
+}
 function search(){
 
 		var flag = $("#selectstr").val();
