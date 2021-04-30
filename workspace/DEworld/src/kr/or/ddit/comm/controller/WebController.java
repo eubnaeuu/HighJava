@@ -84,7 +84,6 @@ public class WebController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		process(req, resp);
 	}
-
 	
 	/**
 	 * 요청 처리 메서드

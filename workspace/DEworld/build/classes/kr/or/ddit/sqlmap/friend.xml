@@ -6,9 +6,9 @@
 <sqlMap namespace="friend">
 
 	<insert id="insertFriend" parameterClass="kr.or.ddit.friend.vo.FriendVO">
-	<selectKey keyProperty="friendNo" resultClass="String">
-			SELECT LPAD(FRIEND.NEXTVAL,3,0) FROM DUAL
-		</selectKey>
+<!-- 	<selectKey keyProperty="friendNo" resultClass="String"> -->
+<!-- 			SELECT LPAD(FRIEND.NEXTVAL,3,0) FROM DUAL -->
+<!-- 		</selectKey> -->
 	INSERT INTO FRIEND
 	(
 			MEM_ID
@@ -21,7 +21,7 @@
 			#memId#
 			,#friendId#
 			,SYSDATE
-			,#friendNo#
+			,(SELECT MAX(FRIEND_NO) + 1 FROM FRIEND)
 	)
 	</insert>
 	<delete id="deleteFriend" parameterClass="kr.or.ddit.friend.vo.FriendVO">

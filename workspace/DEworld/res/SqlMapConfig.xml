@@ -80,6 +80,7 @@
 	<sqlMap resource="kr/or/ddit/sqlmap/adminroom.xml"/>
 	<sqlMap resource="kr/or/ddit/sqlmap/guestbook.xml"/>
 	<sqlMap resource="kr/or/ddit/sqlmap/hompi.xml"/>
+	<sqlMap resource="kr/or/ddit/sqlmap/collection.xml"/>
 </sqlMapConfig>
 
 

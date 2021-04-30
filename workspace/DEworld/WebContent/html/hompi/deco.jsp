@@ -1,3 +1,4 @@
+<%@page import="loginPage.service.MemberService"%>
 <%@page import="kr.or.ddit.item.vo.ItemVO"%>
 <%@page import="kr.or.ddit.hompi.service.HompiServiceImpl"%>
 <%@page import="kr.or.ddit.hompi.service.HompiService"%>
@@ -22,9 +23,13 @@
 	List<HompiVO> list = hompiService.getSearchHompi(hv);
 
 	String hompiNick = list.get(0).getHompiId();
-	
-	List<ItemVO> minimiList  = (List<ItemVO>)request.getAttribute("setItem");
-	List<ItemVO> bgList  = (List<ItemVO>)request.getAttribute("setBg");
+
+	ItemVO itemVO = new ItemVO();
+	itemVO.setMemId(hompiId);
+
+	MemberService service = new MemberService();
+	List<ItemVO> minimilist = service.searchMyMinimi(itemVO); // 미니미 목록
+	List<ItemVO> bglist = service.searchMyBg(itemVO); // 배경 목록
 	
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -33,6 +38,7 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1; text/html; charset=UTF-8">
+<title>게시글 목록</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script
@@ -40,6 +46,9 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script type="text/javascript">
+	// $(document).ready(function(){
+	// 	var userId = sessionStorage.getItem("nowLogin");
+	// });
 </script>
 </head>
 <body>
@@ -47,49 +56,57 @@
 		<table id="postlisttable" class="table table-hover">
 			<thead>
 				<tr>보유중인 미니미 목록</tr>
-				<tr>
-					<td><input type="radio"	><img alt="" src="/DEworld/image/item/1.png"></td>
-				</tr>
 			</thead>
 			<tbody>
-			<tr>
-					<% if(minimiList != null){
-						for(ItemVO minimivo : minimiList){
-							%>
-						<td><input type="radio"	><img alt="" src="/DEworld/image/item/<%=minimivo.getItemId()%>.png"></td>
-							<%
+				<%
+					if (minimilist != null) {
+				%><tr>
+					<%
+						for (ItemVO ivo : minimilist) {
+					%>
+					<td><input type="radio"><img alt=""
+						src="/DEworld/image/item/<%=ivo.getItemImg()%>" width="100" height="100"></td>
+					<%
 						}
-					} else{
-						%>
-						<td>보유중인 미니미아이템이 없습니다.</td>
-						<%
-					}
-						%>
+					%>
 				</tr>
+				<%
+					} else {
+				%>
+				<tr>
+					<td>보유중인 아이템이 없습니다</td>
+				</tr>
+				<%
+					}
+				%>
 			</tbody>
 		</table>
-		<table id="bglisttable" class="table table-hover">
+		<table class="table table-hover">
 			<thead>
-				<tr>보유중인 배경 목록</tr>
-				<tr>
-<!-- 					<td><input type="radio"	><img alt="" src="/DEworld/image/item/1.png"></td> -->
-				</tr>
+				<tr>보유중인 배경아이템 목록</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<% if(bgList != null){
-						for(ItemVO bgvo : bgList){
-							%>
-						<td><input type="radio"	><img alt="" src="/DEworld/image/item/<%=bgvo.getItemId()%>.png"></td>
-							<%
+				<%
+					if (bglist != null) {
+				%><tr>
+					<%
+						for (ItemVO ivo1 : bglist) {
+					%>
+					<td><input type="radio"><img alt=""
+						src="/DEworld/image/hompiBackground/<%=ivo1.getItemImg()%>" width="100" height="100"></td>
+					<%
 						}
-					} else{
-						%>
-						<td>보유중인 배경아이템이 없습니다.</td>
-						<%
-					}
-						%>
+					%>
 				</tr>
+				<%
+					} else {
+				%>
+				<tr>
+					<td>보유중인 배경아이템이 없습니다</td>
+				</tr>
+				<%
+					}
+				%>
 			</tbody>
 		</table>
 	</div>

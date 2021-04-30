@@ -12,7 +12,8 @@
 			MEM_ID        
 			,FRIEND_ID     
 			,REQ_DATE       
-			,REQ_YN         
+			,REQ_YN 
+			,REQ_NO        
 	)
 	VALUES
 	(
@@ -20,6 +21,7 @@
 			,#friendId#
 			,SYSDATE
 			,'N'
+			,(SELECT MAX(REQ_NO) + 1 FROM FRIEND_REQ_LIST)
 	)                   
 	</insert>
 	

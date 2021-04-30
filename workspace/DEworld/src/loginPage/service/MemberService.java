@@ -91,18 +91,18 @@ public class MemberService {
 		
 		return setHompi;
 	}
-
+	
 	public List<ItemVO> searchMyMinimi(ItemVO itemVO) throws SQLException {
 		
 		List<ItemVO> searchMyMinimi = dao.searchMyMinimi(itemVO);
 		
 		return searchMyMinimi;
 	}
-	public List<ItemVO> searchBg(ItemVO itemVO) throws SQLException {
-		
-		List<ItemVO> searchBg = dao.searchBg(itemVO);
-		
-		return searchBg;
+		public List<ItemVO> searchMyBg(ItemVO itemVO) throws SQLException {
+			
+			List<ItemVO> searchMyMinimi = dao.searchBg(itemVO);
+			
+			return searchMyMinimi;
 	}
 
 

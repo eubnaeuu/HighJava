@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+			PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+			"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="collection">
+	<select id="getSearchItemCollection" parameterClass="kr.or.ddit.collection.vo.CollectionVO" resultClass="kr.or.ddit.collection.vo.CollectionVO">
+	 SELECT 
+	MEM_ID memId
+	,A.ITEM_ID itemId
+	 FROM ITEM_COLLECTION A
+	 INNER JOIN ITEM B
+	 ON B.ITEM_ID = A.ITEM_ID 
+	 WHERE 1=1
+	<isNotEmpty property="memId">
+           AND A.MEM_ID = #memId#
+	 </isNotEmpty>
+	<isNotEmpty property="litemGu">
+           AND B.LITEM_GU = #litemGu#
+	 </isNotEmpty>
+	</select>
+	
+	<select id="getSearchMusicCollection" parameterClass="String" resultClass="kr.or.ddit.collection.vo.CollectionVO">
+	 SELECT 
+	MEM_ID memId
+	,MUSIC_ID musicId
+	 FROM MUSIC_COLLECTION A
+	 WHERE 1=1
+	<isNotEmpty property="memId">
+           AND MEM_ID = #memId#
+	 </isNotEmpty>
+	</select>
+	
+</sqlMap>			
+
+
+
+

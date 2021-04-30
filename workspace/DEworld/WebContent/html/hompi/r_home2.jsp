@@ -1,3 +1,6 @@
+<%@page import="kr.or.ddit.collection.vo.CollectionVO"%>
+<%@page import="kr.or.ddit.collection.service.CollectionService"%>
+<%@page import="kr.or.ddit.collection.service.CollectionServiceImpl"%>
 <%@page import="java.util.List"%>
 <%@page import="kr.or.ddit.hompi.vo.HompiVO"%>
 <%@page import="kr.or.ddit.hompi.service.HompiServiceImpl"%>
@@ -18,6 +21,22 @@
     
     String hompiminiroom = list.get(0).getHompiMiniroom();
     String hompibackground = list.get(0).getHompiBackground();
+    
+// 음악,아이템 보관함
+	CollectionService collectionService = CollectionServiceImpl.getInstance();
+	CollectionVO cv = new CollectionVO();
+	cv.setMemId(userId);
+	cv.setLitemGu("01");
+	
+	// 미니미리스트
+	List<CollectionVO> MinimiCollectionList = collectionService.getSearchItemCollection(cv);
+	cv.setLitemGu("02");
+	// 배경리스트
+	List<CollectionVO> BgCollectionList = collectionService.getSearchItemCollection(cv);
+	// 음악리스트
+	List<CollectionVO> musicCollectionList = collectionService.getSearchMusicCollection(hompiId);
+    
+    
     %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <htmL>
@@ -102,5 +121,8 @@
 			</td>
 		</tr>
 	</table>
+
+
+
  </body>
 </html>
