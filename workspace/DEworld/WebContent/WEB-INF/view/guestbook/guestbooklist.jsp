@@ -1,3 +1,6 @@
+<%@page import="kr.or.ddit.hompi.service.HompiServiceImpl"%>
+<%@page import="kr.or.ddit.hompi.service.HompiService"%>
+<%@page import="kr.or.ddit.hompi.vo.HompiVO"%>
 <%@page import="kr.or.ddit.member.service.MemberServiceImpl"%>
 <%@page import="kr.or.ddit.member.service.IMemberService"%>
 <%@page import="kr.or.ddit.member.vo.MemberVO"%>
@@ -17,8 +20,17 @@ String msg = request.getParameter("msg") == null ? ""
 String userId = (String)request.getSession().getAttribute("userId");
 IMemberService memberService = MemberServiceImpl.getInstance();
 MemberVO logininfo = memberService.getMember(userId);
+hompiService.getSearchHompi(new HompiVO().setHompiId(userId));
 
+
+HompiVO hv = new HompiVO();
+HompiService hompiService = HompiServiceImpl.getInstance();
 String hompiId	= request.getParameter("hompiId");
+
+hv.setHompiId(hompiId);
+List<HompiVO> list = hompiService.getSearchHompi(hv);
+
+HompiVO hompiinfo = list.get(0);
 
 %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
@@ -124,7 +136,7 @@ String hompiId	= request.getParameter("hompiId");
 	<table width="410" border="0" cellpadding="0" cellspacing="0" align="center">
 		<tr>
 			<td>  
-				<img src="images/minimi.gif" width="98" height="98" border="0" alt="">
+				<img src="/DEworld/image/profileImg/<%=logininfo.getHompiProfileImg() %>" width="98" height="98" border="0" alt="">
 			</td>
 			<td align="center">
 				<input type="hidden" value="<%=userId %>" name="guestbookWriter" id="gbWriter">

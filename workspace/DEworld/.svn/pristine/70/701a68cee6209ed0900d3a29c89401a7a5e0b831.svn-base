@@ -136,6 +136,8 @@ public class InsertMemberHandler implements CommandHandler {
 		hv.setScrapCount(0);
 		hv.setHompiProfileImg("dftProfileImg.png");
 		hv.setHompiMiniroom("dftMn.png");
+		hv.setHompiBackground("dftBg.png");
+		
 		
 		hompiService.insertHompi(hv);
 		

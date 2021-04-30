@@ -24,9 +24,6 @@
 	HompiService hompiService = HompiServiceImpl.getInstance();
 	hv.setMemId(hompiId);
 	List<HompiVO> list = hompiService.getSearchHompi(hv);
-	
-	HompiVO hompiinfo = list.get(0);
-	
 	String hompiProfileImg = list.get(0).getHompiProfileImg();
 	
 	fv.setMemId(hompiId);

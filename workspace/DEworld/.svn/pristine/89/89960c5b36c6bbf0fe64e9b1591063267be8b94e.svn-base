@@ -72,7 +72,7 @@ function fn_goUrl(vara){
 			<td>
 				<table bgcolor="#DBDBDB" width="130" cellpadding="1" cellspacing="1">
 					<tr bgcolor="#FFFFFF">
-						<td bg><img src="/DEworld/image/profileImg/"" width="128" height="110"
+						<td bg><img src="/DEworld/image/profileImg/"<%=hompiinfo.getHompiProfileImg() %>" width="128" height="110"
 							border="0" alt="오늘의 나의 사진" id="leftProfile"/>
 <!-- 						<img src="/DEworld/image/hompiProfile/" width="128" height="110" -->
 							</td>
