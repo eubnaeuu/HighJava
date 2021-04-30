@@ -104,6 +104,18 @@ public class MemberService {
 			
 			return searchMyMinimi;
 	}
+		public int updateBg(ItemVO itemVO) throws SQLException {
+			
+			int cnt = dao.updateBg(itemVO);
+			
+			return cnt;
+		}
+		public int updateMinimi(ItemVO itemVO) throws SQLException {
+			
+			int cnt = dao.updateMinimi(itemVO);
+			
+			return cnt;
+		}
 
 
 	

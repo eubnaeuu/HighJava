@@ -74,6 +74,12 @@ public class MemberDao extends BaseDao {
 	public List<ItemVO> searchBg(ItemVO itemVO) throws SQLException {
 		return smc.queryForList("hompi.searchMyBackground", itemVO);
 	}
+	public int updateBg(ItemVO itemVO) throws SQLException {
+		return smc.update("hompi.updateBackground", itemVO);
+	}
+	public int updateMinimi(ItemVO itemVO) throws SQLException {
+		return smc.update("hompi.updateMinimi", itemVO);
+	}
 
 	
 }	
