@@ -23,18 +23,18 @@
 			<table>
 			<input type="hidden" value="<%=userId %>" name="memId">
 				<tr>
-					<td>memId:</td>
+					<td>FROM</td>
 					<td><input type="text" id="inputMemId"
 						value="<%=logininfo.getMemNickname()%>" readonly="readonly"></td>
 				</tr>
 				<tr>
-					<td>friendId(아이디 적어야 함)</td>
+					<td>TO</td>
 					<td><input type="text" name="friendId" id="inputFriendId"
 						value=""></td>
 				</tr>
 				<tr>
 					<td>보낼메시지</td>
-					<td><textarea rows="10" cols="15"></textarea>
+					<td><textarea rows="10" cols="23"></textarea>
 				</tr>
 			</table>
 			<input type="submit" value="신청" onclick="submit()"> 

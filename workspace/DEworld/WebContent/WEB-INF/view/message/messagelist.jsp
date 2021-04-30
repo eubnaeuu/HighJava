@@ -185,8 +185,8 @@ button{
 						style="display: none;" type="checkbox" name="MessageCheckboxAll"
 						onclick="checkAll();"></th>
 					<th>구 분</th>
-					<th>보낸이</th>
-					<th>받는이</th>
+					<th>FROM</th>
+					<th>TO</th>
 					<th>내 용</th>
 					<th>일 자</th>
 					<th>상 태</th>

@@ -38,6 +38,11 @@ public class MainHompiHandler implements CommandHandler {
 		
 		req.setAttribute("hompiVO", hv);
 		
+		
+		
+		
+		
+		
 		// 2. 할것들.
 		System.out.println("퇴장 HompiHandler 퇴장");
 		return VIEW_PAGE;

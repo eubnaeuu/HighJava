@@ -52,9 +52,7 @@
 function fn_goUrl(vara){
 	//if(this.value) location.href=(this.value);
 	if(vara.value!=""&&vara.value!="파도타기"){
-		 var options = 'top=10, left=10, width=1085, height=551, status=no, menubar=no, toolbar=no, resizable=no';
-		 var url = "http://localhost/DEworld/hompi/main.do?hompiId="+vara.value;
-		 window.open(url, name, options);
+		window.open("http://localhost/DEworld/hompi/main.do?hompiId="+vara.value,"width=1085,height=551,scrollbars=no,toolbar=no,location=no,resizable=no,status=no,menubar=no,resizable=no");
 	}
 }
 </script>

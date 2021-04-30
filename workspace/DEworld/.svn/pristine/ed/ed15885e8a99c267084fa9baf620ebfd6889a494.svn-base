@@ -21,6 +21,8 @@ String userId = (String)request.getSession().getAttribute("userId");
 IMemberService memberService = MemberServiceImpl.getInstance();
 MemberVO logininfo = memberService.getMember(userId);
 
+
+
 HompiVO hv = new HompiVO();
 HompiVO hv2 = new HompiVO();
 HompiService hompiService = HompiServiceImpl.getInstance();
@@ -44,6 +46,43 @@ HompiVO userhompiinfo = list2.get(0);
  </head>
 
 <script language="javascript">
+
+// 	function comment_ok()
+// 	{
+// 		var 
+// 		$.ajax({
+// 			url : "/DEworld/guestbook/insert.do",
+// 			type : "post",
+// 			data : {"memId" : memId, "flag" : "setMyPage"},
+// 			dataType : "json",
+// 			async: false,
+// 			success : function(data) {
+// 				var memCybermoney = data[0].memCybermoney;
+<%-- 				var itemPrice = <%=itemVO.getItemPrice() %>; --%>
+// 				var result = memCybermoney - itemPrice;
+// 				if(result < 0){
+// 					alert("보유한 땅콩이 부족합니다!");
+// 					m = false;
+// 				}else{
+// 					m = true;
+// 				}
+// 			},
+// 			error : function(xhr) {
+// 				alert("알수없는 에러");
+// 			}
+
+// 		if (text != "")
+// 		{
+// 			text = text + '\n\n\n' + '댓글이 추가되었습니다. ^_^';
+// 			alert(text);
+
+// 		}
+// 		else
+// 		{
+// 			alert('댓글을 입력해 주세요 ^^');
+// 		}
+// 	}
+
 	function write_guest_ok(){
 	
 		var hompiId = '<%=hompiId%>';

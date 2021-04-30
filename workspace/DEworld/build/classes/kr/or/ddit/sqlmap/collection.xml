@@ -3,7 +3,6 @@
 			PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
 			"http://ibatis.apache.org/dtd/sql-map-2.dtd">
 <sqlMap namespace="collection">
-
 	<select id="getSearchItemCollection" parameterClass="kr.or.ddit.collection.vo.CollectionVO" resultClass="kr.or.ddit.collection.vo.CollectionVO">
 	 SELECT 
 	MEM_ID memId

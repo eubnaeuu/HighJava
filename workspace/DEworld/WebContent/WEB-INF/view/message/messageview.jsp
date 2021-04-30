@@ -32,7 +32,7 @@
 		</tr>
 		<tr>
 			<td>내 용:</td>
-			<td><textarea readonly="readonly"><%=mv.getMessageContent()%></textarea></td>
+			<td><textarea readonly="readonly" style="margin: 0px; height: 142px; width: 154px;"><%=mv.getMessageContent()%></textarea></td>
 		</tr>
 <!-- 		<tr> -->
 <!-- 			<td>상 태:</td> -->
