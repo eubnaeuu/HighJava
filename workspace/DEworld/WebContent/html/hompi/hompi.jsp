@@ -33,8 +33,6 @@
 
 	String miniRoom = list.get(0).getHompiMiniroom();
 	
-	
-	
 	CollectionVO cv = new CollectionVO();
 	CollectionService collectionService = CollectionServiceImpl.getInstance();
 	
@@ -143,9 +141,6 @@ body {
 								<button type="button" class="btm_image" id="img_btn"
 									onclick="iframeChange('/DEworld/html/hompi/r_home.jsp?hompiId=<%=hompiId%>')">홈</button>
 								<br /> <br />
-<!-- 								<button type="button" class="btm_image" id="img_btn" -->
-<%-- 									onclick="iframeChange('/DEworld/html/hompi/r_profile.jsp?hompiId=<%=hompiId%>')">프로필</button> --%>
-<!-- 								<br /> <br /> -->
 								<button type="button" class="btm_image" id="img_btn"
 									onclick="iframeChangelink('/post/list.do?hompiId=<%=hompiId%>')">게시판</button>
 								<br /> <br />
@@ -157,6 +152,7 @@ body {
 								<br /> <br />
 								<button type="button" class="btm_image" id="img_btn"
 									onclick="iframeChangelink('/post/list.do?flag=dia&hompiId=<%=hompiId%>')">다이어리</button>
+								<br /> <br />
 								<button type="button" class="btm_image" id="img_btn"
 									onclick="iframeChangelink('/hompidesign/main.do?hompiId=<%=hompiId%>')">꾸미기</button>
 								<br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />

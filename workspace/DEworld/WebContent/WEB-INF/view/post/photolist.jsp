@@ -88,9 +88,9 @@
 </style>
 </head>
 <body>
-	<div class="container" id="mainContents">
-		<div id="sections">
-			<div class="nav nav-pills">
+	<div class="container" id="mainContents"  align="center" style="text-align: center">
+		<div id="sections" align="center" style="text-align: center">
+			<div class="nav nav-pills"  align="center" style="text-align: center" >
 
 				<%
 					int size = photolist.size();
@@ -131,8 +131,8 @@
 	<%
 		if (pagingVO.getTotalCount() > 0) {
 	%>
-	<div>
-		<div colspan="4" align="center">
+	<div align="center" style="text-align: center" >
+		<div colspan="4" align="center" style="text-align: center" >
 			<%
 				if (pagingVO.getFirstPageNo() > pagingVO.getPageSize()) {
 			%>
@@ -168,11 +168,12 @@
 		} else {
 	%>
 	<div>
-		<div colspan="5">게시글이 존재하지 않습니다.</div>
+		<div colspan="5"><font face="굴림" style="font-size: 9pt">게시글이 존재하지 않습니다.</font><br></div>
 		<%
 			}
 		%>
 	</div>
+	<br><br>
 <div align="center">
 	<%
 		if ((userId.trim()).equals(hompiId)) {

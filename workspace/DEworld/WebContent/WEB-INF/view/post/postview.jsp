@@ -105,11 +105,12 @@ a {
 	<%
 		if (commentslist != null) {
 			for (CommentsVO cv : commentslist) {
+				String cowriter = cv.getMemId();
 	%>
 	<table bgcolor="#F6F6F6" width="450">
 		<tr>
 			<td width="30"><a href=""><font face="굴림"
-					style="font-size: 9pt;"><%=cv.getMemNickname()%></font></a></td>
+					style="font-size: 9pt;"><span onclick="goUrl('<%=cowriter%>')"><%=cv.getMemNickname()%></span></font></a></td>
 			<td width="200"><font face="굴림" style="font-size: 9pt;"><%=cv.getCommentsContent()%>(<%=cv.getCommentsDate()%>)</font></td>
 			<%
 				if (userId.equals(cv.getMemId())) {
@@ -235,6 +236,10 @@ function update(){
 		var URI = "http://localhost/DEworld/post/select.do?hompiId=" + hompiId
 				+ "&flag=" + flag + "&postNo=" + postNo;
 		window.location.href = URI;
+	}
+	
+	function goUrl(vara){
+			window.open("http://localhost/DEworld/hompi/main.do?hompiId="+vara,"width=1085,height=551,scrollbars=no,toolbar=no,location=no,resizable=no,status=no,menubar=no,resizable=no");
 	}
 </script>
 </html>

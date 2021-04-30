@@ -79,16 +79,13 @@ function fn_goUrl(vara){
 					</tr>
 				</table>
 			</td>
-
 		</tr>
 		<tr>
 			<td id="leftBarInfo"><font face="굴림" style="font-size: 9pt;">
-					
 					<%=hompiId %>
 			</font></td>
 		</tr>
 	</table>
-
 	<br />
 	<br />
 	<br />

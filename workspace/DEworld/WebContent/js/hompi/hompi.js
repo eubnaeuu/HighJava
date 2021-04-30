@@ -38,10 +38,10 @@ function iframeChange(obj){
 function iframeChangelink(str){
 	$("#rightIframe").attr("src", "/DEworld"+str);
 }
-function iframeChangelinkdiary(str){
-	$("#rightIframe").attr("src", "/DEworld"+str);
-	$("#leftframe").attr("src","/DEworld/html/hompi/left_2.jsp");
-}
+//function iframeChangelinkdiary(str){
+//	$("#rightIframe").attr("src", "/DEworld"+str);
+//	$("#leftframe").attr("src","/DEworld/html/hompi/left_2.jsp");
+//}
 function iframeProfile(){
 	$("#rightIframe").src = $("#rightIframe").src.substr(0,36) + "r_profile.html";
 }

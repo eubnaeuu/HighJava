@@ -56,8 +56,11 @@
 						<%
 							for (FriendVO friendVO : friendlist) {
 									cnt++;
+									String friendId = friendVO.getFriendId();
+									MemberVO friendinfo = memberService.getMember(friendId);
+									
 						%>
-						<option value="<%=friendVO.getFriendId()%>"><%=friendVO.getFriendId()%></option>
+						<option value="<%=friendVO.getFriendId()%>"><%=friendinfo.getMemNickname()%></option>
 						<%
 							}
 							} else {

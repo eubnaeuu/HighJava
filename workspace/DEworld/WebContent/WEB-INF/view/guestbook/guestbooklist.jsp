@@ -20,10 +20,11 @@ String msg = request.getParameter("msg") == null ? ""
 String userId = (String)request.getSession().getAttribute("userId");
 IMemberService memberService = MemberServiceImpl.getInstance();
 MemberVO logininfo = memberService.getMember(userId);
-hompiService.getSearchHompi(new HompiVO().setHompiId(userId));
+
 
 
 HompiVO hv = new HompiVO();
+HompiVO hv2 = new HompiVO();
 HompiService hompiService = HompiServiceImpl.getInstance();
 String hompiId	= request.getParameter("hompiId");
 
@@ -32,6 +33,9 @@ List<HompiVO> list = hompiService.getSearchHompi(hv);
 
 HompiVO hompiinfo = list.get(0);
 
+hv2.setHompiId(userId);
+List<HompiVO> list2 = hompiService.getSearchHompi(hv2);
+HompiVO userhompiinfo = list2.get(0);
 %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <htmL>
@@ -136,7 +140,7 @@ HompiVO hompiinfo = list.get(0);
 	<table width="410" border="0" cellpadding="0" cellspacing="0" align="center">
 		<tr>
 			<td>  
-				<img src="/DEworld/image/profileImg/<%=logininfo.getHompiProfileImg() %>" width="98" height="98" border="0" alt="">
+				<img src="/DEworld/image/profileImg/<%=userhompiinfo.getHompiProfileImg() %>" width="98" height="98" border="0" alt="">
 			</td>
 			<td align="center">
 				<input type="hidden" value="<%=userId %>" name="guestbookWriter" id="gbWriter">
@@ -181,8 +185,18 @@ HompiVO hompiinfo = list.get(0);
 						int cnt = 0;
 						String GuestBookChkId = "GuestBookCheckbox"+cnt;
 						for (int i=0; i < size ;  i++){
+							
+
+
+
 						cnt++;	
 						MemberVO guestbookwriterinfo = memberService.getMember(guestbooklist.get(i).getGusetbookWriter());
+						
+						HompiVO hv3 = new HompiVO();						
+						
+						hv3.setHompiId(guestbooklist.get(i).getGusetbookWriter());
+						List<HompiVO> list3 = hompiService.getSearchHompi(hv3);
+						HompiVO guesthompiinfo = list3.get(0);
 						
 							%>
 	<table border="0" bgcolor="#EBEBEB" width="430" cellpadding="1" cellspacing="1" align="center">
@@ -196,7 +210,7 @@ HompiVO hompiinfo = list.get(0);
 	<table border="0" width="410" align="center">
 		<tr>
 			<td width="100">  
-				<img src="images/minimi.gif" width="98" height="98" border="0" alt="">
+				<img src="/DEworld/image/profileImg/<%=guesthompiinfo.getHompiProfileImg() %>" width="98" height="98" border="0" alt="">
 			</td>
 			<td width="330">  
 				<font face="굴림" style="font-size:9pt;">
