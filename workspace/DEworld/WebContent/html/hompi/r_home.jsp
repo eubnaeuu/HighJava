@@ -21,6 +21,10 @@
     
     String hompiminiroom = list.get(0).getHompiMiniroom();
     String hompibackground = list.get(0).getHompiBackground();
+    String hompiminimi = list.get(0).getHompiMinimi();
+    
+    
+    
     
 // 음악,아이템 보관함
 	CollectionService collectionService = CollectionServiceImpl.getInstance();
@@ -59,8 +63,8 @@ body {
 
 #minimi {
 	position: absolute;
-	bottom: 150px;
-	left: 150px;
+	bottom: 110px;
+	left: 160px;
 }
 
 #bg {
@@ -97,7 +101,11 @@ body {
 						<td><font face="굴림" style="font-size: 9pt;"><a
 								href="./pics/r_pic_page2.html">사진첩</a></font></td>
 						<td><font face="굴림" style="font-size: 9pt;"><a
-								href="./guest/r_guest2.html">방명록</a></font></td>
+								href="./guest/r_guest2.html">방명록</a></font>
+								<button type="button" onclick="fn_left()">왼</button></td>
+								<button type="button" onclick="fn_right()">오</button></td>
+								<button type="button" onclick="fn_up()">위</button></td>
+								<button type="button" onclick="fn_down()">밑</button></td>
 					</tr>
 				</table>
 
@@ -122,12 +130,40 @@ body {
 		<td align="center" colspan="2"><img id="bg"
 			src="/DEworld/image/miniRoom/<%=hompiminiroom %>" width="450"
 			height="250" border="0" alt="아바타 집 그림"> <img id="minimi"
-			src="/DEworld/image/item/default_boy.png" width="50" height="100"
-			border="0" alt="미니미"></td>
+			src="/DEworld/image/item/<%=hompiminimi %>" width="50" height="100"
+			border="0" alt="미니미">
+			</td>
 	</tr>
 	</table>
-
-
-
 </body>
+<script type="text/javascript">
+	function fn_left(){
+		var idx = $("#minimi").css("left").indexOf("px");
+		var ans = $("#minimi").css("left").substr(0,idx);
+		ans = ans-20;
+		var realans = ans+"px";
+		$("#minimi").css("left",realans);
+	}
+	function fn_right(){
+		var idx = $("#minimi").css("left").indexOf("px");
+		var ans = $("#minimi").css("left").substr(0,idx);
+		ans = ans+20;
+		var realans = ans+"px";
+		$("#minimi").css("left",realans);
+	}
+	function fn_up(){
+		var idx = $("#minimi").css("bottom").indexOf("px");
+		var ans = $("#minimi").css("bottom").substr(0,idx);
+		ans = ans+20;
+		var realans = ans+"px";
+		$("#minimi").css("bottom",realans);
+	}
+	function fn_down(){
+		var idx = $("#minimi").css("bottom").indexOf("px");
+		var ans = $("#minimi").css("bottom").substr(0,idx);
+		ans = ans-20;
+		var realans = ans+"px";
+		$("#minimi").css("bottom",realans);
+	}
+</script>
 </html>

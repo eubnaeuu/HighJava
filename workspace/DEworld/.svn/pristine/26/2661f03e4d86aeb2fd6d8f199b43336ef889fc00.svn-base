@@ -98,12 +98,6 @@ public class MemberService {
 		
 		return searchMyMinimi;
 	}
-	public List<ItemVO> searchBg(ItemVO itemVO) throws SQLException {
-		
-		List<ItemVO> searchBg = dao.searchBg(itemVO);
-		
-		return searchBg;
-	}
 
 
 	

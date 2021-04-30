@@ -92,7 +92,7 @@
 		AND MEM_ID = #memId#
 	</select>
 	
-<select id="searchMyBackground" parameterClass="kr.or.ddit.item.vo.ItemVO" resultClass="kr.or.ddit.item.vo.ItemVO">
+<!-- 	<select id="searchMyBackground" parameterClass="kr.or.ddit.item.vo.ItemVO" resultClass="kr.or.ddit.item.vo.ItemVO">
 		SELECT 
 			A.MEM_ID memId, 
 			A.ITEM_ID itemId, 
@@ -113,11 +113,7 @@
 	UPDATE HOMPI
 	SET HOMPI_MINIMI = #hompiMinimi#
 	WHERE MEM_ID = #memId#
-	</update>
-	
-	
-	
-	
+	</update> -->
 </sqlMap>	
 
 

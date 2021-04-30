@@ -99,29 +99,28 @@ public class MemberServlet extends HttpServlet {
 				
 				System.out.println(req.getAttribute("setItem"));
 				path = 5;
-			} else if(flag.equals("searchMyBg")) {
+			}/* else if(flag.equals("setHompi")) {
 
-				List<ItemVO> list = searchMyBg(req);
-				req.setAttribute("setBg", list);
+				List<HompiVO> list = setHompi(req);
+				req.setAttribute("setHompi", list);
 				
-				System.out.println(req.getAttribute("setBg"));
-				path = 6;
-			}
-//			} else if(flag.equals("setHompi")) {
-//
-//				List<HompiVO> list = setHompi(req);
-//				req.setAttribute("setHompi", list);
-//				
-//				System.out.println(req.getAttribute("setHompi"));
-//				path = 4;
-//			} else if(flag.equals("setHompi")) {
-//
-//				List<HompiVO> list = setHompi(req);
-//				req.setAttribute("setHompi", list);
-//				
-//				System.out.println(req.getAttribute("setHompi"));
-//				path = 5;
-//			}
+				System.out.println(req.getAttribute("setHompi"));
+				path = 4;
+			} else if(flag.equals("setHompi")) {
+
+				List<HompiVO> list = setHompi(req);
+				req.setAttribute("setHompi", list);
+				
+				System.out.println(req.getAttribute("setHompi"));
+				path = 4;
+			} else if(flag.equals("setHompi")) {
+
+				List<HompiVO> list = setHompi(req);
+				req.setAttribute("setHompi", list);
+				
+				System.out.println(req.getAttribute("setHompi"));
+				path = 5;
+			}*/
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -160,19 +159,6 @@ public class MemberServlet extends HttpServlet {
 		
 		MemberService service = new MemberService();
 		List<ItemVO> list = service.searchMyMinimi(itemVO);
-		return list;
-	}
-	private List<ItemVO> searchMyBg(HttpServletRequest req) throws SQLException {
-		
-		String memId = req.getParameter("memId");
-		
-		System.out.println("memId : " + memId);
-		
-		ItemVO itemVO = new ItemVO();
-		itemVO.setMemId(memId);
-		
-		MemberService service = new MemberService();
-		List<ItemVO> list = service.searchBg(itemVO);
 		return list;
 	}
 
