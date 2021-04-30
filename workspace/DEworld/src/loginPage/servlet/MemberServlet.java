@@ -100,12 +100,10 @@ public class MemberServlet extends HttpServlet {
 				System.out.println(req.getAttribute("setItem"));
 				path = 5;
 			} else if(flag.equals("searchMyBg")) {
-
 				List<ItemVO> list = searchMyBg(req);
 				req.setAttribute("setBg", list);
-				
 				System.out.println(req.getAttribute("setBg"));
-				path = 6;
+				path = 5;
 			}
 //			} else if(flag.equals("setHompi")) {
 //

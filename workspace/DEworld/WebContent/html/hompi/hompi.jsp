@@ -1,6 +1,3 @@
-<%@page import="kr.or.ddit.collection.service.CollectionService"%>
-<%@page import="kr.or.ddit.collection.service.CollectionServiceImpl"%>
-<%@page import="kr.or.ddit.collection.vo.CollectionVO"%>
 <%@page import="kr.or.ddit.hompi.service.HompiServiceImpl"%>
 <%@page import="kr.or.ddit.hompi.service.HompiService"%>
 <%@page import="kr.or.ddit.hompi.vo.HompiVO"%>
@@ -31,19 +28,7 @@
 	hv.setHompiId(hompiId);
 	List<HompiVO> list = hompiService.getSearchHompi(hv);
 
-	String miniRoom = list.get(0).getHompiMiniroom();
-	
-	CollectionVO cv = new CollectionVO();
-	CollectionService collectionService = CollectionServiceImpl.getInstance();
-	
-	cv.setMemId(hompiId);
-	cv.setLitemGu("01");
-	List<CollectionVO> minimiCollist = collectionService.getSearchItemCollection(cv); // minimi
-	
-	cv.setLitemGu("02");
-	List<CollectionVO> bgCollist = collectionService.getSearchItemCollection(cv); // bg
-	List<CollectionVO> musicCollist = collectionService.getSearchMusicCollection(hompiId); // 음원
-	
+// 	String miniRoom = list.get(0).getHompiMiniroom();
 	
 	
 %>

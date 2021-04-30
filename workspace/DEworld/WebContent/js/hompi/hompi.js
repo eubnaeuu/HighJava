@@ -48,14 +48,14 @@ $(document).ready(function() {
 		}
 	});
 	
-	/*$.ajax({
+	$.ajax({
 		url : "/DEworld/MemberServlet",
 		type : "post",
 		data : {
 			"memId" : memId,
-			"flag" : "searchMyBackground"
+			"flag" : "searchMyBg"
 		},
-		dataType : "json",
+//		dataType : "json",
 		success : function(data) {
 			console.log(data);
 		},
@@ -64,7 +64,7 @@ $(document).ready(function() {
 			console.error(xhr);
 		}
 	});
-	
+	/*
 	$.ajax({
 		url : "/DEworld/MemberServlet",
 		type : "post",

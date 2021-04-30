@@ -23,7 +23,7 @@
 
 	String hompiNick = list.get(0).getHompiId();
 	
-	
+	List<ItemVO> minimiList  = (List<ItemVO>)request.getAttribute("setItem");
 	List<ItemVO> bgList  = (List<ItemVO>)request.getAttribute("setBg");
 	
 %>
@@ -52,18 +52,32 @@
 				</tr>
 			</thead>
 			<tbody>
+			<tr>
+					<% if(minimiList != null){
+						for(ItemVO minimivo : minimiList){
+							%>
+						<td><input type="radio"	><img alt="" src="/DEworld/image/item/<%=minimivo.getItemId()%>.png"></td>
+							<%
+						}
+					} else{
+						%>
+						<td>보유중인 미니미아이템이 없습니다.</td>
+						<%
+					}
+						%>
+				</tr>
 			</tbody>
 		</table>
 		<table id="bglisttable" class="table table-hover">
 			<thead>
 				<tr>보유중인 배경 목록</tr>
 				<tr>
-					<td><input type="radio"	><img alt="" src="/DEworld/image/item/1.png"></td>
+<!-- 					<td><input type="radio"	><img alt="" src="/DEworld/image/item/1.png"></td> -->
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
-					<% if(bgList.size()!=0){
+					<% if(bgList != null){
 						for(ItemVO bgvo : bgList){
 							%>
 						<td><input type="radio"	><img alt="" src="/DEworld/image/item/<%=bgvo.getItemId()%>.png"></td>
