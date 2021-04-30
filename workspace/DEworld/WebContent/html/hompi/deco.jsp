@@ -129,11 +129,12 @@
 		var size = $("input[name=bgRadio]").length;
 		var select ="";
 		for(i=1; i<size+1; i++){
-			if(($("#input"+i).prop)){
-				select = size;
+			if(($("#bgRadio"+i).prop)){
+				select = i;
 			}
+		}
 			
-		var itemId = $("#bgRadio"+size).attr("title");
+		var itemId = $("#bgRadio"+select).attr("title");
 		var hompiId = '<%=hompiId%>';
 		var flag = "B";
 		
@@ -152,20 +153,20 @@
 			,error : function(xhr){
 			}
 		});
-	}
+	
 	}
 		function updateMinimi(){
 			
 			
 			var size = $("input[name=minimiRadio]").length;
-			alert("size:"+size);
 			var select ="";
 			for(i=1; i<size+1; i++){
-				if(($("#input"+i).prop)){
-					select = size;
+				if(($("#minimiRadio"+i).prop)){
+					select = i;
 				}
 				alert("select"+select);
-			var itemId = $("#minimiRadio"+size).attr("title");
+			}
+			var itemId = $("#minimiRadio"+select).attr("title");
 			alert("itemId"+itemId);
 			var hompiId = '<%=hompiId%>';
 			var flag = "M";
@@ -186,7 +187,7 @@
 				}
 			});
 		}
-		}
+		
 	
 	function gobefore(hompiId) {
 		var URI = "http://localhost/DEworld/hompi/main.do?hompiId=" + hompiId;
